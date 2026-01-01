@@ -1,27 +1,27 @@
 <script lang="ts">
-import { onMount } from "svelte";
+import { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
 import Icon from "@iconify/svelte";
 import {
-	getDefaultHue,
-	getHue,
-	setHue,
-	getStoredTheme,
-	setTheme,
-	getRainbowMode,
-	setRainbowMode,
-	getRainbowSpeed,
-	setRainbowSpeed,
 	getBgBlur,
+	getDefaultHue,
+	getDevMode,
+	getDevServer,
+	getHideBg,
+	getHue,
+	getRainbowMode,
+	getRainbowSpeed,
+	getStoredTheme,
 	setBgBlur,
-    setBgHueRotate,
-    getHideBg,
-    setHideBg,
-    getDevMode,
-    setDevMode,
-    getDevServer,
-    setDevServer,
+	setBgHueRotate,
+	setDevMode,
+	setDevServer,
+	setHideBg,
+	setHue,
+	setRainbowMode,
+	setRainbowSpeed,
+	setTheme,
 } from "@utils/setting-utils";
-import { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
+import { onMount } from "svelte";
 
 let hue = getHue();
 let theme = getStoredTheme();
@@ -46,7 +46,7 @@ $: if ((hue || hue === 0) && !isRainbowMode) {
 }
 
 $: {
-    setBgBlur(bgBlur);
+	setBgBlur(bgBlur);
 }
 
 function switchTheme(newTheme: string) {
@@ -69,12 +69,12 @@ function toggleRainbow() {
 
 	if (isRainbowMode) {
 		lastUpdate = performance.now();
-        rainbowHue = 0; // Reset rotation start
+		rainbowHue = 0; // Reset rotation start
 		animationId = requestAnimationFrame(updateRainbow);
 	} else {
 		cancelAnimationFrame(animationId);
-        // Reset background rotation to 0 when stopped
-        setBgHueRotate(0);
+		// Reset background rotation to 0 when stopped
+		setBgHueRotate(0);
 	}
 }
 
@@ -100,9 +100,9 @@ onMount(() => {
 	if (isRainbowMode) {
 		updateRainbow();
 	}
-    return () => {
-        if (animationId) cancelAnimationFrame(animationId);
-    }
+	return () => {
+		if (animationId) cancelAnimationFrame(animationId);
+	};
 });
 </script>
 

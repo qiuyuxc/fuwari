@@ -9,8 +9,8 @@ interface Props {
 	basePath?: string;
 }
 import { Image } from "astro:assets";
-import { url } from "../../utils/url-utils";
 import { imageFallbackConfig, siteConfig } from "../../config";
+import { url } from "../../utils/url-utils";
 
 const { id, src, alt, position = "center", basePath = "/" } = Astro.props;
 const className = Astro.props.class;

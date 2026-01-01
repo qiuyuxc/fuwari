@@ -1,6 +1,5 @@
 import { getCollection } from "astro:content";
 
-
 export async function getSortedPosts() {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
@@ -27,4 +26,3 @@ export async function getSortedPosts() {
 
 	return sorted;
 }
-

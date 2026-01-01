@@ -21,7 +21,7 @@ const postsCollection = defineCollection({
 });
 
 const assetsCollection = defineCollection({
-	type: 'data',
+	type: "data",
 	schema: z.object({
 		title: z.string().optional(),
 		description: z.string().optional(),

@@ -92,8 +92,6 @@ export type UmamiConfig = {
 	timezone: string;
 };
 
-
-
 export type LIGHT_DARK_MODE =
 	| typeof LIGHT_MODE
 	| typeof DARK_MODE
