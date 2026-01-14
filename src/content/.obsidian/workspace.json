@@ -169,21 +169,22 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "96b79d1156396696",
+  "active": "7be4ba729d2aae5a",
   "lastOpenFiles": [
+    "assets/images/static-redirect-group.png",
+    "posts/static-redirect-group.md",
+    "assets/images/static-redirect-group.md",
+    "posts/static-redirect-group.png",
+    "posts/http-header-host.md",
     "assets/images/http-header-host-2.png",
     "assets/images/http-header-host-1.png",
     "assets/images/http-header-host.png",
     "posts/fenliu.md",
-    "posts/http-header-host.md",
     "assets/images/fenliu-17.png",
     "assets/images/fenliu-16.png",
     "assets/images/fenliu-15.png",
     "assets/images/fenliu-14.png",
     "assets/images/fenliu-13.png",
-    "assets/images/fenliu-12.png",
-    "assets/images/fenliu-11.png",
-    "assets/images/fenliu-10.png",
     "posts/cf-fastip.md",
     "posts/first-pc.md",
     "posts/warden-worker.md",
@@ -204,8 +205,6 @@
     "posts/anuneko.md",
     "posts/win11-to-win10.md",
     "posts/remote.md",
-    "posts/expressive-code.md",
-    "posts/lskypro-local.md",
-    "posts/ms-e3.md"
+    "posts/expressive-code.md"
   ]
 }
