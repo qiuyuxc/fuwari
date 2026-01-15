@@ -1,6 +1,6 @@
 ---
 title: 加群向导
-image: /random/h
+image: https://t.alcy.cc/ycy
 published: 2025-05-24
 pinned: true
 category: 置顶
