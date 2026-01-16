@@ -257,4 +257,4 @@ apk add curl unzip jq openssl tar iproute2 bash
 最终，抢占型ECS实例每个小时扣费 **0.005528 元** ，按照一个月31天，每月扣费 **4.112832 元** ，而弹性公网IP一经绑定便不再计费，CDT每月免费200G海外流量，不超出不计费，OSS免费存储5G，传入流量不计费，我们也没有传出流量，或者保险起见你也可以将其删除
 
 **最终每月成本：不到5元！**
-![](../assets/images/4411ab2fe9dfe7df65472e5b426af567%201.png)
+![](../assets/images/4411ab2fe9dfe7df65472e5b426af5671.png)
