@@ -2,7 +2,7 @@
 title: 【开源】WPwebplayer——简洁通用的网页播放器
 published: 2025-08-09
 description: '一款简单，简洁，轻量,通用的开源网站音乐播放器'
-image: '../assets/images/屏幕截图2025-08-09213908.png'
+image: 'https://i0.hdslb.com/bfs/openplatform/856b8b3fa203ecbcf800c6c0a1eb4100bb309406.png'
 tags: [Web]
 category: '记录'
 draft: false 

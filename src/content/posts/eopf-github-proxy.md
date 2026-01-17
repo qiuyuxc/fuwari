@@ -2,7 +2,7 @@
 title: 在EdgeOne Page Function上搭建一个Github全站反代！
 published: 2025-08-30T20:28:35
 description: '很早就关注了eopf这个平台，今天终于将基于CF Worker的Github全站反代移植过来了！'
-image: '../assets/images/2025-08-30-20-34-21-image.png'
+image: 'https://i0.hdslb.com/bfs/openplatform/bfcb8379bf41785be4f1068e1887ef7b4e4b4ab2.png'
 tags: [EdgeOne]
 
 draft: false 
@@ -19,7 +19,7 @@ lang: ''
 
 目录结构为
 
-![](../assets/images/2025-08-30-20-43-29-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/2d994572309ebead9d6f7a225f4dfadd7fbf0124.png)
 
 这里面的每一个JS文件的内容都相同，所以如果需要改请全都改一遍
 
@@ -51,11 +51,11 @@ const domain_mappings = {
 
 然后上传到EdgeOne Pages
 
-![](../assets/images/2025-08-30-20-45-20-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/9baa3841fa47cfdd8ce1d9d245d605455eaf2f9f.png)
 
 按照前缀绑定域名
 
-![](../assets/images/2025-08-30-20-46-18-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/4af5b1ccd2fcd77fcf6c7923eb66a0c68ec977f8.png)
 
 # 为什么结构目录这么抽象？
 

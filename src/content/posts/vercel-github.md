@@ -2,7 +2,7 @@
 title: 利用Vercel Function搭建一个Github全站反代
 published: 2025-08-30T21:35:52
 description: '嫌弃CF Worker不够快？那就试试Vercel Function！'
-image: '../assets/images/2025-08-30-22-09-42-image.png'
+image: 'https://i0.hdslb.com/bfs/openplatform/c43f75a0834e955dfd4cbbdf48642f127b940b71.png'
 tags: [Vercel]
 
 draft: false 
@@ -15,6 +15,6 @@ lang: ''
 
 克隆 [afoim/VercelFunctionGithubProxy](https://github.com/afoim/VercelFunctionGithubProxy)，部署到Vercel，绑你自己域名
 
-![](../assets/images/2025-08-30-22-14-07-aa3b925d5e2e522cc0a0abccd87b5887.png)
+![](https://i0.hdslb.com/bfs/openplatform/130d59c7ec5d30fedfdafe66ff6133b84cdb2435.png)
 
-![](../assets/images/2025-08-30-22-14-10-b79c2d588117ab15fc4a08efe359db4f.png)
+![](https://i0.hdslb.com/bfs/openplatform/18586e3756c58cf2df0a7401fd004dbedc60ec3c.png)

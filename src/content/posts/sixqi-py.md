@@ -2,7 +2,7 @@
 title: 我用Claude10分钟写了个六子棋...?
 published: 2025-07-14
 description: '本来是不想写这种看起来就很简单的项目的，奈何群u苦苦哀求，只好实现'
-image: ../assets/images/d359734c-1415-4ebc-8caf-4d807282fad6.webp
+image: https://i0.hdslb.com/bfs/openplatform/fc2dd62bc79aed2b078f55eb359a116f64fd7e2b.webp
 tags: [六子棋, AI]
 category: '记录'
 draft: false 
@@ -19,11 +19,11 @@ lang: ''
 
 然后被委托做一个**神经小项目**
 
-![](../assets/images/29afe2b7-db53-4707-81ef-173befb84a06.webp)
+![](https://i0.hdslb.com/bfs/openplatform/e6f56a4ce6ab0463b89dd7e99797fd05e49fa6a0.webp)
 
-![](../assets/images/f7b3b7b6-a462-4c1a-b8cf-665cc4df824c.webp)
+![](https://i0.hdslb.com/bfs/openplatform/622435925218353f79f0064008a562ae367b9485.webp)
 
-![](../assets/images/0d0b13c2-e2d5-4394-b7fd-48af6277869c.webp)
+![](https://i0.hdslb.com/bfs/openplatform/bb8abc1633b322e6c6d3f928ca3f3ba9d255309b.webp)
 
 于是就...
 
@@ -37,7 +37,7 @@ lang: ''
 
 ~~这里本想用JSON存的但是聪明小AI最终交付的仍然是内存存储~~
 
-![](../assets/images/1d62004f-ed07-4ced-be59-63bb4dd03b2d.webp)
+![](https://i0.hdslb.com/bfs/openplatform/40b79d6daeea3a3acf59493aa61bbe344062322f.webp)
 
 然后就写出来了！（~~并非，总共问了7次~~
 
@@ -47,4 +47,4 @@ lang: ''
 
 开源： [GitHub - afoim/sixqi](https://github.com/afoim/sixqi)
 
-![](../assets/images/1416208a-b44c-40b7-a1ba-743e8a28d3bc.webp)
+![](https://i0.hdslb.com/bfs/openplatform/be126b0c248108dc9dbc7bc537f5833c7dabfa44.webp)

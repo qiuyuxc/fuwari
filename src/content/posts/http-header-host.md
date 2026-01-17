@@ -2,7 +2,7 @@
 title: 利用自定义HTTP请求头Host字段实现单节点分流域名的监控
 published: 2026-01-13T17:28:33
 description: 如果说你有个分流域名，正常来说我们需要两个监测源模拟国内和海外用户访问，但真的需要这么麻烦吗...
-image: ../assets/images/http-header-host.png
+image: https://i0.hdslb.com/bfs/openplatform/5ff0145f6ed44aeb307735193c66b76f116bd28d.png
 draft: false
 lang: ""
 ---
@@ -24,9 +24,9 @@ CDN上托管了那么多的网站，那它是如何识别每个用户需要访�
 
 如图写监测项目，直接使用HTTP协议监测CDN节点，并且携带Host头，将重定向设为0，只要返回 301/302 就算存活（为了减轻站点压力，建议使用HEAD请求）
 
-![](../assets/images/http-header-host-1.png)
+![](https://i0.hdslb.com/bfs/openplatform/b9246274a1f752a28081f3794dac7b199ac82fa1.png)
 
-![](../assets/images/http-header-host-2.png)
+![](https://i0.hdslb.com/bfs/openplatform/328dda9aa2deaeb21daed978b9a0d2503ca96762.png)
 
 # Demo
 ::url{href="https://status.acofork.com"}

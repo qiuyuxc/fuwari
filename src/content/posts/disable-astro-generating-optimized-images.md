@@ -2,7 +2,7 @@
 title: 禁用Astro跟弱智一般的静态构建图像优化
 published: 2025-09-10T06:16:30
 description: '折腾了整整一天，终于解决了这傻逼Astro对于静态构建自作聪明的图片优化了，这不仅能提高构建速度，还可以减少无谓的CPU资源消耗，更环保，也更符合Unix哲学'
-image: '../assets/images/2025-09-10-06-19-15-image.png'
+image: 'https://i0.hdslb.com/bfs/openplatform/e1847998e4aad1c943b0fcd4f78426c1b4aa619c.png'
 tags: [Astro]
 
 draft: false 
@@ -19,7 +19,7 @@ lang: ''
 
 *为什么要浪费这么多的时间来进行±10kb左右的图片压缩呢？*
 
-![](../assets/images/2025-09-10-06-21-20-26ca667ff5c7024c12d7a8254f483b27.png)
+![](https://i0.hdslb.com/bfs/openplatform/700938459e0c4fb9a09e603a95ae947a48e0656a.png)
 
 # 如何让Astro不”优化“图片？
 
@@ -53,7 +53,7 @@ lang: ''
 
 *如果您了解如何在Astro的配置层面直接禁用图片优化，请联系我！我很乐意与您交流！*
 
-![](../assets/images/2025-09-10-06-27-46-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/fc57e06fce2699d4282350d25e5ffb0ba2c7fff4.png)
 
 # 尝试直接更改Astro源码来禁用图片优化（成功）
 
@@ -178,12 +178,12 @@ index 3144f4c058b161b9e6eb3c8d891b743b34783653..0ba275b320204e154307c6aff75452e9
 
 任何情况下使用 `astro build` 都会跳过图片优化，Cloudflare Worker的构建时间从 3分钟下降到2分钟
 
-![](../assets/images/2025-09-10-06-46-49-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/6cc9f1752e5c092242f571d49c29a471f8e3915f.png)
 
-![](../assets/images/2025-09-10-06-47-01-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/c75a8760c026e1255ecc51d17c10e24659e15fe8.png)
 
 构建后的页面不再为全局webp，透传原始文件名、扩展名。但仍然保留了 `/_astro` 路径，依旧支持相对路径粘贴图片
 
-![](../assets/images/d836b41fd85611972c2086a7064705bdb1b4ff7c.png)
+![](https://i0.hdslb.com/bfs/openplatform/5a0559f246a32a3990171b03767f7f05ab7c1e7b.png)
 
-![](../assets/images/ff1314b1ab7d60bd9a49d6499db22cde23fb9f60.png)
+![](https://i0.hdslb.com/bfs/openplatform/d1177cd833bb2e44f7edc17921bfdd1627d81a16.png)

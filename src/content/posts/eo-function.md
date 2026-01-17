@@ -2,7 +2,7 @@
 title: 对标CF Worker？拿EdgeOne边缘函数做一个随机图API！
 published: 2025-08-01
 description: '很早就知道EdgeOne边缘函数，一直都没来得及体验，今天上手后发现它真的很强大'
-image: '../assets/images/6c1b4054-0a9a-42dd-a72b-d179216ac61f.webp'
+image: 'https://i0.hdslb.com/bfs/openplatform/5fcf2c9958493de12dd70c7406bcb02f17c7ec42.webp'
 tags: [EdgeOne]
 category: '教程'
 draft: false 
@@ -17,7 +17,7 @@ lang: ''
 
 部署到EdgeOne边缘函数
 
-![](../assets/images/4274a5c6-c3d5-468b-8c98-d515a0a22762.webp)
+![](https://i0.hdslb.com/bfs/openplatform/442a8b3ff7dc5bae6d00362bc7ba25b3c4b63a24.webp)
 
 将代码开头的 `R2_CONFIG` 设为你自己的
 
@@ -46,11 +46,11 @@ var R2_CONFIG = {
 
 访问 `/h` 则展示一张横屏随机图，访问 `/v` 则展示一张竖屏随机图
 
-![](../assets/images/fe7629b7-2acd-4e84-bd0c-d66ee7a54528.webp)
+![](https://i0.hdslb.com/bfs/openplatform/84d035d1eee221df6b837f1c80f91e31e623efd1.webp)
 
 如果需要绑定域名请设置触发规则
 
-![](../assets/images/33d931d4-e7cd-4d5d-afd8-85b787524391.webp)
+![](https://i0.hdslb.com/bfs/openplatform/c4db317e470ffb1e2017deda40c3bdc58a83beca.webp)
 
 # 注意
 

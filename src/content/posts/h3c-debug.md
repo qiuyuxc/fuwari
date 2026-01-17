@@ -2,7 +2,7 @@
 title: 关于我对路由器瞎改一通让网速变快了这档事
 published: 2025-05-02
 description: '我家是H3C路由器，虽然他是OpenWRT的系统，但是却没法直接刷成iStoreOS，但是偶然一天，我发现他有Telnet，于是...'
-image: ../assets/images/2025-05-02-03-52-07-image.png
+image: https://i0.hdslb.com/bfs/openplatform/bf62d85c7c590cd64bc24787533120dd4c9b9042.png
 tags: [H3C]
 category: '记录'
 draft: false 
@@ -13,7 +13,7 @@ lang: ''
 
 起因是我经常使用的Cloudflare梯子访问速度变慢，而且经常被RST重置。买了个小鸡后自己搭了个Reality的梯子还是经常掉线，甚至HTTP协议的面板访问都超时。于是我便开始鼓捣起路由器
 
-![2025-05-02-04-25-12-image.png](../assets/images/2025-05-02-04-25-12-image.png)
+![2025-05-02-04-25-12-image.png](https://i0.hdslb.com/bfs/openplatform/a2abf82986bed14890a65bbc92993611c94fcec4.png)
 
 ### 小插曲 - 光猫桥接的坏处
 
@@ -37,7 +37,7 @@ lang: ''
 
 我觉得行得通，但是问了AI，给我扯了一堆乱七八糟的结果是行不通（其实行得通）
 
-![2025-05-02-04-05-45-image.png](../assets/images/2025-05-02-04-05-45-image.png)
+![2025-05-02-04-05-45-image.png](https://i0.hdslb.com/bfs/openplatform/ecf9fb52ce5c9c6b670c656092eb2d51626995e7.png)
 
 然后就是乱七八糟的尝试。终于我发现，**将路由器改为静态IP模式，将IP改为192.168.1.2，网关改为192.168.1.1的时候，成功进入了192.168.1.1，也就是光猫的后台**
 
@@ -51,7 +51,7 @@ lang: ''
 
 结果2小时后它自己好了...
 
-![2025-05-02-04-09-30-image.png](../assets/images/2025-05-02-04-09-30-image.png)
+![2025-05-02-04-09-30-image.png](https://i0.hdslb.com/bfs/openplatform/70b0c7154357cbf2106446a1adb7615daee7b6ae.png)
 
 ![2025-05-02-04-09-33-7e66540d3f1540de42cd16fd7d976a62.jpg](https://eo-r2.2x.nz/myblog/img/2025-05-02-04-09-33-7e66540d3f1540de42cd16fd7d976a62.png)
 
@@ -69,7 +69,7 @@ lang: ''
 https://192.168.124.1/debug.asp
 ```
 
-![2025-05-02-04-14-04-image.png](../assets/images/2025-05-02-04-14-04-image.png)
+![2025-05-02-04-14-04-image.png](https://i0.hdslb.com/bfs/openplatform/cb769fd7b4394eadb39a63043be98676a31bd60e.png)
 
 顺带一提
 
@@ -79,11 +79,11 @@ NAT转换方式为三元组最开放。其他看不懂的东西建议不要动
 
 H3C的Telnet端口为15000，登录进去后是这样
 
-![2025-05-02-04-15-54-image.png](../assets/images/2025-05-02-04-15-54-image.png)
+![2025-05-02-04-15-54-image.png](https://i0.hdslb.com/bfs/openplatform/b66dc0a5b2783712e4ee75b90587584d008f7f71.png)
 
 这个界面下我也不知道有啥能操作的，接着输入 `debugshell` 进入OpenWRT系统（当成没有包管理器的Linux用就行[因为这系统太老了 opkg找不到任何软件源，啥也装不了😅]）
 
-![2025-05-02-04-17-46-image.png](../assets/images/2025-05-02-04-17-46-image.png)
+![2025-05-02-04-17-46-image.png](https://i0.hdslb.com/bfs/openplatform/f33e592aabf2ac3723a14d0f63b9a4ab03851b90.png)
 
 这下看懂了
 
@@ -93,25 +93,25 @@ H3C的Telnet端口为15000，登录进去后是这样
 
 首先看看这个系统里面都有啥
 
-![2025-05-02-04-18-59-image.png](../assets/images/2025-05-02-04-18-59-image.png)
+![2025-05-02-04-18-59-image.png](https://i0.hdslb.com/bfs/openplatform/f3679566b57d997d547d9d6ed01a9cf91ae36e9f.png)
 
 发现了 `www` 目录，进入看看
 
-![2025-05-02-04-19-43-image.png](../assets/images/2025-05-02-04-19-43-image.png)
+![2025-05-02-04-19-43-image.png](https://i0.hdslb.com/bfs/openplatform/ec1c385c65a988077f0c8563f6c9d80028ab7d37.png)
 
 看来这就是供用户访问的Web服务的源，但这里还有很多静态文件（比如CSS，PNG），我们筛选一下 `.asp` 文件
 
-![2025-05-02-04-21-10-image.png](../assets/images/2025-05-02-04-21-10-image.png)
+![2025-05-02-04-21-10-image.png](https://i0.hdslb.com/bfs/openplatform/95594179aa649f8fc452776c659f98d2d62afc36.png)
 
 挨个访问看看，有不少隐藏的页面
 
-![2025-05-02-04-21-48-ee25e30ecca07bf2d1ba4251809dd4d3.png](../assets/images/2025-05-02-04-21-48-ee25e30ecca07bf2d1ba4251809dd4d3.png)
+![2025-05-02-04-21-48-ee25e30ecca07bf2d1ba4251809dd4d3.png](https://i0.hdslb.com/bfs/openplatform/61fe4bc98479e740e79d30113945890fda351f8a.png)
 
-![2025-05-02-04-21-52-f2dba1c3e41f7bad4fa940eb81eb3122.png](../assets/images/2025-05-02-04-21-52-f2dba1c3e41f7bad4fa940eb81eb3122.png)
+![2025-05-02-04-21-52-f2dba1c3e41f7bad4fa940eb81eb3122.png](https://i0.hdslb.com/bfs/openplatform/f21d44e0aede7141a175f8adbcc7a3aa9d917d70.png)
 
-![2025-05-02-04-21-56-bb2477a30fcc13f293cb87ba4fe48c66.png](../assets/images/2025-05-02-04-21-56-bb2477a30fcc13f293cb87ba4fe48c66.png)
+![2025-05-02-04-21-56-bb2477a30fcc13f293cb87ba4fe48c66.png](https://i0.hdslb.com/bfs/openplatform/a79d56827550037cace18e923e3d7237a7a35be8.png)
 
-![2025-05-02-04-22-01-c2cac252a281573c0a3929d4fe74df65.png](../assets/images/2025-05-02-04-22-01-c2cac252a281573c0a3929d4fe74df65.png)
+![2025-05-02-04-22-01-c2cac252a281573c0a3929d4fe74df65.png](https://i0.hdslb.com/bfs/openplatform/b72114e7bec1c7f9d4dd76f2f7586dcccb5eead6.png)
 
 # 行动三：瞎JB乱改
 
@@ -121,7 +121,7 @@ H3C的Telnet端口为15000，登录进去后是这样
 
 似乎好了？我不知道，等白天再测测吧，也可能是心理作用
 
-![2025-05-02-04-25-49-image.png](../assets/images/2025-05-02-04-25-49-image.png)
+![2025-05-02-04-25-49-image.png](https://i0.hdslb.com/bfs/openplatform/b3bf598bdd299c15ca218fbf6e23730245fa9329.png)
 
 # 建议
 

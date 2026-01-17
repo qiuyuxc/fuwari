@@ -12,6 +12,7 @@
 		"new-post": "node scripts/new-post.js",
 		"clean": "node scripts/clean-unused-images.js",
 		"del-space": "node scripts/del-space.js",
+		"upload-bili": "node scripts/upload-bili.js",
 		"format": "biome format --write ./src",
 		"lint": "biome check --write ./src"
 	},

@@ -2,7 +2,7 @@
 title: 有Github Education？来嫖一年免费的.tech域名！
 published: 2025-08-11T21:45:08
 description: '昨天也是成功通过了Github Edu验证，发现可以白嫖一年免费的.tech域名！'
-image: '../assets/images/2025-08-11-21-47-14-9824664fa225fd32def503d0c3bfef12.png'
+image: 'https://i0.hdslb.com/bfs/openplatform/738b1bce03a4ca6c37f2d37b60ea1d924135a23a.png'
 tags: [Github Edu]
 category: '记录'
 draft: false 
@@ -17,19 +17,19 @@ lang: ''
 
 一直往下滚，直到找到 .tech 字样的项目，点击蓝色链接进入
 
-![](../assets/images/2025-08-11-21-49-27-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/2621a9e9bf89437d5d70a15ee2b54f1c07dce996.png)
 
 输入域名，然后添加到购物车
 
-![](../assets/images/2025-08-11-21-50-09-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/03e05fe4aa577213ff48b8f714b086f80f03456c.png)
 
 点击结账
 
-![](../assets/images/2025-08-11-21-50-20-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/8350b1c836f05a5324deb3f852805fd52b99e7f1.png)
 
 在这里登录Github账户（我已经免费拿一个了所以拿不了噜~）
 
-![](../assets/images/2025-08-11-21-51-05-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/a0ceed48e532bafa6c612ce7fdd7b7bbff24c8d3.png)
 
 不出意外你的Total应该是0，点击就购买成功！
 
@@ -41,14 +41,14 @@ lang: ''
 
 输入你的域名并跳转到控制台
 
-![](../assets/images/2025-08-11-21-53-59-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/347086d4918633fe19f38df091998094d544c769.png)
 
 改NS到Cloudflare~
 
-![](../assets/images/2025-08-11-21-54-26-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/0535a6768b07ba0c92cc6c720c6f5be8647b94cb.png)
 
 当当当当~ 
 
 激活咯~
 
-![](../assets/images/2025-08-11-21-54-51-db66a30e7c1fa897656df0c4e0d90390.png)
+![](https://i0.hdslb.com/bfs/openplatform/4d9f6c9efe8383a4766e968c14d907809932c3ca.png)

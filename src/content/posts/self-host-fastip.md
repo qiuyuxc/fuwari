@@ -2,7 +2,7 @@
 title: 都5202年了，还有人不会自建自己的Cloudflare/EdgeOne等各种CDN的优选？
 published: 2025-07-22
 description: '自建各大CDN服务的优选域名非常简单，只需要先这样，再这样...但是踩坑的地方也不少...'
-image: '../assets/images/5df07ad0-01cd-4541-9321-b0ded148a90f.webp'
+image: 'https://i0.hdslb.com/bfs/openplatform/ad1499ece6ebd7de2e91ef10decb90f14ff32d6c.webp'
 tags: [优选, CDN]
 category: '教程'
 draft: false 
@@ -29,7 +29,7 @@ lang: ''
 
 我们搜索 `Cloudflare IP段` 即可找到
 
-![](../assets/images/9e79e4ab-ce0c-434a-84f7-3b8a9f3a0886.webp)
+![](https://i0.hdslb.com/bfs/openplatform/a3248ae692050c5b781f47cabb9e27794003eb05.webp)
 
 对于其他CDN，他们可能并没有直接在网页上公开IP，你需要自行寻找客服咨询
 

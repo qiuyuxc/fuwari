@@ -2,7 +2,7 @@
 title: 记录破解兰空图床（Lsky-Pro）
 published: 2025-08-19T21:09:47
 description: '兰空图床是一个简洁易用（？）的图床框架，抓包了一下激活过程，这玩意居然没加密...记录一下'
-image: '../assets/images/2025-08-20-21-11-48-image.png'
+image: 'https://i0.hdslb.com/bfs/openplatform/c2ff3bde4b238d3f394791692b93aaf058b67f8f.png'
 tags: [兰空图床]
 category: '记录'
 draft: false 
@@ -56,45 +56,45 @@ export http_proxy="http://127.0.0.1:8080"
 export https_proxy="http://127.0.0.1:8080"
 ```
 
-![](../assets/images/a5fd2695975981d785cea1af5c0ee9588dc1b9ee.png)
+![](https://i0.hdslb.com/bfs/openplatform/e8b63331cf24e2b8e3e5257b017058dd0c9f81fe.png)
 
 默认Burp仅拦截请求，不拦截响应，需要手动设置一下
 
-![](../assets/images/2690f8470df19d0c4a0f134835a7cbc95c9798fd.png)
+![](https://i0.hdslb.com/bfs/openplatform/053c236629a1b4fa5aa19b465e9ddda358660336.png)
 
 然后启用拦截
 
-![](../assets/images/52650c556acc9406923fb824823fe3a04e153d5d.png)
+![](https://i0.hdslb.com/bfs/openplatform/31fff0597fcf7cc5891164e726ea9eff5a5b0ef9.png)
 
 当你通过官方教程到执行 `./install.sh` 的时候
 
 会要求输入域名和授权密钥，域名填你自己的，否则之后上传的图片的预览地址将会不正确！授权密钥随便填！
 
-![](../assets/images/67b17d4c5f5d7ba8d2e2ee348d19bc01c6d42b1d.png)
+![](https://i0.hdslb.com/bfs/openplatform/b59c95de62c237b819802eda6fe84e3c826b8b04.png)
 
 回车，会开始转圈圈
 
-![](../assets/images/fb540faa472d476e8d6b05a04d01be5a19adb236.png)
+![](https://i0.hdslb.com/bfs/openplatform/e824c5387ea6b8f3dc8009cf818945589ddf105f.png)
 
 查看Burp，发现多了一个请求，首先点击放行
 
-![](../assets/images/8a6dd20b7ad55a9fdad795be358b8486b75de5b7.png)
+![](https://i0.hdslb.com/bfs/openplatform/089cc16c136efe7171115c72d2e7f2be03443bc8.png)
 
 现在出现了响应，并且状态码为401
 
-![](../assets/images/ce862cb4eeefc2a7a52bea44e4e6ab137a7cd3da.png)
+![](https://i0.hdslb.com/bfs/openplatform/7e2ccd706ef774aef511367555b206daec616f07.png)
 
 响应那块是可以编辑的，用 https://r2.072103.xyz/lsky_success_223.txt 中的内容替换原响应。然后点击放行
 
-![](../assets/images/b8545b978629815aec471489890a0be62f0a8f89.png)
+![](https://i0.hdslb.com/bfs/openplatform/4e059421a5e98013566ce8c18d35d407ead38432.png)
 
 恭喜，通过授权了
 
-![](../assets/images/fdda3a54fd4a6da5d0c0c9d5ac0fbd5b79ef2b51.png)
+![](https://i0.hdslb.com/bfs/openplatform/943222ec8936f41fe489c0516b1aebb624a12327.png)
 
 安装完毕后也一样
 
-![](../assets/images/79f0f4645235e7cb3ecbe554cb13295bed326be5.png)38dd52c6e.png)
+![](https://i0.hdslb.com/bfs/openplatform/efe2bc377607e643946bac905045cb5c2f2e41a3.png)38dd52c6e.png)
 
 > 注意。如果需要更新新版本，仍然需要有效的授权密钥，否则无法得到新版包体
 

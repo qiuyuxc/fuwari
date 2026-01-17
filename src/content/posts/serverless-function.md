@@ -2,7 +2,7 @@
 title: 盘点那些好用的Serverless（云函数）！
 published: 2025-11-25T08:33:24
 description: 你是否为了搭建一个网站而买了一台VPS，然后安装宝塔或1Panel再安装Nginx等等等等？现在这些统统不要！只需要稍加学习，你就可以得到一个免费的高可用的托管服务！
-image: ../assets/images/serverless-function.png
+image: https://i0.hdslb.com/bfs/openplatform/37c0cd65d21ba7a7e8cf7c68f671aad69c62894f.png
 tags:
   - Serverless
   - 云函数
@@ -51,7 +51,7 @@ Serverless也比Server更容易做版本控制和Debug，由于Serverless和Git�
 支持非常多的语言，如 Node.js、Python、Go、Wasm 等等。构建服务非常强劲！**默认分配 4C8G** 帮你构建！
 
 用量限制非常宽松，并且可以超过限制的 **2倍** 以上仍保持正常访问
-![](../assets/images/serverless-function-1.png)
+![](https://i0.hdslb.com/bfs/openplatform/c5c503177411bf4d9cf111bca3ee81201de22278.png)
 示例服务： [来！让我们用Vercel来分享你的OneDrive！ - AcoFork Blog](/posts/onedrive-index/)
 
 ### [Netlify Functions](https://www.netlify.com/platform/core/functions/)
@@ -81,24 +81,24 @@ Serverless也比Server更容易做版本控制和Debug，由于Serverless和Git�
 ### [ClawCloud Run | Build, Deploy, Manage & Run in Cloud-Native Platform](https://run.claw.cloud/)
 
 之前被干爆过，目前亚太爆炸，每个月有 **5 美元** 余额，直接跑Docker，按你分配的CPU核心数和内存来计费。不过 Hobby 计划还蛮便宜的，常用的话可以买
-![](../assets/images/serverless-function-2.png)
+![](https://i0.hdslb.com/bfs/openplatform/6a395683cc6001dc99ab16f7789fb1aecdb04426.png)
 
 ### [Render](https://render.com/)
-![](../assets/images/serverless-function-3.png)
+![](https://i0.hdslb.com/bfs/openplatform/6b443ebde75fd7d8debba15dd5f2d9e2f85eb5bd.png)
 **每月免费100G流量**，支持非常多的服务，如：静态网站、Web服务（Docker）、定时服务、PostgreSQL数据库、Key Vaule存储
 
 唯一的缺点，性能不高
 
 ### [Zeabur](https://zeabur.com/zh-CN/)
-![](../assets/images/serverless-function-4.png)
+![](https://i0.hdslb.com/bfs/openplatform/abebde7e4abd20d70bc58651f771586635f84806.png)
 **每月免费5刀额度** ，免费计划有两个地域可选
-![](../assets/images/serverless-function-5.png)
+![](https://i0.hdslb.com/bfs/openplatform/9ed11ee2ef658d5fe1224d62868f7590d1e37dbd.png)
 
 最重磅的在于你可以将自己的VPS托管给Zeabur，它会在你的服务器上安装k3s等服务，之后你就可以直接在Zeabur的仪表盘上进行运维了
 
 **最小服务器要求：2GB 内存，1 核 CPU。**
 
-![](../assets/images/serverless-function-6.png)
+![](https://i0.hdslb.com/bfs/openplatform/aff876e4aaedeb12faf002a56ae7272f34c30bac.png)
 
 # 结语
 Serverless不像传统的VPS，你并不完全拥有它，所以有些服务是不能跑的， **特别是在免费层** ，如特别吃IO和网络的 **AList** ，或是并发请求特别高以及商用服务。如果你用的舒心，请考虑购买各大平台的付费版套餐

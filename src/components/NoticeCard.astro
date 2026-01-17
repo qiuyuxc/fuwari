@@ -1,0 +1,18 @@
+---
+import { siteConfig } from "../config";
+const { notice } = siteConfig;
+const { enable, content, level } = notice || {};
+---
+
+{enable && (
+    <div class="card-base card-hover flex flex-col w-full relative mb-4 onload-animation" style={`animation-delay: var(--content-delay); border-color: var(--admonitions-color-${level}); border-width: 1px;`}>
+        <div class="px-6 py-4 relative w-full">
+            <div class="custom-md text-75">
+                <blockquote class={`admonition bdm-${level} !my-0 flex items-center !pl-4`}>
+                     <span class="bdm-title !mb-0 !mr-2"></span>
+                     <div class="flex-1" set:html={content}></div>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+)}

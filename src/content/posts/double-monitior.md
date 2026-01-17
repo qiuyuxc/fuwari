@@ -2,7 +2,7 @@
 title: 你有一个全球网站？如何做好监控？
 published: 2026-01-09T11:26:02
 description: 如果你正好在运营一个全球性的网站，它可能在不同地区有不同节点，我们要如何做好宕机提醒？
-image: ../assets/images/double-monitior.png
+image: https://i0.hdslb.com/bfs/openplatform/e28f436402e3804ec57b06b84dd073acf9d48473.png
 draft: false
 lang: ""
 ---

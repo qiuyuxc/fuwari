@@ -2,7 +2,7 @@
 title: 利用Netlify WebHook来实时提醒你的订阅者博客文章更新
 published: 2025-08-09T00:01:00
 description: '早期提过使用Github WebHook来做到这件事，今天偶然发现了Netlify也可以做到同样的事情'
-image: '../assets/images/2025-08-09-23-03-37-image.png'
+image: 'https://i0.hdslb.com/bfs/openplatform/31b953ac5d3a4ec26539f5e37fde514e0929055d.png'
 tags: [Netlify]
 category: '记录'
 draft: false 
@@ -50,18 +50,18 @@ Bot即刻推送文章更新消息 √
 
 添加HTTP POST钩子
 
-![](../assets/images/2025-08-09-23-15-10-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/3ebaa3e311f5edcbd795a4fe9734f630740e8007.png)
 
 创建一个部署成功钩子
 
-![](../assets/images/2025-08-09-23-15-40-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/9c755d693ff4418c2b48ef31a190a107f04ef290.png)
 
 # Bot端
 
 设置一个双监听WebHook服务器，同时接受Github和Netlify的WebHook即可。
 
-![](../assets/images/2025-08-09-23-36-50-5ec10aad91b98d8d36699c7956c705f0.png)
+![](https://i0.hdslb.com/bfs/openplatform/f04b62236c216d1de9b7f724f2dfe577f43cd6c7.png)
 
-![](../assets/images/2025-08-09-23-39-27-cfc2d6a91a07455adbcee0c491143640.png)
+![](https://i0.hdslb.com/bfs/openplatform/a48b63a29dcdd46efedf7663a8ed0e3366d159f2.png)
 
-![](../assets/images/2025-08-09-23-57-02-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/eb0ff55a7f44319f8c597eaf838bee1f2781ddc8.png)

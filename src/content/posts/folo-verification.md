@@ -2,7 +2,7 @@
 title: 认证为Folo的创作者
 published: 2025-08-10T21:26:55
 description: 'Folo是一个RSS聚合平台，在上面不仅可以订阅很多优质的RSS源，也可以认领自己的RSS源'
-image: '../assets/images/2025-08-10-21-31-04-image.png'
+image: 'https://i0.hdslb.com/bfs/openplatform/263112b502bf6602b63aaeafe19cf019c086daaa.png'
 tags: [Folo]
 category: '记录'
 draft: false 
@@ -35,4 +35,4 @@ This message is used to verify that this feed (feedId:180993728847509504) belong
 
 最简单的方法就是像我这样新建一篇文章，然后原封不动粘贴这段话，然后认证即可
 
-![](../assets/images/2025-08-10-21-31-04-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/263112b502bf6602b63aaeafe19cf019c086daaa.png)

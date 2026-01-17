@@ -2,7 +2,7 @@
 title: 本站遭受了建站以来规模最大的一次DDoS攻击，总流量6.65TB，峰值瞬发1.95GB/s
 published: 2025-12-16T08:28:59
 description: 不是哥们，静态也打？
-image: ../assets/images/ddos-6t.png
+image: https://i0.hdslb.com/bfs/openplatform/af4506cfe4d446e3c30a0930712d01f025a54e79.png
 draft: false
 lang: ""
 ---
@@ -21,19 +21,19 @@ lang: ""
 于 **2025年12月16号 11:13**，我在和我的朋友测试项目的时候，有一个知识点他忘记了，我提议他前往我的博客查看，却被告知博客访问报 **570** 状态码
 
 我立即使用 https://itdog.cn 测试了我的博客网站 https://acofork.com 发现大部分节点都为 **570** 状态码
-![](../assets/images/4f3b8517527460574d03479cc64655be.png)
+![](https://i0.hdslb.com/bfs/openplatform/790048acac47000acc2c364013bc9751bf4a9980.png)
 因为当时我的网站部署在 **EdgeOne** 
 
 随后，我向腾讯客服求证，了解到该状态码是一个 **单节点限频访问** 的状态码
-![](../assets/images/5082a73ffa31ee435c9c7894263ae4cd.png)
+![](https://i0.hdslb.com/bfs/openplatform/a3bf57fdefefc960df136a442697b46bcdec5227.png)
 
 我的朋友甚至还在调侃说： **你网站🔥了** 
-![](../assets/images/ddos-6t-1.png)
+![](https://i0.hdslb.com/bfs/openplatform/034c679f04fe133ab7a644552ffe64fc4d9ea275.png)
 
 但是事情貌似还有一些诡异，为什么海外都是 **200 OK** ？
 
 我开始怀疑被打了
-![](../assets/images/ddos-6t-2.png)
+![](https://i0.hdslb.com/bfs/openplatform/a80de33ce6de2a2d3dc1ecc45ae280306a8171eb.png)
 
 可能玩静态久了，没有第一时间上到 **EdgeOne** 查看请求数和流量，想着都是静态，谁没事打呢
 
@@ -46,34 +46,34 @@ lang: ""
 
 # 茅塞顿开
 睡醒后我越想越奇怪，于是就登上了 **EdgeOne Pages** 控制台，然后一看，我嘞个大雷
-![](../assets/images/2f4df8e383a1b41625ad02eb70375465.png)
-![](../assets/images/50480865cd7f11d7cc4b495bcbc48038.png)
-![](../assets/images/30bb8ddb905b6de8181d60ddf1b69dbe.png)
-![](../assets/images/01f15a24f395a3731010c8046cb2008c.png)
+![](https://i0.hdslb.com/bfs/openplatform/22a4d5381599a653013ce2a6c0594f88e227d2c2.png)
+![](https://i0.hdslb.com/bfs/openplatform/8ddab07636282b444a1c038e232613caa8d5f456.png)
+![](https://i0.hdslb.com/bfs/openplatform/bb91a304bddb061326b81c3492978d0cdd60faff.png)
+![](https://i0.hdslb.com/bfs/openplatform/d5745d9c0be841aa967157c4759a063d3a5d241e.png)
 
 随后我抱着好奇的心态想看看ESA防御咋样，没想到刚切过去阿里云就给我发消息了
-![](../assets/images/9318872dc53b38334312619b2373c81e.jpg)
+![](https://i0.hdslb.com/bfs/openplatform/a77543f72ff996bda0bcac5534344dc89be3f693.jpg)
 
 于是...
-![](../assets/images/5b3bcf42d0e4f73fbe031699a291a5c2.png)![](../assets/images/c4b6bdd2c39ae7585b9d3ecc5dbe9c6d.png)
+![](https://i0.hdslb.com/bfs/openplatform/994a2acbabf79d506e956e6435fb9088c325c417.png)![](https://i0.hdslb.com/bfs/openplatform/6228a038693fc2ef8fec06f4a85d2edb2b4d9d6f.png)
 
 依旧是熟悉的印度尼西亚
-![](../assets/images/5a86eb051d48615259e8dcecb0fe8185.png)
+![](https://i0.hdslb.com/bfs/openplatform/f5aa3571920da64ef4e44283c6844764e4fee804.png)
 
 那没招了，随后我于10分钟内极速 **完全切到Cloudflare Pages** 
-![](../assets/images/ddos-6t-3.png)
+![](https://i0.hdslb.com/bfs/openplatform/847f4cde31c7c98343c7be1eed064f6513e5a978.png)
 
 目前来看 **Cloudflare Pages** 也挺绿的
-![](../assets/images/image_2025-12-16_08-24-54.png)
+![](https://i0.hdslb.com/bfs/openplatform/6cae7b03ab169ccdf240df46881db7726cc34030.png)
 
 最后发了一个被打的B站视频，然后得知
 
 **我去！大手子来了！** 
-![](../assets/images/Screenshot_2025-12-16-08-08-33-65_149003a2d400f6a.jpg)
+![](https://i0.hdslb.com/bfs/openplatform/75c211237b44fc364df83bb16ad0d11f899f8f12.jpg)
 
 # 赛后总结
-![](../assets/images/d16b7b134dec1224dcfc16e59a21942f.png)
-![](../assets/images/3c33b054a3180932ae87bea8bd06c3ed.png)
+![](https://i0.hdslb.com/bfs/openplatform/63664f1d8ecadb01805729a78db7cf97084361d0.png)
+![](https://i0.hdslb.com/bfs/openplatform/a20c7bf355c7231842eec7fd0abcde065e8da688.png)
 
 **本站遭受了建站以来规模最大的一次DDoS攻击，总流量6.65TB，峰值瞬发1.95GB/s**
 

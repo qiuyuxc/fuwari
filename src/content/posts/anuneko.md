@@ -2,7 +2,7 @@
 title: 上手米哈游AI，然后把它逆了！
 published: 2025-12-02T09:11:40
 description: AnuNeko是一只会哈气的橘猫...其实不是，AnuNeko是由米哈游创始人做的AI大模型，会哈气。于是便做个QQBot给群友玩
-image: ../assets/images/anuneko.png
+image: https://i0.hdslb.com/bfs/openplatform/8c50b913b63320534e1c96321aff3ce30647d1cb.png
 tags:
   - AnuNeko
   - NoneBot2
@@ -17,7 +17,7 @@ lang: ""
 
 # 逆！
 okok，注意到登陆后的请求头中有 `x-token` 字段
-![](../assets/images/anuneko-1.png)
+![](https://i0.hdslb.com/bfs/openplatform/41647664e24a5fc2ffa633441e4f7376b919d39f.png)
 
 手搓个请求发发，`data` 携带内容 
 ```json
@@ -29,10 +29,10 @@ curl --location 'https://anuneko.com/api/v1/msg/会话id/stream' \
 ```
 
 通了
-![](../assets/images/anuneko-2.png)
+![](https://i0.hdslb.com/bfs/openplatform/1025bb1aa5df0283bbd9eec6ba7a3175f13d55de.png)
 
 然后还有一种情况，在遇到Pick的时候，我们要发送要选择的回复编号
-![](../assets/images/anuneko-3.png)
+![](https://i0.hdslb.com/bfs/openplatform/3a4f5778893fcad6ef419ad33504c3930d075607.png)
 
 发个如图请求帮橘猫选择
 ```

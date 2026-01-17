@@ -2,7 +2,7 @@
 title: EdgeOne + Cloudflare，我们天下无敌！
 published: 2025-06-27
 description: 'EdgeOne的低延迟+Cloudflare的强大业务！我都不敢想这有多爽！'
-image: ../assets/images/50839e45-bb5c-4fd5-8e88-3959295fb9bb.webp
+image: https://i0.hdslb.com/bfs/openplatform/8c1b2f2291f18c0a999b61000cafe6b99f0cd5ca.webp
 tags: [EdgeOne, Cloudflare]
 category: '记录'
 draft: false 
@@ -21,7 +21,7 @@ lang: ''
 
 发完后私信EO官方即可
 
-![](../assets/images/9ccbf7c1-6006-45f6-a9f4-e1979df8b12b.webp)
+![](https://i0.hdslb.com/bfs/openplatform/103f19a6d5ac7811b0f41ed320f32807471af039.webp)
 
 # 默认EdgeOne给的Anycast CNAME过于垃圾？
 
@@ -31,46 +31,46 @@ lang: ''
 
 emm 这玩意吧 你们自己看速度吧
 
-![](../assets/images/33a0b34f-d36f-4214-bcf3-616f9b174630.webp)
+![](https://i0.hdslb.com/bfs/openplatform/5e54bbbb9cb1a794c36708a389af46bdd43878c0.webp)
 
 我推荐大家使用 `43.174.150.150` 。是一个中国香港的三网优化IP。速度如下。**本人EdgeOne优选：** `eo.072103.xyz`
 
-![](../assets/images/ab4cfd6f-ef23-4670-8577-02850f372124.webp)
+![](https://i0.hdslb.com/bfs/openplatform/c13900fcef77e00544e1d88a58416a4bb11be2ae.webp)
 
 # 换了CNAME后无法自动申请免费SSL？
 
 如果你将你的域名托管给EO并且没有用EO给你的CNAME，则这个选项不可用
 
-![](../assets/images/d81050d7-5d58-4b80-92d9-bf1e07285544.webp)
+![](https://i0.hdslb.com/bfs/openplatform/16c6fd5cc4284521967aeab699df5aef7eac1479.webp)
 
 我推荐采用1panel、宝塔、acme.sh手动申请泛域名证书然后上传到腾讯云SSL控制台，就像这样
 
-![](../assets/images/59cf2a66-2717-4291-b027-6cd2f270ece4.webp)
+![](https://i0.hdslb.com/bfs/openplatform/c8275b030f48618f05d2ef85eafc7c12f1966f0b.webp)
 
 # EdgeOne怎么做重定向？
 
 在这里
 
-![](../assets/images/8f31d55f-4d0b-4209-935b-c2ec7924846c.webp)
+![](https://i0.hdslb.com/bfs/openplatform/9e908df909777dfe06c9854e6752af6f19d47659.webp)
 
-![](../assets/images/5ca74214-b4d0-4ac1-9fab-06d3096a5f7e.webp)
+![](https://i0.hdslb.com/bfs/openplatform/cc1f04e3812e5f91104e1d63bcc372ae8e0e5a6d.webp)
 
 EO边缘函数也支持重定向，支持更细化的重定向规则
 
 但是这玩意记录请求数，不如用Cloudflare的重定向规则
 
-![](../assets/images/2853531b-a57f-4b20-a8ec-98c0ca433604.webp)
+![](https://i0.hdslb.com/bfs/openplatform/a540a6f3b14a7809f81c29713df0c9e9dafec28a.webp)
 
 首先我们在CF写这样一个规则
-![](../assets/images/ac9afee9-a368-4e10-a2a9-045e8672d636.webp)
+![](https://i0.hdslb.com/bfs/openplatform/c94a56671f29858d92db6d4e172e35de8eced47e.webp)
 
 然后让EO回源到CF边缘节点。最简单就是随便填个IP然后套CDN
 
-![](../assets/images/08445fb0-892a-4793-a359-6cfc3194dbce.webp)
+![](https://i0.hdslb.com/bfs/openplatform/6e80c76327814e3b2144cb2ccbee9216163fc331.webp)
 
 接着配置EO回源，这里一定要使用加速域名作为回源Host头
 
-![](../assets/images/4911f0ca-86a0-42d3-90cf-ad2434f782ae.webp)
+![](https://i0.hdslb.com/bfs/openplatform/1c3d8c4a05a9e97f34f9b3aa3db4bea64f013195.webp)
 
 原理：用户 - EO - CF - CF识别到Host匹配重定向规则 - 301
 
@@ -78,4 +78,4 @@ EO边缘函数也支持重定向，支持更细化的重定向规则
 
 > 大部分情况将 `回源HOST头` 改为源站就能解决反代后网站无法访问的问题
 > 
-> ![](../assets/images/2025-08-04-12-00-41-image.png)
+> ![](https://i0.hdslb.com/bfs/openplatform/774def4f78b49baf1836c14f1895247728fd5f75.png)

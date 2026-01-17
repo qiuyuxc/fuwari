@@ -2,7 +2,7 @@
 title: 在Mac上玩GalGame竟如此简单！
 published: 2025-09-30T19:29:21
 description: 虽然说用了Mac就等于远离了所有游戏，但是偶尔还是想打打Gal放松放松的，那么有没有傻瓜式的方法让我们可以抱着Mac在床上嗯嗯啊啊呢，有的！
-image: ../assets/images/d5441bcd48dca4226efe40ba6d522551.png
+image: https://i0.hdslb.com/bfs/openplatform/19bfb6116675faab6d8eb0b60cc6611127731395.png
 tags:
   - Mac
   - GalGame
@@ -20,27 +20,27 @@ lang: ""
 首先，我们下载虚拟机软件 **[VMware Fusion](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Fusion&freeDownloads=true)** （需要注册一个博通账号）
 
 登录后你可能会被重定向到 Dashboard，再次访问一次链接即可进入下载软件界面
-![](../assets/images/mac-gal.png)
+![](https://i0.hdslb.com/bfs/openplatform/1f530e753453ec31d14e449b51ba5c8ba8a6ee36.png)
 ⚠️注意：你可能会发现下载按钮被禁用，这并不是你没有权限，而是你没有阅读用户许可协议，你可能又会发现，用户许可协议的勾打不上。请先点击用户协议超链接，不管你看没看，再回退到之前到页面，你就会发现用户许可协议的勾可以被选中了
 
 让我们省略一下安装过程...
 
 假设你已经成功安装了 **VMware Fusion**
-![](../assets/images/mac-gal-1.png)
+![](https://i0.hdslb.com/bfs/openplatform/3d4a7e34692104e85025319c502c3cfbc53cd17c.png)
 接下来我们去下载 **Windows 11 On Arm** 的ISO镜像： https://www.microsoft.com/zh-cn/software-download/windows11arm64
 
 你会得到
-![](../assets/images/mac-gal-2.png)
+![](https://i0.hdslb.com/bfs/openplatform/c251cde99b362fcfd1d45ad3bf2630425767e295.png)
 再次打开 **VMware Fusion** ，新建一个虚拟机，并导入ISO文件，按需调整虚拟机配置即可
-![](../assets/images/mac-gal-3.png)
+![](https://i0.hdslb.com/bfs/openplatform/84b00ff93038e00ff8d8255d07eb7055c0c67d60.png)
 最终，我们启动虚拟机，完成Windows11安装向导，进入Windows桌面。此时你的Windows可能看起来糊糊的，那是因为没有安装 **VM Tools** ，安装一下即可
-![](../assets/images/mac-gal-5.png)
+![](https://i0.hdslb.com/bfs/openplatform/efdfcc19a5f830c967f827e373c33fef38db416d.png)
 此时你已经完成90%的步骤了，你已经可以把你的Mac当Windows用啦！但是为了让后续的游戏能顺利运行，我们还是要装一下必要的运行库
 
 前往 https://zhangyue667.lanzouh.com/DirectXRepairEnhanced 下载并解压运行DX修复工具。运行后，程序会自动安装DX9和VC++运行库，这足以保障大部分游戏顺利运行！
 
 如果遇到游戏打不开或第一次能打开后续打不开，请按需配置微软仿真
 
-![](../assets/images/mac-gal-6.png)
+![](https://i0.hdslb.com/bfs/openplatform/d080d6b99a50c5cd4dcd7b3418fb21031713ee87.png)
 
 现在，享受吧！

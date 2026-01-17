@@ -2,7 +2,7 @@
 category: 教程
 description: 众所周知，笔记本电脑在激活后就不能七天无理由退了，但是不联网又很难测，那么有没有什么两全其美的办法呢？
 draft: false
-image: ../assets/images/Screenshot_2025-11-11-08-12-40-74_4fbb30eb7b71661.jpg
+image: https://i0.hdslb.com/bfs/openplatform/3ca35748e01d2c33007312bdb5417efe76e9c4b5.jpg
 lang: ""
 published: 2025-11-10
 tags:

@@ -2,7 +2,7 @@
 category: 教程
 description: Fuwari是一个静态博客框架，Cloudflare Pages是一个托管静态网站的服务，将他俩结合即可得到一个快速安全无需托管的高效博客
 draft: false
-image: ../assets/images/f286ef4d-326c-4c7c-8a1e-ed150937a12b.webp
+image: https://i0.hdslb.com/bfs/openplatform/c6e2fca88b672d65b6fc7ce49a19fd1869021a71.webp
 lang: ""
 published: 2025-09-17
 tags:
@@ -40,7 +40,7 @@ title: Fuwari静态博客搭建教程
 
 2. 避免有小废物不会Fork仓库，这里附上图片教程
 
-3. ![](../assets/images/2024-10-14-12-15-44-image.webp)![](../assets/images/2024-10-14-12-17-03-image.webp)
+3. ![](https://i0.hdslb.com/bfs/openplatform/bf80e151c9eb0c09d67cdc25df80bb0d4127b1b1.webp)![](https://i0.hdslb.com/bfs/openplatform/8020dc9dd6ad2a1687b719e4483f8d12ca06f292.webp)
 
 4. 然后将仓库克隆到本地：`git clone <你的仓库URL>`（推荐使用SSH，可以不用魔法来推送更改）
 
@@ -66,7 +66,7 @@ title: Fuwari静态博客搭建教程
    
    - lang：博客显示语言。注释已经列出了一些常用的值，如：en, zh_CN, zh_TW, ja, ko
    
-   - themeColor：hue值则是你的博客主题色，可以在你的博客右上角的画板图标确定喜欢的颜色再填写![](../assets/images/2024-10-15-09-16-30-image.webp)
+   - themeColor：hue值则是你的博客主题色，可以在你的博客右上角的画板图标确定喜欢的颜色再填写![](https://i0.hdslb.com/bfs/openplatform/84d5c7fdf37b95b4060f21095af5743e41c108d6.webp)
    
    - banner：src：即banner图片，支持http/https URL
    
@@ -80,13 +80,13 @@ title: Fuwari静态博客搭建教程
    
    - bio：即个性签名，会显示在头像和名字下面
    
-   - `NavBarConfig` 为导航栏设置的超链接。`ProfileConfig` 为你的用户的超链接，分别如图![](../assets/images/2024-10-15-17-49-30-image.webp)
+   - `NavBarConfig` 为导航栏设置的超链接。`ProfileConfig` 为你的用户的超链接，分别如图![](https://i0.hdslb.com/bfs/openplatform/0181485bf4fb18f1f1fe8de723a3655b4a6b7a9e.webp)
    
    - icon：你需要前往[icones.js](https://icones.js.org/)去搜索你想要的图标，比如QQ，则填写 `fa6-brands:qq` ，如图。Fuwari默认支持这几种类型：`fa6-brands`, `fa6-regular`, `fa6-solid`, `material-symbols`。可以在 `astro.config.mjs` 中搜索关键字进行配置
    
-   - ![](../assets/images/1ef05530-10fd-4301-af4e-21ddadf18605.webp)
+   - ![](https://i0.hdslb.com/bfs/openplatform/55f8194289b81546e6047ab6a27fcb8ef5f20319.webp)
    
-   - ![](../assets/images/da94494b-cc4b-4f07-ae95-8bf3b2f95d3c.webp)
+   - ![](https://i0.hdslb.com/bfs/openplatform/0d4ed944913d945001e7c25356b1cdbf2085f6e0.webp)
    
    - 这里我附上我的 `config.ts` 
    
@@ -230,7 +230,7 @@ title: Fuwari静态博客搭建教程
    
    - 依次点击：MarkText软件的左上角的三条杠 -> File -> Perferences -> 左侧的Image分类 -> 如图设置 -> 注意更改第一个选项为Copy开头的选项，将Perfer开关打开，然后上下两个文本框一个填写绝对路径一个填写相对路径
    
-   - ![](../assets/images/2024-10-14-12-54-21-image.webp)
+   - ![](https://i0.hdslb.com/bfs/openplatform/b1fe4455459e6959049511b695b9c0aafd2168bb.webp)
    
    - 这样，当置入图片时，会往 `https://eo-r2.2x.nz/myblog/img` 文件夹复制一份，然后通过`![1](https://eo-r2.2x.nz/myblog/img/1.webp)`写入MarkDown文件。这样网站就能成功读取到图片啦。而你只需要Ctrl+CV，其他操作MarkText都会自动处理
 
@@ -238,7 +238,7 @@ title: Fuwari静态博客搭建教程
 
 #### 本地预览，然后发布到Github
 
-1. 当你认为你的文章已经写得差不多时，想要看看效果？请到项目根目录执行：`pnpm dev`，稍等片刻，你就可以本地预览你的博客啦![](../assets/images/2024-10-14-13-03-44-image.webp)
+1. 当你认为你的文章已经写得差不多时，想要看看效果？请到项目根目录执行：`pnpm dev`，稍等片刻，你就可以本地预览你的博客啦![](https://i0.hdslb.com/bfs/openplatform/d091a116296fc36b9b01e913b911ada7b6314731.webp)
 
 2. 好！接下来我们需要使用Git将我们所做的更改发布到Github
    
@@ -252,14 +252,14 @@ title: Fuwari静态博客搭建教程
    
    - 最后，让我们将本地更改提交到远程仓库：`git push`
 
-3. 此时，你的Github仓库应该已经有了新的提交![](../assets/images/2024-10-14-13-10-12-image.webp)
+3. 此时，你的Github仓库应该已经有了新的提交![](https://i0.hdslb.com/bfs/openplatform/9b5e112720e9c3f3798954391ad8aa67c82ac566.webp)
 
 #### 让Cloudflare连接上Github，使用Pages服务展示你的博客（FREE！）
 
-1. 前往Cloudflare的 Workers 和 Pages 页面，创建一个新Pages![](../assets/images/2024-10-14-13-14-28-image.webp)
+1. 前往Cloudflare的 Workers 和 Pages 页面，创建一个新Pages![](https://i0.hdslb.com/bfs/openplatform/ed073462693fcd6c1bed9b610b15e0c862b18510.webp)
 
-2. 然后选择连接Git存储库，连接你的Github，随后设置构建命令：`pnpm build`  ，然后设置构建输出目录：`dist` ，如图![](../assets/images/2024-10-14-13-16-15-image.webp)
+2. 然后选择连接Git存储库，连接你的Github，随后设置构建命令：`pnpm build`  ，然后设置构建输出目录：`dist` ，如图![](https://i0.hdslb.com/bfs/openplatform/b3d60c5d8395ba79f39bd5975ec6d2be559d35cb.webp)
 
-3. 绑定自定义域，访问自定义域即可访问你的博客！![](../assets/images/2024-10-14-13-17-00-image.webp)
+3. 绑定自定义域，访问自定义域即可访问你的博客！![](https://i0.hdslb.com/bfs/openplatform/2857ae6641ab641708a88c9a799e06d1d92aeaa5.webp)
 
 4. 随后，你只需要在本地编写文章，然后[使用Git将更改推送到远程仓库](#本地预览然后发布到github)，Cloudflare就会自动部署，更新你的博客！

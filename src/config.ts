@@ -48,6 +48,11 @@ export const siteConfig: SiteConfig = {
 		enable: true, // Display the table of contents on the right side of the post
 		depth: 2, // Maximum heading depth to show in the table, from 1 to 3
 	},
+	notice: {
+		enable: true,
+		content: "本站图片资源已全面切换至 B 站图床。如出现加载异常等问题，请联系我们反馈。",
+		level: "warning",
+	},
 	favicon: [
 		// Leave this array empty to use the default favicon
 		{

@@ -2,7 +2,7 @@
 title: 配置Vercel让ITDog测试全部403！
 published: 2025-07-10
 description: '很讨厌别人用ITDog等拨测服务疯狂测试你的站点？拒绝他们！'
-image: ../assets/images/d81562f3-8efb-45f3-8dd1-72cb9c032bc2.webp
+image: https://i0.hdslb.com/bfs/openplatform/e95ba8aa2ac513819b34fcbc6f8384ffa0767960.webp
 tags: [Vercel]
 category: '教程'
 draft: false 
@@ -23,7 +23,7 @@ https://www.bilibili.com/video/BV1w7GTzMEy7
 
 结论，你已经获得了你要屏蔽的拨测网站的IP
 
-![](../assets/images/91daff1e-b248-4f90-9b97-31bff7fa2c14.webp)
+![](https://i0.hdslb.com/bfs/openplatform/31108b88970da1dcef29959160c901f72ee6f4b0.webp)
 
 # 创建Vercel API Token
 
@@ -35,11 +35,11 @@ https://www.bilibili.com/video/BV1w7GTzMEy7
 
 新增规则
 
-![](../assets/images/84645ada-92bd-42f7-827f-96a93bd54997.webp)
+![](https://i0.hdslb.com/bfs/openplatform/a58896bb25a7bf9434aea3f177955a17ad4fa943.webp)
 
 随便写点东西然后抓包
 
-![](../assets/images/0f60d87a-df45-42d3-a692-c172982899cc.webp)
+![](https://i0.hdslb.com/bfs/openplatform/36256192c235621ca4d1179d46f77e61efbc584f.webp)
 
 ```http
 PATCH https://vercel.com/api/v1/security/firewall/config/draft?projectId=prj_UfvbpIvawjL2eAETAiZT7hPLR8W2&teamId=team_lemndzHQNJAcTipIF6elB5Md
@@ -51,7 +51,7 @@ PATCH https://vercel.com/api/v1/security/firewall/config/draft?projectId=prj_Ufv
 
 可以看到已经200 OK
 
-![](../assets/images/b87a06b5-e33c-4d1d-aede-18ecba95d8cc.webp)
+![](https://i0.hdslb.com/bfs/openplatform/818f464af39769ad76af5175555a36265646d928.webp)
 
 # 使用Python脚本创建大批量IP拒绝规则
 
@@ -1447,21 +1447,21 @@ if __name__ == "__main__":
 
 # 调用脚本更新规则
 
-![](../assets/images/3b44fed2-5dda-4dec-a009-8618b18370ee.webp)
+![](https://i0.hdslb.com/bfs/openplatform/9b562b590b489e07dd6ef1261c7ee664cbf79240.webp)
 
-![](../assets/images/c9fa44c0-c313-47b1-8b03-804b2b4324b9.webp)
+![](https://i0.hdslb.com/bfs/openplatform/9f70fb1554694d74ad3cd6135d0eebe93e372d35.webp)
 
 最后 `Review Changes` 并且 `Publish` 即可
 
-![](../assets/images/aada66d2-b090-4959-b031-cbdb738def50.webp)
+![](https://i0.hdslb.com/bfs/openplatform/10a83568629ce3ef9487aa9cad254e06a4fbf5d6.webp)
 
-![](../assets/images/831bf953-5895-4a62-894c-ab8b24dc8697.webp)
+![](https://i0.hdslb.com/bfs/openplatform/c7add347c0e77a1dc38749f198eee3dfc61d41cb.webp)
 
 # ITDog测试
 
 大部分测试节点已经403
 
-![](../assets/images/127a5bc0-6504-4c98-a573-1e3da60b9c8e.webp)
+![](https://i0.hdslb.com/bfs/openplatform/c68950b44c73bb8e8403e90e8292c028c31d17b9.webp)
 
 # 有什么用？
 

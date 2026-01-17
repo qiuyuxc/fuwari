@@ -2,7 +2,7 @@
 category: 教程
 description: 使用SaaS、Worker以及各种奇技淫巧来让你的网站解析的IP进行分流优选，提高网站可用性和速度
 draft: false
-image: ../assets/images/cf-fastip-11.png
+image: https://i0.hdslb.com/bfs/openplatform/10a840275bdf7a0b512852f6d3f1de47a3091111.png
 lang: ""
 published: 2026-01-11
 tags:
@@ -12,11 +12,11 @@ title: 试试Cloudflare IP优选！让Cloudflare在国内再也不是减速器�
 > 本教程初始发布时间为 25年6月
 #### 未优选
 
-![QmZoinxZgAzu7Skh7BqsxmDQGU1sXtLLskJcyQuRAQNKww.webp](../assets/images/098f9ee71ae62603022e542878673e19bdcaf196.webp)
+![QmZoinxZgAzu7Skh7BqsxmDQGU1sXtLLskJcyQuRAQNKww.webp](https://i0.hdslb.com/bfs/openplatform/9f66594f017cab79f9f355c64687cdda9e514af0.webp)
 
 #### 已优选
 
-![](../assets/images/cf-fastip-11.png)
+![](https://i0.hdslb.com/bfs/openplatform/10a840275bdf7a0b512852f6d3f1de47a3091111.png)
 
 ---
 
@@ -123,18 +123,18 @@ function getProxyPrefix(hostname) {
 
 创建路由
 
-![](../assets/images/56752d54-26a5-46f1-a7d9-a782ad9874cb.webp)
+![](https://i0.hdslb.com/bfs/openplatform/4a4b1eaa6c1a8ef0702784e07d2be74cb7f5f335.webp)
 
 类似这样填写
 
-![](../assets/images/d025398c-39e3-4bd7-8d8f-2ce06a45007d.webp)
+![](https://i0.hdslb.com/bfs/openplatform/f1108c96e5c876f47cc14b35513134aa61e4d217.webp)
 
 最后写一条DNS解析 `CNAME gitea.afo.im --> 社区优选域名，如 cf.090227.xyz` 即可
 
 # 传统优选
 > [!WARNING]
 > Cloudflare最近将新接入的域名SSL默认设为了完全，记得将 SSL 改为灵活。
-> ![](../assets/images/cf-fastip-1.png)
+> ![](https://i0.hdslb.com/bfs/openplatform/b09aca5a8dd8f80e36b8dbdb87f4691c8757410f.png)
 
 > 我们需要**一个域名或两个域名**（单域名直接用子域名即可。双域名比如：onani.cn和acofork.cn）。
 > 
@@ -143,12 +143,12 @@ function getProxyPrefix(hostname) {
 这里我们让onani.cn成为主力域名，让acofork.cn成为辅助域名
 
 单域名效果
-![](../assets/images/cf-fastip.png)
+![](https://i0.hdslb.com/bfs/openplatform/4869ffa4f34937d287d8d5c0710b7bc4fe167ff3.png)
 
 ---
 
 1. 首先新建一个DNS解析，指向你的**源站**，**开启cf代理**
-   ![QmfBKgDe77SpkUpjGdmsxqwU2UabvrDAw4c3bgFiWkZCna.webp](../assets/images/c94c34ee262fb51fb5697226ae0df2d804bf76fe.webp)
+   ![QmfBKgDe77SpkUpjGdmsxqwU2UabvrDAw4c3bgFiWkZCna.webp](https://i0.hdslb.com/bfs/openplatform/24a886d354ce598d93903727d2f86fa046a9d2bb.webp)
 
 2. 前往**辅助域名**的 SSL/TLS -> 自定义主机名。设置回退源为你刚才的DNS解析的域名：xlog.acofork.cn（推荐 **HTTP 验证** ）
 
@@ -156,16 +156,16 @@ function getProxyPrefix(hostname) {
    
    如果你想要创建多个优选也就这样添加，一个自定义主机名对应一个自定义源服务器。如果你将源服务器设为默认，则源服务器是回退源指定的服务器，即 `xlog.acofork.cn` 
    
-   ![QmRYrwjeDMDQCj8G9RYkpjC3X4vpwE77wpNpbqKURwBber.webp](../assets/images/f6170f009c43f7c6bee4c2d29e2db7498fa1d0dc.webp)
+   ![QmRYrwjeDMDQCj8G9RYkpjC3X4vpwE77wpNpbqKURwBber.webp](https://i0.hdslb.com/bfs/openplatform/8ae3a8004a45ac1ac98f2d57f40765ab4a5539fd.webp)
 
 3. 继续在你的辅助域名添加一条解析。CNAME到优选节点：如cloudflare.182682.xyz，**不开启cf代理** 
-   ![QmNwkMqDEkCGMu5jsgE6fj6qpupiqMrqqQtWeAmAJNJbC4.webp](../assets/images/4f9f727b0490e0b33d360a2363c1026003060b29.webp)
+   ![QmNwkMqDEkCGMu5jsgE6fj6qpupiqMrqqQtWeAmAJNJbC4.webp](https://i0.hdslb.com/bfs/openplatform/f698087e688fc42e4d6c29a039b26465f2608f5f.webp)
 
 4. 最后在你的主力域名添加解析。域名为之前在辅助域名的自定义主机名（onani.cn），目标为刚才的cdn.acofork.cn，**不开启cf代理**
-   ![QmeK3AZghae4J4LcJdbPMxBcmoNEeF3hXNBmtJaDki8HYt.webp](../assets/images/6f51cb2a42140a9bf364f88a5715291be616a254.webp)
+   ![QmeK3AZghae4J4LcJdbPMxBcmoNEeF3hXNBmtJaDki8HYt.webp](https://i0.hdslb.com/bfs/openplatform/cf2240264c782fea1d9542da0f5f11bf73b336af.webp)
 
 5. 优选完毕，确保优选有效后尝试访问
-![](../assets/images/cf-fastip-10.png)
+![](https://i0.hdslb.com/bfs/openplatform/9865ee2200ba3a4b7c04e5c8622c71434dfe8aaf.png)
 
 6. （可选）你也可以将cdn子域的NS服务器更改为阿里云\华为云\腾讯云云解析做线路分流解析
    
@@ -181,33 +181,33 @@ function getProxyPrefix(hostname) {
 
 1. 在Workers中添加路由，然后直接将你的路由域名从指向`xxx.worker.dev`改为`cloudflare.182682.xyz`等优选域名即可
 2. 如果是外域，SaaS后再添加路由即可，就像
-![](../assets/images/cf-fastip-12.png)
-![](../assets/images/cf-fastip-13.png)
+![](https://i0.hdslb.com/bfs/openplatform/45289c99c84e4e6c016705c13535f14ccb40483c.png)
+![](https://i0.hdslb.com/bfs/openplatform/955cebceae53a374e5b82b77c3a8288b6674ad74.png)
 
 # 针对于Cloudflare Tunnel（ZeroTrust）
 请先参照 [常规SaaS优选](#传统优选) 设置完毕，源站即为 Cloudflare Tunnel。正常做完SaaS接入即可
-![](../assets/images/cf-fastip-2.png)
-![](../assets/images/cf-fastip-3.png)
+![](https://i0.hdslb.com/bfs/openplatform/061f10c33650a2b1e922692ea550776c43acc84a.png)
+![](https://i0.hdslb.com/bfs/openplatform/9dd64b85e101ddeee152e1b39b42a248e020f01a.png)
 
 接下来我们需要让打到 Cloudflare Tunnel 的流量正确路由，否则访问时主机名不在Tunnel中，会触发 **catch: all** 规则，总之就是没法访问。首先随便点开一个隧道编辑
-![](../assets/images/cf-fastip-4.png)
+![](https://i0.hdslb.com/bfs/openplatform/acd8f8c34b60f65e27ab3578cbb6fd141ac164a0.png)
 
 打开浏览器F12，直接保存，抓包请求
-![](../assets/images/cf-fastip-5.png)
+![](https://i0.hdslb.com/bfs/openplatform/5f9946431941590013cb0d37c82cf4c82afceb65.png)
 
 抓包 **PUT** 请求，右键复制为 **cURL**
-![](../assets/images/cf-fastip-6.png)
+![](https://i0.hdslb.com/bfs/openplatform/ff72cf75f1014a1c4c0238c929e9e2d6f138ebe9.png)
 
-![](../assets/images/cf-fastip-7.png)
+![](https://i0.hdslb.com/bfs/openplatform/291ff33e488af2e2cd12c7b4bfa092bc56aee0e2.png)
 
 打开 **Postman** 粘贴整个请求，导航到 **Body** 页，添加一个新项目， **hostname** 为你优选后（最终访问）的域名， **service** 为一个正确的源。然后 **Send** ！
-![](../assets/images/cf-fastip-8.png)
+![](https://i0.hdslb.com/bfs/openplatform/67b64761b930e97d73849a7363a10cddb4c7ffd6.png)
 
 接下来，控制台会自动多出来一个新的域名，再次访问就正常了
 
 *至于为什么要这么做，因为你要添加的域名可能并不在你的 Cloudflare 账户中，而控制台的添加仅能添加CF账户内的域名，所以需要抓包曲线救国*
 
-![](../assets/images/cf-fastip-9.png)
+![](https://i0.hdslb.com/bfs/openplatform/62d365700c172ab82fb14e44aa7c794dd44ce1de.png)
 
 ---
 

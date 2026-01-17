@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/aliyun-ecs-4rm.md",
+                "file": "posts/uptimeflare.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aliyun-ecs-4rm"
+              "title": "uptimeflare"
             }
           }
         ]
@@ -171,6 +171,9 @@
   },
   "active": "96b79d1156396696",
   "lastOpenFiles": [
+    "posts/hook-steam-drm.md",
+    "posts/win11-to-win10.md",
+    "posts/aliyun-ecs-4rm.md",
     "assets/images/4411ab2fe9dfe7df65472e5b426af5671.png",
     "assets/images/aliyun-ecs-4rm-10.png",
     "assets/images/4411ab2fe9dfe7df65472e5b426af567 1.png",
@@ -181,9 +184,7 @@
     "assets/images/aliyun-ecs-4rm-6.png",
     "assets/images/ALIECSSNPSHOT.png",
     "assets/images/aliyun-ecs-4rm-5.png",
-    "assets/images/aliyun-ecs-4rm-4.png",
     "posts/cf-saas.md",
-    "posts/aliyun-ecs-4rm.md",
     "posts/eovsesa.md",
     "posts/http-header-host.md",
     "posts/static-redirect-group.md",
@@ -205,7 +206,6 @@
     "posts/py-uploadserver.md",
     "posts/umami-migration.md",
     "posts/serverless-function.md",
-    "posts/pin.md",
-    "posts/anuneko.md"
+    "posts/pin.md"
   ]
 }

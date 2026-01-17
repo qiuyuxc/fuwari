@@ -2,7 +2,7 @@
 title: GoEdge自建CDN系统踩坑记录
 published: 2025-09-09T06:28:06
 description: '卧槽，一不小心搞到了3台免费VPS，可是不用容易被回收，这可咋办啊！欸？不如让他们都干点活吧！'
-image: '../assets/images/2025-09-09-06-29-44-image.png'
+image: 'https://i0.hdslb.com/bfs/openplatform/6bf0f14bf8f78e18ae2fca17920ce9b937816a15.png'
 tags: [CDN, GoEdge]
 
 draft: false 
@@ -61,33 +61,33 @@ root@AcoFork-NAS:~/oci#
 
 首先前往
 
-![](../assets/images/2025-09-09-07-00-37-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/cb37151cb34e860084d32dc4b08d60db801eb1d7.png)
 
 添加你的DNS账号。**hw** 用来做CDN域名的自治解析，**cf** 用来后续签发SSL
 
-![](../assets/images/2025-09-09-06-59-59-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/9a01e4891eed7066b0b4958d78d8bb9a531d04c1.png)
 
 点进去，确保能获取到域名
 
-![](../assets/images/2025-09-09-06-44-54-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/b8a6190641ffd43d670391f1ce5edf18a2b00055.png)
 
 # 设置CDN域名
 
 前往
 
-![](../assets/images/2025-09-09-06-45-52-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/be19a45956edf3c641632caa1ed891197a89a420.png)
 
 设置好DNS子域名
 
-![](../assets/images/2025-09-09-06-46-12-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/a25c0f91408cfc2a76e98d378e99054409cbc6d0.png)
 
 # 添加节点
 
 前往
 
-![](../assets/images/2025-09-09-06-47-14-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/ffa14b595ea373d5d3a7f566b22fd3c46a6d5171.png)
 
-![](../assets/images/2025-09-09-06-47-30-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/beffc5261c6a9e075fe6bfa7377a06074c9dea0c.png)
 
 然后填写节点IP+SSH认证方式（密码/密钥），之后goedge会主动通过SSH连接节点安装服务
 
@@ -95,7 +95,7 @@ root@AcoFork-NAS:~/oci#
 
 前往
 
-![](../assets/images/2025-09-09-06-49-35-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/f5cacc551db4ae9419fb6a08aa8b994cce8487df.png)
 
 会让你填写每个节点的DNS IP，填写节点的 **公网IP** 即可
 
@@ -103,36 +103,36 @@ root@AcoFork-NAS:~/oci#
 
 前往
 
-![](../assets/images/2025-09-09-06-50-43-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/fb404cfd85cd7c55cb2346251568b0bfa61c8275.png)
 
-![](../assets/images/2025-09-09-06-50-50-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/719f7d52321f07f62da01008d47e406d48cc8197.png)
 
-![](../assets/images/2025-09-09-06-50-57-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/dfadc638e00f38dba6d705677c81b4537b307474.png)
 
-![](../assets/images/2025-09-09-06-51-10-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/fdabc51568106572a2dba5d9a44e872a5624602c.png)
 
 随便写个邮箱
 
-![](../assets/images/2025-09-09-06-51-23-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/9e1d0cf0874690fe4b715287dc10a1aa3c407601.png)
 
 写域名（支持泛域名）
 
-![](../assets/images/2025-09-09-06-51-52-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/90ff6636005472fdaeb65c7d4be34a3633fcf7f6.png)
 
 稍等片刻就签发成功
 
-![](../assets/images/2025-09-09-06-52-20-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/2296a6948953fd95426cf54acc0f2643b84a366a.png)
 
 # 禁止未绑定域名访问/禁止IP直接访问
 
 字面意思，如图设置
 
-![](../assets/images/2025-09-09-06-53-52-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/f3ba2b6ae3368be196355181be8bb877e767ddce.png)
 
 # 创建网站
 
 前往
 
-![](../assets/images/2025-09-09-06-54-16-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/908cffd271611f5c9952167fd198301df57e629a.png)
 
 接下来你们自己研究吧 我要睡了

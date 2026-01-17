@@ -2,7 +2,7 @@
 title: QQ微信不够私密？自建自己的聊天服务器！
 published: 2025-08-02
 description: '通过自建Synapse，用户可以通过Element等软件来直接在你的服务器上聊天'
-image: '../assets/images/2025-08-02-17-20-32-image.png'
+image: 'https://i0.hdslb.com/bfs/openplatform/a5f9324f50e09c5fdaa4d1692df147f118b56f0e.png'
 tags: [Matrix, Synapse]
 category: '教程'
 draft: false 
@@ -19,35 +19,35 @@ lang: ''
 
 前往应用商店安装 `PGAdmin4`
 
-![](../assets/images/2025-08-02-17-24-58-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/47573211ca72eef94eab55ad60cf47717c684a0c.png)
 
 接着点击添加服务器
 
-![](../assets/images/2025-08-02-17-27-10-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/07b3076ae69f8a2b683af5fc4c369b00797fd048.png)
 
 相关信息可以在连接信息看到
 
-![](../assets/images/2025-08-02-17-27-53-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/72e1e8df191ddab5684d2053abec55da72965548.png)
 
 **删除**刚刚创建的 `synapse` 这个数据库
 
-![](../assets/images/2025-08-02-17-28-49-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/87a75122aeab215ac9a61cbf8de2e9bca673d462.png)
 
 重新创建同名数据库
 
 设置所有者（即用户名）为 `synapse` 
 
-![](../assets/images/2025-08-02-17-29-36-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/ecead9be2998ea50a9f70c9fed89268af535e3cb.png)
 
 将 `排序规则` 和 `字符类型` 都改为 `C`
 
-![](../assets/images/2025-08-02-17-30-34-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/0785ea0ef1166f51842f1f0b067f411e09a1b95b.png)
 
 # 部署Synapse
 
 首先参照1Panel官方的教程去创建一个存储卷，否则安装 `synapse` 会失败
 
-![](../assets/images/2025-08-02-17-32-00-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/71e161d09731cb25c5b0290e5e7e50dd7bb33709.png)
 
 安装 `synapse` 
 
@@ -55,7 +55,7 @@ lang: ''
 
 你应该可以看到
 
-![](../assets/images/2025-08-02-17-33-50-image.png)
+![](https://i0.hdslb.com/bfs/openplatform/20fd014aaf1769a648fae3f5ce27fec0a23874c3.png)
 
 编辑 `homeserver.yaml` ，并按需配置
 
