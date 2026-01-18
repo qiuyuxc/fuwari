@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: 构建并发布到page分支
 on:
   push:
     branches:
