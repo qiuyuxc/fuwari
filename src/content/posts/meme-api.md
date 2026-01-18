@@ -2,7 +2,7 @@
 title: meme-generator部署指南以及对接Koishi
 published: 2025-06-30
 description: '很早之前我就很好奇那些用群友的头像做的表情包真的是人工p的吗，实则不然！'
-image: https://i0.hdslb.com/bfs/openplatform/03c387ecc300026c0e7921f1985e843c79fe9c6c.webp
+image: ../img/dc625fc97e0d96d74e2321673a582ddb.webp
 tags: [meme, Koishi, QQBot]
 category: '教程'
 draft: false 
@@ -92,20 +92,20 @@ Fontconfig warning: "/usr/share/fontconfig/conf.avail/05-reset-dirs-sample.conf"
 
 Koishi插件市场安装此插件的1.0.3版本
 
-![](https://i0.hdslb.com/bfs/openplatform/33d3add38aef880eeb6259b9dcf9e295447d0efd.webp)
+![](../img/6b89e98258680848dde86ba93ad65ab6.webp)
 
-![](https://i0.hdslb.com/bfs/openplatform/00eead2c5476df0a70f0ede23a687ffb21dc4622.webp)
+![](../img/a06698d81220c52a0eedd2f810d2a78c.webp)
 
 启用插件。可以看到 `插件初始化完毕，共载入 455 个表情。` 
 
-![](https://i0.hdslb.com/bfs/openplatform/6343ccd57276b26dafce029a3227f0a1ca372023.webp)
+![](../img/0676d6cb071268fd8aefc3020213c9d3.webp)
 
 ## 使用
 
 向Bot发送 `表情列表` 
 
-![](https://i0.hdslb.com/bfs/openplatform/43dade1ed642521ebc13df35c665e8063501a02c.webp)
+![](../img/7142d86873d0cbf43c4419edb1808e63.webp)
 
 生成表情
 
-![](https://i0.hdslb.com/bfs/openplatform/85c65c570323a9442f3ef35f1c7d20c7ef8c8d11.webp)
+![](../img/bdc201e9eb5f283095de68edbd713f00.webp)

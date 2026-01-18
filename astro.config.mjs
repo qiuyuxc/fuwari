@@ -31,9 +31,6 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
-	image: {
-		service: passthroughImageService(),
-	},
 	site: "https://blog.acofork.com",
 	base: "/",
 	trailingSlash: "always",

@@ -2,7 +2,7 @@
 title: 我去！GithubEdu还能再再再嫖俩免费一年域名？！
 published: 2025-08-11T23:04:10
 description: '也是依旧在群u的帮助下又捞了俩米！'
-image: 'https://i0.hdslb.com/bfs/openplatform/35250d10fc88fa9cde29259616cc064ab93b576a.png'
+image: '../img/6afbe75f0c133146cdd44e74dba5fb51.png'
 tags: [Github Edu]
 category: '记录'
 draft: false 
@@ -15,42 +15,42 @@ lang: ''
 
 往下滚动 找到
 
-![](https://i0.hdslb.com/bfs/openplatform/b3229765d9dee27d9b855717b64f786ec0d90259.png)
+![](../img/15405a911bd7e19acd533e87a4ebcc69.png)
 
 点击登录并验证你的学生身份
 
-![](https://i0.hdslb.com/bfs/openplatform/bad2072a187b0ef66a7aafd640611d1356db5077.png)
+![](../img/0e8fa77432dad00f5fa7b0c382ad5a16.png)
 
 短域名也有免费的！
 
-![](https://i0.hdslb.com/bfs/openplatform/b0fe230e392de8d516e3a22eb653d49396d49245.png)
+![](../img/f9d6b40e2a22f255822543ab9593d1fc.png)
 
 长域名更是不在话下！
 
-![](https://i0.hdslb.com/bfs/openplatform/244e8cd96c140472891dc037ace1ea8c60a2d8c4.png)
+![](../img/1971d7fcbf798c99c0d8c59af748a1f5.png)
 
 但是最终结账的时候只能免费**两个**域名哦~
 
-![](https://i0.hdslb.com/bfs/openplatform/5c75cff69dc0757213d8884900ee65b90b07677f.png)
+![](../img/37a0673fe27117e851fab32d8b7a97d0.png)
 
 需要绑卡验证，扣0.00元。Bybit虚拟卡可用
 
-![](https://i0.hdslb.com/bfs/openplatform/d1b58072bb724e586a2452b34cd52fbbe7235e5b.png)
+![](../img/9f988ef50b2c074793bfbeaf113236fb.png)
 
-![](https://i0.hdslb.com/bfs/openplatform/db78540970bff3e5e3ed59d22a220ca44b9f33f4.jpg)
+![](../img/d0b88417365ce903f81d484e4a1aabe3.jpg)
 
 等待跑进度条~
 
-![](https://i0.hdslb.com/bfs/openplatform/a1cbeda100fb8d5766af6ad44fa883bd814821b1.png)
+![](../img/bf648179353b36d7af42bc9a8b4a00df.png)
 
 接下来老生常谈的改NS到Cloudflare
 
-![](https://i0.hdslb.com/bfs/openplatform/9ca9c1dc89a087533825ae1f61c1d916e9ff8d33.png)
+![](../img/ab62c27ed26c9dd9f43f3fb9664654db.png)
 
-![](https://i0.hdslb.com/bfs/openplatform/0ef0860b73797d9be378d1ee970e5ec42b968f48.png)
+![](../img/fbf83cb3f46ec0d27195ce7520ba350d.png)
 
-![](https://i0.hdslb.com/bfs/openplatform/d9acb9275bcdbeaf1b39169377e21feeef88d2e4.png)
+![](../img/a46a59e4cdfdbb530af8c5e6e3c1f030.png)
 
 成功激活~
 
-![](https://i0.hdslb.com/bfs/openplatform/6f0400527b6fd796a61b7159d5bfeeec0d541d54.png)
+![](../img/af3c77e58d70e3dde53354e3776d054d.png)

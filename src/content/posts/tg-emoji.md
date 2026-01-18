@@ -2,7 +2,7 @@
 title: 教你制作自己的Telegram Emoji！
 published: 2025-08-11T21:22:46
 description: '欧呦不赖，开了个大会员终于可以戴上Netlify的表情咯~'
-image: 'https://i0.hdslb.com/bfs/openplatform/a867bd58ee1aff93dbca90030dcd4c70dd98f86b.png'
+image: '../img/62004407d33abc10cec7e56754869ad7.png'
 tags: [Telegram]
 category: '教程'
 draft: false 
@@ -19,28 +19,28 @@ lang: ''
 
 发送 `/newemojipack` 
 
-![](https://i0.hdslb.com/bfs/openplatform/e29fef144f3d00725d59eb27facfc2c73ca4fcb9.png)
+![](../img/84143f06f939ab5d76aa9236df581fec.png)
 
 这里使用静态表情，即 `static` 
 
-![](https://i0.hdslb.com/bfs/openplatform/305506149b399ba032c9a8084a832b4c2f52923e.png)
+![](../img/0e752e9e2930f4e2456d5e69a9a1bcae.png)
 
 接下来随便起个名字，我这里就叫 `Logo` 
 
 然后发送你的图片
 
-![](https://i0.hdslb.com/bfs/openplatform/434a5247bba21171cc213d6782c18831d030fbe7.png)
+![](../img/5bda8065224b5e512dbe7ea10f645a97.png)
 
 接下来发送一个能代表你表情的Emoji，并且发布
 
-![](https://i0.hdslb.com/bfs/openplatform/3675eb4c6733fc046db8481b761d5aca3bb48490.png)
+![](../img/537fda514b0b0083d0f43ba38560f96a.png)
 
 然后设置一个 `pathname` 
 
-![](https://i0.hdslb.com/bfs/openplatform/eeb1df2176283bd1797df8f591e78f6bc183aea6.png)
+![](../img/a1851b3af57d6085e32e58c01f413237.png)
 
 点击上面的链接就可以添加咯~
 
 如果你是Telegram Premium，还可以挂在昵称旁边哦~
 
-![](https://i0.hdslb.com/bfs/openplatform/711e6fc732ab021ef839cfef720f4cadca2eccf8.png)
+![](../img/9d633c24030a53e4db14db97f5164e85.png)

@@ -2,7 +2,7 @@
 title: 分享一个IPFS图片API
 published: 2025-07-04
 description: '很早前我就用过xLog，这次逆向出了它的图床API，可以用来暂时存放图片！'
-image: https://i0.hdslb.com/bfs/openplatform/28b0d1a1dbaafe06a8abab25c495e08a544b5ebc.webp
+image: ../img/3e9979a816fe15a7b8e920b589adc439.webp
 tags: [IPFS]
 category: '记录'
 draft: false 

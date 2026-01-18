@@ -2,7 +2,7 @@
 category: 教程
 description: 懒人可以直接下载预构建的可执行文件，但如果想获得日志需要自备Rust环境
 draft: false
-image: https://i0.hdslb.com/bfs/openplatform/6b435b9d31b82914f3c07f1733bb0183dcd21597.webp
+image: ../img/c6ef68dbe8c4da4f871bcc9c0b74e0c8.webp
 lang: ''
 published: 2024-11-06
 tags:
@@ -13,7 +13,7 @@ title: Phira多人联机服务器搭建/使用教程
 
 [https://github.com/afoim/phira-mp-autobuild](https://github.com/afoim/phira-mp-autobuild)
 
-这里有一些由Github Action自动构建的服务端文件，涵盖以下系统和架构![](https://i0.hdslb.com/bfs/openplatform/f947bcdb59cb2eab1a63dc86b434d4eb889283a3.webp)
+这里有一些由Github Action自动构建的服务端文件，涵盖以下系统和架构![](../img/d17db57e7ff48cd2cf9bd05f41b314e0.webp)
 
 也可以前往[Multiplayer Server | Dmocken的Phira下载站](https://phira.dmocken.top/Multiplayer%20Server%E5%A4%9A%E4%BA%BA%E6%B8%B8%E6%88%8F%E6%9C%8D%E5%8A%A1%E5%99%A8)自行寻找
 
@@ -29,11 +29,11 @@ title: Phira多人联机服务器搭建/使用教程
 
 ## 对于Windows
 
-前往[Rust 下载页](https://www.rust-lang.org/zh-CN/learn/get-started)，下载 Rust  ![](https://i0.hdslb.com/bfs/openplatform/dc1b28a268e185fceb08f1375500b188cacf939f.webp)
+前往[Rust 下载页](https://www.rust-lang.org/zh-CN/learn/get-started)，下载 Rust  ![](../img/fb7f0f9798e2df8aaf6b68aa5c2f9005.webp)
 打开后会弹出一个 CMD 窗口，输入 1（Quick Install）回车，等待 Visual Studio 安装（如果此步 Visual Studio 下载很慢也可以[手动下载](https://visualstudio.microsoft.com/zh-hans/downloads/)）  
 
-![](https://i0.hdslb.com/bfs/openplatform/0236358c4d2665629594f39131fcb9cbc003ef07.webp)在 Visual Studio 中，勾选**使用 C++ 的桌面开发**，然后安装  
-![](https://i0.hdslb.com/bfs/openplatform/67793a422bc3603eee57a745e01eb3d9aba08ea3.webp)然后请跳过 Linux 教程直接阅读[构建 phira-mp]()
+![](../img/e9b9325f38a3e460c026f5bb1e2951c4.webp)在 Visual Studio 中，勾选**使用 C++ 的桌面开发**，然后安装  
+![](../img/4c3f907a8a4fe354aaed11e80c68c076.webp)然后请跳过 Linux 教程直接阅读[构建 phira-mp]()
 
 ## 对于Linux
 
@@ -56,4 +56,4 @@ title: Phira多人联机服务器搭建/使用教程
 运行程序并将 log 打印到终端，会显示你监听的端口：`RUST_LOG=info target/release/phira-mp-server`  
 （如果你需要指定端口号：`RUST_LOG=info target/release/phira-mp-server --port 8080`）
 
-![](https://i0.hdslb.com/bfs/openplatform/13e3e019c1dbfe084063251e4ddc569f73d67a6c.webp)
+![](../img/faa8550847611a34c60d37aedc9c5e5a.webp)

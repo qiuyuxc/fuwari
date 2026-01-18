@@ -2,14 +2,14 @@
 title: 神秘API！B站也能当图床使！
 published: 2026-01-18T21:34:18
 description: 今天我发现我的一位粉丝的博客图片是 i0.hdslb.com... ，然后深度钻研了一下，然后发现竟然是B站的图床，并且这个“洞”已经有将近10年之久了...
-image: https://i0.hdslb.com/bfs/live/164c93801f5c484808979778add7cf64c2eaae3e.png
+image: ../img/24ffda6af6887143fe0a967d0b8d6059.png
 draft: false
 lang: ""
 ---
 > [!CAUTION]
 > 该API非官方开放平台API，我也不知道源头是哪来的，时效性未知。但是该API托管的最早的图片为2019年。总之慎用
 
-![](https://i0.hdslb.com/bfs/live/b6e746c2f30e2f21d9559bffbb910d1c7316a7e3.png)
+![](../img/3671db63a9bb4166595ca24822a77723.png)
 # API
 ```sql
 curl -X POST "https://api.bilibili.com/x/upload/web/image" \
@@ -67,13 +67,13 @@ python bili_img_uploader {本地图片完整路径}
 ```
 
 插件会返回一条单独的图片外链
-![](https://i0.hdslb.com/bfs/live/22815a3c2a64d5cc5c514c2a26c439cda6cc4fb1.png)
+![](../img/574d961b34c98a54e254de6d776801d3.png)
 
 ### 写作模式
 当你想撰写新文章（MarkDown）形式时，可以使用参数 `-copy` 来开启写作模式
 
 该模式会监听剪贴板，一旦识别到图片（MIME/文件形式都行），就会自动上传，并且随着“叮”一声，告诉你图片已经上传完毕，并且会自动将 `![]({外链图片URL})` 写入你的剪贴板，你只需要在编辑器内粘贴即可
 
-![](https://i0.hdslb.com/bfs/live/f1300906ab061da67e56ea3623a5e6b809d02bf5.png)
+![](../img/16ed0597e0448ec11ce9eb8876671188.png)
 
-![](https://i0.hdslb.com/bfs/live/f348da95d8587740bbba2b36e3ec2345f8792d8a.png)
+![](../img/ccfbbddd718c5b37d608c1e3038c7f2e.png)

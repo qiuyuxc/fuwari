@@ -2,7 +2,7 @@
 title: 利用Github Repo WebHook来为你的订阅者推送文章更新信息
 published: 2025-05-19
 description: '针对于静态博客，博主在文章更新后一般需要手动通知订阅者阅读新的文章，本文通过Github WebHook来实现一个全自动的文章更新通知实现'
-image: https://i0.hdslb.com/bfs/openplatform/07b86f5794fc16dc036ce5b16dad8ac33e9e46e6.webp
+image: ../img/7365e6a6d05c0d7dd12fadfc02affa75.webp
 tags: [Github, QQBot]
 category: '教程'
 draft: false 
@@ -27,7 +27,7 @@ lang: ''
 
 我使用Koishi编写一个插件创建一个HTTP服务器用于接受WebHook，并且在接收到指定提交信息的WebHook后将在2分钟后在我的群里广播文章更新消息
 
-![](https://i0.hdslb.com/bfs/openplatform/dc6d21ade851ffb894c5a1859c145de98d7eccb7.webp)
+![](../img/6087fb1eb5e79cecee29b848a30715e4.webp)
 
 如果你的服务在内网，可以使用Cloudflared将WebHook接收服务器开放到公网。否则Github将无法将WebHook信息发送到你的服务
 
@@ -37,11 +37,11 @@ lang: ''
 
 在仓库设置找到WebHooks
 
-![](https://i0.hdslb.com/bfs/openplatform/c5e5e9e946c0f7b4b8102f2abcc3cb721258c37c.webp)
+![](../img/94741da0429b62f1b1901516fd17d315.webp)
 
 添加一个新的WebHook，如图设置
 
-![](https://i0.hdslb.com/bfs/openplatform/91bba85b01805a6d14421aae8f1cf27a405ae4b9.webp)
+![](../img/322c2eedbfeb1cfebb09abafec7d821e.webp)
 
 ## 开发测试
 

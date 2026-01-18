@@ -2,7 +2,7 @@
 title: 在VPS上部署一个自己的Github全站反代！
 published: 2025-06-20
 description: '利用Go作为后端，重写Github发送的HTML，并且创建多个反向代理，从0自建Github全站反代！'
-image: https://i0.hdslb.com/bfs/openplatform/77816284df500c67d6d8e7ad3a18d9b7a00bbb43.webp
+image: ../img/cdfc03c805654fe17b029c77607283d7.webp
 tags: [Github, 反向代理]
 category: '教程'
 draft: false 
@@ -298,12 +298,12 @@ root@localhost:~/go_proxy# go run .
 
 使用Nginx或者OpenResty反向代理 `localhost:8080` 。配置域名，格式为 `gh.你的域名` 。我的配置如下
 
-![](https://i0.hdslb.com/bfs/openplatform/27eb63f2580bfc6357646f993de6473236dbccf8.webp)
+![](../img/a278240460e6c55ae124e9a7a6bf7ca6.webp)
 
 签发泛域名证书并且部署，配置完毕后如下
 
-![](https://i0.hdslb.com/bfs/openplatform/b4f778d86cc449170f04e7983f6740ba0d99287a.webp)
+![](../img/248ecd1d15ab1d9cc437acf843808036.webp)
 
 访问，现在你通过自己的域名+VPS代理访问Github。国内直连，无需梯子
 
-![](https://i0.hdslb.com/bfs/openplatform/8d66a0caa9e24faf7d0e4f69a89e6549b570864f.webp)
+![](../img/33a87f06aebd772d8d6371d63f6bf42f.webp)

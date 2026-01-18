@@ -2,7 +2,7 @@
 category: 教程
 description: 网易免费企业邮是一个免费的电子邮箱服务，它最重要的特点就是可以绑定你的域名，比如sudo@onani.cn，并且完全免费且能收能发！
 draft: false
-image: https://i0.hdslb.com/bfs/openplatform/eb8223ebc8bf3c3356c37701bc3c769ee43d9f71.webp
+image: ../img/f811bf7a69384ca793f5cbbf49ca216b.webp
 lang: ''
 published: 2025-03-12
 tags:
@@ -44,28 +44,28 @@ title: 自建邮局太麻烦？来用网易免费企业邮！绑定你的域名�
 
 登陆进去后大概是这样
 
-![](https://i0.hdslb.com/bfs/openplatform/975eba0f6b614eb00e36848bb29b8fe6dc0876c7.webp)
+![](../img/74b8bb61f9c0b2fc8299e80f81271810.webp)
 
 如果你不喜欢你的账户名，比如我的就是 **erchashush** @acofork.freeqiye.com，这个erchashush其实是可以更改的
 
 在组织机构管理中点击账号管理，选择新建账号
 
-![](https://i0.hdslb.com/bfs/openplatform/a855944be2187fd5e2ed607a7d554de5ef96a830.webp)
+![](../img/63f461b58ba0dc7430e05b2a36e1db1e.webp)
 
 然后写一个你想要的别名。绑定手机填你的，因为第一次登录需要验证码验证，如果填错了直接删除即可
 
-![](https://i0.hdslb.com/bfs/openplatform/f64315f47758e6e5b0c7f4a5a6762ed0eaaa4f62.webp)
+![](../img/a5672b33716e17e2135db2ea003d1dd6.webp)
 
 然后我们需要给这个新账号提权，如果你想用superadmin登录后台的话
 
-![](https://i0.hdslb.com/bfs/openplatform/9ef40c24e98bf50a992e39a22f60032dcd124ce4.webp)
+![](../img/35eb62138b25c2ac8d3c8790c8c1eece.webp)
 
 接着右上角退出登录，然后使用新创建的管理员账户登录
 
 ## 绑定你的域名
 
 前往组织机构管理 - 域名管理 - 添加域名
-![](https://i0.hdslb.com/bfs/openplatform/f26119ca23b653aeb29eb5128e91f46a278df832.webp)
+![](../img/10405eb544f747e8d67ac19605ecf04f.webp)
 
 根据提示在你的域名提供商（比如Cloudflare）配置TXT记录和MX记录即可
 
@@ -77,8 +77,8 @@ title: 自建邮局太麻烦？来用网易免费企业邮！绑定你的域名�
 
 ## 效果展示
 
-![](https://i0.hdslb.com/bfs/openplatform/4310fc01f69e47a4bded5bafa9f3893bdd4b05d6.webp)
+![](../img/60cc0dc81e62e4934e1bd25e826af5d2.webp)
 
 签名和发件人头像可以通过手机的网易邮箱大师设置
 
-![](https://i0.hdslb.com/bfs/openplatform/9fcf92b5dc7be4efe412e6aa2d4e1de423ce715a.webp)
+![](../img/34874f815e4482e11373e149e417780b.webp)

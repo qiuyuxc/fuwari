@@ -2,7 +2,7 @@
 title: 测评一下SecBit MCDN HK区域的质量
 published: 2025-07-02
 description: '在我哥们的帮助下也是成功通过我的博客拿到了Secbit的免费MCDN服务，再见EdgeOne（'
-image: https://i0.hdslb.com/bfs/openplatform/564239aedbdf27ca9c4bf8d577f520fd2fd6fd59.webp
+image: ../img/5ee1c5366ab34391db961d87f5821b63.webp
 tags: [Secbit]
 category: '记录'
 draft: false 
@@ -23,41 +23,41 @@ https://secbit.ai
 
 ## 直连Cloudflare R2
 
-![](https://i0.hdslb.com/bfs/openplatform/178a10478845189317324eb78697bab68ecd2cf9.webp)
+![](../img/446c8a14f67c2e63eec4df8f93295dfa.webp)
 
 ## Secbit回源Cloudflare R2
 
-![](https://i0.hdslb.com/bfs/openplatform/0f6c5b502c54f2b65b3841d9a477870b66991e2d.webp)
+![](../img/5c1c249f0d6ad4ed65315dda315c677a.webp)
 
 # ITDog Tcping测试
 
 ## 直连Cloudflare R2
 
-![](https://i0.hdslb.com/bfs/openplatform/517833740f42a9d6235877f3db245bbfe078e288.webp)
+![](../img/f5f31a0b9b4cbf816d41c8077ec556af.webp)
 
 ## Secbit回源Cloudflare R2
 
-![](https://i0.hdslb.com/bfs/openplatform/6f424dcc427a527cb951bced557ab262664d398e.webp)
+![](../img/682702b2e41ebee5f31efc65e36369a3.webp)
 
 # ITDog 网站测速
 
 ## 直连Cloudflare R2
 
-![](https://i0.hdslb.com/bfs/openplatform/097b8cf202c0ad3f0e3b51204d033a7356931c53.webp)
+![](../img/bd3452e78950f442daf1c5f33090f6c7.webp)
 
 ## Secbit回源Cloudflare R2
 
-![](https://i0.hdslb.com/bfs/openplatform/d1c4615de9889b176d4ff96e4dbc6d90fd521f11.webp)
+![](../img/444df581a980e2d41a681a3ed694f469.webp)
 
 # 大文件下载
 
 ## 直连Cloudflare R2
 
-![](https://i0.hdslb.com/bfs/openplatform/66c592c5e7453a7c651ef73b677b0705d24d3cc4.webp)
+![](../img/3389f34f480df89e78989749f5a080f1.webp)
 
 ## Secbit回源Cloudflare R2
 
-![](https://i0.hdslb.com/bfs/openplatform/9d7552d85df1086d3926da0691f69e99c42f0539.webp)
+![](../img/7af68ec01f7a6fb1526052e2cf79b925.webp)
 
 ---
 

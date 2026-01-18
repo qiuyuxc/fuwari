@@ -2,7 +2,7 @@
 title: 关于我折腾了一晚上 EdgeOne
 published: 2025-06-22
 description: '本来对EdgeOne不感兴趣的，但是后来被引诱说没备案可以用国内节点，虽然好像当事者是开玩笑但是节点速度真的不错'
-image: https://i0.hdslb.com/bfs/openplatform/b09d3fe4b1653ef7a23d8dd10aeb27c20468d552.webp
+image: ../img/1319c45a8870eae9a6ffead74b7af0bc.webp
 tags: [EdgeOne, 优选]
 category: '记录'
 draft: false 
@@ -29,19 +29,19 @@ lang: ''
 
 通过创建 `加速区域全球可用区（不含中国大陆）` 。会分配给你一个类似 `eo3-blog.afo.im.eo.dnse4.com` 这样的CNAME地址要求你做CNAME解析。IP很烂。**可以直接做优选。** 获取方式很简单，直接ITDOG PING `edgeone.ai` 找个最快的IP直接写A解析（貌似国内的也可以🤔），如图。**本人EdgeOne优选：** `eo.072103.xyz`
 
-![](https://i0.hdslb.com/bfs/openplatform/561f167065542860733f07bc92e29f9964761e75.webp)
+![](../img/1d5f5d0c07eccf001783f38286b54a4b.webp)
 
-![](https://i0.hdslb.com/bfs/openplatform/781e5f30d41f89fa300982fe20b045173256aac2.webp)
+![](../img/4b2467f8b7dea141fc4368366112280f.webp)
 
-![](https://i0.hdslb.com/bfs/openplatform/e0734247617a754b30be370ea7fc27ea600f6e36.webp)
+![](../img/cd020a7ab623744fc10ad3d5de2d1b54.webp)
 
 因为这玩意是一个CDN，需要一个源站。如果你是静态站点可以用Cloudflare Page部署一个站，然后设置回源如下（注意回源Hosts头要填写源站域名，否则CF可能会报423 Locked *他妈的比腾讯云的418我是个茶壶规范多了😅*）
 
-![](https://i0.hdslb.com/bfs/openplatform/b44780fd07b06d6feeb64662b24e646770858a7b.webp)
+![](../img/3fb84530f3130d11e919b982b931acef.webp)
 
 最后开启SSL，结束，享受它吧
 
-![](https://i0.hdslb.com/bfs/openplatform/9d93e4fb0317f6a8814b5ef516908abc34d1d0be.webp)
+![](../img/17ce6f26f1d7d76bf49b1ca57090bd9d.webp)
 
 # 关于EdgeOne Pages（新）
 
@@ -57,7 +57,7 @@ lang: ''
 
 默认时延情况，如图
 
-![](https://i0.hdslb.com/bfs/openplatform/58c98a1785974b85db1f88ea057cf8d07ac56c28.webp)
+![](../img/f464774f457846aa7c3c2c711e8f5381.webp)
 
 > 以下言论仅适用于**备案**用户
 

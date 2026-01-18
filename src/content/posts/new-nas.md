@@ -2,7 +2,7 @@
 category: 随笔
 description: 你可能不知道，我曾经购入过一台N100迷你主机，不久后便卖掉了，不过现在我又购入了，这是为什么呢？
 draft: false
-image: https://i0.hdslb.com/bfs/openplatform/fbec84bdf46ca2fe6b9d88effd9dd2362be2477e.webp
+image: ../img/8b75bd45d7b397358b58d69d3edac5e0.webp
 lang: ''
 published: 2025-02-23
 tags:

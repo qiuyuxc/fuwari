@@ -37,7 +37,7 @@ export const siteConfig: SiteConfig = {
 	},
 	background: {
 		enable: true, // Enable background image
-		src: "https://t.alcy.cc/ycy", // Background image URL (supports HTTPS)
+		src: "", // Background image URL (supports HTTPS)
 		position: "center", // Background position: 'top', 'center', 'bottom'
 		size: "cover", // Background size: 'cover', 'contain', 'auto'
 		repeat: "no-repeat", // Background repeat: 'no-repeat', 'repeat', 'repeat-x', 'repeat-y'
@@ -49,7 +49,7 @@ export const siteConfig: SiteConfig = {
 		depth: 2, // Maximum heading depth to show in the table, from 1 to 3
 	},
 	notice: {
-		enable: true,
+		enable: false,
 		content: "本站图片资源已全面切换至 B 站图床。如出现加载异常等问题，请联系我们反馈。",
 		level: "warning",
 	},

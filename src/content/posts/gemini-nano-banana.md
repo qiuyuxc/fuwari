@@ -2,7 +2,7 @@
 title: Google最新的AI生图模型 Nano Banana！立绘转真人！一键P图！
 published: 2025-09-01T16:25:34
 description: '哎我造了村里孩子吃上城里货了，这你扯不扯，这AI生图方便好，无需部署不费脑，大口大口使劲造，鼻歪眼斜使劲笑'
-image: 'https://i0.hdslb.com/bfs/openplatform/b9ce709fba3bc829bb116df1dc75d22103b9d926.png'
+image: '../img/7ce02b7a13a08a5a597cde01ef670b1e.png'
 tags: [AI, Gemini, Google]
 
 draft: false 
@@ -15,7 +15,7 @@ lang: ''
 
 粘贴一张图，说出你想要的更改
 
-![](https://i0.hdslb.com/bfs/openplatform/3625d5142932b6283bac96b1a6e8bbff43a3f96d.png)
+![](../img/8c959065c0a147957ab533e8ed06f04f.png)
 
 # 立绘转真人COS
 
@@ -39,9 +39,9 @@ lang: ''
 
 - 立绘中角色不要做出现实中无法做出的动作，这可能会触发AI的Copy，会将图片完整的复制过来而不是创建一个Coser
 
-![](https://i0.hdslb.com/bfs/openplatform/812cd911fa06992ef32bb73a6bccbe765dbad541.png)
+![](../img/2502d030dfe8872623a89a6f888eb4d0.png)
 
-![](https://i0.hdslb.com/bfs/openplatform/c4e4dc9715c8585f9bfede96503f1717fee8cd30.png)
+![](../img/66e7524dcdc839c134cdcdaae78df471.png)
 
 # 七夕生草图
 
@@ -63,17 +63,17 @@ lang: ''
 > 
 > Only the picture inside the frame can contain anime style; all other elements must be realistic.
 
-![](https://i0.hdslb.com/bfs/openplatform/de5480103bd03abb4ff5b6ad5c3fefdb84f51eb6.png)
+![](../img/90b3f9ecb13d4836e122a232e5da6126.png)
 
-![](https://i0.hdslb.com/bfs/openplatform/b9ce709fba3bc829bb116df1dc75d22103b9d926.png)
+![](../img/7ce02b7a13a08a5a597cde01ef670b1e.png)
 
 # 去除背景
 
 > Prompt： 将这张图去除背景，仅保留人物主体
 
-![](https://i0.hdslb.com/bfs/openplatform/3625d5142932b6283bac96b1a6e8bbff43a3f96d.png)
+![](../img/8c959065c0a147957ab533e8ed06f04f.png)
 
-![](https://i0.hdslb.com/bfs/openplatform/87dd651087388da7b817868ede2333fc4a005af2.png)
+![](../img/fc87820ad21f3e572c28021d7c1818c5.png)
 
 ---
 

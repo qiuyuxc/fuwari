@@ -1,7 +1,7 @@
 ---
 category: 教程
 description: 使用AutoBangumi连接qBittorrent下载番剧，然后使用刮削软件刮削，设置一遍，享受终身
-image: https://i0.hdslb.com/bfs/openplatform/7601b4af728e8457a80b392a9ecd58469fb7a39e.webp
+image: ../img/f3b9901bb2b5d2932a565e7f618e353f.webp
 lang: zh_CN
 published: 2025-02-25
 tags: [AutoBangumi]
@@ -28,7 +28,7 @@ Docker：https://github.com/linuxserver/docker-qbittorrent
 
 Tracker服务器大全：[中国可用的 BT Tracker 服务器列表，每24小时自动更新 - 小小编程](https://www.yaozuopan.top/index.php/archives/1014/#:~:text=%E4%B8%AD%E5%9B%BD%E5%8F%AF%E7%94%A8%E7%9A%84%20BT%20T)
 
-![8938ee430e5f74109c34c8c6d48e0e4f619cbeff.webp](https://i0.hdslb.com/bfs/openplatform/d66f653130751822f00adddfe388d52c2d23e84a.webp)
+![8938ee430e5f74109c34c8c6d48e0e4f619cbeff.webp](../img/0f69821c4e87110e76935d3599d7dd74.webp)
 
 ### 安装[AutoBangumi](https://www.autobangumi.org/)
 
@@ -67,10 +67,10 @@ services:
 
 5. 点左边的设置图标 -> 下载设置，填入下载器信息，然后点击右下角的应用，直到右上角亮绿灯
 
-![QmbVcrgZ2C2FTt6QdfKsUkVQz9SCiQiyq1WCbphDiGW2mM.webp](https://i0.hdslb.com/bfs/openplatform/12932271abe10708a58284a855c8441b9c559111.webp)
+![QmbVcrgZ2C2FTt6QdfKsUkVQz9SCiQiyq1WCbphDiGW2mM.webp](../img/cd596f025f105ed3d021bd6ae10aaa15.webp)
 
 6. 前往蜜柑计划，注册账号，并订阅你想要的番剧（复制）
-   ![QmXq7DcBkA4EecJikQE4snvPkNU2NQLy1EXUpAructteah.webp](https://i0.hdslb.com/bfs/openplatform/46e84fd17db7b6766fdd6b4c37d0e4f3a93a7282.webp)
+   ![QmXq7DcBkA4EecJikQE4snvPkNU2NQLy1EXUpAructteah.webp](../img/ad6cb6f85b97a36b7b6fd7cf20d6612d.webp)
 
 7. 回到 AutoBangumi，点击右上角的 +，添加 RSS（粘贴）
 
@@ -105,7 +105,7 @@ services:
 2. Win 可以通过右键菜单自动获取路径版.bat 通过右键一级目录选择自动剧集命名 。若使用.py 脚本则只能通过`python3 EpisodeReName.py "D:/qbdownloads/bangumi"`
 
 **小贴士：** 可以使用[RaiDrive](https://onani.cn/RaiDrive)或[SSHFS](/SSHFS)将远程的Linux文件映射到Windows上，管理番剧更方便
-![QmY7KM2MjudNksqvSkkFmwFgjjdD7ZQKLDaVPXR3jnXoxw.webp](https://i0.hdslb.com/bfs/openplatform/1b0f28ce6d0d8d0583e13a8a34cc2cfa5ff5a092.webp)
+![QmY7KM2MjudNksqvSkkFmwFgjjdD7ZQKLDaVPXR3jnXoxw.webp](../img/ced8ebee3c9e843307fa4b6889b8b9ac.webp)
 
 ### 安装 Plex（或者安装飞牛云NAS）
 
@@ -121,6 +121,6 @@ services:
 
 图为飞牛影视
 
-![Qmf8Q1D9fUoFbu9MQsQHvaz13p3YV2XguR3RqUAse2KBEa.webp](https://i0.hdslb.com/bfs/openplatform/5caea5bb69af800a5ccf551df93c1eab69474307.webp)
+![Qmf8Q1D9fUoFbu9MQsQHvaz13p3YV2XguR3RqUAse2KBEa.webp](../img/f561c468e65552b44d47294b55631809.webp)
 
 爽看

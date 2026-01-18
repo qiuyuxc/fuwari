@@ -2,7 +2,7 @@
 title: 【开源】WPwebplayer——简洁通用的网页播放器
 published: 2025-08-09
 description: '一款简单，简洁，轻量,通用的开源网站音乐播放器'
-image: 'https://i0.hdslb.com/bfs/openplatform/856b8b3fa203ecbcf800c6c0a1eb4100bb309406.png'
+image: '../img/31bc5ad0fe9b51c2d76ceca7d49b025f.png'
 tags: [Web]
 category: '记录'
 draft: false 
@@ -13,7 +13,7 @@ lang: ''
 
 # WPWebPlayer（html网站播放组件）  
 一款简单，简洁，轻量的网站音乐播放器  [体验界面](https://wpwebplayer.112601.xyz/)
-![示例](https://imgbed.112601.xyz/file/1752422083916.png)  
+![示例](../img/23bf1f340519353acf87610e729ca4fe.png)  
 [项目文章（博客）](https://www.yunsen2025.top/023-wpmusicplayer) | [体验界面](https://wpwebplayer.112601.xyz/) | [NPM包（前端资源）](https://www.jsdelivr.com/package/npm/wpwebplayer?tab=files)
 ---
 # 项目特性：

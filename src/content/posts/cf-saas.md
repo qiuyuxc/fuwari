@@ -2,7 +2,7 @@
 title: 你真的玩懂了Cloudflare SaaS吗？为什么经由SaaS的流量可以做优选？
 published: 2026-01-16T20:16:09
 description: 我们都知道，可以通过SaaS来做优选，但是为什么用SaaS就能做优选呢，为什么直接CNAME就不能优选呢？这篇文章带你一窥真相！
-image: https://i0.hdslb.com/bfs/openplatform/7fe7122925372d39c2589abd064ecd6fd2066aec.png
+image: ../img/ad52f6214a91a43ab450d35ed532fd67.png
 draft: false
 lang: ""
 ---
@@ -28,8 +28,8 @@ Cloudflare SaaS是一个不需要你改变一个域名的NS服务器，就可以
 如果一个域名已经被SaaS到一个已经在Cloudflare的域名，将完整受益所有Cloudflare服务
 
 如我将 umami.acofork.com SaaS 到 2x.nz ，我就可以在 2x.nz 里为 umami.acofork.com 写规则了
-![](https://i0.hdslb.com/bfs/openplatform/d0550cd8e63d47a274246eabe36d6665facdb546.png)
-![](https://i0.hdslb.com/bfs/openplatform/58d225444b379db65e200a0d81caeae352224cb0.png)
-![](https://i0.hdslb.com/bfs/openplatform/594749aa9f60a3efb4fd9d1c2eba68875d1d0377.png)
+![](../img/80d67b7edc4beafa2b8ce1584434bc59.png)
+![](../img/4cd3b16b13add03b2216bc1523d1637e.png)
+![](../img/1342cc3d4aa834a9b56011ea286851ef.png)
 Worker中的路由规则也适用
-![](https://i0.hdslb.com/bfs/openplatform/9542baa59741bced61fbd83ec71066202fb27b20.png)
+![](../img/c05036d1dca30cab907d9ad731420365.png)

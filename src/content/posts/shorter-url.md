@@ -2,7 +2,7 @@
 title: 无需服务器！从零教你自建一个短链服务！
 published: 2026-01-09T10:55:33
 description: 你是否有一个短域名？没有也没关系，马上教你从域名开始搭建一个短链服务！
-image: https://i0.hdslb.com/bfs/openplatform/7c7465144ca451f4490bc1d555579c180a66c283.png
+image: ../img/cede754ada4eb273a1b021214fa00adb.png
 draft: false
 lang: ""
 ---
@@ -33,5 +33,5 @@ Cloudflare Page/Worker的重定向文件提供了基于文件的重定向功能�
 
 # 服务架构图
 
-![](https://i0.hdslb.com/bfs/openplatform/e09746b6d32db0c1678c2be1a5032104c17d8988.png)
+![](../img/f561dbbf7f8aae7a2f36efe25e0f2974.png)
 

@@ -2,7 +2,7 @@
 title: Oracle（甲骨文云）踩坑记录
 published: 2025-09-08T00:01:25
 description: '在钞能力的帮助下也是成功薅到了一个甲骨文账号，上手把玩发现坑点挺多的，遂记录'
-image: 'https://i0.hdslb.com/bfs/openplatform/c06d770ce67b9888ebabacb7bb777efea407dc48.png'
+image: '../img/1bd2033f64e7016494ad540c7ae6a917.png'
 tags: [Oracle]
 
 draft: false 
@@ -19,17 +19,17 @@ lang: ''
 
 建议启用 **两步验证** 使用你的移动设备下载一个甲骨文App 然后扫码即可（实际上就是一个联网的TOTP）
 
-![](https://i0.hdslb.com/bfs/openplatform/db7bcb0bdc2064d60e97bb55d6719311e3e7b0b0.png)
+![](../img/2efc9e7ac1477ff0fbdb21298714ba64.png)
 
 如果需要更改密码，它在这里
 
-![](https://i0.hdslb.com/bfs/openplatform/f16634d1fa4d73c22dffd044edf1bc6cce72d972.png)
+![](../img/fe11d42514b50924f2ce9220ec786485.png)
 
 # 没有Debian系统？
 
 如果你前往 https://cloud.oracle.com/compute/instances/create 尝试创建实例。会发现没有 **Debian** 映像 。我们可以通过最下面 **我的映像** 来上传自己的自定义映像，详细步骤往下看
 
-![](https://i0.hdslb.com/bfs/openplatform/a276e3d12526c3d22a2b450fdec6340edf2b5181.png)
+![](../img/28ab9c0dfcb9b15ce89e19fbeb3f1b81.png)
 
 写在前面，如果你需要往甲骨文上传自定义映像，你需要先将自定义映像上传到你 **甲骨文账户下的对象存储** ，随便找一个对象存储上传是不行的！！！
 
@@ -38,76 +38,76 @@ lang: ''
 - 64 位 AMD/Intel ([qcow2](https://cloud.debian.org/images/cloud/trixie/latest/debian-13-generic-amd64.qcow2 "用于 64 位 AMD/Intel 的 OpenStack 镜像，qcow2"), [raw](https://cloud.debian.org/images/cloud/trixie/latest/debian-13-generic-amd64.raw "用于 64 位 AMD/Intel 的 OpenStack 镜像，raw"))
 - 64 位 ARM ([qcow2](https://cloud.debian.org/images/cloud/trixie/latest/debian-13-generic-arm64.qcow2 "用于 64 位 ARM 的 OpenStack 镜像，qcow2"), [raw](https://cloud.debian.org/images/cloud/trixie/latest/debian-13-generic-arm64.raw "用于 64 位 ARM 的 OpenStack 镜像，raw"))
 
-![](https://i0.hdslb.com/bfs/openplatform/abbb04e8ac68059ae1dffd26ab0e0a91bc3748a2.png)
+![](../img/bce5f1083cde9901c1fff0a849cd7830.png)
 
 你会得到
 
-![](https://i0.hdslb.com/bfs/openplatform/2039266903f1fdafd58775c7acea53ef89a6cebd.png)
+![](../img/5c977cb3b2129386fe5c461fa69cc662.png)
 
 前往 https://cloud.oracle.com/object-storage/buckets 创建一个新存储桶，点击编辑可见性，改为 **公共** 
 
-![](https://i0.hdslb.com/bfs/openplatform/ad58087e83f4d7a44539bc5334e8ca620544bc80.png)
+![](../img/1c5348896fe2f1d7bd21fbd4783b1145.png)
 
-![](https://i0.hdslb.com/bfs/openplatform/e30b65d1535edc0425abdebf367f179d1517e9bb.png)
+![](../img/736e78d1abb4ece241c54deb98244ea1.png)
 
 然后上载刚刚下载的映像
 
-![](https://i0.hdslb.com/bfs/openplatform/596eacc1a1331e3c62ed2ebbb59dd9679a697fea.png)
+![](../img/df256fd12897e5513865146e1dfb4bb6.png)
 
 前往 https://cloud.oracle.com/compute/images 点击 **导入映像** 按需填写
 
-![](https://i0.hdslb.com/bfs/openplatform/c05cebd4eef685eb8ed8b08ec2affbb6f807080c.png)
+![](../img/774e7134c768a2912becdd698db04133.png)
 
 映像类型和启动模式如图填写（性能最大化）
 
-![](https://i0.hdslb.com/bfs/openplatform/b59f7f4325253d62eb7f248bd3b0600ebfde0110.png)
+![](../img/0f7e034e15f96a5f6336e8bb42f60d49.png)
 
 验收无误后，点击右下角的 **导入映像** ，大约需要 **20min** ，状态将变为 **可用**
 
-![](https://i0.hdslb.com/bfs/openplatform/d2ade67e31d8bda960c99d43c1ec5cb32982a190.png)
+![](../img/348f21b6a7d42ba43d6050d321d61f3f.png)
 
 点击其中一个映像，进入详情页面，针对于 **arm映像** 我们需要手动调节 **兼容的配置**。右上角点击 **操作 - 编辑详细信息**
 
-![](https://i0.hdslb.com/bfs/openplatform/1e2c6c86f5832580a23b08f4f2df6fb7d39099a6.png)
+![](../img/453e5e6887780af89f2e7d119e0bcff3.png)
 
 全部打勾，保存更改
 
 *仍然需要注意，创建实例的时候请看准是x86还是arm实例，x86实例无法使用arm映像，反之亦然*
 
-![](https://i0.hdslb.com/bfs/openplatform/3a795a305da69bfccdb50bd975fff7bb011527fe.png)
+![](../img/f9f2016235ee458e959263ece719e41e.png)
 
 然后点击右上角**创建实例**，即可使用自定义映像创建实例
 
-![](https://i0.hdslb.com/bfs/openplatform/a564f5fb43d9d5765814f1817a025854e6a94882.png)
+![](../img/2c73b23e9d3531003b3b6b438fd722c3.png)
 
 # 创建VCN（网络）
 
 前往 https://cloud.oracle.com/networking/vcns 点击 **创建VCN** 改个名称然后一路下一步即可
 
-![](https://i0.hdslb.com/bfs/openplatform/dafcb3cc065a792fba0762aec9b45c96af373042.png)
+![](../img/f08d9f10fd59091723d3657b54273b9a.png)
 
 成功创建一个如图的网络
 
-![](https://i0.hdslb.com/bfs/openplatform/7840ad266a01d770e8f2651348b0e90c908f0520.png)
+![](../img/fbfc18d70a06e665ce6cfb48d860a53a.png)
 
 # 为VCN附加IPv6前缀
 
 前往 https://cloud.oracle.com/networking/vcns
 
 进入我们刚刚创建的VCN
-![](https://i0.hdslb.com/bfs/openplatform/76c88a94b7ab17a3eca8258142f676a781763917.png)
+![](../img/e18b9943ffa2e4d1b765b51a34a0c14b.png)
 
 导航栏选择 **子网** - **公共子网**
 
-![](https://i0.hdslb.com/bfs/openplatform/49fe30315fd0baac001c9a3ff1316b203bd429c5.png)
+![](../img/342b4e8cf7b87a7be62ed56b49f9a2f6.png)
 
 在新页面的导航栏点击 **IP管理**
 
-![](https://i0.hdslb.com/bfs/openplatform/7ba4183e3818756bcf293768d269dde2b546be29.png)
+![](../img/4a4e0d217f97e15ac93face85a8538d3.png)
 
 往下滚动，添加 **IPv6前缀**
 
-![](https://i0.hdslb.com/bfs/openplatform/5da81e736b7b80be7d429f0f3eff13bd47c575de.png)
+![](../img/4d77a5bfa1e62b144a49e6ea001ee51b.png)
 
 # 创建实例
 
@@ -115,7 +115,7 @@ lang: ''
 
 在这里可以更改映像为自定义映像，即我们刚刚上传的Debian映像
 
-![](https://i0.hdslb.com/bfs/openplatform/cc9771b29397dd4d32bd7be121113084505e3087.png)
+![](../img/15563fc1ff5396d0b54e6fc8d0992ee3.png)
 
 在这里可以更改 **架构和配置** 。永久免费套餐为
 
@@ -135,19 +135,19 @@ Oracle 可能会回收闲置的“永久免费”计算实例。如果在 **7 �
 
 - **内存使用率**低于 20%（仅适用于 A1 规格）
 
-![](https://i0.hdslb.com/bfs/openplatform/9cf7cd25cdb5c2d2a5403318d1975bee8f0d5f9f.png)
+![](../img/045adb4f859a31cae01344a90dba7f29.png)
 
 在这里可以选择是否附加 **IPv4** 和 **IPv6** 地址，其中， **IPv6** 地址的附加功能取决于是否在VCN附加了 **IPv6前缀**
 
-![](https://i0.hdslb.com/bfs/openplatform/52996b4330fc11de93a551d5c1864b8cee8586da.png)
+![](../img/32cea448c2e04326b5e2d289a3ae3ebe.png)
 
 在这里可以更改IO配置，直接拉满即可
 
-![](https://i0.hdslb.com/bfs/openplatform/66f0bcb59a614bbe35cd32fe7ec9448cfc6e859a.png)
+![](../img/cf7885fa1906af3b10f5b7b40e4021ea.png)
 
 在这里可以更改SSH相关配置
 
-![](https://i0.hdslb.com/bfs/openplatform/6c9093215b930e7cc8c0236314a629218c38f493.png)
+![](../img/1dc7b829330d2b53f3962ef662a097a4.png)
 
 一路下一步，验收无误后点击 **创建**
 
@@ -157,23 +157,23 @@ Oracle 可能会回收闲置的“永久免费”计算实例。如果在 **7 �
 
 前往 https://cloud.oracle.com/networking/vcns ，进入你刚刚创建的VCN，导航栏点击 **安全** 找到这个
 
-![](https://i0.hdslb.com/bfs/openplatform/c56d7de149a70c1fcc824ef42828b230ce0a8e12.png)
+![](../img/e66117cec4050e037d412e7bb83790e3.png)
 
 导航栏继续找到 **安全规则** 我直接全放行
 
-![](https://i0.hdslb.com/bfs/openplatform/cc7cce59de1d8e72652d43f3333d7a5a2bf96d02.png)
+![](../img/6d885d2275521a0d859997cf88ffbb74.png)
 
 # 使用SSH连接实例
 
 前往 https://cloud.oracle.com/compute/instances 可以看到 **公共IP** ，携带你的 **SSH私钥** 通过 **22 端口** 连接服务器即可
 
-![](https://i0.hdslb.com/bfs/openplatform/3c794f186e23b8be148e676e31f1e09b97ff2933.png)
+![](../img/c10b0ab6422d0ab28ce92e0b5ff9eab0.png)
 
 # 改root登录
 
 如果你使用root直接登录，会提示
 
-![](https://i0.hdslb.com/bfs/openplatform/aced7f875e19b6b403b88d7b38939b3dbd3f6e3a.png)
+![](../img/5f7703a859b34f269caa38246ccb10e7.png)
 
 意为： **请使用名为 `debian` 的用户登录而不是 `root` 用户**
 
@@ -181,7 +181,7 @@ Oracle 可能会回收闲置的“永久免费”计算实例。如果在 **7 �
 
 再次尝试，成功登录了
 
-![](https://i0.hdslb.com/bfs/openplatform/581d877fc305603bbe6c4b8087486eb4d91fa635.png)
+![](../img/def56350a0a3977856bad5073cf31ed5.png)
 
 首先提权为 **root**
 
@@ -205,7 +205,7 @@ systemctl restart sshd
 
 重新使用 **root** 登录，成功
 
-![](https://i0.hdslb.com/bfs/openplatform/598da3e31eed2e6be43980f5628b882194c6f1ba.png)
+![](../img/b57a7dd04b5378c23d949adaedc3e762.png)
 
 # 自动脚本抢arm机
 
@@ -217,7 +217,7 @@ systemctl restart sshd
 
 前往 https://cloud.oracle.com/identity/domains/my-profile/auth-tokens 点击 **添加API密钥** 并 **下载私有密钥（只能下一次）** ，然后会弹出 **配置文件预览** ，复制它，后面要用
 
-![](https://i0.hdslb.com/bfs/openplatform/eb9cad73d989a64876aa8060c4f0b046e95f5841.png)
+![](../img/3fddcd41bc2913efe2e0471439a01b93.png)
 
 克隆仓库 [chacuavip10/oci_auto](https://github.com/chacuavip10/oci_auto)
 
@@ -229,11 +229,11 @@ key_file=oci_private_key.pem
 
 前往 https://cloud.oracle.com/compute/instances/create 再次尝试创建一个arm机子，并且F12抓包，查看该包的详情
 
-![](https://i0.hdslb.com/bfs/openplatform/569c56bc96d6b7dca9fb8333a546fda19d08843c.png)
+![](../img/43d69b6cf9afb9aa348d5992195e05e2.png)
 
 对号入座填写 `oci_auto.py` 内的内容
 
-![](https://i0.hdslb.com/bfs/openplatform/3531f79e673ed6c1919c374d995e69aafb0cf48b.png)
+![](../img/3ae0f95dc1bc459f95cbad2ba3670519.png)
 
 安装依赖
 
@@ -251,4 +251,4 @@ python3 oci_auto.py
 
 即可自动抢机子，可能几个月后，你的账户下就会多一台arm了（？
 
-![](https://i0.hdslb.com/bfs/openplatform/d5f9907fb84a3e5072d5cb6d2754dea078c7a2ca.png)
+![](../img/ee970ecb792c9f8ec1752d50cd6961fe.png)

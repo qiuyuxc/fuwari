@@ -2,7 +2,7 @@
 title: 配置Vercel让ITDog测试全部403！
 published: 2025-07-10
 description: '很讨厌别人用ITDog等拨测服务疯狂测试你的站点？拒绝他们！'
-image: https://i0.hdslb.com/bfs/openplatform/e95ba8aa2ac513819b34fcbc6f8384ffa0767960.webp
+image: ../img/a8ae00846ce6eec08c20d2eae6b834d8.webp
 tags: [Vercel]
 category: '教程'
 draft: false 
@@ -23,7 +23,7 @@ https://www.bilibili.com/video/BV1w7GTzMEy7
 
 结论，你已经获得了你要屏蔽的拨测网站的IP
 
-![](https://i0.hdslb.com/bfs/openplatform/31108b88970da1dcef29959160c901f72ee6f4b0.webp)
+![](../img/acdf4b0396011231dcc9d1cbdc3efcbb.webp)
 
 # 创建Vercel API Token
 
@@ -35,11 +35,11 @@ https://www.bilibili.com/video/BV1w7GTzMEy7
 
 新增规则
 
-![](https://i0.hdslb.com/bfs/openplatform/a58896bb25a7bf9434aea3f177955a17ad4fa943.webp)
+![](../img/b49a6d9c1e2db14d7d9a6b7a593dd90f.webp)
 
 随便写点东西然后抓包
 
-![](https://i0.hdslb.com/bfs/openplatform/36256192c235621ca4d1179d46f77e61efbc584f.webp)
+![](../img/2ece2d18e25049521490b09ddd46f5c4.webp)
 
 ```http
 PATCH https://vercel.com/api/v1/security/firewall/config/draft?projectId=prj_UfvbpIvawjL2eAETAiZT7hPLR8W2&teamId=team_lemndzHQNJAcTipIF6elB5Md
@@ -51,7 +51,7 @@ PATCH https://vercel.com/api/v1/security/firewall/config/draft?projectId=prj_Ufv
 
 可以看到已经200 OK
 
-![](https://i0.hdslb.com/bfs/openplatform/818f464af39769ad76af5175555a36265646d928.webp)
+![](../img/752ec1d487386c6b5711e0b1a577703d.webp)
 
 # 使用Python脚本创建大批量IP拒绝规则
 
@@ -1447,21 +1447,21 @@ if __name__ == "__main__":
 
 # 调用脚本更新规则
 
-![](https://i0.hdslb.com/bfs/openplatform/9b562b590b489e07dd6ef1261c7ee664cbf79240.webp)
+![](../img/cd13275fd6be6f66aebb98da2e15580e.webp)
 
-![](https://i0.hdslb.com/bfs/openplatform/9f70fb1554694d74ad3cd6135d0eebe93e372d35.webp)
+![](../img/1996ab91ef7a27d0e587aeed024cc6f7.webp)
 
 最后 `Review Changes` 并且 `Publish` 即可
 
-![](https://i0.hdslb.com/bfs/openplatform/10a83568629ce3ef9487aa9cad254e06a4fbf5d6.webp)
+![](../img/d0a1d2279ddfdb61b050ed85fc535f21.webp)
 
-![](https://i0.hdslb.com/bfs/openplatform/c7add347c0e77a1dc38749f198eee3dfc61d41cb.webp)
+![](../img/feb7c0d7416f9ec20ca7b6e22c2762d3.webp)
 
 # ITDog测试
 
 大部分测试节点已经403
 
-![](https://i0.hdslb.com/bfs/openplatform/c68950b44c73bb8e8403e90e8292c028c31d17b9.webp)
+![](../img/3b57e0b7f53d3f640050c9c5fbb6abd3.webp)
 
 # 有什么用？
 

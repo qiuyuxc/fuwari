@@ -2,7 +2,7 @@
 title: cloudflare-imgbed项目使用Action自动备份元数据到仓库
 published: 2025-08-21
 description: 'CloudFlare-ImgBed项目用基于GitHub Actions定期自动备份数据脚本'
-image: 'https://imgbed.112601.xyz/file/cloudflare-imgbed-auto-backup/1755368429729.png'
+image: '../img/dae7ab91ad6f1bcf325906c6bb22e041.png'
 tags: [cloudflare]
 category: '记录'
 draft: false 
@@ -50,14 +50,14 @@ lang: ''
 2. 点击 `Settings` 选项卡
 3. 滚动到页面底部的 `Danger Zone` 区域
 4. 点击 `Leave fork network` 将你的仓库脱离复刻网络
-![alt text](https://imgbed.112601.xyz/file/cloudflare-imgbed-auto-backup/1755364661684.png)
+![alt text](../img/c1cd525fde736d01b166935a31d2b6c5.png)
 5. 点击 `Change repository visibility` 选择 `Make private` 将仓库设为私有
-![alt text](https://imgbed.112601.xyz/file/cloudflare-imgbed-auto-backup/1755365226055.png)
+![alt text](../img/b521dacfe266373e9dcd3f0b67315eb0.png)
 
 ### 2. 配置GitHub仓库机密
 
 在你的GitHub仓库中，进入 `Settings` -> `Secrets and variables` -> `Actions`，添加以下机密：
-![alt text](https://imgbed.112601.xyz/file/cloudflare-imgbed-auto-backup/1755366168729.png)
+![alt text](../img/48002efbb8d41a7b8661c30df3269c53.png)
 **必需配置**:
 | 机密名称 | 说明 | 示例值 |
 |---------|------|--------|
@@ -90,9 +90,9 @@ lang: ''
 - **自动执行**: 每天北京时间02:00自动运行
 - **手动触发**: 你也可以在Actions页面手动触发备份
 如果您是第一次部署本项目，请在Action中手动执行一次确保执行正常
-![alt text](https://imgbed.112601.xyz/file/cloudflare-imgbed-auto-backup/1755367335196.png)
+![alt text](../img/d0091f6158bddd1817fd8bf1121e9403.png)
 正确输出：  
-![正确输出](https://imgbed.112601.xyz/file/cloudflare-imgbed-auto-backup/1755368429729.png)
+![正确输出](../img/dae7ab91ad6f1bcf325906c6bb22e041.png)
 ## 文件结构
 
 ```

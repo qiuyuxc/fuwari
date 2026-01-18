@@ -3,7 +3,7 @@ category: 教程
 description: 将AList Web部署到CF Pages可以显著提升访问者的浏览体验，因为静态资源都在CF的边缘节点，而后端使用API交互，而不是由源服务器路由所有流量，既能减轻源服务器的负载，又能使用CF
   Pages的不回源优势，一箭双雕
 draft: false
-image: https://i0.hdslb.com/bfs/openplatform/062b296f9db19abbae85fe6346c105acec1469e4.webp
+image: ../img/645658a395f81eea1738e9467ecb2375.webp
 lang: ''
 published: 2024-10-15
 tags:
@@ -28,7 +28,7 @@ title: 教你把AList的前端部署到CF Pages！让你的AList秒加载！
    [https://github.com/alist-org/alist-web](https://github.com/alist-org/alist-web)
 
 2. 更改项目根目录的`env.production`文件为你的后端服务器地址  
-   ![QmduQJq3TydzvLzBn47zLxp2MR1iD2sxm67EzFUFuEBvQa.webp](https://i0.hdslb.com/bfs/openplatform/8ebf578f36ba2ec35a6720abb036a7768a3c4edc.webp)
+   ![QmduQJq3TydzvLzBn47zLxp2MR1iD2sxm67EzFUFuEBvQa.webp](../img/6c212ffe9728bfb01218cdd3c51cce7e.webp)
 
 3. 将仓库克隆到本地，需要安装[Git](https://git-scm.com/)：
 
@@ -41,7 +41,7 @@ git clone git@github.com:你的用户名/你Fork的仓库
 ```
 
 5. 下载汉化包：[AcoFork 的网盘](https://alist.onani.cn/guest/alist_Zh-CN)或[Crowdin - 需要登录](https://crowdin.com/project/alist/zh-CN)  
-   ![QmXVpMc7BqbXv9EaAbeptsrnhYLinvQQsu1btBE3VvDixa.webp](https://i0.hdslb.com/bfs/openplatform/148c591e876a4ca018da14b9c5e931682a982988.webp)
+   ![QmXVpMc7BqbXv9EaAbeptsrnhYLinvQQsu1btBE3VvDixa.webp](../img/1ea043833660654df18e82c11247d146.webp)
 6. 解压，将`alist (zh-CN)\src\lang`里面的`Zh-CN`文件夹复制到仓库下`src/lang`下
 7. 编辑根目录的`.gitignore`，添加一行`!/src/lang/zh-CN/`确保文件不被忽略
 8. 下载[Nodejs](https://nodejs.org/zh-cn)。在根目录打开终端，生成中文需要的文件：
@@ -66,22 +66,22 @@ git push -f   //强制将更改提交到远程仓库
 ```
 
 10. 进入[Cloudflare 仪表盘](https://dash.cloudflare.com/)，进入 Workers 和 Pages 页面  
-    ![QmW5UaUap8T2R37u5dzmKGLmUgk4qKnSMFwHBVHqvVbkVA.webp](https://i0.hdslb.com/bfs/openplatform/40f1ebc4c0d76a2a6ceb20f99d2ef579f4a97a55.webp)
+    ![QmW5UaUap8T2R37u5dzmKGLmUgk4qKnSMFwHBVHqvVbkVA.webp](../img/3dae72cae85533d3ce487750d7571d6c.webp)
 11. 创建一个 Pages，选择连接 Git 存储库  
-    ![QmZXerKv9PVxxscAe4w4LEfAaKfiScPQEKh1UroXnCeAUr.webp](https://i0.hdslb.com/bfs/openplatform/f4462af6bfbf887c963431331b5f17150775928c.webp)
+    ![QmZXerKv9PVxxscAe4w4LEfAaKfiScPQEKh1UroXnCeAUr.webp](../img/2d778c3b3ff89f25769f681cf358b513.webp)
 12. 选择你的存储库，开始设置  
-    ![QmNdSGQrJtoqDnBx8pgDrtcfmUUfVBS9xdrN4xLgyPjyXE.webp](https://i0.hdslb.com/bfs/openplatform/55dfa02c39769b93f88e962c0740491d740ea59b.webp)
+    ![QmNdSGQrJtoqDnBx8pgDrtcfmUUfVBS9xdrN4xLgyPjyXE.webp](../img/5f83d966c6df24d45e0f3f0d536c2dec.webp)
 13. 构建命令输入：`pnpm install && pnpm build`，构建输出目录选择`/dist`  
-    ![QmbhPdbE8f1zLKvWA6aEGJtZhmecRMVZiQbx6Zx1Lecp7J.webp](https://i0.hdslb.com/bfs/openplatform/db719a675a5fc26f96fc54b8491c317d3106bb3c.webp)
+    ![QmbhPdbE8f1zLKvWA6aEGJtZhmecRMVZiQbx6Zx1Lecp7J.webp](../img/2ac8b070e437148d74ef3ea90638be10.webp)
 14. 等待 Cloudflare 构建结束，为 Pages 绑定自定义域  
-    ![QmTMphu61uUF9XefBAVDVf19Jm1vLVUhhXQ9PXABy7hUpK.webp](https://i0.hdslb.com/bfs/openplatform/d0ad9fb217381dd6d3a25f3c7f8d54134d06c9b0.webp)
+    ![QmTMphu61uUF9XefBAVDVf19Jm1vLVUhhXQ9PXABy7hUpK.webp](../img/c32475c2e07afbec1ed738696ac74977.webp)
 15. 访问自定义域，查看 AList 是否正常  
-    ![QmT8GLcaxtabhifKNL8kczEtozmNvdyhzJ823RfBrcFdpm.webp](https://i0.hdslb.com/bfs/openplatform/b918073790ae4acfa09292ea57d09005d3c84524.webp)
+    ![QmT8GLcaxtabhifKNL8kczEtozmNvdyhzJ823RfBrcFdpm.webp](../img/7ddad9231adb2dd5bfac24b93ddb917f.webp)
 
 ### 定制 AList[#](https://afo.im/shen-me-Cloudflare-dai-li-AList-tai-man--jiao-ni-bu-shu-qian-duan-dao-Pages-ju-jue-hui-yuan-#user-content-%E5%AE%9A%E5%88%B6-alist)
 
 > 我们都知道 AList 支持自定义头部和内容，但是因为 Cloudflare Pages 是一个静态页面，所以我们采用硬编码方式，直接将需要自定义的内容写入仓库根目录的`index.html`  
-> ![Qmd47pgFsyh28NjhkLiCPPbf7iasXMWvAvZDupH8QspG64.webp](https://i0.hdslb.com/bfs/openplatform/02ed48a9d009a83ad40acbdd17870a759e7b40c5.webp)
+> ![Qmd47pgFsyh28NjhkLiCPPbf7iasXMWvAvZDupH8QspG64.webp](../img/435a9f9ca11fb3d18ef237058bab161d.webp)
 
 1. 编辑根目录的`index.html`
 2. 将更改提交到暂存区并提交到远程仓库，在根目录打开终端
@@ -93,7 +93,7 @@ git push -f   //强制将更改提交到远程仓库
 ```
 
 3. Cloudflare Pages 会自动重新构建，等待新网页构建完成即可  
-   ![QmNZemsDHz5QLxW3V2eANghmVkfBccEpe5vMAWUCLik4o6.webp](https://i0.hdslb.com/bfs/openplatform/07bbf08a252f353edcf9f16bbe4543322ee87d02.webp)
+   ![QmNZemsDHz5QLxW3V2eANghmVkfBccEpe5vMAWUCLik4o6.webp](../img/2f55e9d97ff3d84c8c568105a0c0052a.webp)
 
 ### 疑难解答
 

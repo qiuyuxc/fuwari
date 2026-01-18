@@ -2,7 +2,7 @@
 category: 教程
 description: 使用Zerotier，Tailscale，Cloudflare Tunnel可以实现多种内网穿透，其中有适用于个人访问的，也有适用于公众访问的
 draft: false
-image: https://i0.hdslb.com/bfs/openplatform/b5650ab7cba19c762068e8d099b948d2ac0667d2.webp
+image: ../img/1d637607bdaddac348d9339e5eadf16a.webp
 lang: ''
 published: 2024-10-28
 tags:
@@ -34,9 +34,9 @@ ping你的对端设备，如果延迟大于200ms或者经常丢包大概率就�
 
 # 前期准备
 
-路由器开启UPnP![](https://i0.hdslb.com/bfs/openplatform/e8118ea8dcd3b4c04aea48caf9c9e8ef138ebb80.webp)  
+路由器开启UPnP![](../img/38d78f3fb5aeb29c946ec66e6ad653c5.webp)  
 
-关闭路由器的IPv4，IPv6防火墙 **（可选）**![](https://i0.hdslb.com/bfs/openplatform/814bdde21041622055274943375cb34ab1045451.webp)
+关闭路由器的IPv4，IPv6防火墙 **（可选）**![](../img/650e7c26770f84c5e0dd1190a9d0675a.webp)
 
 # *使用Zerotier/Tailscale进行内网穿透*
 
@@ -46,29 +46,29 @@ ping你的对端设备，如果延迟大于200ms或者经常丢包大概率就�
 
 ## 创建Zerotier账号
 
-前往：[ZeroTier | Global Networking Solution for IoT, SD-WAN, and VPN](https://www.zerotier.com/)。如果你进不去，请尝试挂梯子。如果看不懂英文可以开启浏览器的翻译功能![](https://i0.hdslb.com/bfs/openplatform/90447a20e9d3430930a0256e1df4ef45d71f53c3.webp)
+前往：[ZeroTier | Global Networking Solution for IoT, SD-WAN, and VPN](https://www.zerotier.com/)。如果你进不去，请尝试挂梯子。如果看不懂英文可以开启浏览器的翻译功能![](../img/9d9ed2e955113009df413956f1cbac75.webp)
 
-选择 `Sign up`![](https://i0.hdslb.com/bfs/openplatform/9d17b26dc47e37630da2e452e1b7e3efe3eaaa96.webp)
+选择 `Sign up`![](../img/1b6eedaac982dba9b241f18e87209ce3.webp)
 
-如果你到了这个界面，请仍然选择`Sign up`![](https://i0.hdslb.com/bfs/openplatform/951d02f30e7af538800e76717429dbb254db0267.webp)
+如果你到了这个界面，请仍然选择`Sign up`![](../img/1490288a0dc82c2f47840eb5162fbb0d.webp)
 
-![](https://i0.hdslb.com/bfs/openplatform/873ff5e8cd09cc59097a525d314abf171d162a94.webp)
+![](../img/830103bc433fa089036131b6a8d62d20.webp)
 
-账号创建完毕后，登录即可![](https://i0.hdslb.com/bfs/openplatform/f6b508934e61dea61a61b9e0e4f11ebb9c0dacf1.webp)
+账号创建完毕后，登录即可![](../img/778341b68427d453b1a55f2cc2f26dd0.webp)
 
 ## 创建一个新的Zerotier网络组
 
 当你账号登录成功后，会自动跳转到这个页面，点击`Create A Network`。如果没有，请访问[ZeroTier Central](https://my.zerotier.com/)
 
-![](https://i0.hdslb.com/bfs/openplatform/8236bbc8939719b784566156de389379b9fe6da6.webp)
+![](../img/13998046b33b6436003a421d9308b8fa.webp)
 
-下面的列表会增加一个新的网络组，点击它![](https://i0.hdslb.com/bfs/openplatform/164be12a7492e104ea3e98412c1ce09c0cea1de3.webp)
+下面的列表会增加一个新的网络组，点击它![](../img/677e0a15931062a484f712e1f433eff8.webp)
 
 Zerotier默认的网络组模式为`Private`。即私密模式，哪怕别人知道了你的`Network ID`尝试加入你的网络组也需要你进行验证
 
-![](https://i0.hdslb.com/bfs/openplatform/6bb26732512e74717e795e4e0ebfc709d89425ad.webp)
+![](../img/f77f932aba2b9dbbd66ded7a095bf521.webp)
 
-复制这个`Network ID`![](https://i0.hdslb.com/bfs/openplatform/d4d0475c05b800e511e4b397d4dc2de2871fa96e.webp)
+复制这个`Network ID`![](../img/063c7c465fd379194bcdc42339bf412f.webp)
 
 ---
 
@@ -76,15 +76,15 @@ Zerotier默认的网络组模式为`Private`。即私密模式，哪怕别人知
 
 ## Windows：
 
-前往[Download - ZeroTier](https://www.zerotier.com/download/)，下载exe安装文件![](https://i0.hdslb.com/bfs/openplatform/35aea41aa8a9f46560e91e41693066f453359cf2.webp)
+前往[Download - ZeroTier](https://www.zerotier.com/download/)，下载exe安装文件![](../img/a9a5958e27755a5326a7a68403b2001a.webp)
 
-打开Zerotier![](https://i0.hdslb.com/bfs/openplatform/3b17e15fb08affa746ec3a5c9f24bc06c8b65a06.webp)
+打开Zerotier![](../img/e6bf34082943bf69af0c52df608e9a72.webp)
 
-查看右下角托盘，按照图片操作加入网络组![](https://i0.hdslb.com/bfs/openplatform/c86dead0b89a1c6b520e5c0097b1a709020098ee.webp)![](https://i0.hdslb.com/bfs/openplatform/827c43f700095c2ab54c4f6e83c0516a6d4413cd.webp)![](https://i0.hdslb.com/bfs/openplatform/20874089f63d01065f2c48a88517187476c26ff2.webp)
+查看右下角托盘，按照图片操作加入网络组![](../img/2053a33d6ae178fffe8fad636480f8d9.webp)![](../img/53464f62b4cac11209d1f4fb0eb11b5e.webp)![](../img/57abc07a9f75d46881952b605c96626d.webp)
 
 这里可以查询到你的设备ID和你在这个网络组的IP
 
-![](https://i0.hdslb.com/bfs/openplatform/c4f2c5de8feae3b2168bf9afbca96478ee704a58.webp)
+![](../img/cd99a91012e447fef0be41c1acaf94f0.webp)
 
 **然后参考：[Zerotier授权设备](#zerotier授权设备)**
 
@@ -92,13 +92,13 @@ Zerotier默认的网络组模式为`Private`。即私密模式，哪怕别人知
 
 通过SSH连接上你的Linux设备
 
-查看安装命令：[Download - ZeroTier](https://www.zerotier.com/download/)![](https://i0.hdslb.com/bfs/openplatform/020c87a7161caa019f84ff59cd316a9f37e8c0fb.webp)
+查看安装命令：[Download - ZeroTier](https://www.zerotier.com/download/)![](../img/ea3367fae8f1be10e1fb879045efd55a.webp)
 
 终端执行： `curl -s https://install.zerotier.com | sudo bash`
 
-看到这一行即安装完毕，后面那一串即你的设备ID：![](https://i0.hdslb.com/bfs/openplatform/9a1bae5114bbfb8249d82ab20fa36565acd87ca5.webp)
+看到这一行即安装完毕，后面那一串即你的设备ID：![](../img/35105fcd6c66d627d24334926bb8b510.webp)
 
-加入网络：`sudo zerotier-cli join 你的Network ID`![](https://i0.hdslb.com/bfs/openplatform/9a7cba702ff3e069d04f13e79733876321d030cc.webp)
+加入网络：`sudo zerotier-cli join 你的Network ID`![](../img/be12014fc0b8e9eed5ae8567921b3d3d.webp)
 
 **然后参考：[Zerotier授权设备](#zerotier%E6%8E%88%E6%9D%83%E8%AE%BE%E5%A4%87)**
 
@@ -112,7 +112,7 @@ Zerotier默认的网络组模式为`Private`。即私密模式，哪怕别人知
 
 如图操作
 
-![](https://i0.hdslb.com/bfs/openplatform/e858a27292340b46ef4d0e15f1b2a20a712dcead.webp)![](https://i0.hdslb.com/bfs/openplatform/1ed9bfee98ce73755803dc42efb5c92d18e790a0.webp)
+![](../img/bd2a22a7a690317026871b25a1b7644b.webp)![](../img/41452db816c3d294f00c3aa36cf28a1e.webp)
 
 **然后参考：[Zerotier授权设备](#zerotier%E6%8E%88%E6%9D%83%E8%AE%BE%E5%A4%87)**
 
@@ -122,9 +122,9 @@ Zerotier默认的网络组模式为`Private`。即私密模式，哪怕别人知
 
 前往Zerotier的网页控制台：[ZeroTier Central]([https://my.zerotier.com/](https://my.zerotier.com/))
 
-授权刚才加入的设备![](https://i0.hdslb.com/bfs/openplatform/e845e0c8e722a479a4064145f0665f60f2565074.webp)
+授权刚才加入的设备![](../img/4ab9553d901f25240a93aa9a60f22a0e.webp)
 
-勾选然后保存![](https://i0.hdslb.com/bfs/openplatform/709dd56956ae15fbce9a9b2f37a84a1a2d4de5d0.webp)
+勾选然后保存![](../img/773dc7eacb997aa522af5aca7489db82.webp)
 
 ---
 
@@ -132,9 +132,9 @@ Zerotier默认的网络组模式为`Private`。即私密模式，哪怕别人知
 
 如果你同一个网络组里已经有两台以上的设备了，可以尝试ping一下测试连通性，请先确保两台设备不在同一个局域网（比如手机开流量，NAS用家里的无线网）
 
-IP可以在这里查看![](https://i0.hdslb.com/bfs/openplatform/a932cfbe61adc8192ec0f98d64eff6eb366af456.webp)
+IP可以在这里查看![](../img/8b704e7ca8a9bf502aefbb1ba31ae0c9.webp)
 
-ping测试：![](https://i0.hdslb.com/bfs/openplatform/f2b6a149546c592a7cd9d3f1116574a45fbc0e6a.webp)
+ping测试：![](../img/2660aad4542f7c5cf787ef8ac213f2eb.webp)
 
 ---
 
@@ -144,7 +144,7 @@ ping测试：![](https://i0.hdslb.com/bfs/openplatform/f2b6a149546c592a7cd9d3f11
 
 前往：[Tailscale](https://login.tailscale.com/start)。如果你进不去，请尝试挂梯子。如果看不懂英文可以开启浏览器的翻译功能
 
-选择任意一个登录方式![](https://i0.hdslb.com/bfs/openplatform/ecccf33b63a009ebc6a2498c315e06bec00bd2bf.webp)
+选择任意一个登录方式![](../img/0ae39e06c693c339ede42b6f4bfc27ac.webp)
 
 账号创建完毕后，登录即可
 
@@ -156,13 +156,13 @@ ping测试：![](https://i0.hdslb.com/bfs/openplatform/f2b6a149546c592a7cd9d3f11
 
 前往[Download · Tailscale](https://tailscale.com/download)，下载exe安装文件
 
-官方教程：![](https://i0.hdslb.com/bfs/openplatform/99fe2373171b87451918f62f0116196346a53c33.webp)
+官方教程：![](../img/90b19f275cb26797fab9c17ce1c5a5c5.webp)
 
 ## Linux（飞牛OS）：
 
 通过SSH连接上你的Linux设备
 
-查看安装命令：[Download · Tailscale](https://tailscale.com/download/linux)![](https://i0.hdslb.com/bfs/openplatform/aca475a63e0648d7397397e0b64bb2688fc1e377.webp)
+查看安装命令：[Download · Tailscale](https://tailscale.com/download/linux)![](../img/5b70423701865cd175528c48b06143ce.webp)
 
 终端执行： `curl -fsSL https://tailscale.com/install.sh | sh`
 
@@ -180,9 +180,9 @@ ping测试：![](https://i0.hdslb.com/bfs/openplatform/f2b6a149546c592a7cd9d3f11
 
 ## Tailscale访问测试
 
-前往Tailscale的网页控制台：[Machines - Tailscale](https://login.tailscale.com/admin/machines)。可以查看到每个设备Tailscale分配的IP![](https://i0.hdslb.com/bfs/openplatform/2ccc1b1927bd8d87df517af10d4b7185510c2fab.webp)
+前往Tailscale的网页控制台：[Machines - Tailscale](https://login.tailscale.com/admin/machines)。可以查看到每个设备Tailscale分配的IP![](../img/a9aedd0da178ae266a34339fc8efefe8.webp)
 
-ping测试![](https://i0.hdslb.com/bfs/openplatform/ecf1d430b146c6a594dc32bcc6173a37e6febd5b.webp)
+ping测试![](../img/033ef48819fa42a1e2304530c0a3c4ab.webp)
 
 ---
 
@@ -194,7 +194,7 @@ ping测试![](https://i0.hdslb.com/bfs/openplatform/ecf1d430b146c6a594dc32bcc617
 
 进入[Cloudflare One](https://one.dash.cloudflare.com/)（需要绑定PayPal）
 
-如图操作，创建一个Tunnel![](https://i0.hdslb.com/bfs/openplatform/e521d3aeee2da8a4b7129020c63e22ab22f700bc.webp)![](https://i0.hdslb.com/bfs/openplatform/397a5167ce43344d00e9e9a84fe7c6cc1beeddd7.webp)![](https://i0.hdslb.com/bfs/openplatform/44eefbf679ec9a1d72f9c0c67e62fa47c30eb584.webp)
+如图操作，创建一个Tunnel![](../img/cba032a6c417028169f3a8c4a6ae75d8.webp)![](../img/597b8b5dffc7b27c539f1b4081838102.webp)![](../img/556d6086a3ed6e3bd43fd870f30cf323.webp)
 
 ## Docker方式
 
@@ -202,13 +202,13 @@ ping测试![](https://i0.hdslb.com/bfs/openplatform/ecf1d430b146c6a594dc32bcc617
 
 复制如图的命令
 
-![](https://i0.hdslb.com/bfs/openplatform/abac04a116219188324f0c8a0c8b911f85ac40e0.webp)
+![](../img/83256c7b2e7cef19da710df024d1b5e9.webp)
 
-将其粘贴，并且复制后面的令牌![](https://i0.hdslb.com/bfs/openplatform/71d020e35f380d9caff7b6943f3b098997098ca0.webp)
+将其粘贴，并且复制后面的令牌![](../img/4268ed7e7efad22372d086f4b60561d7.webp)
 
-1Panel应用商店搜索`cloudflared`![](https://i0.hdslb.com/bfs/openplatform/29521a0d6ca8ec65fe68d3dde1d22b5e6b82a4e7.webp)
+1Panel应用商店搜索`cloudflared`![](../img/74bc5e89ec5e78e5d5f051aceb1716ad.webp)
 
-填入令牌![](https://i0.hdslb.com/bfs/openplatform/00ade1e8122420c8552b5c5eb315048c2ecc502d.webp)
+填入令牌![](../img/62b837a0f3dc361912fbdfab5e3a0508.webp)
 
 然后前往[查看IP](#查看cloudflared的ip)
 
@@ -216,7 +216,7 @@ ping测试![](https://i0.hdslb.com/bfs/openplatform/ecf1d430b146c6a594dc32bcc617
 
 复制底下的命令然后SSH连接到Linux（飞牛OS）在终端输入
 
-![](https://i0.hdslb.com/bfs/openplatform/0d4df6aa26c0f77ee4735b23252fc3beb5beabd3.webp)
+![](../img/e148b4bda87495b00e034b568461b12c.webp)
 
 然后前往[查看IP](#%E6%9F%A5%E7%9C%8Bcloudflared%E7%9A%84ip)
 
@@ -249,17 +249,17 @@ root@n100-debian:~# ip a
 
 选择Debian，然后复制底下的命令，直接到终端执行
 
-![](https://i0.hdslb.com/bfs/openplatform/9ee31725c82b9c2971a74405c0e85641384092d5.webp)
+![](../img/11b19900d6668389362d957c76c948ff.webp)
 
 如果你的环境无法连接上Github
 
 尝试手动下载：[https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb)
 
-然后将其通过SSH等方式传到Linux上，如图终端为MobaXterm![](https://i0.hdslb.com/bfs/openplatform/6af37eeec8a865222431eb4a61856c34cd41c353.webp)
+然后将其通过SSH等方式传到Linux上，如图终端为MobaXterm![](../img/9cce55629b6f348e49f9d1880b1723cd.webp)
 
 然后使用：`dpkg -i cloudflared-linux-amd64.deb`安装这个软件包
 
-然后直接复制右边的命令到SSH终端执行![](https://i0.hdslb.com/bfs/openplatform/abac04a116219188324f0c8a0c8b911f85ac40e0.webp)
+然后直接复制右边的命令到SSH终端执行![](../img/83256c7b2e7cef19da710df024d1b5e9.webp)
 
 **然后前往[配置并访问Tunnel](#%E9%85%8D%E7%BD%AE%E5%B9%B6%E8%AE%BF%E9%97%AEtunnel)**
 
@@ -269,7 +269,7 @@ root@n100-debian:~# ip a
 
 在终端执行：`pkg install cloudflared`
 
-选择`Debian`然后复制最右边的命令到终端执行![](https://i0.hdslb.com/bfs/openplatform/46c03bd2f1e08de4f372565233359cab707ddbb9.webp)
+选择`Debian`然后复制最右边的命令到终端执行![](../img/fab9750fe1be7af289c1d86cde1ec363.webp)
 如果你无法使用Termux自带的cloudflared，请尝试安装proot容器实现
 
 依次输入命令：
@@ -288,7 +288,7 @@ dpkg -i cloudflared-linux-amd64.deb
 
 然后直接复制右边的命令到SSH终端执行
 
-![](https://i0.hdslb.com/bfs/openplatform/46c03bd2f1e08de4f372565233359cab707ddbb9.webp)
+![](../img/fab9750fe1be7af289c1d86cde1ec363.webp)
 
 如果你无法通过令牌配置cloudflared，请参见[本地方式配置cloudflared](#本地方式)
 
@@ -304,9 +304,9 @@ dpkg -i cloudflared-linux-amd64.deb
 
 如图进入，创建一个HTTP隧道
 
-![](https://i0.hdslb.com/bfs/openplatform/03646f1dbd1507703ff786b61c7aa3d579099a3c.webp)![](https://i0.hdslb.com/bfs/openplatform/4993bbabbd6c20682a90cfa4c8ba536dfd0dce4c.webp)
+![](../img/59edc44177571960274b209bd60c717f.webp)![](../img/368743ea1c20127a7852a69b66bfb36b.webp)
 
-填写你的IP和端口，非Docker模式可以直接填写localhost![](https://i0.hdslb.com/bfs/openplatform/78a0b96a35966647db964dba8b1bc9d8eb737a5e.webp)
+填写你的IP和端口，非Docker模式可以直接填写localhost![](../img/155dbf6e7eec951cc181045794f980a2.webp)
 
 ## 本地方式
 
@@ -318,7 +318,7 @@ dpkg -i cloudflared-linux-amd64.deb
 
 ## 访问测试
 
-成功访问![](https://i0.hdslb.com/bfs/openplatform/b0c13915dc9ab4a4df5c19bcb25aef742bd1fbbc.webp)
+成功访问![](../img/54215399655a715c472c99e2f8f36aa5.webp)
 
 # 使用STUN打洞
 
@@ -328,4 +328,4 @@ dpkg -i cloudflared-linux-amd64.deb
 
 执行：`curl -o /tmp/install.sh http://6.666666.host:6/files/golucky.sh && sh /tmp/install.sh http://6.666666.host:6/files 2.13.4`
 
-通过`host:16601` 进入Lucky后台，设置STUN穿透。如果DMZ主机不设为Lucky主机可能会失败。打码的地方即公网访问的IP和端口![](https://i0.hdslb.com/bfs/openplatform/ed0eacc9b5987e8fa2eeb84a0443d2dcd20be12d.webp)
+通过`host:16601` 进入Lucky后台，设置STUN穿透。如果DMZ主机不设为Lucky主机可能会失败。打码的地方即公网访问的IP和端口![](../img/093ba8111ffc140c4ada3f4a41448cfc.webp)

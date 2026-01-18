@@ -2,7 +2,7 @@
 title: 完全免费！搭建一个自己的短链服务！
 published: 2026-01-14T23:39:31
 description: 利用Cloudflare Worker+Github搭建一个纯静态，刷不死的短链吧！
-image: https://i0.hdslb.com/bfs/openplatform/e9074895843f059f48aa0c6dfc4411564359c493.png
+image: ../img/09205d5916ef4c31f259f4d8de7926a9.png
 draft: false
 lang: ""
 ---

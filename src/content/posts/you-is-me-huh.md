@@ -2,7 +2,7 @@
 title: 你是我吗？
 published: 2025-08-12T15:43:18
 description: '博客开源了就会有很多小笨蛋Fork完改也改不全，导致评论也评论到我这来了，浏览量统计也来我这来了😅'
-image: 'https://i0.hdslb.com/bfs/openplatform/dcc3edcebd735148e87eebda9d547e7d49bb376a.png'
+image: '../img/c64d53595c05c3d28cb4b87a9ef5aa6f.png'
 tags: [CORS]
 category: '记录'
 draft: false 
@@ -14,7 +14,7 @@ lang: ''
 
 今天收到一封小邮件
 
-![](https://i0.hdslb.com/bfs/openplatform/001731e04dcad7fcc9cc62dc855f574b92d22b34.png)
+![](../img/95829b6cdd7a64e99029cd65fa4259b6.png)
 
 我一眼就看出来了
 
@@ -33,7 +33,7 @@ lang: ''
 
 这样设置后，即使有人在它的网站上引入了**你的评论区**，也会被拒绝显示
 
-![](https://i0.hdslb.com/bfs/openplatform/d6758f5d93adb51ebb6f41eed7d01c5a66c265b0.png)
+![](../img/ad4cbe98e4a45eaac0e5222544a3e4f3.png)
 
 # Umami仅允许自己
 
@@ -43,11 +43,11 @@ Umami并没有给配置来更改CORS（毕竟这个访问量统计是我逆向�
 
 但是我的Umami套了EO，我可以直接写一套CORS规则仅允许自己调用
 
-![](https://i0.hdslb.com/bfs/openplatform/05e5f90130f812eef58cc41f319d2fa82322407f.png)
+![](../img/b7a2e9bda7fac6ca3b83fec3bf9804db.png)
 
 这样的话，即使你啥也不改，也不会把错误的统计信息发到我这，会报错CORS头不允许
 
-![](https://i0.hdslb.com/bfs/openplatform/43255b02295397e3c258f5d3b392973daee52fd5.png)
+![](../img/4ba057f7b15d65c1e1bd40c1c62022de.png)
 
 # 最后
 

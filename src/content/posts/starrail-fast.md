@@ -2,7 +2,7 @@
 category: 教程
 description: 因为本文涉猎敏感地带，所以仅供专业人士技术讨论，我也不会发布什么一键包，请按照教程自己动手
 draft: false
-image: https://i0.hdslb.com/bfs/openplatform/a7b98ce821f8616dfbd7b924a96151df28f5be6c.webp
+image: ../img/ba3b56656d10678a7fee57ee2ec124f9.webp
 lang: ''
 published: 2025-04-15
 tags: [崩坏星穹铁道, DLL注入]

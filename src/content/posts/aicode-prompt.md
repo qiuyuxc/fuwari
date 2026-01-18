@@ -2,7 +2,7 @@
 title: AI写不出优质的代码？其实是你引导错了！
 published: 2025-06-17
 description: '如今，大语言模型百花齐放，有开山鼻祖OpenAI的ChatGPT系列，也有Anthropic开发的代码神器Claude系列。但是，哪怕模型再先进再聪明，如果用它的人使用的方法不对，那再好的模型用起来也是笨笨的'
-image: https://i0.hdslb.com/bfs/openplatform/c88ecb3b86603c421de5ae2eb1437a4725a9b7f7.webp
+image: ../img/d03b6537c075f24e566bc59dcc523471.webp
 tags: [AI, Prompt]
 category: '教程'
 draft: false 
@@ -44,22 +44,22 @@ AI也会犯错，并且极其容易瞎猜。不要尽信AI给出的内容，在�
 # AI推荐
 
 [ChatGPT](https://chatgpt.com)：快速，不限额。适合解决你的疑问
-![](https://i0.hdslb.com/bfs/openplatform/3c50c47887e6a5cd9957d70353f06a146f251f58.webp)
+![](../img/0a5698fab30865483daac15d91854962.webp)
 
 [Claude](https://claude.ai)：相比于GPT更强大，更擅长编写代码，尤其是前端，目前大部分AI IDE都接入了Claude 3.5 Sonnet及以上的模型，非常适合编写可拆解，易维护的小脚本
 
-![](https://i0.hdslb.com/bfs/openplatform/40db94780d29d637c26d8db8f96c2a298beec691.webp)
+![](../img/467318a9e134920207d2b68141c2f90e.webp)
 
 [VS Code（Github Copilot）](https://code.visualstudio.com/)：AI IDE。由微软开发，免费用户可以使用Claude 3.5 Sonnet模型，但是份额较少。Pro计划10USD/m，仅支持Paypal和海外卡支付
 
-![](https://i0.hdslb.com/bfs/openplatform/184a0de0a662d9b1ccbde7c4d4ead4d3daf4c069.webp)
+![](../img/9f9d8418d01db1f02be6e05199366f79.webp)
 
 [Cursor](https://www.cursor.com)：AI IDE。由Anysphere开发，免费用户仅能使用Auto模型（一般不会分配到Claude模型）。Pro计划10USD/m，仅支持Paypal和海外卡支付
 
-![](https://i0.hdslb.com/bfs/openplatform/a590bcd24f286823a4f81e1f006fd271fcbb332e.webp)
+![](../img/7f5b095c3fc07e3994c40781924c07be.webp)
 
 [Trae（国际版）](https://www.trae.ai)：AI IDE。由字节跳动开发，需要国外IP。新用户Pro计划开通首月仅需3USD/m（之后为10USD/m），支持支付宝和海外卡支付。本人目前在用
 
-![](https://i0.hdslb.com/bfs/openplatform/52a1e653392452d14a2489962674fa63e3be3f65.webp)
+![](../img/d134ce028d93ed9b66e2d3e280e5d20d.webp)
 
 > 写任何项目都完全不推荐使用网页版的任何大模型编写！请使用AI IDE！

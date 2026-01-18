@@ -2,7 +2,7 @@
 title: 国内对象存储免流量费？Cloudflare带宽联盟究竟是什么？
 published: 2025-07-22
 description: 'Cloudflare带宽联盟是一个多云服务商联合构建的服务体系，在指定的云服务商中，如果流量通过Cloudflare路由则不收取流量费用，用户仅需要支付存储费用'
-image: 'https://i0.hdslb.com/bfs/openplatform/fab9d364f981094dec2c63002b875df38906b912.webp'
+image: '../img/02103650039ed44d85a4c4dd1aa72065.webp'
 tags: [Cloudflare]
 category: '记录'
 draft: false 
@@ -21,11 +21,11 @@ Cloudflare带宽联盟（Bandwidth Alliance） 由一群具有前瞻性思维的
 
 截止到文章发布日，这些服务支持
 
-![](https://i0.hdslb.com/bfs/openplatform/2f13ac9d83c1fe34bfe1afe4f587d2a58512f886.webp)
+![](../img/c27dc4f63de99517145d344cf967b3b9.webp)
 
 在这里可以看到，如果您每月需要传输1TB的流量，Cloudflare将为您每月节省如此多的美刀
 
-![](https://i0.hdslb.com/bfs/openplatform/fe3305c7486194ba37497e246064b62f0848f95f.webp)
+![](../img/b4ca3859b590e63d83d9f7add463bc6a.webp)
 
 # 如何使用？
 

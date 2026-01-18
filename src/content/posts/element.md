@@ -2,7 +2,7 @@
 title: 关于如何加入我们自托管的m.2x.nz端到端加密聊天服务器
 published: 2025-08-06
 description: '我在一台主机上托管了synapse，现在你可以使用Element通过我的邀请链接加入这个端到端加密聊天服务器'
-image: https://i0.hdslb.com/bfs/openplatform/2f3919128c3c0b9cfa482227a7702e3ad63e15e8.webp
+image: ../img/1e691879149b46048a85debfe7e562e7.webp
 tags: [Matrix]
 category: '教程'
 draft: false 
@@ -21,51 +21,51 @@ lang: ''
 
 点击 Continue
 
-![](https://i0.hdslb.com/bfs/openplatform/0f662ab4d7e95c8e948506376414bd8c53bb3dad.webp)
+![](../img/4ffa060a7f1bb0055d063b8afd95349f.webp)
 
 选择Element 卡片上的 Continue
 
-![](https://i0.hdslb.com/bfs/openplatform/a82734ce5c16bf57b4063bd8717dc2986a7a1d73.webp)
+![](../img/de5388dcd6d741d07e454c4b699ce8ea.webp)
 
 选择在浏览器中继续， Continue in your browser
 
-![](https://i0.hdslb.com/bfs/openplatform/4833d283fa8ac1234bbd1fcb2f18d4ab6b4f6aa3.webp)
+![](../img/7b30c8f4d4c92d4e2e7fedd7246c794a.webp)
 
 接着来到Element门户页，首先更改语言
 
-![](https://i0.hdslb.com/bfs/openplatform/2eeaa2dfca2981136fc00ad8e9a6390bae5983fc.webp)
+![](../img/e93e546440a2b8d41137e42c5ad95b79.webp)
 
 接着点击登录
 
-![](https://i0.hdslb.com/bfs/openplatform/b27d46aa65c33707910a11ab408ba4d1041bacdd.webp)
+![](../img/76666b657fa271b6bd60e58f68cf5f3d.webp)
 
 编辑 家服务器
 
-![](https://i0.hdslb.com/bfs/openplatform/b58b0c19d14fc1418f714309ba289138dfb3f8b1.webp)
+![](../img/09133384d85f84a7aea2b5968411051a.webp)
 
 使用 其他自定义服务器： `m.2x.nz` 。然后点击继续
 
-![](https://i0.hdslb.com/bfs/openplatform/962f10386144c1ae19eb96f74998ca28409f0fdd.webp)
+![](../img/4d4f92c5868e6b3bcc1b30738151bbf3.webp)
 
 点击使用Github继续
 
 > 该服务器已禁用传统的邮箱注册
 
-![](https://i0.hdslb.com/bfs/openplatform/8ef08ff47deaf34ca4636f6aa2e30383fb8bdc0d.webp)
+![](../img/68117f914f865955fbd8cdfa80cbbefe.webp)
 
 在结束 Github OAuth2 授权 后。浏览器会自动返回到 `m.2x.nz` 域，点击 Continue
 
-![](https://i0.hdslb.com/bfs/openplatform/851d36b21dd83474473851fc3973fbff89b0604c.webp)
+![](../img/17d1a238c6d35778f746eb8c1cd57f33.webp)
 
 现在，你已成功登入Matrix
 
-![](https://i0.hdslb.com/bfs/openplatform/f9664a7a728f2649533bc13b7938ea38166125e3.webp)
+![](../img/6eb41a6951048f4c7d70ab17500df27b.webp)
 
 接着，再次访问最开始的邀请链接（在文章开头）。此时会弹出受邀界面，点击加入讨论即可
 
-![](https://i0.hdslb.com/bfs/openplatform/80786df7e0e45c1d275f9189cd6e09862152b729.webp)
+![](../img/6d18ee72126aa3d1dbc392f165c7610d.webp)
 
-![](https://i0.hdslb.com/bfs/openplatform/e88f08a00dc63f7ca5badf1e4bb62b66641a239a.webp)
+![](../img/8c8d8458024ea1057e4d4ecf9a1c5dc0.webp)
 
 # 疑难解答
 

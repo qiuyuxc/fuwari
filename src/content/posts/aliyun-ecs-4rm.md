@@ -2,7 +2,7 @@
 title: 什么？4元每月200G的服务器？还是阿里的？还有联通9929精品回程？？
 published: 2026-01-16T23:59:40
 description: 通过创建抢占型实例+每月免费CDT 200G流量包，你几乎只需要付很少的硬盘费！
-image: https://i0.hdslb.com/bfs/openplatform/9e4dd165a2897185795a643984c9062d778f88d1.png
+image: ../img/fafa21aab903b9466cd0adb8485eac8e.png
 draft: false
 lang: ""
 ---
@@ -26,45 +26,45 @@ https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-virt-3.23.2-x
 
 首先，来到 [OSS管理控制台](https://oss.console.aliyun.com/bucket) ，创建一个 Bucket，**地域一定要选中国香港** ，并且上传ISO，最后，复制URL备用
 
-![](https://i0.hdslb.com/bfs/openplatform/50199d3dc065240815fc7eb921d5f225d010d56a.png)
+![](../img/a438a7a6f671effd1c6254c027526508.png)
 
 ### 导入镜像
 前往 [云服务器管理控制台](https://ecs.console.aliyun.com/image/region/cn-hongkong) ，选择右上角的 导入镜像
-![](https://i0.hdslb.com/bfs/openplatform/d66d1a3fca152ec01104a63e7cc4692c3e2b1d00.png)
+![](../img/eee4a755783aa59c2d424d58588f7529.png)
 
 注意需要授权ECS访问OSS业务
-![](https://i0.hdslb.com/bfs/openplatform/cd59f42d534de6b0821ddff643fbb4330858a667.png)
+![](../img/d7b7c535afc304897c90d68131a6e1bf.png)
 
 然后正常填写，**取消勾选“导入后执行检测”** ，先不要点下一步
 
-![](https://i0.hdslb.com/bfs/openplatform/8c5539c2b77346359ec8f99a71f3bd23942575ff.png)
+![](../img/ae97dc273538e8f49e8e91e6efa3fafc.png)
 
 接下来勾选配置云盘属性，并且将 **云盘容量设置为1GB** ，确认无误，导入
-![](https://i0.hdslb.com/bfs/openplatform/a1734dc4cf781190efdaf2e5c55e5ee3b9972bca.png)
+![](../img/df6eead5041955f8ee97d4d349e4a15e.png)
 
 ### 创建ECS抢占型实例
 前往 [云服务器管理控制台](https://ecs.console.aliyun.com/server/) ，创建 **中国香港** 实例，注意红框区域要保持一致
 
 另外，对于 **网络及可用区** ，香港一共有 **B、C、D** 三个区，D区比B、C区贵不少，可以都开开测个速，留下最好的
-![](https://i0.hdslb.com/bfs/openplatform/013d356a8ff56063c95ce7c3e2f2af4602529293.png)
+![](../img/ea819fcade89cf031047229bc7957788.png)
 
 ### 开通CDT
 前往 [云数据传输](https://cdt.console.aliyun.com/overview) 将升级状态全部变为已升级即可
-![](https://i0.hdslb.com/bfs/openplatform/83ceace7f779e2d670c43eda87b8dfd1ae9a7d9e.png)
+![](../img/80735099be0596196d5dfdb39a4f5399.png)
 
 ### 创建&绑定弹性公网IP并且挂上CDT
 > 因为弹性公网IP可以绑定CDT的每月200G免费流量，并且在绑定实例后，弹性公网IP将不会再扣费。如果后续删机的时候不要忘记释放弹性公网IP，否则会一直扣费
 
 进入 [专有网络管理控制台](https://vpc.console.aliyun.com/eip/cn-hongkong/eips) 如图选择，然后购买即可（这里显示的费用是纯持有不绑定的费用，一旦绑定就不计费了）
-![](https://i0.hdslb.com/bfs/openplatform/f9015aa549c0904822153bbef5acaaf246c0f444.png)
+![](../img/6758d3b33c20eab848f915f697256984.png)
 
 
 
 接下来绑定弹性公网IP（因为我绑定过了，所以是解绑）
-![](https://i0.hdslb.com/bfs/openplatform/07ba7b7759eeafac9c1822770298cd4acfd18e81.png)
+![](../img/bd9efa117fe081c0dd06678746bccf8e.png)
 
 接下来在这里绑定CDT，带宽最高可以拉到 2000Mbps，但是不推荐，一般300M够用了
-![](https://i0.hdslb.com/bfs/openplatform/9133967fab8213cc1f21a71d13b5077f7fcb83ba.png)
+![](../img/ba5ed9a4f23418b314a0398fa7758486.png)
 
 ### 配置Alpine
 > 如果你安装了Alpine，默认是需要VNC进入手动配置系统的。如果是公共镜像，则已经可以用了，但不要忘了保证系统纯净
@@ -247,7 +247,7 @@ apk add curl unzip jq openssl tar iproute2 bash
 我们需要前往 https://ram.console.aliyun.com/profile/access-keys 创建一个RAM用户，你就会得到 `ACCESS_KEY_ID` 和 `ACCESS_KEY_SECRET` ，并且分配权限：`AliyunECSFullAccess`  `AliyunCDTFullAccess
 
 部署成功后，Cloudflare Worker将在每分钟检查一次CDT，如果超出流量阈值，会将指定ID的ECS停止
-![](https://i0.hdslb.com/bfs/openplatform/f8dc7318c96b86ce5841f98392056a6cc72dfe9e.png)
+![](../img/528763bae959dd8431fb478798873404.png)
 
 # 计费流程图
 带宽费（按固定带宽计费收取）：根据您指定的带宽峰值和计费时长后付费，与实际使用的流量无关。
@@ -257,4 +257,4 @@ apk add curl unzip jq openssl tar iproute2 bash
 最终，抢占型ECS实例每个小时扣费 **0.005528 元** ，按照一个月31天，每月扣费 **4.112832 元** ，而弹性公网IP一经绑定便不再计费，CDT每月免费200G海外流量，不超出不计费，OSS免费存储5G，传入流量不计费，我们也没有传出流量，或者保险起见你也可以将其删除
 
 **最终每月成本：不到5元！**
-![](https://i0.hdslb.com/bfs/openplatform/8ce9126e67a25420b8debfb22a76ad90cbf3649f.png)
+![](../img/5a8cea3f1afaab3e37ba8c2464f4c6e3.png)

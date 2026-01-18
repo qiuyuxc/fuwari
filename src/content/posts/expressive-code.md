@@ -3,7 +3,7 @@ title: Expressive Code 记录
 published: 2025-08-11
 description: 如何使用Expressive Code 代码块及迁移踩坑记录
 tags: [Markdown, Blogging, Demo]
-image: 'https://i0.hdslb.com/bfs/openplatform/14b0b39c31880565d62fee9b4b10e49a2a4934dc.png'
+image: '../img/8128be999308ddbab0518315861b8de7.png'
 category: Default
 draft: false
 ---

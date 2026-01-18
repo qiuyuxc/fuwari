@@ -2,7 +2,7 @@
 title: IPv6反解域名是什么？嫩长一坨还能托管到Cloudflare？SSL签发也没问题？
 published: 2025-08-09
 description: '你是否见过类似 e.b.9.f.0.7.4.0.1.0.0.2.ip6.arpa 这样的域名，今天就教你搞一个！'
-image: 'https://i0.hdslb.com/bfs/openplatform/75c60f7c869a0c89e7baf02354bd5da4a41e4c8d.png'
+image: '../img/0830dbc19650c8c9ce4ec26f91253ff5.png'
 tags: [IPv6, ip6.arpa]
 category: '教程'
 draft: false 
@@ -32,11 +32,11 @@ lang: ''
 
 如果该IP曾被绑定，则需要进行HTTP验证
 
-![](https://i0.hdslb.com/bfs/openplatform/19f226b2c289123bf8e91d69ee6962b3fc35a2e0.png)
+![](../img/02a2fe63711986e2220b6f6ba98b937c.png)
 
 进入这个页面，查看TunnelBroker为你分配的路由IPv6
 
-![](https://i0.hdslb.com/bfs/openplatform/4939b5887e94357211321e30c5ef1ac843f539b2.png)
+![](../img/ca555bb4e4e0094829c47fe151cd52f2.png)
 
 以 `2001:470:24:386::/64` 为例
 
@@ -48,15 +48,15 @@ lang: ''
 
 将其添加到Cloudflare
 
-![](https://i0.hdslb.com/bfs/openplatform/4da67b3d0dcb11fec83ab33b67397beae295c74e.png)
+![](../img/edca1eb009cadd7d2789983a75aaa470.png)
 
 查看Cloudflare要求你设置的NS服务器
 
-![](https://i0.hdslb.com/bfs/openplatform/dfe7eea61f2e6a9c42af5cd980a61413f1dac1c8.png)
+![](../img/7ca2f741662437a5b9ee4c76ff7736fd.png)
 
 回到TunnelBroker进行设置
 
-![](https://i0.hdslb.com/bfs/openplatform/09e6fd8a4594d447d3f79de574f2654b6edec1a5.png)
+![](../img/0500729da25dd0c1d5f2092c788d35c2.png)
 
 等待域被激活即可
 
@@ -74,7 +74,7 @@ curl --location --request PATCH 'https://api.cloudflare.com/client/v4/zones/<zon
 
 稍等片刻，CF会自动使用新的SSL提供商签发SSL
 
-![](https://i0.hdslb.com/bfs/openplatform/89101acab8085a97b1b2b35bacaedd9873282807.png)
+![](../img/b846b41d08a7d9c8c80b47c606691e17.png)
 
 # 局限性
 

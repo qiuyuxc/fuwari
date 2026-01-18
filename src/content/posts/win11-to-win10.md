@@ -2,7 +2,7 @@
 title: Win11保留数据无损降级Win10！
 published: 2025-11-23T15:18:40
 description: 我真的受够了Win11那黏黏的感觉了，什么？能降级？还是官方手段？还能保留数据？？?
-image: https://i0.hdslb.com/bfs/openplatform/7f7e02ccdbb28678b57c031e105dcb75e595acf1.png
+image: ../img/852fe67f3827c6d79ff7ea138a3b3135.png
 tags:
   - Windows
   - 降级
@@ -40,48 +40,48 @@ Win11有但Win10没有的东西会消失，两者都有的会保留。专为Win1
 首先确保你正在运行Win11的 **正式版** ，如果你加入了 **Windows Insider Preivew** ，请想办法回到 **正式版** 
 
 接下来我们先去下载Win10的ISO，前往 https://www.microsoft.com/zh-cn/software-download/windows10 ，如果你发现你没有可以下载ISO文件的地方，如图
-![](https://i0.hdslb.com/bfs/openplatform/815c890a796de96db9635cfccd7f13e73c67fe8b.png)
+![](../img/85d83f2ade18d1ec444f5f53f5b647d7.png)
 
 点击F12，打开Devtools，切换为设备仿真
-![](https://i0.hdslb.com/bfs/openplatform/32f39d2dc57849c7ac06bba823b74b54e0626d98.png)
+![](../img/9530a59667276ab1d96fdb0d4df51ef2.png)
 
 按F5，刷新页面，此时网页就会认为你是手机，就会让你下载ISO了
-![](https://i0.hdslb.com/bfs/openplatform/58aa3eef9b2a90ae79df77f674713954cf3302f4.png)
+![](../img/9d0ed459d5ba3cebe0fef5a0545b77fd.png)
 
 选择版本 **Windows 10 （多版本ISO）**
-![](https://i0.hdslb.com/bfs/openplatform/1de31c290a24df8b9d47346ae143cc70d9a79999.png)
+![](../img/999932ad8d1407290d8d27511ef70825.png)
 
 选择 **简体中文**
-![](https://i0.hdslb.com/bfs/openplatform/518922788b3e333ab8f27d189326fdce9a677b39.png)
+![](../img/7836344e0e39fb37ec3344abf4b20bba.png)
 
 下载 **64位版本的ISO**
-![](https://i0.hdslb.com/bfs/openplatform/f650dfdc30cc6e65e448a57f92f405f31c633963.png)
+![](../img/c310fc339f0b3e94c6ee96fee89ef4d3.png)
 
 得到ISO文件
-![](https://i0.hdslb.com/bfs/openplatform/be67b65d3f111a9bf1e721289f56e5b427824ce7.png)
+![](../img/332531b22181a7fc0df11d69b426b028.png)
 
 确保你安装了 **支持解压缩ISO** 的软件，如 [Bandizip 官方网站 - 免费压缩软件下载 (Windows)](https://www.bandisoft.com/bandizip/) ，**解压ISO文件**
-![](https://i0.hdslb.com/bfs/openplatform/336434bb859565e37018462296a479ff4cb331fe.png)
+![](../img/71492d49f2d73ab5729deb86d1fff2fb.png)
 
 打开 **已解压的ISO** 文件夹，重命名 `setup.exe` 为 `setup1.exe`
-![](https://i0.hdslb.com/bfs/openplatform/368c12e62dce59995774a5d9db4c7754614ad7c9.png)
+![](../img/4a24a661be8d01b836a705f4d3962a6f.png)
 
 更改文件属性 - 兼容性为 **Windows 8** 
-![](https://i0.hdslb.com/bfs/openplatform/d3ec517398570a00d4aa8db4a42a4b0b7cc1182a.png)
+![](../img/873173da4ac4a9881182b1ba87554a3a.png)
 
 下载伪装文件： [Win11ToWin10.zip](https://acofork-my.sharepoint.com/:u:/g/personal/af_acofork_onmicrosoft_com/ESxJWKgjjHVEhlNoBG4oNWUB_-rGTlLRh1CkXdLoxJsGpw?e=8s79zt) 目的是强制激活安装程序中的 **保数据升级** 
 
 解压出 `ei.cfg` 和 `setupcompat.dll` 。将其复制到ISO文件夹下的 `sources` 文件夹并替换其中已有的文件
-![](https://i0.hdslb.com/bfs/openplatform/c14c458561dc088258d7ce49160241a28a35c5b9.png)
+![](../img/7faab8cb4eeb0f38f2bfdcf6f6ac4c1a.png)
 
 打开 `setup1.exe` ，**更改 Windows 安装程序下载更新的方式**，选择 **不是现在**，然后一路下一步
-![](https://i0.hdslb.com/bfs/openplatform/7894b67c9709e012818d61b2732ab006e25a50ff.png)
+![](../img/1c147c2f85203889220fcb9910f1b048.png)
 
 等待变为 **准备就绪，可以安装** ，并确保 **保留个人文件和应用** ，选择 **安装** 
-![](https://i0.hdslb.com/bfs/openplatform/7f7e02ccdbb28678b57c031e105dcb75e595acf1.png)
+![](../img/852fe67f3827c6d79ff7ea138a3b3135.png)
 
 等待设备开机时从 **白条转圈** 变为 **白点转圈** ，即Windows10已被安装
-![](https://i0.hdslb.com/bfs/openplatform/6a77f301fe6859a4e67619f4fbe3ed98cbef2f6e.png)
+![](../img/64c9351ea6d1021073a54902b06a1581.png)
 
 接下来你第一次开机可能会黑屏。表现为用户登录后随着一声警告声并且黑屏，此时移动鼠标可以看到光标移动，但无法点击屏幕上的任何元素
 

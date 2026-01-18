@@ -2,7 +2,7 @@
 title: UptimeRobot，无需自托管的服务监控！
 published: 2025-09-04T04:03:56
 description: '之前曾用过BetterStack这样的云端服务监控，但是免费计划的监控数量仅有10个，而今天推荐的这个支持高达50个！'
-image: 'https://i0.hdslb.com/bfs/openplatform/a008806243d1cc0afd973f8a85e36304222cf363.png'
+image: '../img/5634db9fa568e5eb0ff1032cc942515c.png'
 tags: [UptimeRobot]
 
 draft: false 
@@ -17,12 +17,12 @@ lang: ''
 
 然后点击 `Status pages` 创建展示页面
 
-![](https://i0.hdslb.com/bfs/openplatform/5369154d12710068fcda5681dd1ca2d2aae62bfb.png)
+![](../img/ae859428d5090263df2f26aaafe9f70d.png)
 
 建议设置为自动添加，这样就无需手动将监控一个个添加到页面，你的账户下每创建一个新的监控都会实时同步到你的展示页上
 
 配置完毕后， 在 `Public status page, hosted on` 后就是你的监控展示页面
 
-![](https://i0.hdslb.com/bfs/openplatform/c91867b742b285701652cf88360102522730c3a9.png)
+![](../img/a1eddd1a4ec78cf7075092de40d17b15.png)
 
-![](https://i0.hdslb.com/bfs/openplatform/a1522924878c06e11102f5898130cf3b20b18a95.png)
+![](../img/7b6db84245266c96513068091e0fe7f2.png)

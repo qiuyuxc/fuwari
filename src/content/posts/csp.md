@@ -2,7 +2,7 @@
 title: CSP标头是什么？为什么有人能神不知鬼不觉地盗走你的信息？
 published: 2025-07-31
 description: 'CSP是内容安全策略，它可以防止攻击者向您的网站恶意注入脚本以盗走用户信息'
-image: 'https://i0.hdslb.com/bfs/openplatform/2837da538c5fbd3eb9708406b96934d58851f8b0.webp'
+image: '../img/222d4f1b010edad0c9381466985e1677.webp'
 tags: [XSS攻击, CSP]
 category: '记录'
 draft: false 
@@ -15,7 +15,7 @@ lang: ''
 
 不出意外，你的浏览器会弹出一个提示
 
-![](https://i0.hdslb.com/bfs/openplatform/c499fd6568bc0dbd8bd0e5771a071f1129b3d475.webp)
+![](../img/cee96b8d21423ec601131f6d6c091fce.webp)
 
 # 这是如何做到的？
 
@@ -48,7 +48,7 @@ HTML内容为
 
 比如你输入 https://none-csp-demo.pages.dev/nocsp?name=AcoFork 网页就会显示
 
-![](https://i0.hdslb.com/bfs/openplatform/fd25d7667b8fbc86ca84eaab81b8088ae0c8c0a3.webp)
+![](../img/a6bfe0f1b2ef95c302d42197b2775a74.webp)
 
 而根据源码 网页是通过 `innerHTML` 直接进行文本插入的
 
@@ -62,11 +62,11 @@ https://none-csp-demo.pages.dev/nocsp?name=%3Cimg%20src=x%20onerror=%22alert(%27
 
 你会发现网站并没有打印出任何用户名，而且浏览器还弹出了一个奇怪的窗口
 
-![](https://i0.hdslb.com/bfs/openplatform/a7443bc6b874c8d18f9a956edce45fcbf12f64f2.webp)
+![](../img/f4e9e925851eec064798ed5cf43c01e7.webp)
 
 我们F12查看当前网页的源代码
 
-![](https://i0.hdslb.com/bfs/openplatform/80c12eadaf402b18f09298f7481d6cc5f064762d.webp)
+![](../img/346341b07016523623dc51d7ce43e16c.webp)
 
 发现在 `<span id="name"></span>` 中
 
@@ -101,7 +101,7 @@ https://none-csp-demo.pages.dev/csp?name=%3Cimg%20src=x%20onerror=%22alert(%27XS
 
 你会发现并未弹出提示框，并且F12控制台出现报错
 
-![](https://i0.hdslb.com/bfs/openplatform/03777bbc137cad8162972a2fece89e3d19a14d89.webp)
+![](../img/da738aa0b71774c7a227f0334698f00e.webp)
 
 **以下是GPT给出的翻译和解释**
 

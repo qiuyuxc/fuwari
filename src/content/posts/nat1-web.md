@@ -2,7 +2,7 @@
 title: NAT1开放内网网站
 published: 2025-05-31
 description: '利用CF动态重定向透过STUN+Lucky WebHook实时更新STUN端口实现NAT1家宽建站'
-image: https://i0.hdslb.com/bfs/openplatform/8d8b5fca833eaa8a77b5c2b2241412b498e222ef.webp
+image: ../img/e5fde6b2e9da66c64874221aa3e60287.webp
 tags: [NAT1, Lucky, Cloudflare]
 category: '教程'
 draft: false 
@@ -15,7 +15,7 @@ lang: ''
 
 # 原理
 
-![](https://i0.hdslb.com/bfs/openplatform/5039032985eab9aea4d368e284effacc22207623.webp)
+![](../img/b97b0c2c6c2ac778569cd46cd738adcb.webp)
 
 # 正式开始
 
@@ -23,25 +23,25 @@ lang: ''
 
 创建拥有如下图权限的令牌，使得Lucky可以使用此令牌设置DDNS、签发SSL、更新Cloudflare动态重定向
 
-![](https://i0.hdslb.com/bfs/openplatform/e300941fb13cc10ad96f69bfa659f776d35a8045.webp)
+![](../img/fb9cd35ad17712f840d479e347fdd41d.webp)
 
 ### 创建基底Cloudflare动态重定向规则
 
 如图填写，替换为你的域名
-![](https://i0.hdslb.com/bfs/openplatform/c76b4fb73f9bfed8121750954f469e71657a60ee.webp)
+![](../img/ef50aa12c67da25d39aca460472fde54.webp)
 
 表达式： `wildcard_replace(http.request.full_uri, "*://*.072103.xyz/*", "https://${2}.stun.072103.xyz:6666/${3}")`
 
 观察网址，记录下如下图的数据
 
-![](https://i0.hdslb.com/bfs/openplatform/2a480149d417fc48f69f6fd787d8285be48e4939.webp)
+![](../img/47ae2c63aedf028a1003eddedf691756.webp)
 
 打开开发者工具后，再保存，确保抓到这样的包，保存备用
-![](https://i0.hdslb.com/bfs/openplatform/7d6d5a028fe3ac2690aaeb65019c2a496f327b55.webp)
+![](../img/d4e15bcec0738ec0b1aa224e23b79f1c.webp)
 
 将 `dash.cloudflare.com/api` 改为 `api.cloudflare.com/client` 。将刚才获得的红框内的内容填写到 `rules` 后面
 
-![](https://i0.hdslb.com/bfs/openplatform/dfafaff9e722d34e35ddb0badb94bd46ecca170f.webp)
+![](../img/38f11469b49a6c903738c8243ca25839.webp)
 
 如果你不是第一次更新，可能会带有一个 `"position":{"index":1},` 删除它，否则后面的WebHook将会出错。
 
@@ -59,31 +59,31 @@ https://api.cloudflare.com/client/v4/zones/f305febd3a25b5bb3a46b802328a75a8/rule
 
 ### 让Cloudflare接管 *.072103.xyz 的流量
 
-![](https://i0.hdslb.com/bfs/openplatform/8f28f981862f4f22a80baacde4daaa125fa5ebca.webp)
+![](../img/68ec65d02b5b8236735dc34bd87c1dd9.webp)
 
 ### 配置Lucky DDNS
 
-![](https://i0.hdslb.com/bfs/openplatform/f5add9a94aaff8f255f3b40442bc25cdd1862f66.webp)
+![](../img/18ecc5cb5dbd7b3b84f3351d10cd207d.webp)
 
 ### 配置Lucky SSL/TLS证书
 
-![](https://i0.hdslb.com/bfs/openplatform/237200b2c36a5336e0e9184d606943626df0ecb4.webp)
+![](../img/acef4a44cfd46fd74be3a53850f1c7c7.webp)
 
 ### 配置Lucky Web服务
 
-![](https://i0.hdslb.com/bfs/openplatform/b41d707dec6f09bc7eefa339ea502d511d1a2171.webp)
+![](../img/892278328bca4317ddadfb0240f1f909.webp)
 
 ### 配置Lucky STUN
 
 注：我这里使用了路由器的端口转发，将Lucky的16666（Web服务）端口转发到了路由器的17777端口。如果你不会端口转发，请**不要启用** `不使用Lucky内置端口转发` 并且**目标端口**填写16666
 
-![](https://i0.hdslb.com/bfs/openplatform/5bc213d63be5e8ad4376b04627864f92ad4c5b23.webp)
+![](../img/8ca6ec26ae1e40b61aa1dd1e025c79b8.webp)
 
 ### 配置WebHook
 
 如图配置
 
-![](https://i0.hdslb.com/bfs/openplatform/51fd6838b629fac6583f51506b084abe3444f2ba.webp)
+![](../img/ae7d5b6e00985b2ea8cea7890fa26dc2.webp)
 
 接口地址：你之前记录的 `https://api.cloudflare.com/...`
 

@@ -2,7 +2,7 @@
 category: 教程
 description: 使用CF Worker进行Github全站代理，并且防止网站被Cloudflare投诉为钓鱼网站。同时这也是一个通用的二次重写反代
 draft: false
-image: https://i0.hdslb.com/bfs/openplatform/3c95336890b6d17709c3c9b48652c4ea9b12ed0d.webp
+image: ../img/b7715a6c04e3961aaf7acfd00cbb3eff.webp
 lang: ''
 published: 2025-04-15
 tags: [Cloudflare Worker]

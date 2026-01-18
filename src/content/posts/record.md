@@ -2,7 +2,7 @@
 category: 记录
 description: 一些记录，不定时更新
 draft: false
-image: https://t.alcy.cc/ycy
+image: /random/h
 lang: zh_CN
 published: 1999-01-01
 tags:
@@ -221,13 +221,13 @@ masquerade:
 
 二叉树树自用： fenliu.072103.xyz
 
-![](https://i0.hdslb.com/bfs/openplatform/06550b09896b29ebda7b78a835ef7a2170b5d22a.webp)
+![](../img/a99c1d498c8faafe22fd6e8999ed3f1c.webp)
 
-[CM大佬](https://blog.cmliussss.com/)： cf.090227.xyz![](https://i0.hdslb.com/bfs/openplatform/328f5fa2c279600cc3d9679c1f8328a9de7262cf.webp)
+[CM大佬](https://blog.cmliussss.com/)： cf.090227.xyz![](../img/b4b79f9bdfb864b7a5f88be4cf0fb2f0.webp)
 
 [微测网](https://www.wetest.vip/page/cloudflare/cname.html)：cloudflare.182682.xyz
 
-![](https://i0.hdslb.com/bfs/openplatform/0bca5b125c0e62ee75dd2eb817f71017519761fd.webp)
+![](../img/a370abe0a2c92b01073038367e0fe518.webp)
 
 ---
 

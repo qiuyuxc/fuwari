@@ -2,7 +2,7 @@
 title: 将你的Linux硬盘映射到Windows？
 published: 2025-08-03
 description: '如何像Windows一样管理Linux文件？SSHFS来帮你！'
-image: 'https://i0.hdslb.com/bfs/openplatform/db66ec8f73f687ffcbf40c74e1500c6b95a8d935.png'
+image: '../img/915c8a4c66edad14bd3e67e0da7dddcd.png'
 tags: [SSHFS]
 category: '教程'
 draft: false 
@@ -21,20 +21,20 @@ lang: ''
 
 打开
 
-![](https://i0.hdslb.com/bfs/openplatform/b74ed6309be0c62e39f8cbcd8ac36a20190c345b.png)
+![](../img/38ea74ec12e49b165428b42b53672986.png)
 
 如果的sshfs-win没有安装在默认位置需要手动指定一下，进入 `Settings` 
 
-![](https://i0.hdslb.com/bfs/openplatform/7ee555c699ac4024e356d565905a4bc08b782e29.png)
+![](../img/9efc1acae962b1cf410a761ba81e6a11.png)
 
 接下来点击 `Add Connection` 懂的都懂
 
-![](https://i0.hdslb.com/bfs/openplatform/d5933a3e4cab9495b2989d44ac1c789b41bdf680.png)
+![](../img/a8778aa81be2da7f32fdec9215f1b01f.png)
 
 保存后点击连接按钮
 
-![](https://i0.hdslb.com/bfs/openplatform/2f0b1c4f87785dcd5c7c1a23155398c7736e6061.png)
+![](../img/44ccd8ce8e9e3c6b695d49d3009fc6aa.png)
 
 接着你就能在文件资源管理器看到你的盘了
 
-![](https://i0.hdslb.com/bfs/openplatform/6072da0ea5653d7c2ae936031232cb46a25f1216.png)
+![](../img/10623855f0202e67a3ffd148532d08ce.png)

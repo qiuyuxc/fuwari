@@ -2,7 +2,7 @@
 title: 为任何站点对接Giscus并且配置反垃圾！
 published: 2025-08-04
 description: '你是否在寻找一个评论系统而又不想自托管？又饱受垃圾评论的叨扰？'
-image: 'https://i0.hdslb.com/bfs/openplatform/722bfd0749d9a584237961a98cfe9ea843cefe02.png'
+image: '../img/320c766fc1dc950841b1bea80cce894b.png'
 tags: [Giscus, 评论区]
 category: '教程'
 draft: false 
@@ -17,13 +17,13 @@ lang: ''
 
 然后在仓库设置中 **启用** `Discussion` 功能
 
-![](https://i0.hdslb.com/bfs/openplatform/7aa4d3bd867f0479675226bc6a268f1fee3881e7.png)
+![](../img/a1735144acc5bc34240c1ff7899b24c9.png)
 
 前往 https://giscus.app/zh-CN
 
 首先填写你的仓库，通过检查
 
-![](https://i0.hdslb.com/bfs/openplatform/ad1f4b7503139122c9e90e27bb3f9722c24618b9.png)
+![](../img/4b7ecd61b76395d0dd65170e99f24893.png)
 
 接下来的 `映射关系` 十分重要！
 
@@ -33,23 +33,23 @@ lang: ''
 
 - title：只要你换**标题**了，评论和页面就无法匹配
 
-![](https://i0.hdslb.com/bfs/openplatform/af8949b4b7e4d0245cb140bfabe5daca07e9bded.png)
+![](../img/ca8671c8ac95d880b36d81a3abf790d9.png)
 
 分类推荐选择 **公告（announcements）**
 
-![](https://i0.hdslb.com/bfs/openplatform/92531d1afaa7edcecc606d4ca276e469f8afc5fd.png)
+![](../img/2d701bd61a7b3900e4e66b2abf5f9de3.png)
 
 特性按需勾选
 
-![](https://i0.hdslb.com/bfs/openplatform/2fd809d6c9992978a110142d4ca823a1a98de570.png)
+![](../img/cdf7f751669ad7eab2151497fd15c4b7.png)
 
 主题按喜好选择。更改后主题会立即呈现
 
-![](https://i0.hdslb.com/bfs/openplatform/8fac88888b167e0bd971654f7fcd758277efd338.png)
+![](../img/73bf6fb7b0f1bd4f885aa25aa453637a.png)
 
 最后将这段JS复制，放置在你想作为评论区的区块即可
 
-![](https://i0.hdslb.com/bfs/openplatform/b32dae55b3b642da480e2dc73a30cc79d4e90631.png)
+![](../img/8883d897d170cbfd74dfdc7fe1f5e9f4.png)
 
 # 配置Akismet
 
@@ -59,7 +59,7 @@ lang: ''
 
 选择 Akismet Personal 订阅，将滑块拉到0$，记录得到的 Akismet API Key
 
-![](https://i0.hdslb.com/bfs/openplatform/bfc08a99230b9065075012e3cb4f7e2538ca91a2.png)
+![](../img/ce0be212de3509c8da0b3b6b67faa733.png)
 
 前往 https://github.com/afoim/giscus-fuwari/blob/main/.github/workflows/akismet-comment-check.yml
 
@@ -69,13 +69,13 @@ lang: ''
 
 - AKISMET_API_KEY：你的Akismet API Key
 
-- GH_TOKEN：前往 https://github.com/settings/tokens 创建一个具有 `repo` `write:discussion` `user` 权限的Github个人令牌![](https://i0.hdslb.com/bfs/openplatform/22a95a6b6172b373060baf6b9912135606bbde90.png)
+- GH_TOKEN：前往 https://github.com/settings/tokens 创建一个具有 `repo` `write:discussion` `user` 权限的Github个人令牌![](../img/7b8a20bb7b315e59d4a549109857e985.png)
 
 测试反垃圾是否有效，发送内容为 `viagra-test-123` 的评论。该评论一定会被当作垃圾评论
 
 查看Github Action是否做出删评行为
 
-![](https://i0.hdslb.com/bfs/openplatform/9f65e803745a9684d462887dd0624f084dadacd9.png)
+![](../img/eed4dff3fa13922443af905b5f28d9ac.png)
 
 # 封禁用户
 
@@ -95,4 +95,4 @@ lang: ''
 
 配置临时交互限制，这样新用户就无法对您的存储库进行任何操作
 
-![](https://i0.hdslb.com/bfs/openplatform/92ec5a1b47d277dcbd45efddb6ce161fde43a46a.png)
+![](../img/08a786ab7ee091d5de5478268b4aeecd.png)

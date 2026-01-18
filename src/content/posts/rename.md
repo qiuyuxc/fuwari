@@ -2,7 +2,7 @@
 title: 记录一下批量重命名插件咋写的
 published: 2025-09-06T01:59:26
 description: '因为重装系统了，一些小插件丢失了，要重写，然后又把之前的坑踩了一遍'
-image: 'https://i0.hdslb.com/bfs/openplatform/fef9151e641bad1e25ffc303a2ec1b9f05a7a34e.png'
+image: '../img/d7a4c045f1ae74fe38b8dff65bc2a2ec.png'
 tags: [Python]
 
 draft: false 
@@ -61,4 +61,4 @@ lang: ''
 
 这下就对了
 
-![](https://i0.hdslb.com/bfs/openplatform/db7c38946b5f898e61032a1c53a8c769427238b9.png)
+![](../img/08f6570c7b4dffa03c49bcb2b64eb232.png)

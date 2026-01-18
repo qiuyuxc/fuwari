@@ -2,7 +2,7 @@
 title: 教你搭建Chevereto这个超级强大的图床！
 published: 2025-07-16
 description: '被宝塔开心版的站长推荐了Chevereto这个图床，刚好刚刚嫖了个免费的虚拟主机，让我们开始折腾！'
-image: https://i0.hdslb.com/bfs/openplatform/874af98077f03033456c235384fbffefec187887.webp
+image: ../img/374e2fc0a80832c6f67fd65fbf4c6679.webp
 tags: [Chevereto, 图床]
 category: '教程'
 draft: false 
@@ -21,7 +21,7 @@ https://b23.tv/E8Z34KM
 
 你就会得到这一坨
 
-![](https://i0.hdslb.com/bfs/openplatform/131f1e210250d8588dd162e1f2295bf999d69a72.webp)
+![](../img/00dc61d3df492140b80ef66f1d8aa97a.webp)
 
 这里开始分支！如果你是Apache请什么都不要动，它会自动检测 `.htaccess` 。如果你是Nginx请配置 `nginx.txt` 里面的伪静态规则
 
@@ -47,7 +47,7 @@ MYSQL 需要 8.0 以上
 
 如果你用的虚拟主机跟博主一样，也是ispmanager，请这样设置PHP
 
-![](https://i0.hdslb.com/bfs/openplatform/d98e6116f59ca3703705cdc2e44110f46549f278.webp)
+![](../img/c69826d77a7fb9650a2a4fecaaa63abc.webp)
 
 一切就绪，访问你的站点进行Chevereto的安装向导
 
@@ -55,7 +55,7 @@ MYSQL 需要 8.0 以上
 
 如果出现问题，请尝试以管理员身份登录Chevereto，在管理员设置 -> 系统中开启调试模式。这样设置后，Chevereto在出现错误就会告诉你具体发生了什么问题
 
-![](https://i0.hdslb.com/bfs/openplatform/66524c70403d3d278f16ea52e2743300a8161299.webp)
+![](../img/8ed4a12ae15f49a5c107574f1fd31ba0.webp)
 
 如果我连系统设置都进不去？请自行找你的PHP Error Log来分析问题
 

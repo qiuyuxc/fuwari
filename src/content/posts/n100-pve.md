@@ -2,7 +2,7 @@
 category: 记录
 description: 在N100小主机上安装PVE，然后在其中安装飞牛NAS和Debian，实现追番建站分离，并且易扩展，易迁移
 draft: false
-image: https://i0.hdslb.com/bfs/openplatform/1a38798930cc72682431623b42ff78af58cb90bd.webp
+image: ../img/4270a637719e6990244a3c32fbc3c275.webp
 lang: ''
 published: 2024-10-28
 tags:
@@ -67,7 +67,7 @@ title: N100 - PVE（fnOS+Debian）基建记录
   
   - 同意许可协议
   
-  - 依次执行白框操作![](https://i0.hdslb.com/bfs/openplatform/fd9b482449ef8fbc03bc62584af16b5b476bbc49.webp)
+  - 依次执行白框操作![](../img/0d1662c5dfe1c759d43dd1950e06507e.webp)
   
   - 扩容local：`lvextend -rl +100%FREE /dev/pve/root`
 
@@ -77,7 +77,7 @@ title: N100 - PVE（fnOS+Debian）基建记录
 
 - 下载驱动：
   
-  [https://www.realtek.com/Download/List?cate\_id=584](https://www.realtek.com/Download/List?cate_id=584)![](https://i0.hdslb.com/bfs/openplatform/989ebf97d079b1953869a76e1d003e78db48f75f.webp)
+  [https://www.realtek.com/Download/List?cate\_id=584](https://www.realtek.com/Download/List?cate_id=584)![](../img/bbbf44985b98c193eb1ca72199de34d8.webp)
 
 - 解压，安装：`sh autorun.sh`
 
@@ -154,7 +154,7 @@ title: N100 - PVE（fnOS+Debian）基建记录
 
 #### 路由器设置DMZ主机为PVEIP
 
-- ![](https://i0.hdslb.com/bfs/openplatform/2bcb82c6026cbbb12b8a405fd3357cd5a3194325.webp) 
+- ![](../img/4a88e3944fddc9d31cdd936af9e1eeb7.webp) 
 
 #### 安装Lucky
 
@@ -162,7 +162,7 @@ title: N100 - PVE（fnOS+Debian）基建记录
 
 - 通过`host:16601` 进入Lucky后台，设置STUN穿透
 
-- ![](https://i0.hdslb.com/bfs/openplatform/4ac1bceff52e630849fb20a74c705094d172a07f.webp)
+- ![](../img/680e40663d799730a847f9b37fb4a966.webp)
 
 # 2\. fnOS
 
@@ -172,11 +172,11 @@ title: N100 - PVE（fnOS+Debian）基建记录
   
   [https://www.fnnas.com/](https://www.fnnas.com/)
 
-- 上传至PVE：![](https://i0.hdslb.com/bfs/openplatform/9b8ae3a7b007c1a3961907dda8433580289af415.webp)
+- 上传至PVE：![](../img/839a6e4c95cf97688c250f2ca0e47ae1.webp)
 
 - 创建fnOS虚拟机，CPU类型选择host，步骤略
 
-- 直通核显和硬盘：![](https://i0.hdslb.com/bfs/openplatform/6079471dbba7e0a6b9886e82e2d5dff7e425e498.webp)
+- 直通核显和硬盘：![](../img/1eccd4de34634c25b2ef686d26672ea7.webp)
 
 - 如果你不知道你的核显和SATA控制器的PCI ID：`lspci`
   
@@ -210,9 +210,9 @@ title: N100 - PVE（fnOS+Debian）基建记录
 
 ## 配置
 
-- 前往飞牛设置，创建储存空间，Linear模式，选择刚才直通的硬盘![](https://i0.hdslb.com/bfs/openplatform/12e66e7f4395190febff6c89c9aea699d3f5e601.webp)
+- 前往飞牛设置，创建储存空间，Linear模式，选择刚才直通的硬盘![](../img/a520833bda8c57b05b66e4a55c91d810.webp)
 
-- 前往飞牛应用中心安装qBittorrent、影视，并且在设置给予目录读取权限![](https://i0.hdslb.com/bfs/openplatform/b812cc0ca835f2d5c72a024943458cd6087ee92e.webp)
+- 前往飞牛应用中心安装qBittorrent、影视，并且在设置给予目录读取权限![](../img/cf70e2839c777f8e3f699254fb3f6a98.webp)
 
 - 配置qBittorrent的用户名和密码
 
@@ -236,15 +236,15 @@ title: N100 - PVE（fnOS+Debian）基建记录
   ghcr.onani.cn/estrellaxd/auto_bangumi:latest
   ```
 
-- 进入`host:7892` 让AutoBangumi连接qBittorrent并配置下载地址![](https://i0.hdslb.com/bfs/openplatform/bd18fe9ff4659071d63c08e0a44d2b72221fff9a.webp)
+- 进入`host:7892` 让AutoBangumi连接qBittorrent并配置下载地址![](../img/2362136eabf346ef5fbb661404d5b668.webp)
 
 - 添加RSS。可前往[蜜柑计划 - Mikan Project](https://mikanime.tv/)获得各个字幕组的RSS
   
-  ![](https://i0.hdslb.com/bfs/openplatform/1c9dc17166f4e949375429d11b00b823cf9e6f50.webp)
+  ![](../img/41dadfcbe0f0b378c21a2daa3148b58d.webp)
   
   注意：使用[蜜柑计划 - Mikan Project](https://mikanime.tv/)时，请订阅单个字幕组的RSS，不要使用个人的RSS，会导致**只能获取到你所有追番的最新一集而不是单个番的全部剧集**
 
-- 打开飞牛影视，初始化并设置媒体库![](https://i0.hdslb.com/bfs/openplatform/7d8aa9bf85c391a0fb74246a6aefdfd6901cbff4.webp)
+- 打开飞牛影视，初始化并设置媒体库![](../img/b2b59953b78625c722a1b5fa2d7db66c.webp)
   
   - 注意：如果要刮削旧集旧番，请规范重命名，可以使用自动化工具：[Episode-ReName.zip | AcoFork-AList](https://alist.onani.cn/Episode-ReName.zip)
     
@@ -379,10 +379,10 @@ title: N100 - PVE（fnOS+Debian）基建记录
 
 # 成果展示（域名已弃用）
 
-![](https://i0.hdslb.com/bfs/openplatform/9fcefc4ab124ea23f35c87369320239412dbc5a7.webp)
+![](../img/ba737a801a0b760aa0cef02ed7adc811.webp)
 
 [https://blog.onani.cn](https://blog.onani.cn)
 
 [https://alist.onani.cn](https://alist.onani.cn)
 
-![](https://i0.hdslb.com/bfs/openplatform/18f3aea5b264e8de2d878d4b6c5377e1e61a3df5.webp)
+![](../img/bde17fb625f5e59f31a18df68fcb1e3b.webp)

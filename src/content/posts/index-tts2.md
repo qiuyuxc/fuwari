@@ -2,7 +2,7 @@
 title: 手把手教你克隆音色！
 published: 2025-10-13T12:19:06
 description: 仅需几秒的语音就能克隆音色，无需繁琐配置，一键启动！随时随地做蓝底神人小视频！
-image: https://i0.hdslb.com/bfs/openplatform/a5f09036777088e6e7766c125df9546279abb46e.png
+image: ../img/d6291780e362c6304b41ad754b7ba46f.png
 tags:
   - AI
   - 音色克隆
@@ -36,7 +36,7 @@ lang: ""
 # 简单使用
 
 WebUI页面长这样
-![](https://i0.hdslb.com/bfs/openplatform/44f2a2036d3e831bc4b07d460187d04a399c7489.png)
+![](../img/d427b200b488f489f2d61d9f75874c0d.png)
 
 首先将音色参考音频输入（几秒即可）
 
@@ -48,4 +48,4 @@ WebUI页面长这样
 
 推荐使用 **使用情感向量控制** 
 
-![](https://i0.hdslb.com/bfs/openplatform/48cf5dd26981174c47e13a7eca3a27a4b31c0116.png)
+![](../img/ac87966c9f0eb8547effd0cce0d5ac75.png)

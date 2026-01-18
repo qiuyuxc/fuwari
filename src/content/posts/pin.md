@@ -1,6 +1,6 @@
 ---
 title: 加群向导
-image: https://t.alcy.cc/ycy
+image: /random/h
 published: 2025-05-24
 pinned: true
 category: 置顶
@@ -21,7 +21,7 @@ description: 关于如何联系二叉树树~
 请先 [赞助](/sponsors/) 至少 **10 CNY** 后加群。赞助时建议留备注，加群问题填写你留的备注或者交易订单号
 点击链接加入群聊【2x.nz】： [QQ群](https://qm.qq.com/q/I2Quch1uy6)
 
-![](https://i0.hdslb.com/bfs/openplatform/f4873a5688d9abebdabf90a31cb4c0484b32793f.png)
+![](../img/2b7baf19be5d905f546d196877248b5d.png)
 
 # 非官方
 

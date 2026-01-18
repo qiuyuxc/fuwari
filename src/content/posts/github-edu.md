@@ -2,7 +2,7 @@
 title: Github新版学生认证怎么过？用记事本！
 published: 2025-08-08
 description: '突然被粉丝怂恿来弄Github学生认证，弄了半天，被我发现了奇技淫巧？？？'
-image: 'https://i0.hdslb.com/bfs/openplatform/6a3046a1ebc2b907e839a671e9bad3819c156a26.png'
+image: '../img/19426f8bc0302c86bbb4101d5a8fff44.png'
 tags: [Github]
 category: '教程'
 draft: false 
@@ -21,15 +21,15 @@ lang: ''
 
 如果不是，请进行更改，然后**一定要重登Github！**
 
-![](https://i0.hdslb.com/bfs/openplatform/19f355722238183e83b33820327d96eb327ad22f.png)
+![](../img/eddc6ebe82b48e9b09fafafea7b47585.png)
 
 接下来前往 [GitHub · Where software is built](https://github.com/settings/education/benefits) 推荐使用校园网或者流量
 
-![](https://i0.hdslb.com/bfs/openplatform/c783e028b9900c625da7bdd7cb56164af56ab787.png)
+![](../img/f59dee339f399606b0922ef46d3e5b91.png)
 
 按需选
 
-![](https://i0.hdslb.com/bfs/openplatform/4301c66a5d42d6de16495becd50a19f58663bb08.png)
+![](../img/816c1df7828d29e656b51b4e7fdb09ee.png)
 
 这里拍照注意！如果你的证件没有英文版的，请不要直接拍原件
 
@@ -39,11 +39,11 @@ lang: ''
 
 然后用手机拍照即可
 
-![](https://i0.hdslb.com/bfs/openplatform/9a9ebd46d6e28c7e31f78292fa7f31a725234a9e.png)
+![](../img/28ebecc6fef7afa51c80aa0a5f042713.png)
 
 不出意外，批准！
 
-![](https://i0.hdslb.com/bfs/openplatform/9c8eefec9d39e133cb50be911d6aeaf4b8dbd230.png)
+![](../img/bd551bd0ec63fb8f33842a1d0cdd4584.png)
 
 # 疑难解答
 

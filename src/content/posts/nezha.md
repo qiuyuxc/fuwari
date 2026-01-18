@@ -2,7 +2,7 @@
 title: 哪吒监控搭建教程
 published: 2025-09-03T04:58:25
 description: '想不想在上帝视角监测你的服务器？顺便再把Uptime Kuma的活也干了！'
-image: 'https://i0.hdslb.com/bfs/openplatform/798db480f934d7b34bed99f398500463677a1d1c.png'
+image: '../img/d3fd69c030527c90ff5a3dfff0956d2c.png'
 tags: [哪吒监控]
 
 draft: false 
@@ -39,15 +39,15 @@ curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/instal
 
 点击登录，默认账密均为 `admin` 
 
-![](https://i0.hdslb.com/bfs/openplatform/ec0e9f62aa3e67fd142393ba46b9d8c59d65bdde.png)
+![](../img/764e333797507c141f28f3ab580cf612.png)
 
 首先我们先更改管理员账密，鼠标移到右上角头像，点击 `个人信息` 
 
-![](https://i0.hdslb.com/bfs/openplatform/ce0082ddd49405fa5a4926a48586e1a9950d9263.png)
+![](../img/51eae5ea20fc3a7a3051cd2dbac5bd6f.png)
 
 然后点击 `更新个人资料` 更改管理员账密
 
-![](https://i0.hdslb.com/bfs/openplatform/e51fc519b23c7f36c26107b68e752beccecbc2f6.png)
+![](../img/b8c3cc10c373b9bc292bc64fd68414a1.png)
 
 # 安装后端（Agent）
 
@@ -55,7 +55,7 @@ curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/instal
 
 *如果你的服务器在中国大陆，可能无法连接上 `raw.githubusercontent.com`  。推荐使用镜像 `raw.gitmirror.com` 即可*
 
-![](https://i0.hdslb.com/bfs/openplatform/076c1229f38fa3ed97906858929f348592486f08.png)
+![](../img/1242750ca1d46a1e39735316b0a1ed48.png)
 
 # 配置服务
 
@@ -63,7 +63,7 @@ curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/instal
 
 *这里添加的所有服务，都可以借用已添加到哪吒探针的服务器进行监测*
 
-![](https://i0.hdslb.com/bfs/openplatform/043dc73c3c9aa30d48bdc08a843a33ed5faaeafa.png)
+![](../img/e9a08ecc90618c745d09790ed064f80f.png)
 
 # 配置通知
 
@@ -71,6 +71,6 @@ curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/instal
 
 # 疑难解答
 
-- 我套了CDN，服务器可以成功上线，但是获取到的IP为内网IP：请在系统设置中配置真实IP请求头![](https://i0.hdslb.com/bfs/openplatform/f169d170630623ab4f3076be0b5b638afbece3bc.png)
+- 我套了CDN，服务器可以成功上线，但是获取到的IP为内网IP：请在系统设置中配置真实IP请求头![](../img/02e009b3f7b7e80a08f9969e9d641f0d.png)
 
 - 我使用Cloudflare CDN，服务器始终无法上线。原因不明，但是可以通过部署该项目解决 [yumusb/nezha-new](https://github.com/yumusb/nezha-new)

@@ -2,7 +2,7 @@
 title: 大陆直连TG Web？触手可及！
 published: 2025-08-02
 description: 'TG Web采用前后端分离，前端可以部署到静态托管平台，而后端可以用各种服务反代'
-image: 'https://i0.hdslb.com/bfs/openplatform/632d242a8748c8c6c3340f7cdced6e54827a85d8.png'
+image: '../img/36b851b4d5dead9e36ba0f6307a122af.png'
 tags: [Telegram Web, 反向代理]
 category: '记录'
 draft: false 
@@ -692,7 +692,7 @@ lang: ''
 </style></div></div></body><div id="immersive-translate-popup" style="all: initial"></div></html>
 ```
 
-![](https://i0.hdslb.com/bfs/openplatform/b92cab4b31356c4083d0c07e469a04d2e4c72609.jpg)
+![](../img/5e04cba2bd095efc076eebcc88e111ab.jpg)
 
 # 原理
 
@@ -733,4 +733,4 @@ Fork 仓库： [morethanwords/tweb: Telegram Web K, GPL v3](https://github.com/m
 
 # 成功
 
-![](https://i0.hdslb.com/bfs/openplatform/df77b44f34f3776e71702d0c9d3eb1703693893d.jpg)
+![](../img/0d76bb9539533a525e25ccb3386d8eba.jpg)

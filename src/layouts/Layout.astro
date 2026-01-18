@@ -114,8 +114,7 @@ const bannerOffset =
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<script src="/js/umami-share.js" defer></script>
-
-		<meta name="referrer" content="no-referrer">
+		<script data-swup-ignore-script src="https://pic1.acofork.com/random.js" defer></script>
 		
 		
 		
@@ -163,27 +162,69 @@ const bannerOffset =
 			offset = offset - offset % 4;
 			document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
 			
-			// Background image loading detection
-			const bgUrl = getComputedStyle(document.documentElement).getPropertyValue('--bg-url').trim();
-			const bgEnable = getComputedStyle(document.documentElement).getPropertyValue('--bg-enable').trim();
+			// // Background image loading detection
+			// const bgUrl = getComputedStyle(document.documentElement).getPropertyValue('--bg-url').trim();
+			// const bgEnable = getComputedStyle(document.documentElement).getPropertyValue('--bg-enable').trim();
 			
-			if (bgUrl && bgUrl !== 'none' && bgEnable === '1') {
-				const img = new Image();
-				const urlMatch = bgUrl.match(/url\(["']?([^"')]+)["']?\)/);
-				if (urlMatch) {
-					img.onload = function() {
-						// 背景图片完全加载后，显示背景并启用卡片透明效果
-						document.body.classList.add('bg-loaded');
-						document.documentElement.style.setProperty('--card-bg', 'var(--card-bg-transparent)');
-						document.documentElement.style.setProperty('--float-panel-bg', 'var(--float-panel-bg-transparent)');
-					};
-					img.onerror = function() {
-						// Keep cards opaque if background image fails to load
-						console.warn('Background image failed to load, keeping cards opaque');
-					};
-					img.src = urlMatch[1];
-				}
-			}
+			// if (bgUrl && bgUrl !== 'none' && bgEnable === '1') {
+			// 	const img = new Image();
+			// 	const urlMatch = bgUrl.match(/url\(["']?([^"')]+)["']?\)/);
+			// 	if (urlMatch) {
+			// 		img.onload = function() {
+			// 			// 背景图片完全加载后，显示背景并启用卡片透明效果
+			// 			document.body.classList.add('bg-loaded');
+			// 			document.documentElement.style.setProperty('--card-bg', 'var(--card-bg-transparent)');
+			// 			document.documentElement.style.setProperty('--float-panel-bg', 'var(--float-panel-bg-transparent)');
+			// 		};
+			// 		img.onerror = function() {
+			// 			// Keep cards opaque if background image fails to load
+			// 			console.warn('Background image failed to load, keeping cards opaque');
+			// 		};
+			// 		img.src = urlMatch[1];
+			// 	}
+			// }
+
+            // Random Background Image Integration
+             // This waits for the external script to define window.getRandomPicH
+             /* 
+             function setRandomBackground() {
+                 // Check if the external random pic function is available
+                 if (typeof window.getRandomPicH === 'function') {
+                      const bgUrl = window.getRandomPicH();
+                      const bgBox = document.getElementById('bg-box');
+                      if (bgBox && bgUrl) {
+                         console.log('Setting random background:', bgUrl);
+                         const img = new Image();
+                         img.onload = function() {
+                             bgBox.style.backgroundImage = `url('${bgUrl}')`;
+                             bgBox.classList.add('loaded');
+                             bgBox.classList.add('random-loaded'); // Add specific class
+                             console.log('Random background loaded successfully');
+                             
+                             // Set CSS variables for transparency effects
+                             document.documentElement.style.setProperty('--card-bg', 'var(--card-bg-transparent)');
+                             document.documentElement.style.setProperty('--float-panel-bg', 'var(--float-panel-bg-transparent)');
+                         };
+                         img.onerror = function() {
+                             console.error('Failed to load random background image:', bgUrl);
+                         };
+                         img.src = bgUrl;
+                      } else {
+                        console.warn('bgBox not found or bgUrl is empty', { bgBox, bgUrl });
+                      }
+                 } else {
+                     // Retry after a short delay if script is not yet loaded
+                     console.log('Waiting for getRandomPicH...');
+                     setTimeout(setRandomBackground, 500);
+                 }
+             }
+             // Start attempting to set background
+             if (document.readyState === 'loading') {
+                 document.addEventListener('DOMContentLoaded', setRandomBackground);
+             } else {
+                 setRandomBackground();
+             }
+             */
 		</script>
 		<style define:vars={{
 			configHue,
@@ -223,7 +264,6 @@ const bannerOffset =
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background-image: var(--bg-url);
 				background-position: var(--bg-position);
 				background-size: var(--bg-size);
 				background-repeat: var(--bg-repeat);
@@ -231,16 +271,12 @@ const bannerOffset =
 				opacity: 0;
 				pointer-events: none;
 				z-index: -1;
-				transition: opacity 0.5s ease-in-out;
+				transition: opacity 0.3s ease-in-out;
 			}
-
-            .bg-loaded #bg-box {
-                opacity: var(--bg-opacity);
-            }
 			
-			/* #bg-box.loaded {
+			#bg-box.loaded {
 				opacity: calc(var(--bg-opacity) * var(--bg-enable));
-			} */
+			}
 		</style>
 
 		<slot name="head"></slot>
@@ -249,6 +285,41 @@ const bannerOffset =
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
 		<!-- Umami分析（自建） -->
 		<script defer src="https://umami.acofork.com/script.js" data-website-id="5d710dbd-3a2e-43e3-a553-97b415090c63" data-swup-ignore-script></script>
+		{/* - Umami分析（云-备用） 
+		<script defer src="https://cloud.umami.is/script.js" data-website-id="5d710dbd-3a2e-43e3-a553-97b415090c63" data-swup-ignore-script></script> */}
+		<!-- 超级吊的Umami eop -->
+		<script defer src="https://eo-umami.acofork.com/script.js" data-website-id="3f525363-5e81-4653-9491-1bd205c2a571"></script>
+		<!-- 百度统计 -->
+<script data-swup-ignore-script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b219eaad631b87d273cfe72148b2138b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- clarity 分析 -->
+<script type="text/javascript" data-swup-ignore-script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t8f0gmcwtx");
+</script>
+
+		<!-- 谷歌分析 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Z4LT4H8KH" data-swup-ignore-script></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9Z4LT4H8KH');
+</script>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "15fe148e91b34f10a15652e1a74ab26c"}' data-swup-ignore-script></script><!-- End Cloudflare Web Analytics -->
 	</head>
 	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
 		  data-overlayscrollbars-initialize
