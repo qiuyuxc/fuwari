@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content");
 const POSTS_DIR = path.join(CONTENT_DIR, "posts");
-const ASSETS_DIR = path.join(CONTENT_DIR, "assets");
+const ASSETS_DIR = path.join(CONTENT_DIR, "img");
 
 // 支持的图片格式
 const IMAGE_EXTENSIONS = [
