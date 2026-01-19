@@ -82,7 +82,7 @@ const bannerOffset =
 ---
 
 <!DOCTYPE html>
- <html lang={siteLang} class="bg-[var(--page-bg)] transition text-[12px] md:text-[16px]"  
+    <html lang={siteLang} class="bg-[var(--page-bg)] transition text-[12px] md:text-[16px] dark"  
 	  data-overlayscrollbars-initialize>  <!-- 手机端适配 -->
 
 	<head>
@@ -136,21 +136,21 @@ const bannerOffset =
 				localStorage.setItem('theme', DARK_MODE);
 			} else {
 				// Load the theme from local storage
-				const theme = localStorage.getItem('theme') || AUTO_MODE;
-				switch (theme) {
-					case LIGHT_MODE:
-						document.documentElement.classList.remove('dark');
-						break
-					case DARK_MODE:
+			const theme = localStorage.getItem('theme') || DARK_MODE;
+			switch (theme) {
+				case LIGHT_MODE:
+					document.documentElement.classList.remove('dark');
+					break
+				case DARK_MODE:
+					document.documentElement.classList.add('dark');
+					break
+				case AUTO_MODE:
+					if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 						document.documentElement.classList.add('dark');
-						break
-					case AUTO_MODE:
-						if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-							document.documentElement.classList.add('dark');
-						} else {
-							document.documentElement.classList.remove('dark');
-						}
-				}
+					} else {
+						document.documentElement.classList.remove('dark');
+					}
+			}
 			}
 
 			// Load the hue from local storage
@@ -161,71 +161,14 @@ const bannerOffset =
 			let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
 			offset = offset - offset % 4;
 			document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
-			
-			// // Background image loading detection
-			// const bgUrl = getComputedStyle(document.documentElement).getPropertyValue('--bg-url').trim();
-			// const bgEnable = getComputedStyle(document.documentElement).getPropertyValue('--bg-enable').trim();
-			
-			// if (bgUrl && bgUrl !== 'none' && bgEnable === '1') {
-			// 	const img = new Image();
-			// 	const urlMatch = bgUrl.match(/url\(["']?([^"')]+)["']?\)/);
-			// 	if (urlMatch) {
-			// 		img.onload = function() {
-			// 			// 背景图片完全加载后，显示背景并启用卡片透明效果
-			// 			document.body.classList.add('bg-loaded');
-			// 			document.documentElement.style.setProperty('--card-bg', 'var(--card-bg-transparent)');
-			// 			document.documentElement.style.setProperty('--float-panel-bg', 'var(--float-panel-bg-transparent)');
-			// 		};
-			// 		img.onerror = function() {
-			// 			// Keep cards opaque if background image fails to load
-			// 			console.warn('Background image failed to load, keeping cards opaque');
-			// 		};
-			// 		img.src = urlMatch[1];
-			// 	}
-			// }
-
-            // Random Background Image Integration
-             // This waits for the external script to define window.getRandomPicH
-             /* 
-             function setRandomBackground() {
-                 // Check if the external random pic function is available
-                 if (typeof window.getRandomPicH === 'function') {
-                      const bgUrl = window.getRandomPicH();
-                      const bgBox = document.getElementById('bg-box');
-                      if (bgBox && bgUrl) {
-                         console.log('Setting random background:', bgUrl);
-                         const img = new Image();
-                         img.onload = function() {
-                             bgBox.style.backgroundImage = `url('${bgUrl}')`;
-                             bgBox.classList.add('loaded');
-                             bgBox.classList.add('random-loaded'); // Add specific class
-                             console.log('Random background loaded successfully');
-                             
-                             // Set CSS variables for transparency effects
-                             document.documentElement.style.setProperty('--card-bg', 'var(--card-bg-transparent)');
-                             document.documentElement.style.setProperty('--float-panel-bg', 'var(--float-panel-bg-transparent)');
-                         };
-                         img.onerror = function() {
-                             console.error('Failed to load random background image:', bgUrl);
-                         };
-                         img.src = bgUrl;
-                      } else {
-                        console.warn('bgBox not found or bgUrl is empty', { bgBox, bgUrl });
-                      }
-                 } else {
-                     // Retry after a short delay if script is not yet loaded
-                     console.log('Waiting for getRandomPicH...');
-                     setTimeout(setRandomBackground, 500);
-                 }
-             }
-             // Start attempting to set background
-             if (document.readyState === 'loading') {
-                 document.addEventListener('DOMContentLoaded', setRandomBackground);
-             } else {
-                 setRandomBackground();
-             }
-             */
 		</script>
+        
+        <style define:vars={{ configHue }}>
+            /* Fallback for no-js: Apply default theme hue */
+            :root {
+                --hue: var(--configHue);
+            }
+        </style>
 		<style define:vars={{
 			configHue,
 			'page-width': `${PAGE_WIDTH}rem`,

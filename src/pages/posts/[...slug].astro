@@ -262,56 +262,9 @@ const jsonLd = {
 </style>
 
 <script define:vars={{ siteConfig }}>
-    // 图片加载动画处理
+    // 图片加载处理 (仅用于图片回退逻辑)
     function setupImageLoading() {
-        const markdownContent = document.querySelector('.markdown-content');
-        if (!markdownContent) return;
-
-        const images = markdownContent.querySelectorAll('img');
-        
-        images.forEach(img => {
-            // 跳过已经处理过的图片
-            if (img.parentElement.classList.contains('image-loading-wrapper')) return;
-
-            // 创建包裹容器
-            const wrapper = document.createElement('div');
-            wrapper.className = 'relative image-loading-wrapper rounded-xl overflow-hidden my-4';
-            wrapper.style.setProperty('--theme-hue', siteConfig.themeColor.hue);
-            
-            // 创建加载条
-            const loadingBar = document.createElement('div');
-            loadingBar.className = 'loading-bar absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-1 bg-gray-200 dark:bg-gray-700 z-10 rounded-full overflow-hidden';
-            loadingBar.innerHTML = `<div class="loading-progress h-full w-8 bg-[oklch(0.70_0.14_var(--theme-hue))] animate-loading-progress rounded-full"></div>`;
-            
-            // 插入DOM
-            img.parentNode.insertBefore(wrapper, img);
-            wrapper.appendChild(loadingBar);
-            wrapper.appendChild(img);
-
-            // 设置图片初始状态
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.5s ease-out';
-            loadingBar.style.transition = 'opacity 0.5s ease-out';
-
-            // 处理加载完成
-            const handleLoad = () => {
-                img.style.opacity = '1';
-                loadingBar.style.opacity = '0';
-                setTimeout(() => {
-                    loadingBar.remove();
-                }, 500);
-            };
-
-            if (img.complete) {
-                handleLoad();
-            } else {
-                img.onload = handleLoad;
-                img.onerror = () => {
-                    loadingBar.remove();
-                    img.style.opacity = '1';
-                };
-            }
-        });
+        // 保留此函数用于将来的其他处理，或者彻底删除
     }
 
     // 初始化
@@ -376,19 +329,6 @@ const jsonLd = {
 </script>
 
 <style is:global>
-    @keyframes loading-progress {
-        0% {
-            transform: translateX(-100%);
-        }
-        100% {
-            transform: translateX(400%);
-        }
-    }
-
-    .animate-loading-progress {
-        animation: loading-progress 1.5s ease-in-out infinite;
-    }
-    
     /* 确保包裹容器继承原图的圆角等样式 */
     .markdown-content img {
         margin: 0 !important; /* 让wrapper来控制margin */
