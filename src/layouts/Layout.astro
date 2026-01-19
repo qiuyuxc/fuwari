@@ -106,26 +106,56 @@ const bannerOffset =
         <meta property="og:type" content="website" />
         )}
 
-		<meta name="twitter:card" content="summary_large_image">
-		<meta property="twitter:url" content={Astro.url}>
-		<meta name="twitter:title" content={pageTitle}>
-		<meta name="twitter:description" content={description}>
-
+		
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<script src="/js/umami-share.js" defer></script>
-		<script data-swup-ignore-script src="https://pic1.acofork.com/random.js" defer></script>
+<meta name="generator" content={Astro.generator} />
+
+<script src="/js/umami-share.js" defer></script>
+
+<!-- 动态加载随机图片 -->
+<script data-swup-ignore-script>
+  // 图片 URL
+  const imgUrl = "https://im.c-u.xyz/api/random";  
+
+  // 创建图片元素
+  const img = document.createElement("img");
+  img.src = imgUrl;  // 设置图片来源
+  img.alt = "Random Image"; // 可选：设置图片的 alt 属性
+
+  // 设置样式，确保图片覆盖整个屏幕
+  img.style.position = "fixed"; // 使用固定定位，保持图片不随页面滚动
+  img.style.top = "0";  // 让图片固定在页面顶部
+  img.style.left = "0";  // 让图片固定在页面左侧
+  img.style.width = "100%";  // 图片宽度占满屏幕宽度
+  img.style.height = "100vh"; // 图片高度占满整个视口
+  img.style.objectFit = "cover"; // 图片按比例缩放并填满屏幕，可能会裁剪部分图片
+  img.style.zIndex = "-1";  // 让图片在其他内容的下面
+
+  // 错误处理
+  img.onerror = function() {
+    console.error("Failed to load image from:", imgUrl);
+    img.alt = "Image failed to load";  // 如果图片加载失败，显示备用文本
+  };
+
+  // 图片加载成功后插入到页面
+  img.onload = function() {
+    document.body.appendChild(img);  // 图片加载成功后插入到页面
+  };
+
+  // 尝试插入图片
+  document.body.appendChild(img); // 直接插入图片
+</script>
 		
 		
 		
 		{/* <!-- Content Security Policy -->
-		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://giscus.app https://hpic.072103.xyz https://umami.2x.nz https://hm.baidu.com https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://static.cloudflareinsights.com https://*.adtrafficquality.google; style-src 'self' 'unsafe-inline' https://giscus.app https://fonts.googleapis.com https://api.iconify.design; font-src 'self' https://fonts.gstatic.com https://api.iconify.design; img-src 'self' data: https: http:; connect-src 'self' https://umami.2x.nz https://hm.baidu.com https://www.google-analytics.com https://analytics.google.com https://api.iconify.design https://static.cloudflareinsights.com https://pic.2x.nz https://q2.qlogo.cn https://ep1.adtrafficquality.google https://googleads.g.doubleclick.net; frame-src 'self' https://giscus.app *.bilibili.com https://www.google.com https://googleads.g.doubleclick.net https://support.nodeget.com https://*.adtrafficquality.google; object-src 'none'; base-uri 'self'; form-action 'self';"> */}
+		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://giscus.app https://hpic.072103.xyz https://umami.2x.nz https://hm.baidu.com https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://static.cloudflareinsights.com https://*.adtrafficquality.google; style-src 'self' 'unsafe-inline' https://giscus.app https://fonts.googleapis.com https://api.iconify.design; font-src 'self' https://fonts.gstatic.com https://api.iconify.design; img-src 'self' data: https: http:; connect-src 'self' https://umami.2x.nz https://hm.baidu.com https://www.google-analytics.com https://analytics.google.com https://api.iconify.design https://static.cloudflareinsights.com https://pic.2x.nz https://q2.qlogo.cn https://ep1.adtrafficquality.google https://googleads.g.doubleclick.net; frame-src 'self' https://giscus.app *.bilibili.com https://www.google.com https://googleads.g.doubleclick.net https://support.nodeget.com https://*.adtrafficquality.google; object-src 'none'; base-uri 'self'; form-action 'self';">--> */} 
 		{favicons.map(favicon => (
 			<link rel="icon"
 				  href={favicon.src.startsWith('/') ? url(favicon.src) : favicon.src}
 				  sizes={favicon.sizes}
 				  media={favicon.theme && `(prefers-color-scheme: ${favicon.theme})`}
-			/>
+			/> 
 		))}
 
 		<!-- Set the theme before the page is rendered to avoid a flash -->
@@ -225,8 +255,8 @@ const bannerOffset =
 
 
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
-		<!-- Umami分析（自建） -->
-		<script defer src="https://umami.acofork.com/script.js" data-website-id="5d710dbd-3a2e-43e3-a553-97b415090c63" data-swup-ignore-script></script>
+		<!-- Umami分析（官方） -->
+		<script defer src="https://cloud.umami.is/script.js" data-website-id="010a1dd3-7465-4fa7-b73b-09b6ad6efe85"></script>
 
 	</head>
 	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}

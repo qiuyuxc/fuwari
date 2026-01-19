@@ -10,139 +10,149 @@ import type {
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 
+// 网站配置
 export const siteConfig: SiteConfig = {
-	title: "AcoFork Blog",
-	subtitle: "技术分享与实践",
+	title: "QuiYu Blog", // 网站标题
+	subtitle: "个人随笔与技术分享", // 网站副标题
 	description:
-		"分享网络技术、服务器部署、内网穿透、静态网站搭建、CDN优化、容器化部署等技术教程与实践经验的个人技术博客，专注于云原生、无服务器架构和前后端开发，作者为afoim/二叉树树",
-
-	keywords: [],
-	lang: "zh_CN", // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th'
+		"记录个人随笔与技术实践的独立站点，主要分享折腾过程中的想法与经验.", // 网站描述
+	keywords: ["Firefly",
+		"Fuwari",
+		"Astro",
+		"ACGN",
+		"博客",
+		"技术博客",
+		"静态博客",
+		], // 关键词
+	lang: "zh_CN", // 网站语言，支持 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th'
 	themeColor: {
-		hue: 361, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
-		fixed: false, // Hide the theme color picker for visitors
-		forceDarkMode: false, // Force dark mode and hide theme switcher
+		hue: 250, // 主题色的色相值，范围 0-360，例如红色：0，青色：200，粉色：345
+		fixed: false, // 是否固定主题色，不让用户更改
+		forceDarkMode: false, // 强制开启暗黑模式，且隐藏模式切换器
 	},
 	banner: {
-		enable: false,
-		src: "/xinghui.avif", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-
-		position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
+		enable: false, // 是否启用横幅
+		src: "/xinghui.avif", // 横幅图片的路径，相对 /src 目录。若路径以 '/' 开头，则相对 /public 目录
+		position: "center", // 横幅图片的显示位置，支持 'top', 'center', 'bottom'
 		credit: {
-			enable: true, // Display the credit text of the banner image
-			text: "Pixiv @chokei", // Credit text to be displayed
-
-			url: "https://www.pixiv.net/artworks/122782209", // (Optional) URL link to the original artwork or artist's page
+			enable: true, // 是否显示横幅图片的版权
+			text: "Pixiv @chokei", // 版权文本
+			url: "https://www.pixiv.net/artworks/122782209", // 版权链接（可选）
 		},
 	},
 	background: {
-		enable: true, // Enable background image
-		src: "", // Background image URL (supports HTTPS)
-		position: "center", // Background position: 'top', 'center', 'bottom'
-		size: "cover", // Background size: 'cover', 'contain', 'auto'
-		repeat: "no-repeat", // Background repeat: 'no-repeat', 'repeat', 'repeat-x', 'repeat-y'
-		attachment: "fixed", // Background attachment: 'fixed', 'scroll', 'local'
-		opacity: 1, // Background opacity (0-1)
+		enable: true, // 是否启用背景图片
+		src: "", // 背景图片的 URL（支持 HTTPS）
+		position: "center", // 背景位置，支持 'top', 'center', 'bottom'
+		size: "cover", // 背景大小，支持 'cover', 'contain', 'auto'
+		repeat: "no-repeat", // 背景重复方式，支持 'no-repeat', 'repeat', 'repeat-x', 'repeat-y'
+		attachment: "fixed", // 背景附件方式，支持 'fixed', 'scroll', 'local'
+		opacity: 1, // 背景透明度，范围 0-1
 	},
 	toc: {
-		enable: true, // Display the table of contents on the right side of the post
-		depth: 2, // Maximum heading depth to show in the table, from 1 to 3
+		enable: true, // 是否启用文章目录（右侧）
+		depth: 2, // 显示的标题深度，范围 1 到 3
 	},
 	notice: {
-		enable: false,
-		content: "本站图片资源已全面切换至 B 站图床。如出现加载异常等问题，请联系我们反馈。",
-		level: "warning",
+		enable: false, // 是否显示通知
+		content: "本站图片资源已全面切换至 B 站图床。如出现加载异常等问题，请联系我们反馈。", // 通知内容
+		level: "warning", // 通知级别，支持 'warning', 'info', 'error'
 	},
 	favicon: [
-		// Leave this array empty to use the default favicon
+		// 网站图标，若为空则使用默认的
 		{
-			src: "https://q2.qlogo.cn/headimg_dl?dst_uin=2726730791&spec=0", // Path of the favicon, relative to the /public directory
-			//   theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
-			//   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
+			src: "/home.png", // 网站图标路径，相对 /src 目录，若以 '/' 开头则相对 /public 目录
 		},
 	],
 	officialSites: [
-		{ url: "https://blog.acofork.com", alias: "CN" },
-		{ url: "https://2x.nz", alias: "Global" },
+		{ url: "https://blog.quiyu.cn", alias: "CN" }, // 官方站点链接
+		{ url: "https://www.quiyun.com", alias: "Global" }, // 全球站点链接
 	],
 	server: [
-		{ url: "", text: "Blog" },
-		{ url: "https://umami.acofork.com", text: "Umami" },
-		{ url: "https://pic1.acofork.com", text: "RandomPic" },
+		{ url: "", text: "Blog" }, // 服务器信息，站点的 URL
+		{ url: "https://cloud.umami.is", text: "Umami" }, // Umami 分析服务的 URL
+		{ url: "https://im.c-u.xyz/api/random", text: "RandomPic" }, // 随机图片服务的 URL
 	],
 };
 
+// 导航栏配置
 export const navBarConfig: NavBarConfig = {
 	links: [
-		LinkPreset.Home,
-		LinkPreset.Archive,
+		LinkPreset.Home, // 首页链接
+		LinkPreset.Archive, // 归档链接
 		{
-			name: "友链",
-			url: "/friends/", // Internal links should not include the base path, as it is automatically added
-			external: false, // Show an external link icon and will open in a new tab
+			name: "友链", // 友链页面
+			url: "/friends/", // 内部链接，不需要基路径，自动添加
+			external: false, // 是否为外部链接，外部链接会在新标签页打开
 		},
 		{
-			name: "赞助",
-			url: "/sponsors/", // Internal links should not include the base path, as it is automatically added
-			external: false, // Show an external link icon and will open in a new tab
+			name: "图床", // 赞助页面
+			url: "https://im.quiyu.cn", // 内部链接，不需要基路径，自动添加
+			external: true, // 是否为外部链接
 		},
 		{
-			name: "统计",
-			url: "https://umami.acofork.com/share/CdkXbGgZr6ECKOyK", // Internal links should not include the base path, as it is automatically added
-			external: true, // Show an external link icon and will open in a new tab
+			name: "统计", // 网站统计链接
+			url: "https://cloud.umami.is/share/n1v9LfSuJEOe7HoO", // 内部链接，不需要基路径，自动添加
+			external: true, // 外部链接，打开新标签页
 		},
 		{
-			name: "监控",
-			url: "https://status.acofork.com", // Internal links should not include the base path, as it is automatically added
-			external: true, // Show an external link icon and will open in a new tab
+			name: "监控", // 监控链接
+			url: "https://star.quiyu.cn", // 内部链接，不需要基路径，自动添加
+			external: true, // 外部链接，打开新标签页
 		},
 	],
 };
 
+// 个人信息配置
 export const profileConfig: ProfileConfig = {
-	avatar: "https://q2.qlogo.cn/headimg_dl?dst_uin=2726730791&spec=0", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-	name: "二叉树树",
-	bio: "Protect What You Love.",
+	avatar: "/home.png", // 个人头像
+	name: "紜清", // 个人名称
+	bio: "", // 个人简介
 	links: [
 		{
-			name: "Bilibli",
-			icon: "fa6-brands:bilibili",
-			url: "https://space.bilibili.com/325903362",
+			name: "Bilibli", // B站链接
+			icon: "fa6-brands:bilibili", // 图标
+			url: "https://space.bilibili.com/325903362", // 链接
 		},
 		{
-			name: "GitHub",
-			icon: "fa6-brands:github",
-			url: "https://github.com/afoim",
+			name: "GitHub", // GitHub链接
+			icon: "fa6-brands:github", // 图标
+			url: "https://github.com/qiuyuxc", // 链接
 		},
 	],
 };
 
+// 许可证配置
 export const licenseConfig: LicenseConfig = {
-	enable: true,
-	name: "CC BY-NC-SA 4.0",
-	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+	enable: true, // 是否启用许可证
+	name: "CC BY-NC-SA 4.0", // 许可证名称
+	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/", // 许可证链接
 };
 
+// 图片回退配置
 export const imageFallbackConfig: ImageFallbackConfig = {
-	enable: false,
-	originalDomain: "https://eopfapi.acofork.com/pic?img=ua",
-	fallbackDomain: "https://eopfapi.acofork.com/pic?img=ua",
+	enable: false, // 是否启用图片回退功能
+	originalDomain: "https://im.c-u.xyz/api/random", // 原始图片域名
+	fallbackDomain: "https://im.c-u.xyz/api/random", // 回退图片域名
 };
 
+// Umami 配置
 export const umamiConfig: UmamiConfig = {
-	enable: true,
-	baseUrl: "https://umami.acofork.com",
-	shareId: "CdkXbGgZr6ECKOyK",
-	timezone: "Asia/Shanghai",
+	enable: true, // 是否启用 Umami 分析
+	baseUrl: "https://cloud.umami.is", // Umami 服务的基础 URL
+	shareId: "n1v9LfSuJEOe7HoO", // Umami 共享 ID
+	timezone: "Asia/Shanghai", // 时区
 };
 
+// 代码高亮配置
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
-	theme: "github-dark",
+	theme: "github-dark", // 代码高亮主题
 };
 
+// GitHub 编辑配置
 export const gitHubEditConfig: GitHubEditConfig = {
-	enable: true,
-	baseUrl: "https://github.com/afoim/fuwari/blob/main/src/content/posts",
+	enable: true, // 是否启用 GitHub 编辑
+	baseUrl: "https://github.com/qiuyuxc/fuwari/blob/main/src/content/posts", // GitHub 编辑的基础 URL
 };
 
-// todoConfig removed from here
+// todoConfig 已移除
