@@ -139,7 +139,7 @@ export const imageFallbackConfig: ImageFallbackConfig = {
 // Umami 配置
 export const umamiConfig: UmamiConfig = {
 	enable: true, // 是否启用 Umami 分析
-	baseUrl: "https://cloud.umami.is", // Umami 服务的基础 URL
+	baseUrl: "https://cloud.umami.is/analytics/us", // Umami 服务的基础 URL
 	shareId: "n1v9LfSuJEOe7HoO", // Umami 共享 ID
 	timezone: "Asia/Shanghai", // 时区
 };
