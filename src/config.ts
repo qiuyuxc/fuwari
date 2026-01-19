@@ -107,12 +107,12 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "/home.png", // 个人头像
 	name: "紜清", // 个人名称
-	bio: "", // 个人简介
+	bio: "Je pense, donc je suis", // 个人简介
 	links: [
 		{
 			name: "Bilibli", // B站链接
 			icon: "fa6-brands:bilibili", // 图标
-			url: "https://space.bilibili.com/325903362", // 链接
+			url: "https://space.bilibili.com", // 链接
 		},
 		{
 			name: "GitHub", // GitHub链接
