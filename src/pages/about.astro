@@ -1,0 +1,37 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";  
+---
+
+<MainGridLayout title="来源">
+    <div class="card-base p-6 md:p-8">
+        <h1 class="text-2xl font-bold text-black dark:text-white mb-6">来源</h1>
+
+        <p class="text-sm text-black/60 dark:text-white/60 mb-4">
+            当前使用的博客模板和魔改版本，感谢作者的开源贡献。
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Fuwari 仓库 -->
+            <a href="https://github.com/fuwari" target="_blank" class="repo-card">
+                <div class="flex items-center gap-2">
+                    <div class="relative w-5 h-5 rounded overflow-hidden">
+                        <img src="https://avatars.githubusercontent.com/u/25200299?v=4" loading="lazy" class="w-full h-full object-cover" alt="Fuwari 仓库" />
+                    </div>
+                    <div class="font-bold text-black dark:text-white">Fuwari</div>
+                </div>
+                <div class="text-sm text-black/50 dark:text-white/50">✨ 一个用 Astro 构建的静态博客模板。</div>
+            </a>
+
+            <!-- Afoim 仓库 -->
+            <a href="https://github.com/afoim/fuwari" target="_blank" class="repo-card">
+                <div class="flex items-center gap-2">
+                    <div class="relative w-5 h-5 rounded overflow-hidden">
+                        <img src="https://avatars.githubusercontent.com/u/180811437?v=4" loading="lazy" class="w-full h-full object-cover" alt="Afoim 仓库" />
+                    </div>
+                    <div class="font-bold text-black dark:text-white">Afoim</div>
+                </div>
+                <div class="text-sm text-black/50 dark:text-white/50">魔改版 Fuwari，自用博客。</div>
+            </a>
+        </div>
+    </div>
+</MainGridLayout>
