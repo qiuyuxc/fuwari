@@ -1,7 +1,7 @@
 ---
-title: 对CloudflareTunnel优选
+title: CloudflareTunnel的优选实践
 published: 2026-01-14
-description: '使用SaaS回源Tunnel并进行优选'
+description: '通过 Cloudflare Tunnel + SaaS，优化 Tunnel 站点的访问体验'
 image: 'https://im.c-u.xyz/images/38.webp'
 tags: [CDN,Cloudflare,Tunnel,SaaS]
 category: 'CDN'
@@ -10,12 +10,15 @@ lang: 'zh-cn'
 ---
 
 ## 准备阶段
->1.准备两个域名[付费/免费都可以]
-2.海外借记卡/PayPal[用于验证开通SaaS]
+> 1.准备两个域名[付费/免费都可以]
+
+> 2.海外借记卡/PayPal[用于验证开通SaaS]
 
 ## 理解
 >设域名分别为xik.com,cf.com,如需最终访问地址为*.xik.com,则使用cf.com为配置SaaS的域名,反之同理.
 [xik.com为主域名,cf.com为辅助域名]
+
+>如果你只有一个域名的话，可以使用子域名来作为替代如saas.cf.com
 
 
 在理解两者的关系后,开始进行实际操作

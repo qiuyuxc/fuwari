@@ -86,3 +86,75 @@ function loadButtonScript() {
 
 loadButtonScript();
 </script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- 页面的其他内容，比如 meta 标签和链接 -->
+</head>
+
+<body>
+  <!-- 其他内容 -->
+
+  <script>
+    // 在页面加载时设置默认主题为 dark（如果没有设置过）
+    if (!localStorage.getItem('theme')) {
+      localStorage.setItem('theme', 'dark'); // 默认设置为暗黑模式
+    }
+
+    // 根据 localStorage 的值应用主题
+    const theme = localStorage.getItem('theme');
+    switch (theme) {
+      case 'light':
+        document.documentElement.classList.remove('dark');
+        break;
+      case 'dark':
+        document.documentElement.classList.add('dark');
+        break;
+      case 'auto':
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        break;
+    }
+
+    // 主题切换按钮逻辑
+    let settingBtn = document.getElementById("display-settings-switch");
+    if (settingBtn) {
+      settingBtn.onclick = function () {
+        // 切换主题
+        let currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+          localStorage.setItem('theme', 'light');
+          document.documentElement.classList.remove('dark');
+        } else {
+          localStorage.setItem('theme', 'dark');
+          document.documentElement.classList.add('dark');
+        }
+
+        // 切换显示设置面板
+        let settingPanel = document.getElementById("display-setting");
+        if (settingPanel) {
+          settingPanel.classList.toggle("float-panel-closed");
+        }
+      };
+    }
+
+    // 导航菜单切换按钮逻辑
+    let menuBtn = document.getElementById("nav-menu-switch");
+    if (menuBtn) {
+      menuBtn.onclick = function () {
+        let menuPanel = document.getElementById("nav-menu-panel");
+        if (menuPanel) {
+          menuPanel.classList.toggle("float-panel-closed");
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

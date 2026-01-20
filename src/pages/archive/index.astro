@@ -8,3 +8,33 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
     <ArchivePanel></ArchivePanel>
 </MainGridLayout>
 
+<head>
+  <script>
+    // 如果没有设置过主题，直接将 localStorage.theme 设置为 "dark"
+    if (!localStorage.getItem('theme')) {
+      localStorage.setItem('theme', 'dark');
+    }
+
+    // 读取当前主题
+    const theme = localStorage.getItem('theme');
+
+    // 根据用户选择的主题应用样式
+    switch (theme) {
+      case 'light':
+        document.documentElement.classList.remove('dark');
+        break;
+
+      case 'dark':
+        document.documentElement.classList.add('dark');
+        break;
+
+      case 'auto':
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        break;
+    }
+  </script>
+</head>

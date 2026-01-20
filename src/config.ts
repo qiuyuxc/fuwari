@@ -28,7 +28,7 @@ export const siteConfig: SiteConfig = {
 	themeColor: {
 		hue: 250, // 主题色的色相值，范围 0-360，例如红色：0，青色：200，粉色：345
 		fixed: false, // 是否固定主题色，不让用户更改
-		forceDarkMode: false, // 强制开启暗黑模式，且隐藏模式切换器
+		forceDarkMode: false // 开启默认暗黑模式
 	},
 	banner: {
 		enable: false, // 是否启用横幅
