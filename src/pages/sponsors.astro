@@ -26,12 +26,14 @@ const sponsors = Object.values(
                 如果您觉得我的内容对您有帮助，欢迎通过以下方式支持我的创作。您的每一份支持都是我持续创作的动力！
             </p>
             <p class="text-sm text-black/60 dark:text-white/60">
-                所有赞助将用于网站维护、服务器费用以及内容创作。
+                Ciallo～ (&#8736&#183;&#969;&lt; )&#x2312;&#9733;
             </p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 max-w-4xl mx-auto">
-            <!-- 支付宝 -->
+
+            <!-- 不启用赞助：支付宝 -->
+            <!--
             <div class="donate-card">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="h-10 w-10 rounded-lg bg-blue-500 flex items-center justify-center">
@@ -43,13 +45,17 @@ const sponsors = Object.values(
                     </div>
                 </div>
                 <div class="qr-code-placeholder">
-                    <div class="relative w-48 h-48 mx-auto rounded-lg overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                        <img src="/sponsors/alipay.svg" alt="支付宝二维码" class="w-full h-full object-cover transition duration-500" />
+                    <div class="relative w-48 h-48 mx-auto rounded-lg overflow-hidden"
+                         style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
+                        <img src="/sponsors/alipay.svg" alt="支付宝二维码"
+                             class="w-full h-full object-cover transition duration-500" />
                     </div>
                 </div>
             </div>
+            -->
 
-            <!-- 微信支付 -->
+            <!-- 不启用赞助：微信支付 -->
+            <!--
             <div class="donate-card">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="h-10 w-10 rounded-lg bg-green-500 flex items-center justify-center">
@@ -61,8 +67,10 @@ const sponsors = Object.values(
                     </div>
                 </div>
                 <div class="qr-code-placeholder">
-                    <div class="relative w-48 h-48 mx-auto rounded-lg overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                        <img src="/sponsors/wechat.svg" alt="微信支付二维码" class="w-full h-full object-cover transition duration-500" />
+                    <div class="relative w-48 h-48 mx-auto rounded-lg overflow-hidden"
+                         style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
+                        <img src="/sponsors/wechat.svg" alt="微信支付二维码"
+                             class="w-full h-full object-cover transition duration-500" />
                     </div>
                 </div>
             </div>
@@ -73,9 +81,9 @@ const sponsors = Object.values(
 
         <br>
 
-        <!-- 其他支持方式 -->
+        <!-- 支持方式 -->
         <div class="card-base p-6 mb-6">
-            <h2 class="text-xl font-bold text-black dark:text-white mb-3">其他支持方式</h2>
+            <h2 class="text-xl font-bold text-black dark:text-white mb-3">支持方式</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="support-card">
                     <div class="flex items-center gap-2 mb-2">
@@ -108,14 +116,14 @@ const sponsors = Object.values(
                 </div>
             </div>
         </div>
-        <div class="sponsors-section card-base p-6">
+      <!--  <div class="sponsors-section card-base p-6">
             <h2 class="text-xl font-bold text-black dark:text-white mb-3 flex items-center gap-2">
                 <Icon name="material-symbols:group" class="text-[1.5rem] text-[var(--primary)]"></Icon>
                 <span>已赞助的小伙伴</span>
             </h2>
             <p class="text-sm text-black/60 dark:text-white/60 mb-4">
-            如果您已赞助，并且想加入赞助名单，<a target="_blank" href="https://github.com/afoim/fuwari/tree/main/src/data/sponsors" class="transition link text-[var(--primary)] font-medium underline">请点击这里提交</a>
-            </p>
+            如果您已赞助，并且想加入赞助名单，<a target="_blank" href="https://github.com/qiuyuxc/fuwari/tree/main/src/data/sponsors" class="transition link text-[var(--primary)] font-medium underline">请点击这里提交</a>
+            </p> -->
             <div class="sponsors-grid">
                 {sponsors.map((sponsor) => (
                     <div class="sponsor-card">
