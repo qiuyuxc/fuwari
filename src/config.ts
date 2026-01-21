@@ -71,7 +71,7 @@ export const siteConfig: SiteConfig = {
 	server: [
 		{ url: "", text: "Blog" }, // 服务器信息，站点的 URL
 	//	{ url: "https://cloud.umami.is", text: "Umami" }, // Umami 分析服务的 URL
-		{ url: "https://pic.quiyu.cn/random", text: "RandomPic" }, // 随机图片服务的 URL
+	//	{ url: "https://pic.quiyu.cn/random", text: "RandomPic" }, // 随机图片服务的 URL
 	],
 };
 
@@ -132,8 +132,8 @@ export const licenseConfig: LicenseConfig = {
 // 图片回退配置
 export const imageFallbackConfig: ImageFallbackConfig = {
 	enable: false, // 是否启用图片回退功能
-	originalDomain: "https://im.c-u.xyz/api/random", // 原始图片域名
-	fallbackDomain: "https://im.c-u.xyz/api/random", // 回退图片域名
+	originalDomain: "https://pic.quiyu.cn/random", // 原始图片域名
+	fallbackDomain: "https://pic.quiyu.cn/random", // 回退图片域名
 };
 
 // Umami 配置
