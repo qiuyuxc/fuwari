@@ -61,7 +61,7 @@ export const siteConfig: SiteConfig = {
 	favicon: [
 		// 网站图标，若为空则使用默认的
 		{
-			src: "/home.png", // 网站图标路径，相对 /src 目录，若以 '/' 开头则相对 /public 目录
+			src: "/favicon.png", // 网站图标路径，相对 /src 目录，若以 '/' 开头则相对 /public 目录
 		},
 	],
 	officialSites: [
