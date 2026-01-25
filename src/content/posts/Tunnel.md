@@ -2,7 +2,7 @@
 title: CloudflareTunnel的优选实践
 published: 2026-01-14
 description: '通过 Cloudflare Tunnel + SaaS，优化 Tunnel 站点的访问体验'
-image: 'https://im.c-u.xyz/images/38.webp'
+image: 'https://ipfs.klbbs.top/images/38.webp'
 tags: [CDN,Cloudflare,Tunnel,SaaS]
 category: 'CDN'
 draft: false 
@@ -27,7 +27,7 @@ lang: 'zh-cn'
 ## 实操
 >在你的Tunnel中给你需要优选的站点添加两个不同的域名[主域名与辅助域名]
 
-![示例](https://oss.quiyu.cn/1/1.png)
+![示例](/assets/image/Tunnel1.png)
 
 >在[辅助域名]的dns解析中添加任意[A,AAAAA,CNAME]记录值,开启小黄云,以用于回退源
 
@@ -36,7 +36,7 @@ lang: 'zh-cn'
 例如这边我将子域名指向了谷歌的8.8.8.8,只要保证小黄云是开启状态，走cloudflare即可
 
 
-![示例1](https://oss.quiyu.cn/1/2.png)
+![示例1](/assets/image/Tunnel2.png)
 
 
 再添加一条指向社区优选的CNAME记录,可以从以下站点获取
@@ -59,7 +59,7 @@ https://www.byoip.top/
 第1行填你最终需要访问的域名
 
 
-![示例5](https://oss.quiyu.cn/1/5.png)
+![示例5](/assets/image/Tunnel5.png)
 
 
 验证方法自行选择
@@ -78,8 +78,8 @@ https://www.byoip.top/
 
 >未优选
 
-![未优选](https://oss.quiyu.cn/1/3.png)
+![未优选](/assets/image/Tunnel3.png)
 
 >优选
 
-![优选](https://oss.quiyu.cn/1/4.png)
+![优选](/assets/image/Tunnel4.png)
