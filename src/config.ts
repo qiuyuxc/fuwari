@@ -78,27 +78,32 @@ export const siteConfig: SiteConfig = {
 // 导航栏配置
 export const navBarConfig: NavBarConfig = {
 	links: [
-		LinkPreset.Home, // 首页链接
-		LinkPreset.Archive, // 归档链接
+		LinkPreset.Home, 
+		LinkPreset.Archive, 
 		{
-			name: "友链", // 友链页面
-			url: "/friends/", // 内部链接，不需要基路径，自动添加
-			external: false, // 是否为外部链接，外部链接会在新标签页打开
+			name: "友链",  
+			url: "/friends/", 
+			external: false, 
 		},
 		{
-			name: "图床", // 赞助页面
-			url: "https://im.quiyu.cn", // 内部链接，不需要基路径，自动添加
-			external: true, // 是否为外部链接
+			name: "日志", 
+			url: "/xik/", 
+			external: false, 
 		},
 		{
-			name: "统计", // 网站统计链接
-			url: "https://cloud.umami.is/share/n1v9LfSuJEOe7HoO", // 内部链接，不需要基路径，自动添加
-			external: true, // 外部链接，打开新标签页
+			name: "统计", 
+			url: "https://cloud.umami.is/share/n1v9LfSuJEOe7HoO", 
+			external: true, 
 		},
 		{
-			name: "监控", // 监控链接
-			url: "https://star.quiyu.cn", // 内部链接，不需要基路径，自动添加
-			external: true, // 外部链接，打开新标签页
+			name: "站点状态", 
+			url: "https://star.quiyu.cn", 
+			external: true, 
+		},
+		{
+			name: "EdgeOne监控大屏", 
+			url: "https://nmer.quiyu.cn", 
+			external: true, 
 		},
 	],
 };
