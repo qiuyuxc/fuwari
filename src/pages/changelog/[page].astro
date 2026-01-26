@@ -1,0 +1,65 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { Icon } from "astro-icon/components";
+import { changelogs } from "../../data/changelog";
+
+export async function getStaticPaths({ paginate }) {
+  return paginate(changelogs, { pageSize: 5 });
+}
+
+const { page } = Astro.props;
+const pages = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+const getPageLink = (p) => `/changelog/${p}/`;
+---
+
+<MainGridLayout title="日志">
+    <div class="card-base p-6 md:p-8 mb-4">
+        <h1 class="text-2xl font-bold text-black dark:text-white mb-6">日志</h1>
+
+        <div class="space-y-6"> {page.data.map((item) => (
+                <div class="flex flex-col gap-1.5 group"> <div class="text-[10px] font-mono font-bold text-[var(--primary)] opacity-60 tracking-wider">
+                        {item.date}
+                    </div>
+                    <div class="text-sm text-black/70 dark:text-white/70 leading-relaxed group-hover:text-black dark:group-hover:text-white transition-colors">
+                        {item.content}
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    {page.lastPage > 1 && (
+        <div class="flex flex-row justify-center items-center gap-3 mt-4 mb-8">
+            {page.currentPage > 1 ? (
+                <a href={getPageLink(page.currentPage - 1)} class="btn-pager"><Icon name="material-symbols:chevron-left-rounded" class="text-2xl" /></a>
+            ) : (
+                <div class="btn-pager-disabled"><Icon name="material-symbols:chevron-left-rounded" class="text-2xl" /></div>
+            )}
+
+            <div class="flex flex-row gap-2 bg-card p-1 rounded-xl border border-black/5 dark:border-white/5">
+                {pages.map((p) => (
+                    <a href={getPageLink(p)} class={`w-8 h-8 flex items-center justify-center rounded-lg transition-all text-sm font-medium ${p === page.currentPage ? "bg-[var(--primary)] text-white shadow-sm" : "hover:bg-black/5 dark:hover:bg-white/5 text-black/60 dark:text-white/60"}`}>
+                        {p}
+                    </a>
+                ))}
+            </div>
+
+            {page.currentPage < page.lastPage ? (
+                <a href={getPageLink(page.currentPage + 1)} class="btn-pager"><Icon name="material-symbols:chevron-right-rounded" class="text-2xl" /></a>
+            ) : (
+                <div class="btn-pager-disabled"><Icon name="material-symbols:chevron-right-rounded" class="text-2xl" /></div>
+            )}
+        </div>
+    )}
+</MainGridLayout>
+
+<style>
+    .bg-card { background-color: var(--card-bg); }
+    .card-base { word-break: break-word; }
+    .btn-pager {
+        @apply w-10 h-10 rounded-lg flex items-center justify-center bg-card hover:bg-[var(--primary)] hover:text-white transition-all active:scale-95 border border-black/5 dark:border-white/5;
+    }
+    .btn-pager-disabled {
+        @apply w-10 h-10 rounded-lg flex items-center justify-center bg-card text-black/10 dark:text-white/20 cursor-not-allowed border border-black/5 dark:border-white/5;
+    }
+</style>

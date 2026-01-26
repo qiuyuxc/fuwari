@@ -71,7 +71,7 @@ export const siteConfig: SiteConfig = {
 	server: [
 		{ url: "", text: "Blog" }, // 服务器信息，站点的 URL
 	//	{ url: "https://cloud.umami.is", text: "Umami" }, // Umami 分析服务的 URL
-	//	{ url: "https://pic.quiyu.cn/random", text: "RandomPic" }, // 随机图片服务的 URL
+		{ url: "https://pic.quiyu.cn/random", text: "RandomPic" }, // 随机图片服务的 URL
 	],
 };
 
@@ -87,7 +87,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "日志", 
-			url: "/xik/", 
+			url: "/changelog/", 
 			external: false, 
 		},
 		{
