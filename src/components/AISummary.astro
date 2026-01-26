@@ -25,7 +25,6 @@ const { summary } = Astro.props;
 </div>
 
 <style>
-  /* 关键：定义一个可以在 CSS 中动画化的角度变量 */
   @property --angle {
     syntax: '<angle>';
     initial-value: 0deg;
@@ -33,13 +32,11 @@ const { summary } = Astro.props;
   }
 
   .ai-border-track {
-    /* 核心：利用双重 mask 彻底掏空中心，流光只会在 padding 的 1.5px 处渲染 */
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     -webkit-mask-composite: xor;
     padding: 1.5px;
     
-    /* 只有边缘有颜色，中心是空的 */
     background: conic-gradient(
       from var(--angle),
       transparent 70%,
@@ -52,7 +49,6 @@ const { summary } = Astro.props;
     to { --angle: 360deg; }
   }
 
-  /* 打字机光标 */
   .ai-explanation:not(.typing-complete)::after {
     content: '';
     display: inline-block;
@@ -72,11 +68,9 @@ const { summary } = Astro.props;
 
 <script>
   function initAISummary() {
-    // 每次执行前，先清理一下可能存在的旧状态
     const containers = document.querySelectorAll('.ai-explanation');
     
     containers.forEach(target => {
-      // 如果已经在打字或者打完了，就不重复触发
       if (target.getAttribute('data-is-typing') === 'true' || target.classList.contains('typing-complete')) return;
 
       const content = target.getAttribute('data-content') || '';
@@ -103,7 +97,6 @@ const { summary } = Astro.props;
         }
       }
 
-      // 只要出现在屏幕里就打字
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -117,7 +110,6 @@ const { summary } = Astro.props;
     });
   }
 
-  // 重点：解决跳转不打字。Swup 替换内容后，DOM 还没稳定，我们稍微等一下再扫
   const handleJump = () => {
     setTimeout(initAISummary, 300);
   };
@@ -125,7 +117,6 @@ const { summary } = Astro.props;
   document.addEventListener('swup:contentReplaced', handleJump);
   document.addEventListener('astro:page-load', handleJump);
   
-  // 首刷
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAISummary);
   } else {

@@ -12,7 +12,7 @@ import { LinkPreset } from "./types/config";
 
 // 网站配置
 export const siteConfig: SiteConfig = {
-	title: "QuiYu Blog", // 网站标题
+	title: "QiuYu Blog", // 网站标题
 	subtitle: "个人随笔与技术分享", // 网站副标题
 	description:
 		"记录个人随笔与技术实践的独立站点，主要分享折腾过程中的想法与经验.", // 网站描述
@@ -112,7 +112,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "/home.png", // 个人头像
 	name: "紜清", // 个人名称
-	bio: "Je pense, donc je suis", // 个人简介
+	bio: "别吵，我在思考.", // 个人简介
 	links: [
 		{
 			name: "Bilibli", // B站链接
