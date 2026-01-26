@@ -87,7 +87,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "日志", 
-			url: "/changelog/1", 
+			url: "/changelog/1/", 
 			external: false, 
 		},
 		{

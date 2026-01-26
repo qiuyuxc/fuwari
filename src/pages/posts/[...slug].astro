@@ -9,6 +9,7 @@ import { getDir, getPostUrlBySlug } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
 import { gitHubEditConfig, licenseConfig } from "src/config";
 import PostMetadata from "../../components/PostMeta.astro";
+import AISummary from "../../components/AISummary.astro";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import { profileConfig, siteConfig, umamiConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
@@ -105,6 +106,12 @@ const jsonLd = {
             {entry.data.image &&
                 <ImageWrapper id="post-cover" src={entry.data.image} basePath={path.join("content/posts/", getDir(entry.id))} class="mb-8 rounded-xl banner-container onload-animation"/>
             }
+            
+            {entry.data.custom_summary && (
+    <div class="onload-animation mb-6">
+        <AISummary summary={entry.data.custom_summary} />
+    </div>
+)}
 
 
             <Markdown class="mb-6 markdown-content onload-animation">

@@ -1,4 +1,5 @@
 export const changelogs = [
+  { date: '2026-01-27', content: '新增文章AI总结。' },
   { date: '2026-01-26', content: '增加日志页面,填充过往日志。优化了日志页面。' },
   { date: '2026-01-25', content: '修改部分链接,修复文章链接问题，快过年了，嘻嘻！' },
   { date: '2026-01-24', content: '修改站点图标。' },

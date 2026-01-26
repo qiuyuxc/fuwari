@@ -1,0 +1,134 @@
+---
+interface Props {
+  summary: string;
+}
+const { summary } = Astro.props;
+---
+
+<div class="ai-summary p-[1.5px] mb-6 relative rounded-xl overflow-hidden bg-[var(--primary)]/10 group">
+  <div class="absolute inset-0 z-0 ai-border-track pointer-events-none opacity-100"></div>
+  
+  <div class="relative z-10 bg-[var(--card-bg)] rounded-[11px] p-4 h-full w-full">
+    <div class="ai-title flex items-center gap-2 mb-3">
+      <div class="flex items-center justify-center bg-[var(--primary)]/10 rounded-lg p-1">
+        <img width="24" height="24" src="/gemini-color.png" alt="gemini-ai" class="opacity-90">
+      </div>
+      <span class="text-sm font-bold text-[var(--primary)] tracking-wider">AI 摘要</span>
+    </div>
+    
+    <div 
+      class="ai-explanation text-sm leading-relaxed text-black/70 dark:text-white/70 font-medium" 
+      data-content={summary}
+    >
+    </div>
+  </div>
+</div>
+
+<style>
+  /* 关键：定义一个可以在 CSS 中动画化的角度变量 */
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .ai-border-track {
+    /* 核心：利用双重 mask 彻底掏空中心，流光只会在 padding 的 1.5px 处渲染 */
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    padding: 1.5px;
+    
+    /* 只有边缘有颜色，中心是空的 */
+    background: conic-gradient(
+      from var(--angle),
+      transparent 70%,
+      var(--primary) 100%
+    );
+    animation: rotate-angle 2s linear infinite;
+  }
+
+  @keyframes rotate-angle {
+    to { --angle: 360deg; }
+  }
+
+  /* 打字机光标 */
+  .ai-explanation:not(.typing-complete)::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--primary);
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: blink 0.8s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>
+
+<script>
+  function initAISummary() {
+    // 每次执行前，先清理一下可能存在的旧状态
+    const containers = document.querySelectorAll('.ai-explanation');
+    
+    containers.forEach(target => {
+      // 如果已经在打字或者打完了，就不重复触发
+      if (target.getAttribute('data-is-typing') === 'true' || target.classList.contains('typing-complete')) return;
+
+      const content = target.getAttribute('data-content') || '';
+      if (!content) return;
+
+      target.setAttribute('data-is-typing', 'true');
+      target.innerText = '';
+      let index = 0;
+
+      const track = target.closest('.ai-summary')?.querySelector('.ai-border-track');
+
+      function type() {
+        if (index < content.length) {
+          target.innerText += content.charAt(index);
+          index++;
+          setTimeout(type, 30);
+        } else {
+          target.classList.add('typing-complete');
+          target.removeAttribute('data-is-typing');
+          if (track instanceof HTMLElement) {
+            track.style.transition = 'opacity 1s';
+            track.style.opacity = '0';
+          }
+        }
+      }
+
+      // 只要出现在屏幕里就打字
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            type();
+            observer.unobserve(target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(target);
+    });
+  }
+
+  // 重点：解决跳转不打字。Swup 替换内容后，DOM 还没稳定，我们稍微等一下再扫
+  const handleJump = () => {
+    setTimeout(initAISummary, 300);
+  };
+
+  document.addEventListener('swup:contentReplaced', handleJump);
+  document.addEventListener('astro:page-load', handleJump);
+  
+  // 首刷
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAISummary);
+  } else {
+    initAISummary();
+  }
+</script>
