@@ -49,6 +49,8 @@ https://www.byoip.top/
 
 切到主域名的dns,找到你Tunnel中添加的子域名解析记录,修改记录值为你指向优选的子域名,关闭小黄云
 
+>如y.cf.com指向了cf.090227.xyz,这里的主域名指向y.cf.com，非直接使用cf.090227.xyz
+
 
 回到辅助域名,选择侧边栏SSL/TSL 中的自定义主机,添加刚才设置的子域名[saas.quiyu.com]为回源域名
 
