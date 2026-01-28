@@ -23,7 +23,7 @@ https://yundun.console.aliyun.com/?p=scnew#/overviewNew
 
 
 一共是可以领两个ESA免费套餐，还有定制台历加上帆布包，其中帆布包需要有ESC实例。
-ESC实例可以去领免费的三个月试用，或者按量记费, 后续再删除实例也是可行的。
+ESC实例可以去领免费的三个月试用，或者按量计费, 后续再删除实例也是可行的。
 
 
 ![领取记录页](/assets/image/aliyunaq2.png)

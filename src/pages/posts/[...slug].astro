@@ -172,12 +172,15 @@ const jsonLd = {
             
 
             
-            <!-- Giscus 评论区 -->
             <div id="giscus-container"></div>
             <script is:inline>
                 function loadGiscus() {
-                    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                    const container = document.getElementById('giscus-container');
+                    if (!container) return;
                     
+                    container.innerHTML = '';
+                    
+                    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
                     const script = document.createElement('script');
                     script.src = "https://giscus.app/client.js";
                     script.setAttribute("data-repo", "qiuyuxc/fuwari-giscus");
@@ -195,44 +198,34 @@ const jsonLd = {
                     script.setAttribute("crossorigin", "anonymous");
                     script.async = true;
                     
-                    const container = document.getElementById('giscus-container');
-                    if (container) {
-                        container.innerHTML = '';
-                        container.appendChild(script);
-                    }
+                    container.appendChild(script);
                 }
 
-                // 监听主题变化
-                const observer = new MutationObserver((mutations) => {
-                    mutations.forEach((mutation) => {
-                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                            const iframe = document.querySelector('iframe.giscus-frame');
-                            if (iframe) {
-                                const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-                                iframe.contentWindow.postMessage({
-                                    giscus: {
-                                        setConfig: {
-                                            theme: theme
-                                        }
-                                    }
-                                }, 'https://giscus.app');
-                            }
-                        }
-                    });
-                });
-
-                observer.observe(document.documentElement, {
-                    attributes: true,
-                    attributeFilter: ['class']
-                });
-
-                // 初始加载
                 loadGiscus();
 
-                // 支持 Swup 页面切换
                 document.addEventListener('swup:contentReplaced', loadGiscus);
+
+                if (!window.giscusThemeObserver) {
+                    window.giscusThemeObserver = new MutationObserver((mutations) => {
+                        mutations.forEach((mutation) => {
+                            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                                const iframe = document.querySelector('iframe.giscus-frame');
+                                if (iframe) {
+                                    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                                    iframe.contentWindow.postMessage({
+                                        giscus: { setConfig: { theme: theme } }
+                                    }, 'https://giscus.app');
+                                }
+                            }
+                        });
+                    });
+                    window.giscusThemeObserver.observe(document.documentElement, {
+                        attributes: true,
+                        attributeFilter: ['class']
+                    });
+                }
             </script>
-    <br>
+   <br>
 
     <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full">
         <a href={entry.data.nextSlug ? getPostUrlBySlug(entry.data.nextSlug) : "#"}

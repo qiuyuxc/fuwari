@@ -1,0 +1,121 @@
+@property --ai-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@property --ai-len {
+    syntax: '<number>';
+    initial-value: 70;
+    inherits: false;
+}
+
+#ai-summary-wrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.6s cubic-bezier(0.25, 1, 0.5, 1), margin 0.6s ease;
+    will-change: grid-template-rows;
+    margin-bottom: 1.5rem;
+}
+
+#ai-summary-wrapper.is-collapsed {
+    grid-template-rows: 0fr;
+    margin-bottom: 0 !important;
+}
+
+.ai-summary-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.expand-pure-icon {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    z-index: 110;
+}
+
+.expand-pure-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 1.2px; 
+    background: conic-gradient(
+        from var(--ai-angle),
+        transparent 0%,
+        #ea4335 5%, 
+        #fbbc05 20%, 
+        #34a853 35%, 
+        #4285f4 50%, 
+        transparent calc(var(--ai-len) * 1%) 100%
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    animation: ai-triple-spin-flexible 3.5s linear infinite; 
+}
+
+@keyframes ai-triple-spin-flexible {
+    0% { --ai-angle: 0deg; --ai-len: 50; }
+    30% { --ai-len: 85; }
+    40% { --ai-angle: 360deg; --ai-len: 60; }
+    70% { --ai-len: 90; }
+    80% { --ai-angle: 720deg; --ai-len: 35; }
+    90% { --ai-len: 20; }
+    100% { --ai-angle: 1080deg; --ai-len: 50; }
+}
+
+.ai-border-track {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 12px;
+    padding: 1.5px;
+    background: conic-gradient(
+        from var(--ai-angle),
+        transparent 0%,
+        #ea4335 4%, 
+        #fbbc05 10%, 
+        #34a853 18%, 
+        #4285f4 28%, 
+        transparent 35% 100%
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0; 
+    transition: opacity 1.2s ease;
+    animation: ai-glow-spin-linear 1.5s linear infinite;
+}
+
+@keyframes ai-glow-spin-linear {
+    from { --ai-angle: 0deg; }
+    to { --ai-angle: 360deg; }
+}
+
+.force-hide { display: none !important; }
+
+#ai-type-target { 
+    opacity: 1; 
+    transition: opacity 0.3s ease; 
+    min-height: 1.5rem; 
+    display: block; 
+}
+
+#ai-type-target.is-typing-init { opacity: 0; }
+
+.state-flying { 
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease !important; 
+    transform: translateX(380px) scale(0) !important; 
+    opacity: 0 !important; 
+}

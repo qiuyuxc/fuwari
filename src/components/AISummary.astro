@@ -1,125 +1,117 @@
 ---
-interface Props {
-  summary: string;
-}
+import '../styles/ai-summary.css'; 
 const { summary } = Astro.props;
 ---
 
-<div class="ai-summary p-[1.5px] mb-6 relative rounded-xl overflow-hidden bg-[var(--primary)]/10 group">
-  <div class="absolute inset-0 z-0 ai-border-track pointer-events-none opacity-100"></div>
-  
-  <div class="relative z-10 bg-[var(--card-bg)] rounded-[11px] p-4 h-full w-full">
-    <div class="ai-title flex items-center gap-2 mb-3">
-      <div class="flex items-center justify-center bg-[var(--primary)]/10 rounded-lg p-1">
-        <img width="24" height="24" src="/gemini-color.png" alt="gemini-ai" class="opacity-90">
+<div id="ai-summary-wrapper" class="relative">
+  <button id="ai-expand-btn" class="absolute right-4 top-[-3.5rem] force-hide expand-pure-icon">
+    <img width="20" height="20" src="/gemini-color.png" alt="ai" class="relative z-10">
+  </button>
+
+  <div class="ai-summary-inner">
+    <div id="ai-main-container" class="relative p-[1px] rounded-xl bg-[var(--primary)]/10 transition-all duration-300">
+      <div id="ai-track" class="ai-border-track"></div>
+      <div class="relative z-10 bg-[var(--card-bg)] rounded-[11px] p-4 flex flex-col overflow-hidden shadow-sm">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <div class="bg-[var(--primary)]/10 rounded-lg p-1">
+              <img width="24" height="24" src="/gemini-color.png" alt="ai">
+            </div>
+            <span class="text-sm font-bold text-[var(--primary)] tracking-wider">AI 摘要</span>
+          </div>
+          <button id="ai-close-btn" class="p-2 text-[var(--primary)] hover:bg-[var(--primary)]/10 rounded-full transition-all cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div id="ai-type-target" class="text-sm leading-relaxed text-black/70 dark:text-white/70 font-medium is-typing-init" data-content={summary}></div>
       </div>
-      <span class="text-sm font-bold text-[var(--primary)] tracking-wider">AI 摘要</span>
-    </div>
-    
-    <div 
-      class="ai-explanation text-sm leading-relaxed text-black/70 dark:text-white/70 font-medium" 
-      data-content={summary}
-    >
     </div>
   </div>
 </div>
 
-<style>
-  @property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-  }
-
-  .ai-border-track {
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    padding: 1.5px;
-    
-    background: conic-gradient(
-      from var(--angle),
-      transparent 70%,
-      var(--primary) 100%
-    );
-    animation: rotate-angle 2s linear infinite;
-  }
-
-  @keyframes rotate-angle {
-    to { --angle: 360deg; }
-  }
-
-  .ai-explanation:not(.typing-complete)::after {
-    content: '';
-    display: inline-block;
-    width: 2px;
-    height: 1em;
-    background: var(--primary);
-    margin-left: 4px;
-    vertical-align: middle;
-    animation: blink 0.8s infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-</style>
-
 <script>
-  function initAISummary() {
-    const containers = document.querySelectorAll('.ai-explanation');
-    
-    containers.forEach(target => {
-      if (target.getAttribute('data-is-typing') === 'true' || target.classList.contains('typing-complete')) return;
+  function setupAI() {
+    const wrapper = document.getElementById('ai-summary-wrapper');
+    const main = document.getElementById('ai-main-container');
+    const expandBtn = document.getElementById('ai-expand-btn');
+    const textTarget = document.getElementById('ai-type-target');
+    const track = document.getElementById('ai-track');
+    const closeBtn = document.getElementById('ai-close-btn');
 
-      const content = target.getAttribute('data-content') || '';
-      if (!content) return;
+    if (!wrapper || !main || !expandBtn || !textTarget || !track || !closeBtn) return;
 
-      target.setAttribute('data-is-typing', 'true');
-      target.innerText = '';
-      let index = 0;
+    let typingTimer;
+    const ZWSP = '\u200B';
 
-      const track = target.closest('.ai-summary')?.querySelector('.ai-border-track');
+    function startTyping() {
+      if (typingTimer) cancelAnimationFrame(typingTimer);
+      const content = textTarget.getAttribute('data-content') || '';
+      textTarget.innerText = ZWSP;
+      textTarget.classList.remove('is-typing-init');
+      track.style.opacity = '1';
+      
+      let i = 0;
+      let lastTime = 0;
+      const interval = 22; 
 
-      function type() {
-        if (index < content.length) {
-          target.innerText += content.charAt(index);
-          index++;
-          setTimeout(type, 30);
-        } else {
-          target.classList.add('typing-complete');
-          target.removeAttribute('data-is-typing');
-          if (track instanceof HTMLElement) {
-            track.style.transition = 'opacity 1s';
-            track.style.opacity = '0';
+      function step(timestamp) {
+        if (!lastTime) lastTime = timestamp;
+        if (timestamp - lastTime >= interval) {
+          if (i < content.length) {
+            if (i === 0) textTarget.innerText = content.charAt(i++);
+            else textTarget.innerText += content.charAt(i++);
+            lastTime = timestamp;
+            typingTimer = requestAnimationFrame(step);
+          } else {
+            setTimeout(() => { track.style.opacity = '0'; }, 500);
           }
+        } else {
+          typingTimer = requestAnimationFrame(step);
         }
       }
+      typingTimer = requestAnimationFrame(step);
+    }
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            type();
-            observer.unobserve(target);
-          }
-        });
-      }, { threshold: 0.1 });
+    closeBtn.onclick = (e) => {
+      e.preventDefault();
+      if (typingTimer) cancelAnimationFrame(typingTimer);
+      track.style.opacity = '0';
+      main.classList.add('state-flying');
+      setTimeout(() => {
+        wrapper.classList.add('is-collapsed');
+        textTarget.classList.add('is-typing-init');
+        textTarget.innerText = ZWSP;
+      }, 150);
+      setTimeout(() => { expandBtn.classList.remove('force-hide'); }, 750);
+      localStorage.setItem('ai-collapsed', 'true');
+    };
 
-      observer.observe(target);
-    });
+    expandBtn.onclick = () => {
+      localStorage.setItem('ai-collapsed', 'false');
+      expandBtn.classList.add('force-hide');
+      textTarget.innerText = ZWSP;
+      textTarget.classList.add('is-typing-init');
+      wrapper.classList.remove('is-collapsed');
+      main.classList.remove('state-flying');
+      setTimeout(startTyping, 550);
+    };
+
+    const isCollapsed = localStorage.getItem('ai-collapsed') === 'true';
+    if (isCollapsed) {
+      wrapper.classList.add('is-collapsed');
+      expandBtn.classList.remove('force-hide');
+      textTarget.innerText = ZWSP;
+    } else {
+      textTarget.innerText = ZWSP;
+      setTimeout(startTyping, 800);
+    }
   }
 
-  const handleJump = () => {
-    setTimeout(initAISummary, 300);
-  };
-
-  document.addEventListener('swup:contentReplaced', handleJump);
-  document.addEventListener('astro:page-load', handleJump);
-  
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAISummary);
-  } else {
-    initAISummary();
-  }
+  document.addEventListener('astro:page-load', setupAI);
+  document.addEventListener('swup:contentReplaced', setupAI);
+  if (document.readyState === 'complete') setupAI();
+  else window.addEventListener('load', setupAI);
 </script>
