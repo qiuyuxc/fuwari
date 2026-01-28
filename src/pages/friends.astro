@@ -4,29 +4,34 @@ import type { Friend } from "@/types/data";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { Icon } from "astro-icon/components";
 
-const friends = Object.values(
+const allFriends = Object.values(
 	import.meta.glob<Friend>("@/data/friends/*.json", {
 		eager: true,
 		import: "default",
 	}),
 );
+
+const officialTechNames = ["EdgeOne","Cloudflare","Vercel","Netlify","Astro","Github","ESA","阿里云","腾讯云","华为云","afoim"];
+
+const techFriends = allFriends.filter(f => f.tech && officialTechNames.includes(f.name));
+const personalFriends = allFriends.filter(f => !f.tech || (f.tech && !officialTechNames.includes(f.name)));
 ---
 
 <MainGridLayout title="友链">
     <div class="card-base p-6 md:p-8">
         <div class="flex items-center gap-2 mb-6">
             <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
-                <Icon name="material-symbols:diversity-3" class="text-[1.5rem]">
+                <Icon name="material-symbols:diversity-3" class="text-[1.5rem]" />
             </div>
             <h1 class="text-2xl font-bold text-black dark:text-white">友链</h1>
         </div>
 
-        <!-- 申请友链 -->
-            <p class="text-sm text-black/60 dark:text-white/60 mb-4">
+        <p class="text-sm text-black/60 dark:text-white/60 mb-4">
             如果您也想加入友链名单，<a target="_blank" href="https://github.com/qiuyuxc/fuwari/tree/main/src/data/friends" class="transition link text-[var(--primary)] font-medium underline">请点击这里提交</a>
-            </p>
+        </p>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {friends.map((friend) => (
+            {personalFriends.map((friend) => (
                 <a href={friend.url} target="_blank" class="friend-card">
                     <div class="flex items-center gap-2">
                         <div class="relative w-5 h-5 rounded overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
@@ -39,8 +44,24 @@ const friends = Object.values(
             ))}
         </div>
 
-
-
+        {techFriends.length > 0 && (
+            <div class="mt-8 pt-8 tech-divider">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {techFriends.map((tech) => (
+                        <a href={tech.url} target="_blank" class="friend-card">
+                            <div class="flex items-center gap-2">
+                                <div class="relative w-5 h-5 rounded overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
+                                    <img src={tech.avatar} loading="lazy" class="w-full h-full object-cover transition-opacity duration-500" alt={`${tech.name}的头像`} />
+                                </div>
+                                <div class="font-bold text-black dark:text-white">{tech.name}</div>
+                            </div>
+                            <div class="text-sm text-black/50 dark:text-white/50">{tech.description}</div>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        )}
+    </div>
 </MainGridLayout>
 
 <style>
@@ -53,6 +74,10 @@ const friends = Object.values(
         -webkit-backdrop-filter: blur(12px);
     }
     
+    .tech-divider {
+        border-top: 2px dashed rgba(255, 255, 255, 0.2);
+    }
+
     .friend-card:active {
         scale: .98;
         background-color: var(--btn-regular-bg-active);
@@ -67,7 +92,7 @@ const friends = Object.values(
     }
     
     .friend-card:hover .text-sm {
-    @apply text-gray-700 dark:text-white;
+        @apply text-gray-700 dark:text-white;
     }
 
     .friend-card .font-bold,
