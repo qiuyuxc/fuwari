@@ -1,6 +1,6 @@
 ---
 title: 免费领取阿里云ESA套餐以及实物周边
-published: 2026-02-28
+published: 2026-01-28
 description: '2026年阿里云安全专享权益免费领取两个额外的免费ESA套餐和定制台历以及帆布包'
 image: '/assets/image/aliyunaq.png'
 tags: [阿里云,周边,ESA,aliyun]
