@@ -1,0 +1,164 @@
+---
+// src/components/MusicPlayer.astro
+const apiBase = "https://api.quiyu.cn/api";
+const playlistId = "17561415785";
+---
+
+<div id="music-card" transition:persist class="card-base w-full p-4 flex flex-col mb-4 overflow-hidden shadow-sm">
+    <div class="flex items-center gap-3">
+        <button id="master-play-btn" class="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full bg-[var(--primary)] text-white hover:scale-105 active:scale-95 transition-all">
+            <div class="flex items-center justify-center">
+                <svg id="svg-play" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <svg id="svg-pause" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+            </div>
+        </button>
+
+        <div class="flex-1 overflow-hidden text-left">
+            <div id="track-name" class="text-sm font-bold truncate text-black/90 dark:text-white/90">等待播放</div>
+            <div class="flex items-center justify-between mt-0.5">
+                <div id="track-artist" class="text-[11px] text-black/50 dark:text-white/50 truncate mr-2">Music Player</div>
+                <div id="track-time" class="text-[10px] text-black/40 dark:text-white/40 font-mono flex-shrink-0">00:00 / 00:00</div>
+            </div>
+        </div>
+
+        <button id="toggle-list-btn" class="p-2 transition text-black/50 dark:text-white/50 hover:text-[var(--primary)]">
+            <svg id="list-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        </button>
+    </div>
+
+    <div id="list-drawer" style="max-height: 0px; transition: max-height 0.4s ease-in-out; overflow: hidden;">
+        <div class="border-t border-black/5 dark:border-white/5 mt-3 pt-3 text-left">
+            <ul id="music-list" class="max-h-60 overflow-y-auto space-y-1 pr-1 custom-scrollbar">
+                <div class="text-center py-4 text-xs text-black/30 dark:text-white/30 italic">加载中...</div>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style is:global>
+    .custom-scrollbar::-webkit-scrollbar { width: 3px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+    .song-item-row { @apply transition-all cursor-pointer rounded-lg px-3 py-2 text-[0.825rem] flex justify-between items-center; }
+</style>
+
+<script is:inline define:vars={{ apiBase, playlistId }}>
+    (function() {
+        if (!window.fwAudio) {
+            window.fwAudio = new Audio();
+            window.fwAudioData = { list: [], index: -1, listOpen: false };
+        }
+        const audio = window.fwAudio;
+        const state = window.fwAudioData;
+
+        // 格式化秒数为 00:00
+        const formatTime = (seconds) => {
+            if (isNaN(seconds)) return "00:00";
+            const min = Math.floor(seconds / 60);
+            const sec = Math.floor(seconds % 60);
+            return (min < 10 ? "0" + min : min) + ":" + (sec < 10 ? "0" + sec : sec);
+        };
+
+        function init() {
+            const listDrawer = document.getElementById('list-drawer');
+            const listUl = document.getElementById('music-list');
+            const toggleBtn = document.getElementById('toggle-list-btn');
+            const timeDisplay = document.getElementById('track-time');
+
+            if (!listDrawer || !listUl) return;
+
+            listDrawer.style.maxHeight = state.listOpen ? "400px" : "0px";
+
+            const renderList = () => {
+                listUl.innerHTML = state.list.map((song, i) => {
+                    const isActive = state.index === i;
+                    const colorClass = isActive 
+                        ? "text-[var(--primary)] bg-[var(--primary-bg)] font-bold" 
+                        : "text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-white/5";
+                    return `<li class="song-item-row ${colorClass}" data-index="${i}">
+                                <div class="truncate flex-1">${song.title}</div>
+                                <div class="text-[10px] opacity-40 ml-3 flex-shrink-0">${song.author}</div>
+                            </li>`;
+                }).join('');
+
+                listUl.querySelectorAll('.song-item-row').forEach(el => {
+                    el.onclick = () => {
+                        const idx = parseInt(el.dataset.index);
+                        if(state.index === idx && !audio.paused) return;
+                        playTrack(idx);
+                    };
+                });
+            };
+
+            const playTrack = (idx) => {
+                state.index = idx;
+                const song = state.list[idx];
+                if (song && song.url) {
+                    audio.src = song.url;
+                    audio.play().catch(e => console.log("Playback failed:", e));
+                    renderList();
+                    updateUI();
+                }
+            };
+
+            const updateUI = () => {
+                const song = state.list[state.index];
+                if (song) {
+                    document.getElementById('track-name').innerText = song.title;
+                    document.getElementById('track-artist').innerText = song.author;
+                    updateTimeDisplay();
+                }
+                const isPaused = audio.paused;
+                document.getElementById('svg-play').classList.toggle('hidden', !isPaused);
+                document.getElementById('svg-pause').classList.toggle('hidden', isPaused);
+            };
+
+            const updateTimeDisplay = () => {
+                if (timeDisplay) {
+                    timeDisplay.innerText = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+                }
+            };
+
+            audio.onplay = updateUI;
+            audio.onpause = updateUI;
+            audio.ontimeupdate = updateTimeDisplay; // 更新当前进度
+            audio.onloadedmetadata = updateTimeDisplay; // 加载后获取总时长
+            
+            audio.onended = () => {
+                if (state.list.length > 0) {
+                    playTrack((state.index + 1) % state.list.length);
+                }
+            };
+            
+            audio.onerror = () => {
+                const nextIdx = (state.index + 1) % state.list.length;
+                playTrack(nextIdx);
+            };
+
+            // 初始化数据
+            if (state.list.length === 0) {
+                fetch(`${apiBase}?server=netease&type=playlist&id=${playlistId}`)
+                    .then(r => r.json()).then(res => { state.list = res; renderList(); });
+            } else {
+                renderList();
+                updateUI();
+            }
+
+            toggleBtn.onclick = () => {
+                state.listOpen = !state.listOpen;
+                listDrawer.style.maxHeight = state.listOpen ? "400px" : "0px";
+            };
+
+            document.getElementById('master-play-btn').onclick = () => {
+                if (state.index === -1) { 
+                    playTrack(0);
+                } else {
+                    audio.paused ? audio.play() : audio.pause();
+                    updateUI();
+                }
+            };
+        }
+
+        init();
+        document.addEventListener('astro:page-load', init);
+    })();
+</script>

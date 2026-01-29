@@ -81,7 +81,6 @@ const { summary } = Astro.props;
         typingTimer = requestAnimationFrame(step);
       }
 
-      // 清理并重新绑定
       closeBtn.onclick = (e) => {
         e.preventDefault();
         if (typingTimer) cancelAnimationFrame(typingTimer);
@@ -105,7 +104,6 @@ const { summary } = Astro.props;
         startTyping();
       };
 
-      // 初始判定
       if (localStorage.getItem('ai-collapsed') === 'true') {
         wrapper.classList.add('is-collapsed');
         expandBtn.classList.remove('force-hide');
@@ -123,5 +121,11 @@ const { summary } = Astro.props;
     };
 
     document.addEventListener('astro:page-load', setupAI);
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupAI);
+    } else {
+      setTimeout(setupAI, 0);
+    }
   })();
 </script>

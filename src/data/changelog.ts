@@ -1,4 +1,5 @@
 export const changelogs = [
+  { date: '2026-01-29', content: '添加音乐播放器。' },
   { date: '2026-01-28', content: '调整了友链页面,增加示例。' },
   { date: '2026-01-27', content: '新增文章AI总结。' },
   { date: '2026-01-26', content: '增加日志页面,填充过往日志。优化了日志页面。' },
