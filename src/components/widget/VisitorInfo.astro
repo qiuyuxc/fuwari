@@ -1,0 +1,210 @@
+---
+import WidgetLayout from "../WidgetLayout.astro";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	class?: string;
+	style?: string;
+}
+
+const className = Astro.props.class;
+const style = Astro.props.style;
+---
+
+<WidgetLayout name="访客信息" id="visitor-info" class={className} style={style}>
+    <div class="p-1"> 
+        <div class="flex justify-between items-center mb-3 pb-3 border-b border-dashed border-black/10 dark:border-white/10">
+            <div id="welcome-text" class="welcome-message text-[0.85rem] text-black/70 dark:text-white/70 leading-relaxed">
+                欢迎来到我的博客
+            </div>
+            <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-black/5 dark:bg-white/10 text-[0.75rem] text-black/50 dark:text-white/50 border border-black/5 dark:border-white/5">
+    <Icon name="material-symbols:location-on-outline-rounded" class="text-[0.9rem] text-[#38bdf8]" />
+    <span id="weather-val">加载中...</span>
+</div>
+        </div>
+
+        <div class="visitor-grid grid grid-cols-1 gap-y-2.5">
+            {[
+                { id: "ip-address", label: "IP 地址", icon: "material-symbols:terminal-rounded", color: "#a78bfa" },
+                { id: "location", label: "地理位置", icon: "material-symbols:location-on-rounded", color: "#f472b6" },
+                { id: "distance", label: "距离博主", icon: "material-symbols:near-me-rounded", color: "#67e8f9" },
+                { id: "isp", label: "运营商", icon: "material-symbols:router-rounded", color: "#6ee7b7" },
+                { id: "os", label: "操作系统", icon: "material-symbols:laptop-mac-outline", color: "#fbbf24" },
+                { id: "browser", label: "浏览器", icon: "material-symbols:public", color: "#93c5fd" },
+            ].map(item => (
+                <div class="info-item flex items-center text-[0.8rem]">
+                    <div class="icon-box w-6 h-6 rounded-full flex items-center justify-center mr-2.5 bg-black/5 dark:bg-white/10">
+                        <Icon name={item.icon} class="text-[0.9rem]" style={`color: ${item.color}`} />
+                    </div>
+                    <span class="label w-16 text-black/50 dark:text-white/50">{item.label}:</span>
+                    <span id={item.id} class="value font-medium text-black/80 dark:text-white/90 truncate">加载中...</span>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <div class="mt-4 pt-3 border-t border-dashed border-black/10 dark:border-white/10">
+        <button id="purity-btn" class="w-full py-2 px-3 rounded-xl border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-[0.8rem] font-bold">
+            <Icon name="material-symbols:shield-with-heart-rounded" class="text-base" />
+            <span id="btn-text">查看 IP 信息卡</span>
+        </button>
+        <div id="purity-card" class="hidden mt-2 overflow-hidden rounded-xl border border-black/5 dark:border-white/10">
+            <a href="https://ippure.com" target="_blank" rel="nofollow">
+                <img id="purity-img" class="w-full h-auto block opacity-0 transition-opacity duration-500" alt="IP Info Card" />
+            </a>
+        </div>
+    </div>
+</WidgetLayout>
+
+<script>
+    async function initVisitorInfo() {
+        const BLOGGER_LAT = 31.63494; 
+        const BLOGGER_LON = 120.347368;
+
+        const update = (id, val) => {
+            const el = document.getElementById(id);
+            if (el) el.innerText = val;
+        };
+
+                const fetchWeather = async () => {
+            try {
+                const res = await fetch('https://gdapi.quiyu.cn/weather', {
+                    headers: { 'X-Fuwari-Token': 'gdfuwari' }
+                });
+                const d = await res.json();
+                if (d.lives && d.lives[0]) {
+                    const w = d.lives[0];
+                    update('weather-val', `无锡 · ${w.weather} ${w.temperature}℃`);
+                }
+            } catch (e) {
+                update('weather-val', '天气失联');
+            }
+        };
+
+        const translateISP = (isp) => {
+            const i = isp.toLowerCase();
+            if (i.includes('telecom') || i.includes('chinanet')) return '中国电信';
+            if (i.includes('unicom')) return '中国联通';
+            if (i.includes('mobile')) return '中国移动';
+            if (i.includes('education') || i.includes('cernet')) return '中国教育网';
+            return isp;
+        };
+
+        const translateLoc = (country, region, city) => {
+            if (country !== 'China' && country !== 'CN') return `${country} ${city || ''}`;
+            const r = (region || '').toLowerCase();
+            const c = (city || '').toLowerCase();
+            const regionMap = {
+                'jiangsu': '江苏', 'anhui': '安徽', 'beijing': '北京', 'chongqing': '重庆', 'fujian': '福建', 'guangdong': '广东',
+                'gansu': '甘肃', 'guangxi': '广西', 'guizhou': '贵州', 'henan': '河南', 'hubei': '湖北', 'hebei': '河北',
+                'hainan': '海南', 'hong kong': '香港', 'heilongjiang': '黑龙江', 'hunan': '湖南', 'jilin': '吉林',
+                'jiangxi': '江西', 'liaoning': '辽宁', 'macao': '澳门', 'mongol': '内蒙古', 'inner mongolia': '内蒙古', 'ningxia': '宁夏',
+                'qinghai': '青海', 'sichuan': '四川', 'shandong': '山东', 'shanghai': '上海', 'shaanxi': '陕西',
+                'shanxi': '山西', 'taiwan': '台湾', 'tianjin': '天津', 'xinjiang': '新疆', 'xizang': '西藏',
+                'tibet': '西藏', 'yunnan': '云南', 'zhejiang': '浙江'
+            };
+            const jsCityMap = {
+                'wuxi': '无锡', 'nanjing': '南京', 'suzhou': '苏州', 'changzhou': '常州', 'nantong': '通',
+                'yangzhou': '扬州', 'yancheng': '盐城', 'xuzhou': '徐州', 'huai\'an': '淮安', 'lianyungang': '连云港',
+                'taizhou': '泰州', 'suqian': '宿迁', 'zhenjiang': '镇江'
+            };
+            let cnRegion = '';
+            for (let key in regionMap) { if (r.includes(key)) { cnRegion = regionMap[key]; break; } }
+            if (!cnRegion) return `中国 ${region || ''}`;
+            if (cnRegion === '江苏') {
+                let cnCity = '';
+                for (let key in jsCityMap) { if (c.includes(key)) { cnCity = jsCityMap[key]; break; } }
+                return cnCity ? `中国 江苏 ${cnCity}` : `中国 江苏`;
+            }
+            return `中国 ${cnRegion}`;
+        };
+
+        const fetchGeo = async () => {
+            const apis = [{ url: 'https://api.ip.sb/geoip', type: 'json' }, { url: 'http://ip-api.com/json/', type: 'json' }];
+            for (const api of apis) {
+                try {
+                    const res = await fetch(api.url);
+                    const d = await res.json();
+                    return {
+                        ip: d.ip || d.query,
+                        city: d.city,
+                        region: d.regionName || d.region_name || d.region,
+                        country: d.country || d.country_name || d.country_code,
+                        isp: d.isp || d.organization || d.org,
+                        lat: d.lat || d.latitude,
+                        lon: d.lon || d.longitude
+                    };
+                } catch (e) { continue; }
+            }
+            throw new Error('Fail');
+        };
+
+        const getOS = () => {
+            const ua = navigator.userAgent;
+            if (ua.includes('Win')) return 'Windows';
+            if (ua.includes('Mac')) return 'MacOS';
+            if (ua.includes('Linux')) return 'Linux';
+            if (ua.includes('Android')) return 'Android';
+            if (ua.includes('like Mac')) return 'iOS';
+            return '未知';
+        };
+
+        const getBrowser = () => {
+            const ua = navigator.userAgent;
+            if (ua.includes('Chrome') && !ua.includes('Edg')) return 'Chrome';
+            if (ua.includes('Safari') && !ua.includes('Chrome')) return 'Safari';
+            if (ua.includes('Firefox')) return 'Firefox';
+            if (ua.includes('Edg')) return 'Edge';
+            return '未知';
+        };
+
+        update('os', getOS());
+        update('browser', getBrowser());
+        fetchWeather(); 
+
+        try {
+            const data = await fetchGeo();
+            update('ip-address', data.ip || '未知');
+            update('location', translateLoc(data.country, data.region, data.city));
+            update('isp', translateISP(data.isp || '未知'));
+            
+            if (data.lat && data.lon) {
+                const R = 6371;
+                const dLat = (data.lat - BLOGGER_LAT) * Math.PI / 180;
+                const dLon = (data.lon - BLOGGER_LON) * Math.PI / 180;
+                const a = 0.5 - Math.cos(dLat) / 2 + Math.cos(BLOGGER_LAT * Math.PI / 180) * Math.cos(data.lat * Math.PI / 180) * (1 - Math.cos(dLon)) / 2;
+                const d = Math.round(R * 2 * Math.asin(Math.sqrt(a)));
+                let distStr = `约 ${d} km`;
+                if (d <= 5) distStr += ' (就在附近)';
+                else if (d <= 30) distStr += ' (近在咫尺)';
+                update('distance', distStr);
+            }
+        } catch (e) {
+            update('ip-address', '限速');
+            update('location', '访问受限');
+        }
+
+        const btn = document.getElementById('purity-btn');
+        const card = document.getElementById('purity-card');
+        const img = document.getElementById('purity-img') as HTMLImageElement;
+        const btnText = document.getElementById('btn-text');
+
+        btn?.addEventListener('click', () => {
+            if (card?.classList.contains('hidden')) {
+                btnText!.innerText = "加载中...";
+                img.src = `https://my.ippure.com/v1/card?t=${Date.now()}`;
+                img.onload = () => {
+                    img.classList.remove('opacity-0');
+                    btnText!.innerText = "收起信息卡";
+                };
+                card.classList.remove('hidden');
+            } else {
+                card?.classList.add('hidden');
+                btnText!.innerText = "查看 IP 信息卡";
+            }
+        });
+    }
+
+    initVisitorInfo();
+    document.addEventListener('astro:page-load', initVisitorInfo);
+</script>

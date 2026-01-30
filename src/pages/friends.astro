@@ -11,7 +11,7 @@ const allFriends = Object.values(
 	}),
 );
 
-const officialTechNames = ["EdgeOne","Cloudflare","Vercel","Netlify","Astro","Github","ESA","阿里云","腾讯云","华为云","afoim"];
+const officialTechNames = ["EdgeOne","Cloudflare","Vercel","Netlify","Astro","Github","ESA","阿里云","腾讯云","华为云","afoim","高德开放平台","Umami"];
 
 const techFriends = allFriends.filter(f => f.tech && officialTechNames.includes(f.name));
 const personalFriends = allFriends.filter(f => !f.tech || (f.tech && !officialTechNames.includes(f.name)));

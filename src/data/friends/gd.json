@@ -1,0 +1,7 @@
+{
+  "name": "高德开放平台",
+  "avatar": "/f/gd.png",
+  "description": "本站由高德开放平台提供实时天气数据支持。",
+  "url": "https://lbs.amap.com/",
+  "tech": true
+}

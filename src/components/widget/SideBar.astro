@@ -1,7 +1,7 @@
 ---
 import type { MarkdownHeading } from "astro";
-
 import Profile from "./Profile.astro";
+import VisitorInfo from "./VisitorInfo.astro";
 
 interface Props {
 	class?: string;
@@ -12,8 +12,22 @@ const className = Astro.props.class;
 ---
 <div id="sidebar" class:list={[className, "w-full"]}>
     <div class="flex flex-col w-full gap-4 mb-4">
-        <Profile></Profile>
+        <Profile />
+    </div>
+
+    <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 sticky top-4">
+        
+        <VisitorInfo class="onload-animation" style="animation-delay: 200ms" />
+
+        {Astro.props.headings && Astro.props.headings.length > 0 && (
+            <div id="toc-container" class="onload-animation" style="animation-delay: 350ms">
+                </div>
+        )}
     </div>
 </div>
 
-
+<style>
+    #sidebar-sticky {
+        top: 1rem;
+    }
+</style>
