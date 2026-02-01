@@ -28,7 +28,7 @@ lang: 'zh-cn'
 ## 实操
 >在你的Tunnel中给你需要优选的站点添加两个不同的域名[主域名与辅助域名]
 
-![示例](/assets/image/Tunnel1.png)
+![Cloudflare Tunnel 添加主辅双域名配置截图](/assets/image/Tunnel1.png)
 
 >在[辅助域名]的dns解析中添加任意[A,AAAAA,CNAME]记录值,开启小黄云,以用于回退源
 
@@ -37,7 +37,7 @@ lang: 'zh-cn'
 例如这边我将子域名指向了谷歌的8.8.8.8,只要保证小黄云是开启状态，走cloudflare即可
 
 
-![示例1](/assets/image/Tunnel2.png)
+![辅助域名 DNS 解析开启小黄云实现 SaaS 回退源设置](/assets/image/Tunnel2.png)
 
 
 再添加一条指向社区优选的CNAME记录,可以从以下站点获取
@@ -62,7 +62,7 @@ https://www.byoip.top/
 第1行填你最终需要访问的域名
 
 
-![示例5](/assets/image/Tunnel5.png)
+![Cloudflare SaaS 自定义主机名及回源域名配置界面](/assets/image/Tunnel5.png)
 
 
 验证方法自行选择
@@ -81,8 +81,8 @@ https://www.byoip.top/
 
 >未优选
 
-![未优选](/assets/image/Tunnel3.png)
+![Cloudflare Tunnel 优化前国内晚高峰网络延迟与丢包测试结果](/assets/image/Tunnel3.png)
 
 >优选
 
-![优选](/assets/image/Tunnel4.png)
+![通过 SaaS 优选 IP 后的 Cloudflare Tunnel 访问加速对比图](/assets/image/Tunnel4.png)
