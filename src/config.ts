@@ -110,7 +110,7 @@ export const navBarConfig: NavBarConfig = {
 
 // 个人信息配置
 export const profileConfig: ProfileConfig = {
-	avatar: "/home.png", // 个人头像
+	avatar: "https://q2.qlogo.cn/headimg_dl?dst_uin=3788020380&spec=0", // 个人头像
 	name: "紜清", // 个人名称
 	bio: "别吵，我在思考.", // 个人简介
 	links: [
