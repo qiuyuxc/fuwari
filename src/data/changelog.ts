@@ -1,4 +1,5 @@
 export const changelogs = [
+  { date: '2026-02-08', content: '从UmamiCloud更换至本地。' },
   { date: '2026-01-30', content: '增加访客信息卡片,删除音乐播放器' },
   { date: '2026-01-29', content: '添加音乐播放器。' },
   { date: '2026-01-28', content: '调整了友链页面,增加示例。' },
