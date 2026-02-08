@@ -33,13 +33,15 @@ const { summary } = Astro.props;
 </div>
 
 <script is:inline>
-  if (window.aiUnsubscribe) window.aiUnsubscribe();
-
   (function() {
     let typingTimer = null;
-    
-    function setupAI() {
-      if (typingTimer) cancelAnimationFrame(typingTimer);
+    const ZWSP = '\u200B';
+
+    function initAI() {
+      if (typingTimer) {
+        cancelAnimationFrame(typingTimer);
+        typingTimer = null;
+      }
 
       const wrapper = document.querySelector('.ai-summary-scope');
       if (!wrapper) return;
@@ -53,12 +55,12 @@ const { summary } = Astro.props;
       if (!main || !expandBtn || !textTarget || !track || !closeBtn) return;
 
       const content = textTarget.getAttribute('data-content') || '';
-      const ZWSP = '\u200B';
-      let i = 0;
+      textTarget.textContent = ZWSP; 
+      const isCollapsed = localStorage.getItem('ai-collapsed') === 'true';
 
       function startTyping() {
         if (typingTimer) cancelAnimationFrame(typingTimer);
-        i = 0;
+        let i = 0;
         let lastTime = 0;
         const interval = 25;
 
@@ -66,12 +68,12 @@ const { summary } = Astro.props;
           if (!lastTime) lastTime = timestamp;
           if (timestamp - lastTime >= interval) {
             if (i <= content.length) {
-              textTarget.innerText = content.substring(0, i) || ZWSP;
+              textTarget.textContent = content.substring(0, i) || ZWSP;
               i++;
               lastTime = timestamp;
               typingTimer = requestAnimationFrame(step);
             } else {
-              track.style.opacity = '0';
+              if (track) track.style.opacity = '0';
               typingTimer = null;
             }
           } else {
@@ -81,7 +83,6 @@ const { summary } = Astro.props;
         typingTimer = requestAnimationFrame(step);
       }
 
-      // 清理并重新绑定
       closeBtn.onclick = (e) => {
         e.preventDefault();
         if (typingTimer) cancelAnimationFrame(typingTimer);
@@ -89,39 +90,39 @@ const { summary } = Astro.props;
         main.classList.add('state-flying');
         setTimeout(() => {
           wrapper.classList.add('is-collapsed');
-          textTarget.innerText = ZWSP;
+          textTarget.textContent = ZWSP;
+          expandBtn.classList.remove('force-hide');
         }, 150);
-        setTimeout(() => { expandBtn.classList.remove('force-hide'); }, 750);
         localStorage.setItem('ai-collapsed', 'true');
       };
 
       expandBtn.onclick = () => {
         localStorage.setItem('ai-collapsed', 'false');
         expandBtn.classList.add('force-hide');
-        textTarget.innerText = ZWSP;
         wrapper.classList.remove('is-collapsed');
         main.classList.remove('state-flying');
+        textTarget.textContent = ZWSP;
         track.style.opacity = '1';
         startTyping();
       };
 
-      // 初始判定
-      if (localStorage.getItem('ai-collapsed') === 'true') {
+      if (isCollapsed) {
         wrapper.classList.add('is-collapsed');
         expandBtn.classList.remove('force-hide');
-        textTarget.innerText = ZWSP;
+        textTarget.textContent = ZWSP;
       } else {
-        textTarget.innerText = ZWSP;
+        wrapper.classList.remove('is-collapsed');
+        expandBtn.classList.add('force-hide');
         track.style.opacity = '1';
-        setTimeout(startTyping, 400);
+        setTimeout(startTyping, 500); 
       }
     }
 
-    window.aiUnsubscribe = () => {
-      document.removeEventListener('astro:page-load', setupAI);
-      if (typingTimer) cancelAnimationFrame(typingTimer);
-    };
-
-    document.addEventListener('astro:page-load', setupAI);
+    document.addEventListener('astro:page-load', initAI);
+    if (document.readyState === 'complete') {
+        initAI();
+    } else {
+        window.addEventListener('load', initAI);
+    }
   })();
 </script>
