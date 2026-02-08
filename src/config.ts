@@ -71,7 +71,7 @@ export const siteConfig: SiteConfig = {
 	server: [
 		{ url: "", text: "Blog" }, // 服务器信息，站点的 URL
 		{ url: "https://umami.169977.xyz", text: "Umami" }, // Umami 分析服务的 URL
-	//	{ url: "https://pic.quiyu.cn", text: "RandomPic" }, // 随机图片服务的 URL
+		{ url: "https://pic.169977.xyz", text: "RandomPic" }, // 随机图片服务的 URL
 	],
 };
 
@@ -92,7 +92,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "统计", 
-			url: "https://um.quiyu.cn/share/KgcpHj94NQCl1BiQ", 
+			url: "https://um.quiyu.cn/share/t0FOdLxzFONWoagY", 
 			external: true, 
 		},
 		{
@@ -138,14 +138,14 @@ export const licenseConfig: LicenseConfig = {
 export const imageFallbackConfig: ImageFallbackConfig = {
 	enable: false, // 是否启用图片回退功能
 	originalDomain: "https://pic.quiyu.cn/random", // 原始图片域名
-	fallbackDomain: "https://pic.quiyu.cn/random", // 回退图片域名
+	fallbackDomain: "https://ipc.quiyu.cn/random", // 回退图片域名
 };
 
 // Umami 配置
 export const umamiConfig: UmamiConfig = {
 	enable: true, // 是否启用 Umami 分析
 	baseUrl: "https://um.quiyu.cn", // Umami 服务的基础 URL
-	shareId: "KgcpHj94NQCl1BiQ", // Umami 共享 ID
+	shareId: "t0FOdLxzFONWoagY", // Umami 共享 ID
 	timezone: "Asia/Shanghai", // 时区
 };
 
