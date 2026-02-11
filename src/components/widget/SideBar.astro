@@ -2,6 +2,7 @@
 import type { MarkdownHeading } from "astro";
 import Profile from "./Profile.astro";
 import VisitorInfo from "./VisitorInfo.astro";
+import NodeSwitch from "../NodeSelector.astro";
 
 interface Props {
 	class?: string;
@@ -18,16 +19,14 @@ const className = Astro.props.class;
     <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 sticky top-4">
         
         <VisitorInfo class="onload-animation" style="animation-delay: 200ms" />
+        
+        {/* 2. 在这里引用，延时稍微调大一点点，让它顺次滑入 */}
+        <NodeSwitch class="onload-animation" style="animation-delay: 250ms" />
 
         {Astro.props.headings && Astro.props.headings.length > 0 && (
             <div id="toc-container" class="onload-animation" style="animation-delay: 350ms">
-                </div>
+                {/* 目录内容... */}
+            </div>
         )}
     </div>
 </div>
-
-<style>
-    #sidebar-sticky {
-        top: 1rem;
-    }
-</style>
