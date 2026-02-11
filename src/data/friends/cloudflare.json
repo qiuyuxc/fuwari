@@ -1,7 +1,7 @@
 {
   "name": "Cloudflare",
   "avatar": "/f/cf.png",
-  "description": "本站由 Cloudflare 提供部署与海外访问加速支持。",
+  "description": "本站由 Cloudflare 提供部署与访问加速支持。",
   "url": "https://cloudflare.com",
   "tech": true
 }

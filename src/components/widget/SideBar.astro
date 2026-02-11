@@ -20,12 +20,10 @@ const className = Astro.props.class;
         
         <VisitorInfo class="onload-animation" style="animation-delay: 200ms" />
         
-        {/* 2. 在这里引用，延时稍微调大一点点，让它顺次滑入 */}
         <NodeSwitch class="onload-animation" style="animation-delay: 250ms" />
 
         {Astro.props.headings && Astro.props.headings.length > 0 && (
             <div id="toc-container" class="onload-animation" style="animation-delay: 350ms">
-                {/* 目录内容... */}
             </div>
         )}
     </div>
