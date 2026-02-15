@@ -1,4 +1,5 @@
 export const changelogs = [
+  { date: '2026-02-15', content: '添加更多节点显示' },
   { date: '2026-02-11', content: '添加节点选择列表。' },
   { date: '2026-02-08', content: '从UmamiCloud更换至本地。' },
   { date: '2026-01-30', content: '增加访客信息卡片,删除音乐播放器' },
