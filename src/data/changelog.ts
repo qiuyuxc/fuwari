@@ -1,4 +1,5 @@
 export const changelogs = [
+  { date: '2026-02-17', content: '删除节点选择组件以及相关站点' },
   { date: '2026-02-15', content: '添加更多节点显示,删除更多节点显示。' },
   { date: '2026-02-11', content: '添加节点选择列表。' },
   { date: '2026-02-08', content: '从UmamiCloud更换至本地。' },

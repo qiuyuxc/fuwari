@@ -2,7 +2,6 @@
 import type { MarkdownHeading } from "astro";
 import Profile from "./Profile.astro";
 import VisitorInfo from "./VisitorInfo.astro";
-import NodeSwitch from "../NodeSelector.astro";
 
 interface Props {
 	class?: string;
@@ -20,8 +19,6 @@ const className = Astro.props.class;
         
         <VisitorInfo class="onload-animation" style="animation-delay: 200ms" />
         
-        <NodeSwitch class="onload-animation" style="animation-delay: 250ms" />
-
         {Astro.props.headings && Astro.props.headings.length > 0 && (
             <div id="toc-container" class="onload-animation" style="animation-delay: 350ms">
             </div>

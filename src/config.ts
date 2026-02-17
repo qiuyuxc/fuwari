@@ -12,7 +12,7 @@ import { LinkPreset } from "./types/config";
 
 // 网站配置
 export const siteConfig: SiteConfig = {
-	title: "QiuYu Blog", // 网站标题
+	title: "Blog", // 网站标题
 	subtitle: "个人随笔与技术分享", // 网站副标题
 	description:
 		"记录个人随笔与技术实践的独立站点，主要分享折腾过程中的想法与经验.", // 网站描述
@@ -55,8 +55,8 @@ export const siteConfig: SiteConfig = {
 	},
 	notice: {
 		enable: false, // 是否显示通知
-		content: "本站图片资源已全面切换至 B 站图床。如出现加载异常等问题，请联系我们反馈。", // 通知内容
-		level: "warning", // 通知级别，支持 'warning', 'info', 'error'
+		content: "", // 通知内容
+		level: "info", // 通知级别，支持 'warning', 'info', 'error'
 	},
 	favicon: [
 		// 网站图标，若为空则使用默认的
