@@ -12,7 +12,7 @@ import { LinkPreset } from "./types/config";
 
 // 网站配置
 export const siteConfig: SiteConfig = {
-	title: "Blog", // 网站标题
+	title: "紜清的个人笔记", // 网站标题
 	subtitle: "个人随笔与技术分享", // 网站副标题
 	description:
 		"记录个人随笔与技术实践的独立站点，主要分享折腾过程中的想法与经验.", // 网站描述
