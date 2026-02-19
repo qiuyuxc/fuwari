@@ -96,13 +96,13 @@ export const navBarConfig: NavBarConfig = {
 			external: true, 
 		},
 		{
-			name: "站点状态", 
-			url: "https://star.quiyu.cn", 
+			name: "论坛", 
+			url: "https://klbbs.top", 
 			external: true, 
 		},
 		{
-			name: "云盘", 
-			url: "https://cloud.quiyu.cn", 
+			name: "站点状态", 
+			url: "https://star.quiyu.cn", 
 			external: true, 
 		},
 	],
