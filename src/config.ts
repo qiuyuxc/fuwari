@@ -112,7 +112,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "https://q2.qlogo.cn/headimg_dl?dst_uin=3788020380&spec=0", // 个人头像
 	name: "紜清", // 个人名称
-	bio: "别吵，我在思考.", // 个人简介
+	bio: "此生只愿与君共白首，不思量自难忘", // RMB什么的可太棒了,可太愿意了
 	links: [
 		{
 			name: "Bilibli", // B站链接
