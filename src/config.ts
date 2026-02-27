@@ -92,7 +92,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "统计", 
-			url: "https://um.quiyu.cn/share/t0FOdLxzFONWoagY", 
+			url: "https://u.dkg.asia/share/t0FOdLxzFONWoagY", 
 			external: true, 
 		},
 		{
@@ -102,7 +102,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "站点状态", 
-			url: "https://star.quiyu.cn", 
+			url: "https://m.dkg.asia", 
 			external: true, 
 		},
 	],
@@ -144,7 +144,7 @@ export const imageFallbackConfig: ImageFallbackConfig = {
 // Umami 配置
 export const umamiConfig: UmamiConfig = {
 	enable: true, // 是否启用 Umami 分析
-	baseUrl: "https://um.quiyu.cn", // Umami 服务的基础 URL
+	baseUrl: "https://u.dkg.asia", // Umami 服务的基础 URL
 	shareId: "t0FOdLxzFONWoagY", // Umami 共享 ID
 	timezone: "Asia/Shanghai", // 时区
 };

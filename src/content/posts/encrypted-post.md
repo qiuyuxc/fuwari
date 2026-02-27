@@ -4,7 +4,7 @@ published: 2024-01-15
 description: This is an article for testing the page encryption feature
 encrypted: true
 pinned: false
-image: "https://ipfs.klbbs.top/images/22.webp"
+image: "https://pic.dkg.asia/images/22.webp"
 password: "123456"
 alias: "encrypted-example"
 tags: ["Test", "Encryption"]

@@ -3,7 +3,7 @@ title: CloudflareTunnel的优选实践
 published: 2026-01-14
 description: '通过 Cloudflare Tunnel + SaaS，优化 Tunnel 站点的访问体验'
 custom_summary: 本文介绍如何通过 Cloudflare SaaS 解决 Tunnel 默认线路慢的问题。通过“主辅双域名”配置，将主域名解析至优选 CNAME，配合 SaaS 回退源实现 Tunnel 内网穿透 + 延迟优化。实测可显著改善国内晚高峰丢包与高延迟，实现站点秒开。
-image: 'https://ipfs.klbbs.top/images/38.webp'
+image: 'https://pic.dkg.asia/images/38.webp'
 tags: [CDN,Cloudflare,Tunnel,SaaS]
 category: 'CDN'
 draft: false 
