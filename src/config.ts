@@ -65,13 +65,12 @@ export const siteConfig: SiteConfig = {
 		},
 	],
 	officialSites: [
-		{ url: "https://blog.quiyu.cn", alias: "CN" }, // 官方站点链接
-		{ url: "https://www.quiyun.com", alias: "Global" }, // 全球站点链接
+		{ url: "https://www.quiyu.cn", alias: "Main" }, 
 	],
 	server: [
-		{ url: "", text: "Blog" }, // 服务器信息，站点的 URL
-		{ url: "https://umami.169977.xyz", text: "Umami" }, // Umami 分析服务的 URL
-	//	{ url: "https://pic.169977.xyz", text: "RandomPic" }, // 随机图片服务的 URL
+		{ url: "", text: "Blog" }, 
+		{ url: "https://umami.169977.xyz", text: "Umami" }, 
+		{ url: "https://cdn.dkg.asia", text: "Storage" }, 
 	],
 };
 
