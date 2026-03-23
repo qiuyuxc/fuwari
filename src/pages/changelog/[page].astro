@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 import { changelogs } from "../../data/changelog";
 
 export async function getStaticPaths({ paginate }) {
-  return paginate(changelogs, { pageSize: 5 });
+  return paginate(changelogs, { pageSize: 10 });
 }
 
 const { page } = Astro.props;

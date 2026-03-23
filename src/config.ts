@@ -85,6 +85,11 @@ export const navBarConfig: NavBarConfig = {
 			external: false, 
 		},
 		{
+			name: "赞助", 
+			url: "/sponsors/", 
+			external: false, 
+		},
+		{
 			name: "日志", 
 			url: "/changelog/1/", 
 			external: false, 
@@ -96,7 +101,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "论坛", 
-			url: "https://klbbs.top", 
+			url: "https://bbs.quiyu.cn", 
 			external: true, 
 		},
 		{
