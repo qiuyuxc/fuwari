@@ -1,212 +1,291 @@
 ---
-import { siteConfig } from "@/config";
 import type { Sponsor } from "@/types/data";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { Icon } from "astro-icon/components";
 
 const sponsors = Object.values(
-	import.meta.glob<Sponsor>("@/data/sponsors/*.json", {
-		eager: true,
-		import: "default",
-	}),
+  import.meta.glob<Sponsor>("@/data/sponsors/*.json", {
+    eager: true,
+    import: "default",
+  }),
 );
 ---
 
 <MainGridLayout title="赞助支持">
-    <div class="card-base p-6 md:p-8">
-        <div class="flex items-center gap-2 mb-6">
-            <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
-                <Icon name="material-symbols:favorite" class="text-[1.5rem]">
-            </div>
-            <h1 class="text-2xl font-bold text-black dark:text-white">赞助支持</h1>
+  <div class="space-y-6">
+    <section class="card-base p-6 md:p-8 hero">
+      <div class="flex items-start gap-4">
+        <div class="hero-icon">
+          <Icon name="material-symbols:favorite" class="text-[1.4rem]" />
         </div>
 
-        <div class="mb-6">
-            <p class="text-lg text-black/80 dark:text-white/80 mb-3">
-                如果您觉得我的内容对您有帮助，欢迎通过以下方式支持我的创作。您的每一份支持都是我持续创作的动力！
-            </p>
-            <p class="text-sm text-black/60 dark:text-white/60">
-                Ciallo～ (&#8736&#183;&#969;&lt; )&#x2312;&#9733;
-            </p>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <h1 class="text-2xl md:text-3xl font-bold text-black dark:text-white">
+              赞助支持
+            </h1>
+            <span class="badge">感谢每一份喜欢</span>
+          </div>
+
+          <p class="hero-desc">
+            如果你觉得这里的内容对你有一点点帮助，欢迎支持我的创作。
+            无论是赞助、分享，还是留言互动，都会让我更有动力继续认真更新。
+          </p>
+
+          <p class="hero-sub">Ciallo～ (∠・ω&lt; )⌒★</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card-base p-6 md:p-8">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">支持方式</h2>
+          <p class="section-desc">不一定非要赞助，下面这些方式也很珍贵。</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+        <div class="mini-card">
+          <div class="mini-title">
+            <Icon name="material-symbols:share" class="text-[1.1rem] text-[var(--primary)]" />
+            <span>分享推荐</span>
+          </div>
+          <p>把文章分享给更多朋友，让内容被更多人看到。</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 max-w-4xl mx-auto">
-
-            <!-- 不启用赞助：支付宝 -->
-            <!--
-            <div class="donate-card">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="h-10 w-10 rounded-lg bg-blue-500 flex items-center justify-center">
-                        <Icon name="simple-icons:alipay" class="text-[1.5rem] text-white">
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">支付宝</h3>
-                        <p class="text-sm text-black/60 dark:text-white/60">扫码支付</p>
-                    </div>
-                </div>
-                <div class="qr-code-placeholder">
-                    <div class="relative w-48 h-48 mx-auto rounded-lg overflow-hidden"
-                         style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                        <img src="/sponsors/alipay.svg" alt="支付宝二维码"
-                             class="w-full h-full object-cover transition duration-500" />
-                    </div>
-                </div>
-            </div>
-            -->
-
-            <!-- 不启用赞助：微信支付 -->
-            <!--
-            <div class="donate-card">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="h-10 w-10 rounded-lg bg-green-500 flex items-center justify-center">
-                        <Icon name="simple-icons:wechat" class="text-[1.5rem] text-white">
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">微信支付</h3>
-                        <p class="text-sm text-black/60 dark:text-white/60">扫码支付</p>
-                    </div>
-                </div>
-                <div class="qr-code-placeholder">
-                    <div class="relative w-48 h-48 mx-auto rounded-lg overflow-hidden"
-                         style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                        <img src="/sponsors/wechat.svg" alt="微信支付二维码"
-                             class="w-full h-full object-cover transition duration-500" />
-                    </div>
-                </div>
-            </div>
-
-            
-            </div>
+        <div class="mini-card">
+          <div class="mini-title">
+            <Icon name="material-symbols:comment" class="text-[1.1rem] text-[var(--primary)]" />
+            <span>留言互动</span>
+          </div>
+          <p>在文章下方留下你的想法，这也是很好的支持。</p>
         </div>
 
-        <br>
-
-        <!-- 支持方式 -->
-        <div class="card-base p-6 mb-6">
-            <h2 class="text-xl font-bold text-black dark:text-white mb-3">支持方式</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="support-card">
-                    <div class="flex items-center gap-2 mb-2">
-                        <Icon name="material-symbols:share" class="text-[1.2rem] text-[var(--primary)]">
-                        <span class="font-semibold text-black dark:text-white">分享推荐</span>
-                    </div>
-                    <p class="text-sm text-black/60 dark:text-white/60">
-                        将我的博客分享给更多朋友
-                    </p>
-                </div>
-
-                <div class="support-card">
-                    <div class="flex items-center gap-2 mb-2">
-                        <Icon name="material-symbols:comment" class="text-[1.2rem] text-[var(--primary)]">
-                        <span class="font-semibold text-black dark:text-white">留言互动</span>
-                    </div>
-                    <p class="text-sm text-black/60 dark:text-white/60">
-                        在文章下方留下您的想法
-                    </p>
-                </div>
-
-                <div class="support-card">
-                    <div class="flex items-center gap-2 mb-2">
-                        <Icon name="material-symbols:star" class="text-[1.2rem] text-[var(--primary)]">
-                        <span class="font-semibold text-black dark:text-white">关注订阅</span>
-                    </div>
-                    <p class="text-sm text-black/60 dark:text-white/60">
-                        订阅RSS或关注社交媒体
-                    </p>
-                </div>
-            </div>
+        <div class="mini-card">
+          <div class="mini-title">
+            <Icon name="material-symbols:rss-feed" class="text-[1.1rem] text-[var(--primary)]" />
+            <span>关注订阅</span>
+          </div>
+          <p>订阅 RSS 或关注更新，陪我把这个博客慢慢做下去。</p>
         </div>
-      <!--  <div class="sponsors-section card-base p-6">
-            <h2 class="text-xl font-bold text-black dark:text-white mb-3 flex items-center gap-2">
-                <Icon name="material-symbols:group" class="text-[1.5rem] text-[var(--primary)]"></Icon>
-                <span>已赞助的小伙伴</span>
-            </h2>
-            <p class="text-sm text-black/60 dark:text-white/60 mb-4">
-            如果您已赞助，并且想加入赞助名单，<a target="_blank" href="https://github.com/qiuyuxc/fuwari/tree/main/src/data/sponsors" class="transition link text-[var(--primary)] font-medium underline">请点击这里提交</a>
-            </p> -->
-            <div class="sponsors-grid">
-                {sponsors.map((sponsor) => (
-                    <div class="sponsor-card">
-                        <div class="flex items-center gap-3 p-4 rounded-lg bg-[var(--card-bg)] border border-black/10 dark:border-white/10" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
-                            <div class="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden">
-                            {sponsor.avatar ? (
-                                <div class="relative w-full h-full rounded-lg overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                                    <img src={sponsor.avatar} alt={`${sponsor.name}的头像`} loading="lazy" class="w-full h-full object-cover transition duration-500" />
-                                </div>
-                            ) : (
-                                <Icon name="material-symbols:person" class="text-gray-500 dark:text-gray-400 text-[1.2rem]" />
-                            )}
-                        </div>
-                            <div class="flex-1">
-                                <h4 class="font-semibold text-black dark:text-white text-sm">{sponsor.name}</h4>
-                                <p class="text-xs text-black/60 dark:text-white/60">{sponsor.date}</p>
-                            </div>
-                            <div class="text-xs text-[var(--primary)] font-medium">{sponsor.amount}</div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+      </div>
+    </section>
+
+    {sponsors.length > 0 && (
+      <section class="card-base p-6 md:p-8">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">赞助名单</h2>
+            <p class="section-desc">感谢这些温柔又可爱的小伙伴。</p>
+          </div>
+          <span class="count">{sponsors.length} 位支持者</span>
         </div>
-    </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+          {sponsors.map((sponsor) => (
+            <div class="sponsor-card">
+              <div class="avatar">
+                {sponsor.avatar ? (
+                  <img src={sponsor.avatar} alt={`${sponsor.name}的头像`} loading="lazy" />
+                ) : (
+                  <Icon name="material-symbols:person" class="text-[1.2rem] text-black/35 dark:text-white/35" />
+                )}
+              </div>
+
+              <div class="min-w-0 flex-1">
+                <h3 class="name">{sponsor.name}</h3>
+                <p class="date">{sponsor.date}</p>
+              </div>
+
+              <div class="amount">{sponsor.amount}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
 </MainGridLayout>
 
 <style>
-.donate-card {
-    @apply flex flex-col p-4 rounded-lg bg-[var(--card-bg)] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
+  .hero {
+    position: relative;
+    overflow: hidden;
+  }
 
-.support-card {
-    @apply p-4 rounded-lg bg-[var(--card-bg)] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 transition;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: -40px;
+    bottom: -40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 999px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--primary) 18%, transparent) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
-.qr-code-placeholder {
-    @apply text-center;
-}
+  .hero-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+    flex-shrink: 0;
+  }
 
-.sponsors-section {
-    @apply mt-6;
-}
-
-.sponsors-grid {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
-}
-
-.sponsor-placeholder {
-    @apply transition-all duration-200 hover:scale-105;
-}
-
-.sponsor-card {
-    @apply transition-all duration-200 hover:shadow-md hover:scale-105;
-}
-.crypto-info {
-    @apply space-y-3;
-}
-
-.wallet-address, .bybit-uid {
-    @apply text-center;
-}
-
-.copy-btn {
-    @apply transition-colors duration-200;
-}
-
-.copy-btn:hover {
+  .badge,
+  .count {
+    display: inline-flex;
+    align-items: center;
+    height: 1.9rem;
+    padding: 0 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
     color: var(--primary);
-    opacity: 0.8;
-}
-</style>
+  }
 
-<script>
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(function() {
-        // 可以添加复制成功的提示
-        alert('已复制到剪贴板');
-    }, function(err) {
-        console.error('复制失败: ', err);
-    });
-}
-</script>
+  .hero-desc {
+    line-height: 1.9;
+    color: rgba(0, 0, 0, 0.65);
+    max-width: 48rem;
+  }
+
+  .hero-sub {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.48);
+  }
+
+  :global(.dark) .hero-desc,
+  :global(.dark) .section-desc,
+  :global(.dark) .mini-card p,
+  :global(.dark) .date,
+  :global(.dark) .hero-sub {
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: black;
+  }
+
+  .section-desc {
+    margin-top: 0.35rem;
+    font-size: 0.92rem;
+    color: rgba(0, 0, 0, 0.55);
+  }
+
+  :global(.dark) .section-title,
+  :global(.dark) .name {
+    color: white;
+  }
+
+  .mini-card,
+  .sponsor-card {
+    border-radius: 1rem;
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  :global(.dark) .mini-card,
+  :global(.dark) .sponsor-card {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .mini-card {
+    padding: 1rem;
+  }
+
+  .mini-card:hover,
+  .sponsor-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--primary) 24%, transparent);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .mini-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.55rem;
+    font-weight: 700;
+    color: black;
+  }
+
+  :global(.dark) .mini-title {
+    color: white;
+  }
+
+  .mini-card p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.58);
+  }
+
+  .sponsor-card {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1rem;
+  }
+
+  .avatar {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.04);
+    flex-shrink: 0;
+  }
+
+  :global(.dark) .avatar {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .name {
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: black;
+    line-height: 1.4;
+  }
+
+  .date {
+    margin-top: 0.2rem;
+    font-size: 0.82rem;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .amount {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+</style>

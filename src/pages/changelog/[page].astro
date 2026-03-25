@@ -13,53 +13,442 @@ const getPageLink = (p) => `/changelog/${p}/`;
 ---
 
 <MainGridLayout title="日志">
-    <div class="card-base p-6 md:p-8 mb-4">
-        <h1 class="text-2xl font-bold text-black dark:text-white mb-6">日志</h1>
+	<div class="space-y-6">
+		<!-- 页面头部 -->
+		<section class="card-base p-6 md:p-8 hero-panel">
+			<div class="flex items-start gap-4">
+				<div class="hero-icon">
+					<Icon name="material-symbols:history-rounded" class="text-[1.7rem]" />
+				</div>
 
-        <div class="space-y-6"> {page.data.map((item) => (
-                <div class="flex flex-col gap-1.5 group"> <div class="text-[10px] font-mono font-bold text-[var(--primary)] opacity-60 tracking-wider">
-                        {item.date}
-                    </div>
-                    <div class="text-sm text-black/70 dark:text-white/70 leading-relaxed group-hover:text-black dark:group-hover:text-white transition-colors">
-                        {item.content}
-                    </div>
-                </div>
-            ))}
-        </div>
-    </div>
+				<div class="flex-1 min-w-0">
+					<div class="flex flex-wrap items-center gap-3 mb-3">
+						<h1 class="text-2xl md:text-3xl font-bold text-black dark:text-white">
+							日志
+						</h1>
+						<span class="hero-badge">
+							第 {page.currentPage} / {page.lastPage} 页
+						</span>
+					</div>
 
-    {page.lastPage > 1 && (
-        <div class="flex flex-row justify-center items-center gap-3 mt-4 mb-8">
-            {page.currentPage > 1 ? (
-                <a href={getPageLink(page.currentPage - 1)} class="btn-pager"><Icon name="material-symbols:chevron-left-rounded" class="text-2xl" /></a>
-            ) : (
-                <div class="btn-pager-disabled"><Icon name="material-symbols:chevron-left-rounded" class="text-2xl" /></div>
-            )}
+					<p class="hero-desc">
+						这里记录了本站的一些更新、调整和日常小改动。
+						不一定都是大版本，但每一点变化都值得被认真留下。
+					</p>
 
-            <div class="flex flex-row gap-2 bg-card p-1 rounded-xl border border-black/5 dark:border-white/5">
-                {pages.map((p) => (
-                    <a href={getPageLink(p)} class={`w-8 h-8 flex items-center justify-center rounded-lg transition-all text-sm font-medium ${p === page.currentPage ? "bg-[var(--primary)] text-white shadow-sm" : "hover:bg-black/5 dark:hover:bg-white/5 text-black/60 dark:text-white/60"}`}>
-                        {p}
-                    </a>
-                ))}
-            </div>
+					<div class="hero-meta">
+						<div class="hero-meta-item">
+							<Icon name="material-symbols:edit-note-rounded" class="text-[1.1rem]" />
+							<span>本页 {page.data.length} 条记录</span>
+						</div>
+						<div class="hero-meta-item">
+							<Icon name="material-symbols:calendar-month-outline-rounded" class="text-[1.1rem]" />
+							<span>共 {changelogs.length} 条日志</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-            {page.currentPage < page.lastPage ? (
-                <a href={getPageLink(page.currentPage + 1)} class="btn-pager"><Icon name="material-symbols:chevron-right-rounded" class="text-2xl" /></a>
-            ) : (
-                <div class="btn-pager-disabled"><Icon name="material-symbols:chevron-right-rounded" class="text-2xl" /></div>
-            )}
-        </div>
-    )}
+		<!-- 日志时间线 -->
+		<section class="card-base p-6 md:p-8">
+			<div class="section-head">
+				<div>
+					<h2 class="section-title">更新记录</h2>
+					<p class="section-desc">按时间顺序整理的站点变动与随手记。</p>
+				</div>
+			</div>
+
+			<div class="timeline mt-8">
+				{page.data.map((item, index) => (
+					<article class="timeline-item">
+						<div class="timeline-line" aria-hidden="true"></div>
+						<div class="timeline-dot" aria-hidden="true"></div>
+
+						<div class="timeline-card">
+							<div class="timeline-date">
+								<Icon name="material-symbols:schedule-outline-rounded" class="text-[1rem]" />
+								<span>{item.date}</span>
+							</div>
+
+							<div class="timeline-content">
+								{item.content}
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<!-- 分页 -->
+		{page.lastPage > 1 && (
+			<nav class="pager-wrap" aria-label="分页导航">
+				{page.currentPage > 1 ? (
+					<a href={getPageLink(page.currentPage - 1)} class="btn-pager" aria-label="上一页">
+						<Icon name="material-symbols:chevron-left-rounded" class="text-2xl" />
+					</a>
+				) : (
+					<div class="btn-pager-disabled" aria-hidden="true">
+						<Icon name="material-symbols:chevron-left-rounded" class="text-2xl" />
+					</div>
+				)}
+
+				<div class="pager-numbers">
+					{pages.map((p) => (
+						<a
+							href={getPageLink(p)}
+							aria-current={p === page.currentPage ? "page" : undefined}
+							class={`pager-number ${p === page.currentPage ? "is-active" : ""}`}
+						>
+							{p}
+						</a>
+					))}
+				</div>
+
+				{page.currentPage < page.lastPage ? (
+					<a href={getPageLink(page.currentPage + 1)} class="btn-pager" aria-label="下一页">
+						<Icon name="material-symbols:chevron-right-rounded" class="text-2xl" />
+					</a>
+				) : (
+					<div class="btn-pager-disabled" aria-hidden="true">
+						<Icon name="material-symbols:chevron-right-rounded" class="text-2xl" />
+					</div>
+				)}
+			</nav>
+		)}
+	</div>
 </MainGridLayout>
 
 <style>
-    .bg-card { background-color: var(--card-bg); }
-    .card-base { word-break: break-word; }
-    .btn-pager {
-        @apply w-10 h-10 rounded-lg flex items-center justify-center bg-card hover:bg-[var(--primary)] hover:text-white transition-all active:scale-95 border border-black/5 dark:border-white/5;
-    }
-    .btn-pager-disabled {
-        @apply w-10 h-10 rounded-lg flex items-center justify-center bg-card text-black/10 dark:text-white/20 cursor-not-allowed border border-black/5 dark:border-white/5;
-    }
+	.card-base {
+		word-break: break-word;
+	}
+
+	.hero-panel {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.hero-panel::after {
+		content: "";
+		position: absolute;
+		inset: auto -60px -60px auto;
+		width: 180px;
+		height: 180px;
+		border-radius: 999px;
+		background: radial-gradient(circle, color-mix(in srgb, var(--primary) 20%, transparent) 0%, transparent 70%);
+		pointer-events: none;
+	}
+
+	.hero-icon {
+		width: 3.25rem;
+		height: 3.25rem;
+		border-radius: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--primary);
+		color: white;
+		flex-shrink: 0;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+	}
+
+	.hero-badge {
+		display: inline-flex;
+		align-items: center;
+		height: 1.9rem;
+		padding: 0 0.75rem;
+		border-radius: 999px;
+		font-size: 0.8rem;
+		font-weight: 600;
+		background: color-mix(in srgb, var(--primary) 14%, transparent);
+		color: var(--primary);
+	}
+
+	.hero-desc {
+		font-size: 0.98rem;
+		line-height: 1.9;
+		color: rgba(0, 0, 0, 0.62);
+		max-width: 46rem;
+	}
+
+	:global(.dark) .hero-desc {
+		color: rgba(255, 255, 255, 0.65);
+	}
+
+	.hero-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 1rem;
+	}
+
+	.hero-meta-item {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.55rem 0.8rem;
+		border-radius: 0.85rem;
+		font-size: 0.88rem;
+		font-weight: 500;
+		background: rgba(0, 0, 0, 0.04);
+		color: rgba(0, 0, 0, 0.62);
+	}
+
+	:global(.dark) .hero-meta-item {
+		background: rgba(255, 255, 255, 0.06);
+		color: rgba(255, 255, 255, 0.68);
+	}
+
+	.section-head {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.section-title {
+		font-size: 1.35rem;
+		font-weight: 700;
+		color: black;
+	}
+
+	:global(.dark) .section-title {
+		color: white;
+	}
+
+	.section-desc {
+		margin-top: 0.35rem;
+		font-size: 0.92rem;
+		color: rgba(0, 0, 0, 0.55);
+	}
+
+	:global(.dark) .section-desc {
+		color: rgba(255, 255, 255, 0.56);
+	}
+
+	.timeline {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 1.2rem;
+	}
+
+	.timeline-item {
+		position: relative;
+		padding-left: 2rem;
+	}
+
+	.timeline-line {
+		position: absolute;
+		left: 0.52rem;
+		top: 1.1rem;
+		bottom: -1.6rem;
+		width: 2px;
+		background: linear-gradient(
+			to bottom,
+			color-mix(in srgb, var(--primary) 24%, transparent),
+			rgba(0, 0, 0, 0.06)
+		);
+	}
+
+	:global(.dark) .timeline-line {
+		background: linear-gradient(
+			to bottom,
+			color-mix(in srgb, var(--primary) 30%, transparent),
+			rgba(255, 255, 255, 0.08)
+		);
+	}
+
+	.timeline-item:last-child .timeline-line {
+		display: none;
+	}
+
+	.timeline-dot {
+		position: absolute;
+		left: 0;
+		top: 0.95rem;
+		width: 1.05rem;
+		height: 1.05rem;
+		border-radius: 999px;
+		background: var(--card-bg);
+		border: 3px solid var(--primary);
+		box-shadow: 0 0 0 6px color-mix(in srgb, var(--primary) 10%, transparent);
+	}
+
+	.timeline-card {
+		padding: 1rem 1.1rem;
+		border-radius: 1rem;
+		background: var(--card-bg);
+		border: 1px solid rgba(0, 0, 0, 0.08);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		transition: all 0.2s ease;
+	}
+
+	:global(.dark) .timeline-card {
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+
+	.timeline-card:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--primary) 24%, rgba(0, 0, 0, 0.08));
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+		background: color-mix(in srgb, var(--card-bg) 90%, var(--primary) 10%);
+	}
+
+	.timeline-date {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		color: var(--primary);
+		opacity: 0.82;
+		margin-bottom: 0.6rem;
+	}
+
+	.timeline-content {
+		font-size: 0.96rem;
+		line-height: 1.9;
+		color: rgba(0, 0, 0, 0.72);
+	}
+
+	:global(.dark) .timeline-content {
+		color: rgba(255, 255, 255, 0.76);
+	}
+
+	.pager-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.85rem;
+		margin-bottom: 2rem;
+	}
+
+	.pager-numbers {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem;
+		padding: 0.4rem;
+		border-radius: 1rem;
+		background: var(--card-bg);
+		border: 1px solid rgba(0, 0, 0, 0.06);
+	}
+
+	:global(.dark) .pager-numbers {
+		border-color: rgba(255, 255, 255, 0.08);
+	}
+
+	.pager-number {
+		width: 2.2rem;
+		height: 2.2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.75rem;
+		font-size: 0.92rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: rgba(0, 0, 0, 0.62);
+		transition: all 0.2s ease;
+	}
+
+	:global(.dark) .pager-number {
+		color: rgba(255, 255, 255, 0.62);
+	}
+
+	.pager-number:hover {
+		background: rgba(0, 0, 0, 0.05);
+		color: black;
+	}
+
+	:global(.dark) .pager-number:hover {
+		background: rgba(255, 255, 255, 0.08);
+		color: white;
+	}
+
+	.pager-number.is-active {
+		background: var(--primary);
+		color: white;
+		box-shadow: 0 8px 20px color-mix(in srgb, var(--primary) 26%, transparent);
+	}
+
+	.btn-pager,
+	.btn-pager-disabled {
+		width: 2.6rem;
+		height: 2.6rem;
+		border-radius: 0.85rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--card-bg);
+		border: 1px solid rgba(0, 0, 0, 0.06);
+		transition: all 0.2s ease;
+	}
+
+	:global(.dark) .btn-pager,
+	:global(.dark) .btn-pager-disabled {
+		border-color: rgba(255, 255, 255, 0.08);
+	}
+
+	.btn-pager {
+		text-decoration: none;
+		color: rgba(0, 0, 0, 0.72);
+	}
+
+	:global(.dark) .btn-pager {
+		color: rgba(255, 255, 255, 0.72);
+	}
+
+	.btn-pager:hover {
+		transform: translateY(-1px);
+		background: var(--primary);
+		color: white;
+		box-shadow: 0 10px 24px color-mix(in srgb, var(--primary) 20%, transparent);
+	}
+
+	.btn-pager:active {
+		transform: scale(0.96);
+	}
+
+	.btn-pager-disabled {
+		color: rgba(0, 0, 0, 0.18);
+		cursor: not-allowed;
+	}
+
+	:global(.dark) .btn-pager-disabled {
+		color: rgba(255, 255, 255, 0.2);
+	}
+
+	@media (max-width: 768px) {
+		.hero-icon {
+			width: 3rem;
+			height: 3rem;
+		}
+
+		.timeline-item {
+			padding-left: 1.7rem;
+		}
+
+		.timeline-dot {
+			width: 0.95rem;
+			height: 0.95rem;
+			left: 0.03rem;
+		}
+
+		.timeline-line {
+			left: 0.5rem;
+		}
+
+		.timeline-card {
+			padding: 0.95rem 1rem;
+		}
+
+		.pager-wrap {
+			gap: 0.6rem;
+		}
+	}
 </style>

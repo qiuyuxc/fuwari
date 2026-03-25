@@ -1,128 +1,209 @@
 ---
-import '../styles/ai-summary.css'; 
+import "../styles/ai-summary.css";
 const { summary } = Astro.props;
 ---
 
-<div id="ai-summary-wrapper" class="relative ai-summary-scope">
-  <button id="ai-expand-btn" class="absolute right-4 top-[-3.5rem] force-hide expand-pure-icon">
-    <img width="20" height="20" src="/gemini-color.png" alt="ai" class="relative z-10">
+<div id="ai-summary-wrapper" class="ai-summary-scope">
+  <!-- 展开按钮移到外层，避免收起后一起被隐藏 -->
+  <button
+    id="ai-expand-btn"
+    class="ai-floating-expand force-hide"
+    type="button"
+    aria-label="展开 AI 摘要"
+  >
+    <img width="18" height="18" src="/gemini-color.png" alt="ai" />
+    <span>AI 摘要</span>
   </button>
 
   <div class="ai-summary-inner">
-    <div id="ai-main-container" class="relative p-[1px] rounded-xl bg-[var(--primary)]/10 transition-all duration-300">
-      <div id="ai-track" class="ai-border-track" style="opacity: 0;"></div>
-      <div class="relative z-10 bg-[var(--card-bg)] rounded-[11px] p-4 flex flex-col overflow-hidden shadow-sm">
-        <div class="flex items-center justify-between mb-3">
-          <div class="flex items-center gap-2">
-            <div class="bg-[var(--primary)]/10 rounded-lg p-1">
-              <img width="24" height="24" src="/gemini-color.png" alt="ai">
+    <section
+      id="ai-main-container"
+      class="ai-main-container"
+      aria-label="AI 摘要"
+    >
+      <div id="ai-track" class="ai-border-track" aria-hidden="true"></div>
+
+      <div class="ai-card">
+        <div class="ai-card-head">
+          <div class="ai-card-title">
+            <div class="ai-card-icon">
+              <img width="22" height="22" src="/gemini-color.png" alt="ai" />
             </div>
-            <span class="text-sm font-bold text-[var(--primary)] tracking-wider">AI 摘要</span>
+            <div class="ai-card-title-text">
+              <span class="ai-kicker">AI SUMMARY</span>
+              <strong>AI 摘要</strong>
+            </div>
           </div>
-          <button id="ai-close-btn" class="p-2 text-[var(--primary)] hover:bg-[var(--primary)]/10 rounded-full transition-all cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+
+          <button
+            id="ai-close-btn"
+            class="ai-close-btn"
+            type="button"
+            aria-label="收起 AI 摘要"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
         </div>
-        <div id="ai-type-target" class="text-sm leading-relaxed text-black/70 dark:text-white/70 font-medium" data-content={summary}></div>
+
+        <div class="ai-card-body">
+          <p
+            id="ai-type-target"
+            class="ai-summary-text"
+            data-content={summary}
+          ></p>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 
 <script is:inline>
-  (function() {
-    let typingTimer = null;
-    const ZWSP = '\u200B';
+  (() => {
+    const ZWSP = "\u200B";
+    const STORAGE_KEY = "ai-collapsed";
 
     function initAI() {
-      if (typingTimer) {
-        cancelAnimationFrame(typingTimer);
-        typingTimer = null;
-      }
-
-      const wrapper = document.querySelector('.ai-summary-scope');
+      const wrapper = document.getElementById("ai-summary-wrapper");
       if (!wrapper) return;
 
-      const main = wrapper.querySelector('#ai-main-container');
-      const expandBtn = wrapper.querySelector('#ai-expand-btn');
-      const textTarget = wrapper.querySelector('#ai-type-target');
-      const track = wrapper.querySelector('#ai-track');
-      const closeBtn = wrapper.querySelector('#ai-close-btn');
+      const main = document.getElementById("ai-main-container");
+      const expandBtn = document.getElementById("ai-expand-btn");
+      const textTarget = document.getElementById("ai-type-target");
+      const track = document.getElementById("ai-track");
+      const closeBtn = document.getElementById("ai-close-btn");
 
       if (!main || !expandBtn || !textTarget || !track || !closeBtn) return;
 
-      const content = textTarget.getAttribute('data-content') || '';
-      textTarget.textContent = ZWSP; 
-      const isCollapsed = localStorage.getItem('ai-collapsed') === 'true';
+      const content = textTarget.getAttribute("data-content") || "";
+      let rafId = null;
+      let destroyed = false;
+
+      function stopTyping() {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      }
 
       function startTyping() {
-        if (typingTimer) cancelAnimationFrame(typingTimer);
+        stopTyping();
+
+        if (!content) {
+          textTarget.textContent = "";
+          track.style.opacity = "0";
+          return;
+        }
+
         let i = 0;
         let lastTime = 0;
-        const interval = 25;
+        const interval = 18;
 
         function step(timestamp) {
           if (!lastTime) lastTime = timestamp;
+
           if (timestamp - lastTime >= interval) {
-            if (i <= content.length) {
-              textTarget.textContent = content.substring(0, i) || ZWSP;
-              i++;
-              lastTime = timestamp;
-              typingTimer = requestAnimationFrame(step);
+            i += Math.max(1, Math.floor(content.length / 120));
+            textTarget.textContent = content.slice(0, i) || ZWSP;
+            lastTime = timestamp;
+
+            if (i < content.length) {
+              rafId = requestAnimationFrame(step);
             } else {
-              if (track) track.style.opacity = '0';
-              typingTimer = null;
+              textTarget.textContent = content;
+              track.style.opacity = "0";
+              rafId = null;
             }
           } else {
-            typingTimer = requestAnimationFrame(step);
+            rafId = requestAnimationFrame(step);
           }
         }
-        typingTimer = requestAnimationFrame(step);
+
+        rafId = requestAnimationFrame(step);
+      }
+
+      function openSummary() {
+        localStorage.setItem(STORAGE_KEY, "false");
+        wrapper.classList.remove("is-collapsed");
+        expandBtn.classList.add("force-hide");
+        main.classList.remove("state-flying");
+        textTarget.textContent = ZWSP;
+
+        requestAnimationFrame(() => {
+          track.style.opacity = "1";
+          startTyping();
+        });
+      }
+
+      function closeSummary() {
+        localStorage.setItem(STORAGE_KEY, "true");
+        stopTyping();
+        track.style.opacity = "0";
+        main.classList.add("state-flying");
+
+        setTimeout(() => {
+          if (destroyed) return;
+          wrapper.classList.add("is-collapsed");
+          expandBtn.classList.remove("force-hide");
+          textTarget.textContent = ZWSP;
+        }, 160);
       }
 
       closeBtn.onclick = (e) => {
         e.preventDefault();
-        if (typingTimer) cancelAnimationFrame(typingTimer);
-        track.style.opacity = '0';
-        main.classList.add('state-flying');
-        setTimeout(() => {
-          wrapper.classList.add('is-collapsed');
-          textTarget.textContent = ZWSP;
-          expandBtn.classList.remove('force-hide');
-        }, 150);
-        localStorage.setItem('ai-collapsed', 'true');
+        closeSummary();
       };
 
-      expandBtn.onclick = () => {
-        localStorage.setItem('ai-collapsed', 'false');
-        expandBtn.classList.add('force-hide');
-        wrapper.classList.remove('is-collapsed');
-        main.classList.remove('state-flying');
-        textTarget.textContent = ZWSP;
-        track.style.opacity = '1';
-        startTyping();
+      expandBtn.onclick = (e) => {
+        e.preventDefault();
+        openSummary();
       };
+
+      const isCollapsed = localStorage.getItem(STORAGE_KEY) === "true";
 
       if (isCollapsed) {
-        wrapper.classList.add('is-collapsed');
-        expandBtn.classList.remove('force-hide');
+        wrapper.classList.add("is-collapsed");
+        expandBtn.classList.remove("force-hide");
         textTarget.textContent = ZWSP;
+        track.style.opacity = "0";
       } else {
-        wrapper.classList.remove('is-collapsed');
-        expandBtn.classList.add('force-hide');
-        track.style.opacity = '1';
-        setTimeout(startTyping, 500); 
+        wrapper.classList.remove("is-collapsed");
+        expandBtn.classList.add("force-hide");
+        textTarget.textContent = ZWSP;
+
+        setTimeout(() => {
+          if (destroyed) return;
+          track.style.opacity = "1";
+          startTyping();
+        }, 260);
       }
+
+      window.addEventListener(
+        "beforeunload",
+        () => {
+          destroyed = true;
+          stopTyping();
+        },
+        { once: true }
+      );
     }
 
-    document.addEventListener('astro:page-load', initAI);
-    if (document.readyState === 'complete') {
-        initAI();
+    document.addEventListener("astro:page-load", initAI);
+    if (document.readyState === "complete") {
+      initAI();
     } else {
-        window.addEventListener('load', initAI);
+      window.addEventListener("load", initAI, { once: true });
     }
   })();
 </script>

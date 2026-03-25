@@ -1,43 +1,201 @@
 ---
-import MainGridLayout from "@layouts/MainGridLayout.astro";  
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+
+const repos = [
+  {
+    name: "saicaca",
+    url: "https://github.com/saicaca/fuwari",
+    avatar: "https://avatars.githubusercontent.com/u/25200299?v=4",
+    desc: "Fuwari 原始模板，一个基于 Astro 的静态博客主题。",
+    tag: "Original",
+  },
+  {
+    name: "afoim",
+    url: "https://github.com/afoim/fuwari",
+    avatar: "https://avatars.githubusercontent.com/u/180811437?v=4",
+    desc: "我当前仓库的主要来源之一，也是在它的基础上继续调整而来。",
+    tag: "Modified",
+  },
+  {
+    name: "Besty0728",
+    url: "https://github.com/Besty0728/fuwari",
+    avatar: "https://avatars.githubusercontent.com/u/199687402?v=4",
+    desc: "在 Fuwari 基础上继续演化的魔改版本，提供了不少灵感。",
+    tag: "Inspired",
+  },
+];
 ---
 
 <MainGridLayout title="来源">
-    <div class="card-base p-6 md:p-8">
-    <h1 class="text-2xl font-bold text-black dark:text-white mb-6">来源</h1>
+  <div class="space-y-6">
+    <section class="card-base p-6 md:p-8 hero">
+      <div class="flex items-start gap-4">
+        <div class="hero-icon">⌘</div>
 
-    <p class="text-sm text-black/60 dark:text-white/60 mb-4">
-        当前博客的模板与部分功能代码来自以下开源仓库。感谢原作者们的无私奉献与开源贡献。
-    </p>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <h1 class="text-2xl md:text-3xl font-bold text-black dark:text-white">
+              来源
+            </h1>
+            <span class="badge">{repos.length} 个项目</span>
+          </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <a href="https://github.com/saicaca/fuwari" target="_blank" class="repo-card group">
-        <div class="flex items-center gap-2">
-            <div class="relative w-5 h-5 rounded overflow-hidden">
-                <img src="https://avatars.githubusercontent.com/u/25200299?v=4" loading="lazy" class="w-full h-full object-cover" alt="saicaca" />
-            </div>
-            <div class="font-bold text-black dark:text-white group-hover:text-[var(--primary)] transition-colors">saicaca</div>
+          <p class="hero-desc">
+            当前博客的模板与部分功能实现，参考了以下开源仓库。
+            感谢这些作者的分享与贡献，也正因为开源，才让这个小站能慢慢长成现在的样子。
+          </p>
         </div>
-        <div class="text-sm text-black/50 dark:text-white/50 mt-1">✨ 一个用 Astro 构建的静态博客模板。</div>
-    </a>
+      </div>
+    </section>
 
-    <a href="https://github.com/afoim/fuwari" target="_blank" class="repo-card group">
-        <div class="flex items-center gap-2">
-            <div class="relative w-5 h-5 rounded overflow-hidden">
-                <img src="https://avatars.githubusercontent.com/u/180811437?v=4" loading="lazy" class="w-full h-full object-cover" alt="afoim" />
-            </div>
-            <div class="font-bold text-black dark:text-white group-hover:text-[var(--primary)] transition-colors">afoim</div>
+    <section class="card-base p-6 md:p-8">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">开源引用</h2>
+          <p class="section-desc">以下项目对本站的结构、样式或功能实现提供了帮助。</p>
         </div>
-        <div class="text-sm text-black/50 dark:text-white/50 mt-1">魔改版 Fuwari，自用博客。</div>
-    </a>
+      </div>
 
-    <a href="https://github.com/Besty0728/fuwari" target="_blank" class="repo-card group">
-        <div class="flex items-center gap-2">
-            <div class="relative w-5 h-5 rounded overflow-hidden">
-                <img src="https://avatars.githubusercontent.com/u/199687402?v=4" loading="lazy" class="w-full h-full object-cover" alt="Besty" />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+        {repos.map((repo) => (
+          <a href={repo.url} target="_blank" class="repo-card">
+            <div class="flex items-center justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3 min-w-0">
+                <img src={repo.avatar} loading="lazy" class="avatar" alt={repo.name} />
+                <div class="min-w-0">
+                  <div class="repo-name">{repo.name}</div>
+                </div>
+              </div>
+              <span class="tag">{repo.tag}</span>
             </div>
-            <div class="font-bold text-black dark:text-white group-hover:text-[var(--primary)] transition-colors">Besty</div>
-        </div>
-        <div class="text-sm text-black/50 dark:text-white/50 mt-1">本仓库来自对fuwari的二次魔改版本的三次魔改</div>
-    </a>
-</div>
+
+            <p class="repo-desc">{repo.desc}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</MainGridLayout>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: -40px;
+    bottom: -40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 999px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--primary) 18%, transparent) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .badge,
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    height: 1.9rem;
+    padding: 0 0.75rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    color: var(--primary);
+  }
+
+  .hero-desc,
+  .section-desc,
+  .repo-desc {
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.85;
+  }
+
+  :global(.dark) .hero-desc,
+  :global(.dark) .section-desc,
+  :global(.dark) .repo-desc {
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: black;
+  }
+
+  :global(.dark) .section-title,
+  :global(.dark) .repo-name {
+    color: white;
+  }
+
+  .section-desc {
+    margin-top: 0.35rem;
+    font-size: 0.92rem;
+  }
+
+  .repo-card {
+    display: block;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  :global(.dark) .repo-card {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .repo-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--primary) 24%, transparent);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .avatar {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 0.8rem;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .repo-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: black;
+    line-height: 1.4;
+  }
+
+  .repo-desc {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+</style>

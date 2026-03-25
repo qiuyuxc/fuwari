@@ -11,94 +11,407 @@ const allFriends = Object.values(
 	}),
 );
 
-const officialTechNames = ["EdgeOne","Cloudflare","Vercel","Netlify","Astro","Github","阿里云ESA","阿里云","腾讯云","华为云","afoim","高德开放平台","Umami"];
+const officialTechNames = [
+	"EdgeOne",
+	"Cloudflare",
+	"Vercel",
+	"Netlify",
+	"Astro",
+	"Github",
+	"阿里云ESA",
+	"阿里云",
+	"腾讯云",
+	"华为云",
+	"afoim",
+	"高德开放平台",
+	"Umami",
+];
 
-const techFriends = allFriends.filter(f => f.tech && officialTechNames.includes(f.name));
-const personalFriends = allFriends.filter(f => !f.tech || (f.tech && !officialTechNames.includes(f.name)));
+const techFriends = allFriends.filter(
+	(f) => f.tech && officialTechNames.includes(f.name),
+);
+const personalFriends = allFriends.filter(
+	(f) => !f.tech || (f.tech && !officialTechNames.includes(f.name)),
+);
 ---
 
 <MainGridLayout title="友链">
-    <div class="card-base p-6 md:p-8">
-        <div class="flex items-center gap-2 mb-6">
-            <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
-                <Icon name="material-symbols:diversity-3" class="text-[1.5rem]" />
-            </div>
-            <h1 class="text-2xl font-bold text-black dark:text-white">友链</h1>
-        </div>
+	<div class="space-y-8">
+		<!-- 页面头部 -->
+		<section class="card-base p-6 md:p-8 hero-panel">
+			<div class="flex items-start gap-4">
+				<div class="hero-icon">
+					<Icon name="material-symbols:diversity-3" class="text-[1.7rem]" />
+				</div>
 
-        <p class="text-sm text-black/60 dark:text-white/60 mb-4">
-            如果您也想加入友链名单，<a target="_blank" href="https://github.com/qiuyuxc/fuwari/tree/main/src/data/friends" class="transition link text-[var(--primary)] font-medium underline">请点击这里提交</a>
-        </p>
+				<div class="flex-1 min-w-0">
+					<div class="flex flex-wrap items-center gap-3 mb-3">
+						<h1 class="text-2xl md:text-3xl font-bold text-black dark:text-white">
+							友链
+						</h1>
+						<span class="hero-badge">
+							共 {allFriends.length} 位伙伴
+						</span>
+					</div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {personalFriends.map((friend) => (
-                <a href={friend.url} target="_blank" class="friend-card">
-                    <div class="flex items-center gap-2">
-                        <div class="relative w-5 h-5 rounded overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                            <img src={friend.avatar} loading="lazy" class="w-full h-full object-cover transition-opacity duration-500" alt={`${friend.name}的头像`} />
-                        </div>
-                        <div class="font-bold text-black dark:text-white">{friend.name}</div>
-                    </div>
-                    <div class="text-sm text-black/50 dark:text-white/50">{friend.description}</div>
-                </a>
-            ))}
-        </div>
+					<p class="hero-desc">
+						这里收录了一些我很喜欢的网站与朋友，也包括本站使用到的部分技术服务。
+						希望你也能从这里发现一些有趣的内容。
+					</p>
 
-        {techFriends.length > 0 && (
-            <div class="mt-8 pt-8 tech-divider">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {techFriends.map((tech) => (
-                        <a href={tech.url} target="_blank" class="friend-card">
-                            <div class="flex items-center gap-2">
-                                <div class="relative w-5 h-5 rounded overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                                    <img src={tech.avatar} loading="lazy" class="w-full h-full object-cover transition-opacity duration-500" alt={`${tech.name}的头像`} />
-                                </div>
-                                <div class="font-bold text-black dark:text-white">{tech.name}</div>
-                            </div>
-                            <div class="text-sm text-black/50 dark:text-white/50">{tech.description}</div>
-                        </a>
-                    ))}
-                </div>
-            </div>
-        )}
-    </div>
+					<div class="mt-4">
+						<a
+							target="_blank"
+							href="https://github.com/qiuyuxc/fuwari/tree/main/src/data/friends"
+							class="submit-link"
+						>
+							<Icon name="material-symbols:add-link-rounded" class="text-[1.1rem]" />
+							<span>申请加入友链</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 个人友链 -->
+		<section class="card-base p-6 md:p-8">
+			<div class="section-head">
+				<div>
+					<h2 class="section-title">朋友们</h2>
+					<p class="section-desc">一些有趣、真诚、持续创作中的站点。</p>
+				</div>
+				<span class="section-count">{personalFriends.length} 个站点</span>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+				{personalFriends.map((friend) => (
+					<a href={friend.url} target="_blank" class="friend-card group">
+						<div class="flex items-start gap-4">
+							<div
+								class="avatar-wrap"
+								style={`--theme-hue: ${siteConfig.themeColor.hue}`}
+							>
+								<img
+									src={friend.avatar}
+									loading="lazy"
+									class="avatar-img"
+									alt={`${friend.name}的头像`}
+								/>
+							</div>
+
+							<div class="flex-1 min-w-0">
+								<div class="flex items-center justify-between gap-3">
+									<h3 class="friend-name">{friend.name}</h3>
+									<span class="friend-tag">Friend</span>
+								</div>
+
+								<p class="friend-desc">
+									{friend.description}
+								</p>
+							</div>
+						</div>
+					</a>
+				))}
+			</div>
+		</section>
+
+		<!-- 技术伙伴 -->
+		{techFriends.length > 0 && (
+			<section class="card-base p-6 md:p-8">
+				<div class="section-head">
+					<div>
+						<h2 class="section-title">技术支持</h2>
+						<p class="section-desc">
+							本站使用或受益于以下平台与服务，在此一并致谢。
+						</p>
+					</div>
+					<span class="section-count">{techFriends.length} 个服务</span>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+					{techFriends.map((tech) => (
+						<a href={tech.url} target="_blank" class="friend-card tech-card group">
+							<div class="flex items-start gap-4">
+								<div
+									class="avatar-wrap tech-avatar"
+									style={`--theme-hue: ${siteConfig.themeColor.hue}`}
+								>
+									<img
+										src={tech.avatar}
+										loading="lazy"
+										class="avatar-img"
+										alt={`${tech.name}的头像`}
+									/>
+								</div>
+
+								<div class="flex-1 min-w-0">
+									<div class="flex items-center justify-between gap-3">
+										<h3 class="friend-name">{tech.name}</h3>
+										<span class="friend-tag tech">Tech</span>
+									</div>
+
+									<p class="friend-desc">
+										{tech.description}
+									</p>
+								</div>
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
+		)}
+	</div>
 </MainGridLayout>
 
 <style>
-    .friend-card {
-        @apply flex flex-col gap-1 p-4 rounded-lg bg-[var(--card-bg)] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-black/5 dark:hover:bg-white/5;
-        transition-property: all;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 0.15s;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-    }
-    
-    .tech-divider {
-        border-top: 2px dashed rgba(255, 255, 255, 0.2);
-    }
+	.hero-panel {
+		position: relative;
+		overflow: hidden;
+	}
 
-    .friend-card:active {
-        scale: .98;
-        background-color: var(--btn-regular-bg-active);
-    }
-    
-    .friend-card:hover {
-        background-color: var(--btn-regular-bg-hover);
-    }
-    
-    .friend-card:hover .font-bold {
-        color: var(--btn-content);
-    }
-    
-    .friend-card:hover .text-sm {
-        @apply text-gray-700 dark:text-white;
-    }
+	.hero-panel::after {
+		content: "";
+		position: absolute;
+		inset: auto -60px -60px auto;
+		width: 180px;
+		height: 180px;
+		border-radius: 999px;
+		background: radial-gradient(circle, color-mix(in srgb, var(--primary) 20%, transparent) 0%, transparent 70%);
+		pointer-events: none;
+	}
 
-    .friend-card .font-bold,
-    .friend-card .text-sm {
-        transition-property: color;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 0.15s;
-    }
+	.hero-icon {
+		width: 3.25rem;
+		height: 3.25rem;
+		border-radius: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--primary);
+		color: white;
+		flex-shrink: 0;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+	}
+
+	.hero-badge {
+		display: inline-flex;
+		align-items: center;
+		height: 1.9rem;
+		padding: 0 0.75rem;
+		border-radius: 999px;
+		font-size: 0.8rem;
+		font-weight: 600;
+		background: color-mix(in srgb, var(--primary) 14%, transparent);
+		color: var(--primary);
+	}
+
+	.hero-desc {
+		font-size: 0.98rem;
+		line-height: 1.9;
+		color: rgba(0, 0, 0, 0.62);
+		max-width: 46rem;
+	}
+
+	:global(.dark) .hero-desc {
+		color: rgba(255, 255, 255, 0.65);
+	}
+
+	.submit-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.7rem 1rem;
+		border-radius: 0.9rem;
+		font-size: 0.92rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: var(--primary);
+		background: color-mix(in srgb, var(--primary) 10%, transparent);
+		transition: all 0.2s ease;
+	}
+
+	.submit-link:hover {
+		transform: translateY(-1px);
+		background: color-mix(in srgb, var(--primary) 16%, transparent);
+	}
+
+	.section-head {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.section-title {
+		font-size: 1.35rem;
+		font-weight: 700;
+		color: black;
+	}
+
+	:global(.dark) .section-title {
+		color: white;
+	}
+
+	.section-desc {
+		margin-top: 0.35rem;
+		font-size: 0.92rem;
+		color: rgba(0, 0, 0, 0.55);
+	}
+
+	:global(.dark) .section-desc {
+		color: rgba(255, 255, 255, 0.56);
+	}
+
+	.section-count {
+		font-size: 0.85rem;
+		font-weight: 600;
+		padding: 0.45rem 0.8rem;
+		border-radius: 999px;
+		background: rgba(0, 0, 0, 0.05);
+		color: rgba(0, 0, 0, 0.62);
+	}
+
+	:global(.dark) .section-count {
+		background: rgba(255, 255, 255, 0.08);
+		color: rgba(255, 255, 255, 0.66);
+	}
+
+	.friend-card {
+		display: block;
+		padding: 1rem;
+		border-radius: 1rem;
+		background: var(--card-bg);
+		border: 1px solid rgba(0, 0, 0, 0.08);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+
+	:global(.dark) .friend-card {
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+
+	.friend-card:hover {
+		transform: translateY(-3px);
+		border-color: color-mix(in srgb, var(--primary) 28%, rgba(0, 0, 0, 0.08));
+		background: color-mix(in srgb, var(--card-bg) 88%, var(--primary) 12%);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+	}
+
+	.friend-card:active {
+		transform: scale(0.985);
+	}
+
+	.avatar-wrap {
+		width: 3rem;
+		height: 3rem;
+		border-radius: 0.95rem;
+		overflow: hidden;
+		flex-shrink: 0;
+		border: 1px solid rgba(0, 0, 0, 0.06);
+		background: rgba(255, 255, 255, 0.8);
+	}
+
+	:global(.dark) .avatar-wrap {
+		border-color: rgba(255, 255, 255, 0.1);
+		background: rgba(255, 255, 255, 0.06);
+	}
+
+	.tech-avatar {
+		border-radius: 0.85rem;
+	}
+
+	.avatar-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.friend-name {
+		font-size: 1rem;
+		font-weight: 700;
+		color: black;
+		line-height: 1.4;
+		transition: color 0.2s ease;
+	}
+
+	:global(.dark) .friend-name {
+		color: white;
+	}
+
+	.friend-card:hover .friend-name {
+		color: var(--primary);
+	}
+
+	.friend-tag {
+		flex-shrink: 0;
+		font-size: 0.72rem;
+		font-weight: 700;
+		padding: 0.28rem 0.55rem;
+		border-radius: 999px;
+		background: rgba(0, 0, 0, 0.05);
+		color: rgba(0, 0, 0, 0.55);
+	}
+
+	:global(.dark) .friend-tag {
+		background: rgba(255, 255, 255, 0.08);
+		color: rgba(255, 255, 255, 0.6);
+	}
+
+	.friend-tag.tech {
+		background: color-mix(in srgb, var(--primary) 14%, transparent);
+		color: var(--primary);
+	}
+
+	.friend-desc {
+		margin-top: 0.55rem;
+		font-size: 0.92rem;
+		line-height: 1.75;
+		color: rgba(0, 0, 0, 0.55);
+		transition: color 0.2s ease;
+	}
+
+	:global(.dark) .friend-desc {
+		color: rgba(255, 255, 255, 0.58);
+	}
+
+	.friend-card:hover .friend-desc {
+		color: rgba(0, 0, 0, 0.72);
+	}
+
+	:global(.dark) .friend-card:hover .friend-desc {
+		color: rgba(255, 255, 255, 0.82);
+	}
+
+	.tech-card {
+		position: relative;
+	}
+
+	.tech-card::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: 1rem;
+		pointer-events: none;
+		box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary) 8%, transparent);
+	}
+
+	@media (max-width: 768px) {
+		.hero-icon {
+			width: 3rem;
+			height: 3rem;
+		}
+
+		.friend-card {
+			padding: 0.95rem;
+		}
+
+		.avatar-wrap {
+			width: 2.8rem;
+			height: 2.8rem;
+		}
+	}
 </style>

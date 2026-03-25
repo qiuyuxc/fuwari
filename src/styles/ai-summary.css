@@ -1,121 +1,272 @@
 @property --ai-angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-}
-
-@property --ai-len {
-    syntax: '<number>';
-    initial-value: 70;
-    inherits: false;
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
 #ai-summary-wrapper {
-    display: grid;
-    grid-template-rows: 1fr;
-    transition: grid-template-rows 0.6s cubic-bezier(0.25, 1, 0.5, 1), margin 0.6s ease;
-    will-change: grid-template-rows;
-    margin-bottom: 1.5rem;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr;
+  transition:
+    grid-template-rows 0.55s cubic-bezier(0.25, 1, 0.5, 1),
+    margin 0.45s ease,
+    opacity 0.3s ease;
+  margin: 1.2rem 0 1.8rem;
+  overflow: visible;
 }
 
 #ai-summary-wrapper.is-collapsed {
-    grid-template-rows: 0fr;
-    margin-bottom: 0 !important;
+  grid-template-rows: 0fr;
+  margin: 0.35rem 0 1rem;
 }
 
 .ai-summary-inner {
-    overflow: hidden;
-    min-height: 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
 }
 
-.expand-pure-icon {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    cursor: pointer;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    z-index: 110;
+.ai-floating-expand {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 2rem;
+  padding: 0 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.78);
+  color: #7ab8ff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.22s ease;
+  cursor: pointer;
 }
 
-.expand-pure-icon::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    padding: 1.2px; 
-    background: conic-gradient(
-        from var(--ai-angle),
-        transparent 0%,
-        #ea4335 5%, 
-        #fbbc05 20%, 
-        #34a853 35%, 
-        #4285f4 50%, 
-        transparent calc(var(--ai-len) * 1%) 100%
-    );
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    animation: ai-triple-spin-flexible 3.5s linear infinite; 
+.ai-floating-expand:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+  background: rgba(15, 23, 42, 0.9);
 }
 
-@keyframes ai-triple-spin-flexible {
-    0% { --ai-angle: 0deg; --ai-len: 50; }
-    30% { --ai-len: 85; }
-    40% { --ai-angle: 360deg; --ai-len: 60; }
-    70% { --ai-len: 90; }
-    80% { --ai-angle: 720deg; --ai-len: 35; }
-    90% { --ai-len: 20; }
-    100% { --ai-angle: 1080deg; --ai-len: 50; }
+.ai-floating-expand img {
+  display: block;
+  flex-shrink: 0;
+}
+
+.ai-main-container {
+  position: relative;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(122, 184, 255, 0.2),
+    rgba(122, 184, 255, 0.06)
+  );
+  transition:
+    transform 0.45s ease,
+    opacity 0.35s ease,
+    box-shadow 0.25s ease;
+}
+
+.ai-main-container:hover {
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+}
+
+.ai-card {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(1rem - 1px);
+  background: rgba(15, 23, 42, 0.72);
+  padding: 1rem 1rem 0.95rem;
+  overflow: hidden;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ai-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 68px;
+  background: linear-gradient(
+    180deg,
+    rgba(122, 184, 255, 0.12),
+    rgba(122, 184, 255, 0.04),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.ai-card-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.ai-card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.ai-card-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(122, 184, 255, 0.1);
+  border: 1px solid rgba(122, 184, 255, 0.14);
+  flex-shrink: 0;
+}
+
+.ai-card-icon img {
+  display: block;
+}
+
+.ai-card-title-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  min-width: 0;
+}
+
+.ai-kicker {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #7ab8ff;
+  opacity: 0.95;
+}
+
+.ai-card-title-text strong {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.96) !important;
+}
+
+.ai-close-btn {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(122, 184, 255, 0.96);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ai-close-btn:hover {
+  background: rgba(122, 184, 255, 0.1);
+  transform: rotate(90deg);
+}
+
+.ai-card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.ai-summary-text {
+  min-height: 1.5rem;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.95;
+  color: rgba(255, 255, 255, 0.88) !important;
+  white-space: pre-wrap;
+  word-break: break-word;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
 }
 
 .ai-border-track {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    border-radius: 12px;
-    padding: 1.5px;
-    background: conic-gradient(
-        from var(--ai-angle),
-        transparent 0%,
-        #ea4335 4%, 
-        #fbbc05 10%, 
-        #34a853 18%, 
-        #4285f4 28%, 
-        transparent 35% 100%
-    );
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    opacity: 0; 
-    transition: opacity 1.2s ease;
-    animation: ai-glow-spin-linear 1.5s linear infinite;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 1rem;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--ai-angle),
+    transparent 0%,
+    #ea4335 6%,
+    #fbbc05 12%,
+    #34a853 19%,
+    #4285f4 27%,
+    transparent 34% 100%
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  animation: ai-glow-spin-linear 1.8s linear infinite;
 }
 
 @keyframes ai-glow-spin-linear {
-    from { --ai-angle: 0deg; }
-    to { --ai-angle: 360deg; }
+  from {
+    --ai-angle: 0deg;
+  }
+  to {
+    --ai-angle: 360deg;
+  }
 }
 
-.force-hide { display: none !important; }
-
-#ai-type-target { 
-    opacity: 1; 
-    transition: opacity 0.3s ease; 
-    min-height: 1.5rem; 
-    display: block; 
+.force-hide {
+  display: none !important;
 }
 
-#ai-type-target.is-typing-init { opacity: 0; }
+.state-flying {
+  transform: translateY(-6px) scale(0.985) !important;
+  opacity: 0 !important;
+}
 
-.state-flying { 
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease !important; 
-    transform: translateX(380px) scale(0) !important; 
-    opacity: 0 !important; 
+@media (max-width: 768px) {
+  .ai-floating-expand {
+    top: 0;
+    right: 0;
+    height: 1.9rem;
+    padding: 0 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .ai-card {
+    padding: 0.95rem 0.95rem 0.9rem;
+  }
+
+  .ai-card-head {
+    margin-bottom: 0.8rem;
+  }
+
+  .ai-card-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.72rem;
+  }
+
+  .ai-summary-text {
+    font-size: 0.92rem;
+    line-height: 1.9;
+  }
 }
