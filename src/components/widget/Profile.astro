@@ -3,107 +3,148 @@ import { Icon } from "astro-icon/components";
 import { profileConfig, siteConfig, umamiConfig } from "../../config";
 
 const config = profileConfig;
+const hasSingleLink = config.links.length === 1;
 ---
-<div class="card-base p-3 border border-black/10 dark:border-white/10">
-    <div class="relative mx-auto mt-1 lg:mx-0 lg:mt-0 mb-3 max-w-[12rem] lg:max-w-none rounded-xl overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-        <img src={config.avatar} alt="Profile Image of the Author" class="w-full h-full object-cover transition duration-500" />
+
+<div class="card-base border border-black/10 p-3.5 dark:border-white/10">
+  <div class="flex flex-col items-center text-center">
+    <!-- 头像 -->
+    <div
+      class="relative mb-3 h-24 w-24 overflow-hidden rounded-2xl ring-1 ring-black/5 transition dark:ring-white/10"
+      style={`--theme-hue: ${siteConfig.themeColor.hue}`}
+    >
+      <img
+        src={config.avatar}
+        alt="Profile Image of the Author"
+        class="h-full w-full object-cover transition duration-500"
+      />
     </div>
-    <div class="px-2">
-        <div class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition">{config.name}</div>
-        <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div>
-        <div class="text-center text-neutral-400 mb-2.5 transition">{config.bio}</div>
-        <div class="flex flex-wrap gap-2 justify-center mb-1">
-            {config.links.length > 1 && config.links.map(item =>
-                    <a rel="me" aria-label={item.name} href={item.url} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90">
-                        <Icon name={item.icon} class="text-[1.5rem]"></Icon>
-                    </a>
-            )}
-            {config.links.length == 1 && <a rel="me" aria-label={config.links[0].name} href={config.links[0].url} target="_blank"
-                                            class="btn-regular rounded-lg h-10 gap-2 px-3 font-bold active:scale-95">
-                <Icon name={config.links[0].icon} class="text-[1.5rem]"></Icon>
-                {config.links[0].name}
-            </a>}
-        </div>
-        
-        <!-- 全站访问量统计 -->
-        <div class="grid grid-cols-2 mt-3 pt-3 border-t border-neutral-300 dark:border-neutral-700">
-            <div class="text-center">
-                <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
-                    <Icon name="material-symbols:visibility-outline" class="text-base"></Icon>
-                    <span class="text-xs">访问量</span>
-                </div>
-                <div id="site-views" class="font-bold text-lg text-neutral-700 dark:text-neutral-300">0</div>
-            </div>
-            <div class="text-center border-l border-neutral-300 dark:border-neutral-700">
-                <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
-                    <Icon name="material-symbols:person" class="text-base"></Icon>
-                    <span class="text-xs">访客数</span>
-                </div>
-                <div id="site-visitors" class="font-bold text-lg text-neutral-700 dark:text-neutral-300">0</div>
-            </div>
-        </div>
+
+    <!-- 名字 -->
+    <div class="text-[1.7rem] font-bold leading-none text-neutral-800 transition dark:text-neutral-50">
+      {config.name}
     </div>
+
+    <!-- 小分隔线 -->
+    <div class="my-2 h-1 w-10 rounded-full bg-[var(--primary)] transition"></div>
+
+    <!-- 简介 -->
+    <p class="max-w-[18ch] text-sm leading-6 text-neutral-500 transition dark:text-neutral-400">
+      {config.bio}
+    </p>
+
+    <!-- 社交按钮 -->
+    <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+      {hasSingleLink ? (
+        <a
+          rel="me"
+          aria-label={config.links[0].name}
+          href={config.links[0].url}
+          target="_blank"
+          class="btn-regular inline-flex h-9 items-center gap-2 rounded-xl px-3 text-sm font-medium active:scale-95"
+        >
+          <Icon name={config.links[0].icon} class="text-[1.1rem]" />
+          <span>{config.links[0].name}</span>
+        </a>
+      ) : (
+        config.links.map((item) => (
+          <a
+            rel="me"
+            aria-label={item.name}
+            href={item.url}
+            target="_blank"
+            class="btn-regular inline-flex h-9 w-9 items-center justify-center rounded-xl active:scale-95"
+          >
+            <Icon name={item.icon} class="text-[1.1rem]" />
+          </a>
+        ))
+      )}
+    </div>
+  </div>
+
+  <!-- 统计区 -->
+  <div class="mt-4 grid grid-cols-2 gap-2.5 border-t border-neutral-200/70 pt-3 dark:border-neutral-800/80">
+    <div class="rounded-2xl bg-black/[0.03] px-3 py-2.5 text-center dark:bg-white/[0.04]">
+      <div class="mb-1 flex items-center justify-center gap-1 text-[0.75rem] text-neutral-500 dark:text-neutral-400">
+        <Icon name="material-symbols:visibility-outline" class="text-[1rem]" />
+        <span>访问量</span>
+      </div>
+      <div
+        id="site-views"
+        class="text-xl font-bold tracking-tight text-neutral-800 dark:text-neutral-100 tabular-nums"
+      >
+        0
+      </div>
+    </div>
+
+    <div class="rounded-2xl bg-black/[0.03] px-3 py-2.5 text-center dark:bg-white/[0.04]">
+      <div class="mb-1 flex items-center justify-center gap-1 text-[0.75rem] text-neutral-500 dark:text-neutral-400">
+        <Icon name="material-symbols:person-outline" class="text-[1rem]" />
+        <span>访客数</span>
+      </div>
+      <div
+        id="site-visitors"
+        class="text-xl font-bold tracking-tight text-neutral-800 dark:text-neutral-100 tabular-nums"
+      >
+        0
+      </div>
+    </div>
+  </div>
 </div>
 
-<style>
-    .loading-bar {
-        transition: opacity 0.5s ease-out;
-    }
-</style>
+<script define:vars={{ umamiConfig }}>
+  function animateValue(el, start, end, duration) {
+    let startTimestamp = null;
 
-<script define:vars={{ umamiConfig}}>
-    // 数字动画函数
-    function animateValue(obj, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            obj.innerHTML = Math.floor(progress * (end - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            } else {
-                obj.innerHTML = end;
-            }
-        };
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      el.textContent = Math.floor(progress * (end - start) + start).toLocaleString();
+
+      if (progress < 1) {
         window.requestAnimationFrame(step);
-    }
+      } else {
+        el.textContent = end.toLocaleString();
+      }
+    };
 
-    // 获取全站访问量统计
-    async function loadSiteStats() {
-        if (!umamiConfig.enable) return;
-        try {
-            const statsData = await fetchUmamiStats(umamiConfig.baseUrl, umamiConfig.shareId, {
-                timezone: umamiConfig.timezone
-            });
-            
-            const pageviews = statsData.pageviews || 0;
-            const visitors = statsData.visitors || 0;
-            
-            const viewsElement = document.getElementById('site-views');
-            const visitorsElement = document.getElementById('site-visitors');
-            
-            if (viewsElement) {
-                const startVal = parseInt(viewsElement.textContent) || 0;
-                // 如果当前值已经是目标值，就不执行动画
-                if (startVal !== pageviews) {
-                    animateValue(viewsElement, startVal, pageviews, 1000);
-                }
-            }
-            
-            if (visitorsElement) {
-                const startVal = parseInt(visitorsElement.textContent) || 0;
-                // 如果当前值已经是目标值，就不执行动画
-                if (startVal !== visitors) {
-                    animateValue(visitorsElement, startVal, visitors, 1000);
-                }
-            }
-        } catch (error) {
-            console.error('获取全站统计失败:', error);
+    window.requestAnimationFrame(step);
+  }
+
+  async function loadSiteStats() {
+    if (!umamiConfig?.enable || typeof fetchUmamiStats !== "function") return;
+
+    try {
+      const statsData = await fetchUmamiStats(
+        umamiConfig.baseUrl,
+        umamiConfig.shareId,
+        { timezone: umamiConfig.timezone }
+      );
+
+      const pageviews = Number(statsData?.pageviews || 0);
+      const visitors = Number(statsData?.visitors || 0);
+
+      const viewsElement = document.getElementById("site-views");
+      const visitorsElement = document.getElementById("site-visitors");
+
+      if (viewsElement) {
+        const current = Number((viewsElement.textContent || "0").replace(/,/g, ""));
+        if (current !== pageviews) {
+          animateValue(viewsElement, current, pageviews, 800);
         }
-    }
+      }
 
-    // 页面加载完成后获取统计数据
-    document.addEventListener('DOMContentLoaded', loadSiteStats);
-    // 监听 Swup 内容替换事件，确保页面切换后重新获取数据
-    document.addEventListener('content:replace', loadSiteStats);
+      if (visitorsElement) {
+        const current = Number((visitorsElement.textContent || "0").replace(/,/g, ""));
+        if (current !== visitors) {
+          animateValue(visitorsElement, current, visitors, 800);
+        }
+      }
+    } catch (error) {
+      console.error("获取全站统计失败:", error);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", loadSiteStats);
+  document.addEventListener("content:replace", loadSiteStats);
 </script>

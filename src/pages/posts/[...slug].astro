@@ -118,55 +118,62 @@ const jsonLd = {
                 <Content />
             </Markdown>
 
-            <!-- 文章反馈与编辑区域 -->
-            <div class="mb-4 p-4 rounded-lg bg-[var(--license-block-bg)] border border-[var(--line-divider)] onload-animation">
-                <!-- 反馈区域 -->
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="h-5 w-5 rounded bg-[var(--primary)] flex items-center justify-center">
-                            <Icon name="material-symbols:help-outline" class="text-[0.75rem] text-white dark:text-black/70"></Icon>
-                        </div>
-                        <p class="text-black/80 dark:text-white/80 text-sm">这篇文章是否对你有帮助？</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="mailto:xik@quiyu.cn" class="group flex items-center gap-1 px-3 py-1.5 rounded bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)] text-[var(--btn-content)] text-xs font-medium transition-all active:scale-95">
-                            <Icon name="material-symbols:contact-mail-outline" class="text-[0.875rem] group-hover:scale-110 transition-transform"></Icon>
-                            联系
-                        </a>
-                        <a href="/sponsors/" class="group flex items-center gap-1 px-3 py-1.5 rounded bg-[var(--primary)] hover:bg-[oklch(0.65_0.16_var(--hue))] active:bg-[oklch(0.60_0.18_var(--hue))] text-white dark:text-black/80 text-xs font-medium transition-all active:scale-95">
-                            <Icon name="material-symbols:favorite-outline" class="text-[0.875rem] group-hover:scale-110 transition-transform"></Icon>
-                            赞助
-                        </a>
-                    </div>
-                </div>
-                
-                {gitHubEditConfig.enable && (
-                    <>
-                        <!-- 分隔线 -->
-                        <div class="border-t border-[var(--line-divider)] my-3"></div>
-                        
-                        <!-- GitHub编辑区域 -->
-                        <div class="flex items-start gap-3">
-                            <div class="h-5 w-5 rounded bg-[var(--primary)] flex items-center justify-center">
-                                <Icon name="material-symbols:edit-outline" class="text-[0.875rem] text-white dark:text-black/70"></Icon>
-                            </div>
-                            <div class="flex-1">
-                                <p class="text-black/80 dark:text-white/80 text-sm mb-1">发现错误或想要改进这篇文章？</p>
-                                <a 
-                                    href={`${gitHubEditConfig.baseUrl}/${entry.slug}.md`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="inline-flex items-center gap-1 text-[var(--primary)] hover:text-[oklch(0.65_0.16_var(--hue))] text-sm font-medium transition-colors"
-                                >
-                                    <Icon name="fa6-brands:github" class="text-[0.875rem]"></Icon>
-                                    在 GitHub 上编辑此页
-                                    <Icon name="material-symbols:open-in-new" class="text-[0.75rem]"></Icon>
-                                </a>
-                            </div>
-                        </div>
-                    </>
-                )}
-            </div>
+            <!-- 文章尾 -->
+<div class="mb-5 onload-animation">
+  <div class="rounded-2xl border border-[var(--line-divider)] bg-[var(--license-block-bg)] px-4 py-4 md:px-5 md:py-5 text-black/80 dark:text-white/80">
+    <div class="flex flex-col gap-4">
+      <!-- 1 -->
+      <div class="flex items-start gap-3">
+        <div class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[var(--primary)]/12 text-[var(--primary)]">
+          <Icon name="material-symbols:favorite-outline-rounded" class="text-[1.05rem]" />
+        </div>
+
+        <div class="min-w-0 flex-1">
+          <h3 class="text-[1.05rem] font-semibold">
+            这篇文章有帮到你的话
+          </h3>
+          <p class="mt-1 text-sm leading-6 opacity-70">
+            有问题可以联系我，觉得内容不错的话，也可以顺手支持一下。
+          </p>
+
+          <div class="mt-3 flex flex-wrap gap-2.5">
+            <a
+              href="/sponsors/"
+              class="inline-flex items-center gap-2 rounded-xl bg-[var(--primary)] px-4 py-2.5 text-sm font-semibold text-white dark:text-black/80 transition-all hover:bg-[oklch(0.65_0.16_var(--hue))] active:scale-[0.98]"
+            >
+              <Icon name="material-symbols:favorite-outline-rounded" class="text-[1rem]" />
+              赞助
+            </a>
+
+            <a
+              href="mailto:xik@quiyu.cn"
+              class="inline-flex items-center gap-2 rounded-xl border border-[var(--line-divider)] bg-[var(--btn-regular-bg)] px-4 py-2.5 text-sm font-medium transition-all hover:bg-[var(--btn-regular-bg-hover)] active:scale-[0.98]"
+            >
+              <Icon name="material-symbols:contact-mail-outline-rounded" class="text-[1rem] opacity-80" />
+              联系我
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {gitHubEditConfig.enable && (
+        <div class="flex items-center gap-2 border-t border-[var(--line-divider)] pt-3 text-sm">
+          <Icon name="material-symbols:edit-outline-rounded" class="text-[1rem] text-[var(--primary)] shrink-0" />
+          <span class="opacity-70">发现问题或想补充内容？</span>
+          <a
+            href={`${gitHubEditConfig.baseUrl}/${entry.slug}.md`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 font-medium text-[var(--primary)] transition-colors hover:text-[oklch(0.65_0.16_var(--hue))]"
+          >
+            在 GitHub 上编辑此页
+            <Icon name="material-symbols:open-in-new-rounded" class="text-[0.9rem]" />
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
 
             {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
             
