@@ -65,7 +65,7 @@ export const siteConfig: SiteConfig = {
 		},
 	],
 	officialSites: [
-		{ url: "https://www.quiyu.cn", alias: "Main" }, 
+		{ url: "https://www.kukie.cn", alias: "Main" }, 
 	],
 	server: [
 		{ url: "", text: "Blog" }, 
@@ -101,7 +101,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "论坛", 
-			url: "https://bbs.quiyu.cn", 
+			url: "https://bbs.kukie.cn", 
 			external: true, 
 		},
 		{
