@@ -3,7 +3,7 @@ title: Cloudflare Tunnel 的优选实践
 published: 2026-01-14
 description: '通过 Cloudflare Tunnel + SaaS 优化 Tunnel 站点访问体验'
 custom_summary: 本文介绍如何通过 Cloudflare SaaS 改善 Cloudflare Tunnel 默认线路在国内访问较慢的问题。通过“主辅双域名”配置，将主域名解析到优选 CNAME，再借助 SaaS 的自定义主机名与回退源能力，实现 Tunnel 内网穿透与访问优化并存。实测在晚高峰场景下，可明显改善高延迟与丢包问题。
-image: 'https://pic.dkg.asia/images/38.webp'
+image: '/assets/image/tunnel001.webp'
 tags: [CDN, Cloudflare, Tunnel, SaaS]
 category: 'CDN'
 draft: false
@@ -109,6 +109,8 @@ https://www.byoip.top/
 ```
 
 获取到可用优选后，先把它配置在辅助域名下的某个子域名上。
+
+![](/assets/image/Tunnelp.png)
 
 ### 4. 修改主域名解析到优选子域名
 
