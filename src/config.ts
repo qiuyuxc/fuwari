@@ -54,9 +54,9 @@ export const siteConfig: SiteConfig = {
 		depth: 2, // 显示的标题深度，范围 1 到 3
 	},
 	notice: {
-		enable: false, // 是否显示通知
-		content: "", // 通知内容
-		level: "info", // 通知级别，支持 'warning', 'info', 'error'
+		enable: true, // 是否显示通知
+		content: "已暂停更新与维护", // 通知内容
+		level: "error", // 通知级别，支持 'warning', 'info', 'error'
 	},
 	favicon: [
 		// 网站图标，若为空则使用默认的
