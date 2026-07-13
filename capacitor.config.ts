@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'cn.quiyu.blog',
+  appId: '*',
   appName: 'fuwari',
   webDir: 'dist'
 };

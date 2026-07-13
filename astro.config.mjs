@@ -1,3 +1,4 @@
+import mermaid from "astro-mermaid";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
@@ -67,6 +68,7 @@ export default defineConfig({
 			},
 		}),
 		svelte(),
+		mermaid(),
 		sitemap(),
 		expressiveCode({
 			themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],

@@ -32,9 +32,11 @@
     .card-hover {
         @apply hover:scale-[1.01] hover:shadow-xl hover:border-black/10 dark:hover:border-white/20 hover:z-10;
     }
+
     h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
         @apply transition;
     }
+
     .card-shadow {
         @apply drop-shadow-[0_2px_4px_rgba(0,0,0,0.005)]
     }
@@ -48,6 +50,7 @@
     .link-lg {
         @apply transition rounded-md p-1.5 -m-1.5 expand-animation;
     }
+
     .float-panel {
         @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-xl dark:shadow-none;
     }
@@ -85,7 +88,7 @@
 
     .link-underline {
         @apply transition underline decoration-2 decoration-dashed decoration-[var(--link-underline)]
-        hover:decoration-[var(--link-hover)] active:decoration-[var(--link-active)] underline-offset-[0.25rem]
+        hover:decoration-[var(--primary)] active:decoration-[var(--primary-hover)] underline-offset-[0.25rem]
     }
 
     .toc-hide,
@@ -131,12 +134,50 @@
     }
 
     .btn-regular-dark {
-        @apply flex items-center justify-center
-        bg-[oklch(0.45_0.01_var(--hue))] hover:bg-[oklch(0.50_0.01_var(--hue))] active:bg-[oklch(0.55_0.01_var(--hue))]
-        dark:bg-[oklch(0.30_0.02_var(--hue))] dark:hover:bg-[oklch(0.35_0.03_var(--hue))] dark:active:bg-[oklch(0.40_0.03_var(--hue))]
+        @apply flex items-center justify-center text-white/90;
+        background: #171717;
+        &:hover { background: #333333; }
+        &:active { background: #444444; }
+    }
+    :root.dark .btn-regular-dark {
+        background: #141516;
+        &:hover { background: #18191a; }
+        &:active { background: #191a1b; }
     }
     .btn-regular-dark.success {
-        @apply bg-[oklch(0.75_0.14_var(--hue))] dark:bg-[oklch(0.75_0.14_var(--hue))]
+        @apply bg-[#27a644] dark:bg-[#27a644]
+    }
+
+    .btn-pill {
+        @apply inline-flex items-center justify-center rounded-pill px-5 h-12
+        font-medium text-base transition-all duration-200;
+        box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.03),
+            0 2px 2px rgba(0, 0, 0, 0.04);
+    }
+    .btn-pill:hover {
+        box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.04),
+            0 4px 8px rgba(0, 0, 0, 0.06);
+        transform: translateY(-1px);
+    }
+    .btn-pill:active {
+        transform: translateY(0);
+        box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.03),
+            0 1px 1px rgba(0, 0, 0, 0.02);
+    }
+    .btn-pill-primary {
+        @apply btn-pill bg-[#171717] text-white hover:bg-[#333333];
+    }
+    :root.dark .btn-pill-primary {
+        @apply bg-white text-[#171717] hover:bg-white/90;
+    }
+    .btn-pill-secondary {
+        @apply btn-pill bg-white text-[#171717] border border-[var(--hairline)];
+    }
+    :root.dark .btn-pill-secondary {
+        @apply bg-transparent text-white border border-[var(--hairline)];
     }
 }
 
@@ -183,4 +224,3 @@
 .shiny-text.disabled {
   animation: none;
 }
-

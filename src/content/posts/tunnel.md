@@ -3,7 +3,7 @@ title: Cloudflare Tunnel 的优选实践
 published: 2026-01-14
 description: '通过 Cloudflare Tunnel + SaaS 优化 Tunnel 站点访问体验'
 custom_summary: 本文介绍如何通过 Cloudflare SaaS 改善 Cloudflare Tunnel 默认线路在国内访问较慢的问题。通过“主辅双域名”配置，将主域名解析到优选 CNAME，再借助 SaaS 的自定义主机名与回退源能力，实现 Tunnel 内网穿透与访问优化并存。实测在晚高峰场景下，可明显改善高延迟与丢包问题。
-image: '/assets/image/tunnel001.webp'
+image: 'https://cdn.kukie.cn/blog/Tunnel4.png'
 tags: [CDN, Cloudflare, Tunnel, SaaS]
 category: 'CDN'
 draft: false
@@ -12,7 +12,7 @@ lang: 'zh-cn'
 
 ## 前言
 
-Cloudflare Tunnel 的确很好用，尤其适合个人服务和轻量站点。  
+Cloudflare Tunnel 的确很好用，尤其适合个人服务和轻量站点。
 但它也有一个比较常见的问题：**默认线路在国内访问体验并不理想**。
 
 尤其是在晚高峰时段，延迟升高、丢包、打开慢，都是比较常见的情况。
@@ -40,15 +40,10 @@ Cloudflare Tunnel 的确很好用，尤其适合个人服务和轻量站点。
 - **主域名**：最终给用户访问的域名
 - **辅助域名**：用于配置 SaaS、自定义主机名以及回退源的域名
 
-例如：
-
-- `xik.com` 为主域名
-- `cf.com` 为辅助域名
-
 如果你只有一个域名，也可以用子域名来代替辅助域名，例如：
 
-- 主域名：`quiyu.com`
-- 辅助域名：`saas.quiyu.com`
+- 主域名：`cf.com`
+- 辅助域名：`saas.cf.com`
 
 理解这两个角色之后，后面的配置就会清楚很多。
 
@@ -76,7 +71,7 @@ Cloudflare Tunnel 的确很好用，尤其适合个人服务和轻量站点。
 - 一个主域名
 - 一个辅助域名
 
-![](/assets/image/Tunnel1.png)
+![](https://cdn.kukie.cn/blog/Tunnel1.png)
 
 这一步的目的，是让同一个 Tunnel 服务同时拥有“用户访问入口”和“回源入口”两个地址。
 
@@ -92,10 +87,10 @@ Cloudflare Tunnel 的确很好用，尤其适合个人服务和轻量站点。
 
 这条记录的用途，是让辅助域名成为后续 SaaS 配置里的回退源。这一步必须先加，否则后面无法继续添加自定义主机名。
 
-例如，我这里把子域名指向了 `8.8.8.8`。  
+例如，我这里把子域名指向了 `8.8.8.8`。
 只要小黄云开启，流量实际仍然会经过 Cloudflare，这样就可以满足后续 SaaS 的回退源要求。
 
-![](/assets/image/Tunnel2.png)
+![](https://cdn.kukie.cn/blog/Tunnel2.png)
 
 ### 3. 为辅助域名添加社区优选 CNAME
 
@@ -103,14 +98,13 @@ Cloudflare Tunnel 的确很好用，尤其适合个人服务和轻量站点。
 
 常见的优选来源可以从下面这些站点获取：
 
-```txt
 https://cf.090227.xyz/
+
 https://www.byoip.top/
-```
 
 获取到可用优选后，先把它配置在辅助域名下的某个子域名上。
 
-![](/assets/image/Tunnelp.png)
+![](https://cdn.kukie.cn/blog/Tunnelp.png)
 
 ### 4. 修改主域名解析到优选子域名
 
@@ -143,7 +137,7 @@ https://www.byoip.top/
 
 然后继续添加 **自定义主机名**。
 
-![](/assets/image/Tunnel5.png)
+![](https://cdn.kukie.cn/blog/Tunnel5.png)
 
 这里有两个关键点：
 
@@ -169,11 +163,11 @@ https://www.byoip.top/
 
 ### 未优选
 
-![](/assets/image/Tunnel3.png)
+![](https://cdn.kukie.cn/blog/Tunnel3.png)
 
 ### 优选后
 
-![](/assets/image/Tunnel4.png)
+![](https://cdn.kukie.cn/blog/Tunnel4.png)
 
 从测试结果来看，优选后的访问体验会明显更稳定一些，尤其是在国内晚高峰场景下，效果会更容易体现出来。
 
