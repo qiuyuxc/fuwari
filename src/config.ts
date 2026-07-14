@@ -96,7 +96,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "统计", 
-			url: "https://u.dkg.asia/share/t0FOdLxzFONWoagY", 
+			url: "https://um.kukie.cn/share/t0FOdLxzFONWoagY", 
 			external: true, 
 		},
 		{
@@ -141,14 +141,14 @@ export const licenseConfig: LicenseConfig = {
 // 图片回退配置
 export const imageFallbackConfig: ImageFallbackConfig = {
 	enable: false, // 是否启用图片回退功能
-	originalDomain: "https://pic.quiyu.cn/random", // 原始图片域名
+	originalDomain: "https://pic.kukie.cn/random", // 原始图片域名
 	fallbackDomain: "https://ipc.quiyu.cn/random", // 回退图片域名
 };
 
 // Umami 配置
 export const umamiConfig: UmamiConfig = {
 	enable: true, // 是否启用 Umami 分析
-	baseUrl: "https://u.dkg.asia", // Umami 服务的基础 URL
+	baseUrl: "https://um.kukie.cn", // Umami 服务的基础 URL
 	shareId: "t0FOdLxzFONWoagY", // Umami 共享 ID
 	timezone: "Asia/Shanghai", // 时区
 };

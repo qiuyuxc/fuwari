@@ -85,7 +85,6 @@
 				endAt: currentTimestamp,
 				unit: "hour",
 				timezone: queryParams.timezone || "Asia/Shanghai",
-				compare: false,
 				...queryParams,
 			});
 
@@ -94,15 +93,17 @@
 			const res = await fetch(statsUrl, {
 				headers: {
 					"x-umami-share-token": token,
+					"x-umami-share-context": "share",
 				},
 			});
 
 			if (!res.ok) {
+				const errBody = await res.text().catch(() => '');
 				if (res.status === 401 && !isRetry) {
 					global.clearUmamiShareCache();
 					return doFetch(true);
 				}
-				throw new Error("获取统计数据失败");
+				throw new Error(`获取统计数据失败: ${res.status} ${errBody.substring(0,100)}`);
 			}
 
 			const data = await res.json();
