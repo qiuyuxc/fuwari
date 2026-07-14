@@ -3,6 +3,7 @@
 import { execSync } from "node:child_process";
 import { profileConfig, siteConfig } from "../config";
 import { url } from "../utils/url-utils";
+import AdCard from "./widget/AdCard.astro";
 
 const currentYear = new Date().getFullYear();
 
@@ -31,6 +32,13 @@ try {
 </head>
 
 <div class="transition border-t border-[var(--hairline)] my-8 mx-4 md:mx-32"></div>
+
+<div class="mx-4 md:mx-32 mb-4">
+    <AdCard />
+</div>
+
+<div class="transition border-t border-[var(--hairline)] my-4 mx-4 md:mx-32"></div>
+
 <div class="card-base w-fit mx-auto rounded-xl mt-2 mb-4">
     <div class="transition text-50 text-xs text-center p-5 leading-relaxed">
         &copy; <span id="copyright-year">2024 - {currentYear}</span> <a class="transition link text-[#171717] dark:text-white font-medium" target="_blank" href="https://blog.quiyu.cn"> {profileConfig.name} </a>，采用

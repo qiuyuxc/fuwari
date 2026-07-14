@@ -10,14 +10,17 @@ interface Props {
 
 const className = Astro.props.class;
 ---
+
 <div id="sidebar" class:list={[className, "w-full"]}>
     <div class="flex flex-col w-full gap-4 mb-4">
         <Profile />
     </div>
 
     <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 sticky top-4">
-        
-        <VisitorInfo class="onload-animation" style="animation-delay: 200ms" />
+
+        <div id="visitor-info-wrapper">
+            <VisitorInfo class="onload-animation" style="animation-delay: 200ms" />
+        </div>
         
         {Astro.props.headings && Astro.props.headings.length > 0 && (
             <div id="toc-container" class="onload-animation" style="animation-delay: 350ms">

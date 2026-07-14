@@ -107,7 +107,7 @@ const bannerOffset =
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<script src="/js/umami-share.js" defer></script>
-		<script data-swup-ignore-script src="https://pic.quiyu.cn/random.js" defer></script>
+		<script data-swup-ignore-script src="https://pic.kukie.cn/random.js" defer></script>
 		
 		
 		
@@ -258,6 +258,13 @@ const bannerOffset =
 		@apply opacity-0 -translate-y-16
 	}
 }
+
+#visitor-info-wrapper {
+	display: none;
+}
+#visitor-info-wrapper.visitor-info-visible {
+	display: block;
+}
 </style>
 
 <script>
@@ -272,6 +279,7 @@ import {
 	setBgBlur,
 	getHideBg,
 	setHideBg,
+	getShowVisitorInfo,
 } from "../utils/setting-utils";
 import { pathsEqual, url } from "../utils/url-utils";
 import {
@@ -338,6 +346,12 @@ function loadBackgroundSettings() {
 	setHideBg(getHideBg());
 }
 
+function loadVisitorInfo() {
+	const el = document.getElementById("visitor-info-wrapper");
+	if (!el) return;
+	el.classList.toggle("visitor-info-visible", getShowVisitorInfo());
+}
+
 function initCustomScrollbar() {
 	const bodyElement = document.body;
 	if (!bodyElement) return;
@@ -382,6 +396,7 @@ function initPageSettings() {
 	loadTheme();
 	loadHue();
 	loadBackgroundSettings();
+	loadVisitorInfo();
 	initCustomScrollbar();
 	showBanner();
 }
@@ -438,6 +453,7 @@ function setupSwupHooks() {
 	});
 
 	window.swup.hooks.on('content:replace', () => {
+		loadVisitorInfo();
 		initCustomScrollbar();
 		updateScrollUI();
 	});

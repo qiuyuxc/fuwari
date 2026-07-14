@@ -145,3 +145,15 @@ export function setTheme(theme: LIGHT_DARK_MODE): void {
 export function getStoredTheme(): LIGHT_DARK_MODE {
 	return (localStorage.getItem("theme") as LIGHT_DARK_MODE) || DEFAULT_THEME;
 }
+
+export function getShowVisitorInfo(): boolean {
+	const stored = localStorage.getItem("show-visitor-info");
+	return stored === "true";
+}
+
+export function setShowVisitorInfo(show: boolean): void {
+	localStorage.setItem("show-visitor-info", String(show));
+	const el = document.getElementById("visitor-info-wrapper");
+	if (!el) return;
+	el.classList.toggle("visitor-info-visible", show);
+}

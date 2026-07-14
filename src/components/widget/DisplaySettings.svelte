@@ -6,11 +6,13 @@ import {
 	getDevMode,
 	getDevServer,
 	getHideBg,
+	getShowVisitorInfo,
 	getStoredTheme,
 	setBgBlur,
 	setDevMode,
 	setDevServer,
 	setHideBg,
+	setShowVisitorInfo,
 	setTheme,
 } from "@utils/setting-utils";
 import { onMount } from "svelte";
@@ -18,6 +20,7 @@ import { onMount } from "svelte";
 let theme = getStoredTheme();
 let bgBlur = getBgBlur();
 let hideBg = getHideBg();
+let showVisitorInfo = getShowVisitorInfo();
 let isDevMode = getDevMode();
 let devServer = getDevServer();
 
@@ -33,6 +36,11 @@ function switchTheme(newTheme: string) {
 function toggleHideBg() {
 	hideBg = !hideBg;
 	setHideBg(hideBg);
+}
+
+function toggleVisitorInfo() {
+	showVisitorInfo = !showVisitorInfo;
+	setShowVisitorInfo(showVisitorInfo);
 }
 
 function toggleDevMode() {
@@ -86,6 +94,16 @@ function onDevServerChange() {
             禁用背景
         </div>
         <input type="checkbox" class="toggle-switch" checked={hideBg} on:change={toggleHideBg} />
+    </div>
+
+    <div class="flex flex-row gap-2 mb-3 mt-3 items-center justify-between">
+        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
+            before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+            before:absolute before:-left-3 before:top-[0.33rem]"
+        >
+            访客信息
+        </div>
+        <input type="checkbox" class="toggle-switch" checked={showVisitorInfo} on:change={toggleVisitorInfo} />
     </div>
 
     <div class="flex flex-row gap-2 mb-3 mt-3 items-center justify-between">

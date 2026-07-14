@@ -1,0 +1,155 @@
+---
+import { execSync } from "node:child_process";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    slug: string;
+}
+
+const { slug } = Astro.props;
+
+function escapeHtml(s: string): string {
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+interface Commit {
+    hash: string;
+    date: string;
+    message: string;
+    diff: string;
+}
+
+let commits: Commit[] = [];
+try {
+    const raw = execSync(
+        `git log --format="%H %ad|%s" --date=short --after="2026-01-20" -20 -- "src/content/posts/${slug}.md" "src/content/posts/${slug}.mdx" 2>/dev/null`,
+        { encoding: "utf-8", timeout: 5000 }
+    ).trim();
+    if (raw) {
+        const lines = raw.split("\n");
+        commits = lines.map((line) => {
+            const hash = line.substring(0, 40);
+            const rest = line.substring(41);
+            const pipeIdx = rest.indexOf("|");
+            const date = rest.substring(0, pipeIdx).trim();
+            const message = rest.substring(pipeIdx + 1).trim();
+
+            let diff = "";
+            try {
+                const rawDiff = execSync(
+                    `git diff ${hash}~1..${hash} -- "src/content/posts/${slug}.md" "src/content/posts/${slug}.mdx" 2>/dev/null`,
+                    { encoding: "utf-8", timeout: 5000 }
+                ).trim();
+                if (rawDiff) {
+                    diff = rawDiff.split("\n").map((l) => {
+                        if (l.startsWith("+") && !l.startsWith("+++")) return `<span style="color:#16a34a">${escapeHtml(l)}</span>`;
+                        if (l.startsWith("-") && !l.startsWith("---")) return `<span style="color:#dc2626">${escapeHtml(l)}</span>`;
+                        return escapeHtml(l);
+                    }).join("\n");
+                }
+            } catch (e) {
+                // first commit or diff not available
+            }
+
+            return { hash, date, message, diff };
+        });
+    }
+} catch (e) {
+    // git not available or file not tracked
+}
+
+const diffMap: Record<string, string> = {};
+commits.forEach((c) => { diffMap[c.hash] = c.diff; });
+---
+
+{commits.length > 0 && (
+    <div class="rounded-2xl border border-[var(--line-divider)] bg-[var(--license-block-bg)] px-4 py-4 md:px-5 md:py-5 mb-5 onload-animation">
+        <div class="flex items-center gap-2 mb-3">
+            <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--primary)]/12 text-[var(--primary)]">
+                <Icon name="material-symbols:history-rounded" class="text-[0.95rem]" />
+            </div>
+            <span class="text-[0.9rem] font-semibold text-90">更新记录</span>
+            <span class="text-[0.75rem] text-30 ml-auto">{commits.length} 次提交</span>
+        </div>
+
+        <div class="space-y-0">
+            {commits.slice(0, 10).map((c, i) => (
+                <div class:list={["changelog-item", i === 0 && "first", i > 0 && "hidden-changelog", i < Math.min(commits.length, 10) - 1 && "border-b border-[var(--line-divider)]"]}>
+                    <button
+                        class="changelog-toggle flex items-start gap-3 py-2 w-full text-left group"
+                        data-hash={c.hash}
+                    >
+                        <div class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary)]/40 group-hover:bg-[var(--primary)] transition"></div>
+                        <div class="flex-1 min-w-0">
+                            <div class="text-[0.82rem] text-75 leading-relaxed truncate group-hover:text-90 transition">{c.message}</div>
+                        </div>
+                        <span class="text-[0.72rem] text-30 shrink-0 mt-0.5 tabular-nums">{c.date}</span>
+                        {c.diff && (
+                            <Icon name="material-symbols:expand-more-rounded" class="changelog-icon text-[1rem] text-30 shrink-0 mt-0.5 transition-transform duration-200" />
+                        )}
+                    </button>
+                    {c.diff && (
+                        <div class="changelog-diff hidden px-3 pb-3">
+                            <pre class="text-[0.72rem] leading-relaxed text-50 bg-black/5 dark:bg-white/5 rounded-lg p-3 overflow-x-auto whitespace-pre-wrap break-words"><code set:html={c.diff}></code></pre>
+                        </div>
+                    )}
+                </div>
+            ))}
+        </div>
+
+        {commits.length > 1 && (
+            <button class="changelog-expand w-full mt-2 py-1.5 text-[0.78rem] text-[var(--primary)] font-medium rounded-lg hover:bg-[var(--primary)]/8 transition text-center">
+                展开全部 {commits.length} 条提交
+            </button>
+        )}
+        {commits.length > 1 && (
+            <button class="changelog-collapse hidden w-full mt-2 py-1.5 text-[0.78rem] text-[var(--primary)] font-medium rounded-lg hover:bg-[var(--primary)]/8 transition text-center">
+                收起
+            </button>
+        )}
+    </div>
+)}
+
+<script is:inline define:vars={{ diffMap: JSON.stringify(diffMap) }}>
+    (function() {
+        if (window.__changelogDelegate) return;
+        window.__changelogDelegate = true;
+        document.addEventListener('click', function(e) {
+            var expandBtn = e.target.closest('.changelog-expand');
+            if (expandBtn) {
+                var card = expandBtn.closest('.rounded-2xl');
+                card.querySelectorAll('.hidden-changelog').forEach(function(el) { el.classList.remove('hidden-changelog'); });
+                expandBtn.classList.add('hidden');
+                card.querySelector('.changelog-collapse').classList.remove('hidden');
+                return;
+            }
+            var collapseBtn = e.target.closest('.changelog-collapse');
+            if (collapseBtn) {
+                var card = collapseBtn.closest('.rounded-2xl');
+                var items = card.querySelectorAll('.changelog-item');
+                items.forEach(function(el, i) { if (i > 0) el.classList.add('hidden-changelog'); });
+                card.querySelectorAll('.changelog-diff').forEach(function(el) { el.classList.add('hidden'); });
+                card.querySelectorAll('.changelog-icon').forEach(function(el) { el.style.transform = ''; });
+                collapseBtn.classList.add('hidden');
+                card.querySelector('.changelog-expand').classList.remove('hidden');
+                return;
+            }
+            var btn = e.target.closest('.changelog-toggle');
+            if (!btn) return;
+            var item = btn.closest('.changelog-item');
+            var diff = item.querySelector('.changelog-diff');
+            var icon = btn.querySelector('.changelog-icon');
+            if (!diff) return;
+            var isOpen = !diff.classList.contains('hidden');
+            diff.classList.toggle('hidden');
+            if (icon) icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+        });
+    })();
+</script>
+
+<style is:global>
+    .hidden-changelog {
+        display: none !important;
+    }
+</style>
+

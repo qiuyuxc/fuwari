@@ -40,7 +40,7 @@ export type SiteConfig = {
 	notice?: {
 		enable: boolean;
 		content: string;
-		level: "info" | "note" | "tip" | "important" | "warning" | "caution";
+		level: "info" | "note" | "tip" | "important" | "warning" | "caution" | "ad";
 	};
 
 	favicon: Favicon[];

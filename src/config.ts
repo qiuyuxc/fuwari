@@ -54,9 +54,9 @@ export const siteConfig: SiteConfig = {
 		depth: 2, // 显示的标题深度，范围 1 到 3
 	},
 	notice: {
-		enable: false, // 是否显示通知
-		content: "", // 通知内容
-		level: "error", // 通知级别，支持 'warning', 'info', 'error'
+		enable: true, // 是否显示通知
+		content: "XiaoMi MiMo 开放平台通过邀请码注册，双方各得 ¥10 体验金 + 首单 9 折\n体验金 40 天有效 · 邀请码 RR8XEN", // 通知内容
+		level: "ad", // 通知级别，支持 'info', 'note', 'tip', 'important', 'warning', 'caution'
 	},
 	favicon: [
 		// 网站图标，若为空则使用默认的

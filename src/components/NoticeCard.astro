@@ -1,18 +1,50 @@
 ---
 import { siteConfig } from "../config";
+import { Icon } from "astro-icon/components";
 const { notice } = siteConfig;
 const { enable, content, level } = notice || {};
+
+const icons: Record<string, string> = {
+    info: "material-symbols:info-outline-rounded",
+    note: "material-symbols:info-outline-rounded",
+    tip: "material-symbols:lightbulb-outline-rounded",
+    important: "material-symbols:chat-bubble-outline-rounded",
+    warning: "material-symbols:warning-outline-rounded",
+    caution: "material-symbols:stop-circle-outline-rounded",
+    ad: "material-symbols:campaign-outline-rounded",
+};
+
+const icon = icons[level || "info"] || icons.info;
+const htmlContent = (content || "").replace(/\n/g, "<br>");
 ---
 
 {enable && (
-    <div class="card-base card-hover flex flex-col w-full relative mb-4 onload-animation" style={`animation-delay: var(--content-delay); border-color: var(--admonitions-color-${level}); border-width: 1px;`}>
-        <div class="px-6 py-4 relative w-full">
-            <div class="custom-md text-75">
-                <blockquote class={`admonition bdm-${level} !my-0 flex items-center !pl-4`}>
-                     <span class="bdm-title !mb-0 !mr-2"></span>
-                     <div class="flex-1" set:html={content}></div>
-                </blockquote>
-            </div>
+    <div id="notice-card" class="card-base flex items-start gap-3 px-5 py-4 mb-4 onload-animation" style={`animation-delay: var(--content-delay);`}>
+        <div class="mt-0.5 shrink-0" style={`color: var(--admonitions-color-${level});`}>
+            <Icon name={icon} class="text-[1.2rem]" />
         </div>
+        <div class="flex-1 text-[0.88rem] leading-relaxed text-75" set:html={htmlContent}></div>
+        <button id="notice-dismiss" class="shrink-0 mt-0.5 p-1 rounded-md text-30 hover:text-75 transition" aria-label="关闭公告">
+            <Icon name="material-symbols:close-rounded" class="text-[1rem]" />
+        </button>
     </div>
 )}
+
+<script is:inline define:vars={{ content }}>
+    (function() {
+        var card = document.getElementById('notice-card');
+        if (!card) return;
+        var storageKey = 'notice-dismissed';
+        if (localStorage.getItem(storageKey) === content) {
+            card.style.display = 'none';
+            return;
+        }
+        var btn = document.getElementById('notice-dismiss');
+        if (btn) {
+            btn.addEventListener('click', function() {
+                card.style.display = 'none';
+                localStorage.setItem(storageKey, content);
+            });
+        }
+    })();
+</script>
