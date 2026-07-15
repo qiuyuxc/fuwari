@@ -1,0 +1,285 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+---
+
+<MainGridLayout title="统计">
+  <div class="space-y-6">
+    <!-- 头部 -->
+    <section class="card-base p-6 md:p-8 hero-panel">
+      <div class="flex items-start gap-4">
+        <div class="hero-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <h1 class="text-2xl md:text-3xl font-bold text-[#171717] dark:text-white">统计</h1>
+            <span class="hero-badge" id="stats-period">近 24 小时</span>
+            <div class="relative ml-auto" id="time-wrap">
+              <button id="time-btn" class="text-xs px-3 py-1.5 rounded-full transition font-medium flex items-center gap-1 time-btn-trigger">近 24 小时 <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+              <div id="time-dropdown" class="py-1 w-[8.5rem] rounded-xl shadow-xl bg-[var(--card-bg)] hidden">
+                {["24小时", "7天", "30天", "90天", "全部"].map(t => (
+                  <button class="time-opt w-full text-left px-4 py-2 text-sm transition" data-days={t}>{t}</button>
+                ))}
+              </div>
+            </div>
+          </div>
+          <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 max-w-[46rem]">通过 Umami 收集的站点访问数据，持续更新中。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 概览卡片 -->
+    <div id="overview-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      {[
+        { id: "pageviews", label: "浏览量 (PV)", icon: "M15 12a3 3 0 11-6 0 3 3 0 016 0z", color: "#a78bfa" },
+        { id: "visitors", label: "访客 (UV)", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z", color: "#60a5fa" },
+        { id: "visits", label: "访问次数", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", color: "#f472b6" },
+        { id: "bounce-rate", label: "跳出率", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6", color: "#fb923c" },
+        { id: "avg-time", label: "平均停留", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", color: "#34d399" },
+        { id: "more", label: "更多详情", icon: "M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3", color: "#888" },
+      ].map(s => (
+        s.id === "more"
+        ? <a href="https://um.kukie.cn/share/t0FOdLxzFONWoagY" target="_blank" class="stat-card" data-stat="more">
+            <div class="stat-icon" style={`--stat-color: #888`}>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <span class="stat-value text-[var(--primary)] dark:text-white">更多</span>
+              <span class="stat-label text-gray-500 dark:text-gray-400">查看详情 →</span>
+            </div>
+          </a>
+        : <div class="stat-card" data-stat={s.id}>
+            <div class="stat-icon" style={`--stat-color: ${s.color}`}>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d={s.icon} />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <span class="stat-value text-[#171717] dark:text-white" id={`val-${s.id}`}>--</span>
+              <span class="stat-label text-gray-500 dark:text-gray-400">{s.label}</span>
+            </div>
+          </div>
+      ))}
+    </div>
+
+    <!-- 热门页面 -->
+    <section class="card-base p-6 md:p-8">
+      <div class="section-head mb-4">
+        <h2 class="text-lg font-bold text-[#171717] dark:text-white">热门页面</h2>
+      </div>
+      <div id="top-pages" class="metric-list">
+        <div class="metric-empty">加载中...</div>
+      </div>
+    </section>
+  </div>
+</MainGridLayout>
+
+<script>
+const UMAMI_BASE = "https://um1.kukie.cn";
+const SHARE_ID = "t0FOdLxzFONWoagY";
+const TIMEZONE = "Asia/Shanghai";
+let currentDays = 1;
+
+function calcDateRange(days) {
+  const now = Date.now();
+  if (!days || days === "all") return { startAt: 0, endAt: now };
+  return { startAt: now - days * 86400000, endAt: now };
+}
+
+async function fetchUmami(path) {
+  if (!window.__umamiDataCache) window.__umamiDataCache = new Map();
+  const key = "analytics:" + path;
+  if (window.__umamiDataCache.has(key)) return window.__umamiDataCache.get(key);
+  const { websiteId, token } = await window.getUmamiShareData(UMAMI_BASE, SHARE_ID);
+  const r = await fetch(`${UMAMI_BASE}/api/websites/${websiteId}${path}`, {
+    headers: { "x-umami-share-token": token, "x-umami-share-context": "share" },
+  });
+  if (!r.ok) throw new Error(`Umami ${r.status}`);
+  const data = await r.json();
+  window.__umamiDataCache.set(key, data);
+  return data;
+}
+
+function fmt(n) {
+  if (n === 0 || n === "0") return "0";
+  return new Intl.NumberFormat("zh-CN").format(n);
+}
+
+function fmtTime(s) {
+  if (!s || s === 0) return "0秒";
+  if (s < 60) return `${Math.round(s)}秒`;
+  if (s < 3600) return `${Math.round(s / 60)}分钟`;
+  return `${Math.round(s / 3600)}小时`;
+}
+
+async function loadStats() {
+  const { startAt, endAt } = calcDateRange(currentDays);
+
+  try {
+    const [stats, pages] = await Promise.all([
+      fetchUmami(`/stats?startAt=${startAt}&endAt=${endAt}`),
+      fetchUmami(`/metrics?startAt=${startAt}&endAt=${endAt}&type=path&limit=10`),
+    ]);
+
+    document.getElementById("val-pageviews").textContent = fmt(stats.pageviews);
+    document.getElementById("val-visitors").textContent = fmt(stats.visitors);
+    document.getElementById("val-visits").textContent = fmt(stats.visits);
+    document.getElementById("val-bounce-rate").textContent = stats.pageviews > 0 ? `${Math.round(stats.bounces / stats.visits * 100)}%` : "0%";
+    document.getElementById("val-avg-time").textContent = stats.visits > 0 ? fmtTime(stats.totaltime / stats.visits) : "0秒";
+
+    renderPages(pages);
+
+  } catch (e) {
+    document.querySelectorAll(".stat-value").forEach(el => el.textContent = "Error");
+    document.querySelectorAll(".chart-empty, .metric-empty").forEach(el => el.textContent = "加载失败");
+  }
+}
+
+function renderPages(data) {
+  const container = document.getElementById("top-pages");
+  if (!data || !data.length) {
+    container.innerHTML = '<div class="metric-empty">暂无数据</div>';
+    return;
+  }
+
+  const total = data.reduce((s, m) => s + m.y, 0);
+  let html = `<div class="text-xs text-gray-400 dark:text-gray-500 mb-3">总浏览量排名，共 ${fmt(total)} 次</div><div class="flex flex-col gap-2.5">`;
+  data.forEach(m => {
+    const pct = (m.y / total * 100).toFixed(1);
+    const label = (m.x || "/").replace(/^\//, "") || "/";
+
+    html += `<div class="flex items-center gap-3">
+      <span class="text-sm text-[#171717] dark:text-white truncate flex-1 min-w-0">${label}</span>
+      <div class="w-24 h-1.5 rounded-sm bg-black/6 dark:bg-white/10 overflow-hidden flex-shrink-0">
+        <div class="h-full rounded-sm" style="width:${pct}%;background:linear-gradient(90deg,color-mix(in srgb,var(--primary) 50%,transparent),color-mix(in srgb,var(--primary) 30%,transparent))"></div>
+      </div>
+      <span class="text-sm font-medium text-[#171717] dark:text-white w-12 text-right">${fmt(m.y)}</span>
+      <span class="text-xs text-gray-400 dark:text-gray-500 w-11 text-right">${pct}%</span>
+    </div>`;
+  });
+  html += "</div>";
+  container.innerHTML = html;
+}
+
+function switchTime(days) {
+  currentDays = days;
+  const label = days === "all" ? "全部时间" : days === 1 ? "近 24 小时" : `近 ${days} 天`;
+  document.getElementById("stats-period").textContent = label;
+  document.getElementById("time-btn").innerHTML = `${label} <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>`;
+  closeDropdown();
+  loadStats();
+}
+
+function closeDropdown() {
+  const dd = document.getElementById("time-dropdown");
+  dd.style.position = "";
+  dd.style.top = "";
+  dd.style.left = "";
+  dd.style.zIndex = "";
+  dd.classList.add("hidden");
+  const wrap = document.getElementById("time-wrap");
+  if (wrap && dd.parentElement !== wrap) wrap.appendChild(dd);
+}
+function toggleDropdown() {
+  const dd = document.getElementById("time-dropdown");
+  if (!dd.classList.contains("hidden")) { closeDropdown(); return; }
+  const btn = document.getElementById("time-btn");
+  const r = btn.getBoundingClientRect();
+  document.body.appendChild(dd);
+  dd.style.position = "fixed";
+  dd.style.top = (r.bottom + 4) + "px";
+  dd.style.zIndex = "9999";
+  dd.classList.remove("hidden");
+  dd.style.left = Math.max(8, r.right - dd.offsetWidth) + "px";
+}
+
+function initTimePicker() {
+  document.getElementById("time-btn").addEventListener("click", (e) => { e.stopPropagation(); toggleDropdown(); });
+  document.querySelectorAll(".time-opt").forEach(b => {
+    b.addEventListener("click", () => {
+      const d = b.dataset.days;
+      switchTime(d === "全部" ? "all" : d === "24小时" ? 1 : parseInt(d));
+    });
+  });
+  document.addEventListener("click", closeDropdown);
+}
+
+initTimePicker();
+loadStats();
+document.addEventListener("astro:page-load", () => { initTimePicker(); loadStats(); });
+</script>
+
+<style>
+  .hero-panel { position: relative; overflow: hidden; }
+  .hero-panel::after {
+    content: "";
+    position: absolute;
+    inset: auto -60px -60px auto;
+    width: 180px; height: 180px;
+    border-radius: 999px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--primary) 20%, transparent) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-icon {
+    width: 3.25rem; height: 3.25rem;
+    border-radius: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--primary); color: var(--primary-inverse);
+    flex-shrink: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; height: 1.9rem; padding: 0 0.75rem;
+    border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+    background: color-mix(in srgb, var(--primary) 14%, transparent); color: var(--primary);
+  }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
+
+  .stat-card {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.25rem; border-radius: 1rem;
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+  }
+  :global(.dark) .stat-card { border-color: rgba(255, 255, 255, 0.1); }
+  .stat-card:hover { transform: translateY(-2px); }
+  .stat-icon {
+    width: 2.75rem; height: 2.75rem; border-radius: 0.85rem;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    background: color-mix(in srgb, var(--stat-color) 14%, transparent);
+    color: var(--stat-color);
+  }
+  .stat-body { display: flex; flex-direction: column; min-width: 0; }
+  .stat-value { font-size: 1.35rem; font-weight: 800; line-height: 1.2; }
+  .stat-label { font-size: 0.76rem; margin-top: 0.15rem; }
+
+  .chart-empty, .metric-empty {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 120px; font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.35);
+  }
+  :global(.dark) .chart-empty, :global(.dark) .metric-empty { color: rgba(255, 255, 255, 0.35); }
+
+  .time-btn-trigger { color: rgba(0, 0, 0, 0.5); background: color-mix(in srgb, var(--primary) 8%, transparent); }
+  .time-btn-trigger:hover { background: color-mix(in srgb, var(--primary) 14%, transparent); color: var(--primary); }
+  :global(.dark) .time-btn-trigger { color: rgba(255, 255, 255, 0.55); }
+  :global(.dark) .time-btn-trigger:hover { color: var(--primary); }
+  .time-opt { color: rgba(0, 0, 0, 0.7); }
+  .time-opt:hover { background: color-mix(in srgb, var(--primary) 10%, transparent); color: var(--primary); }
+  :global(.dark) .time-opt { color: rgba(255, 255, 255, 0.7); }
+  :global(.dark) .time-opt:hover { background: color-mix(in srgb, var(--primary) 16%, transparent); color: var(--primary); }
+
+  @media (max-width: 640px) {
+    .stat-card { padding: 1rem; gap: 0.75rem; }
+    .stat-icon { width: 2.25rem; height: 2.25rem; }
+    .stat-value { font-size: 1.15rem; }
+    .hero-icon { width: 3rem; height: 3rem; }
+  }
+</style>

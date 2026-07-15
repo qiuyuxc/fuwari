@@ -95,9 +95,9 @@ export const navBarConfig: NavBarConfig = {
 			external: false, 
 		},
 		{
-			name: "统计", 
-			url: "https://um.kukie.cn/share/t0FOdLxzFONWoagY", 
-			external: true, 
+			name: "统计",
+			url: "/analytics/",
+			external: false,
 		},
 		{
 			name: "论坛", 
