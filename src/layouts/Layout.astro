@@ -107,6 +107,7 @@ const bannerOffset =
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<script src="/js/umami-share.js" defer></script>
+		<script src="/js/analytics.js" defer data-swup-ignore-script></script>
 		<script data-swup-ignore-script src="https://pic.kukie.cn/random.js" defer></script>
 		
 		
@@ -484,6 +485,7 @@ function setupSwupHooks() {
 			heightExtend.classList.add('hidden');
 		}
 		updateScrollUI();
+
 	});
 
 	window.swup.hooks.on('visit:end', () => {
