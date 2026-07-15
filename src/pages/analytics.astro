@@ -200,7 +200,10 @@ function toggleDropdown() {
 }
 
 function initTimePicker() {
-  document.getElementById("time-btn").addEventListener("click", (e) => { e.stopPropagation(); toggleDropdown(); });
+  const btn = document.getElementById("time-btn");
+  if (!btn || btn.dataset.initialized) return;
+  btn.dataset.initialized = "true";
+  btn.addEventListener("click", (e) => { e.stopPropagation(); toggleDropdown(); });
   document.querySelectorAll(".time-opt").forEach(b => {
     b.addEventListener("click", () => {
       const d = b.dataset.days;
