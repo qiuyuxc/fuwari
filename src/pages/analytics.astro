@@ -78,6 +78,161 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
       </div>
     </section>
   </div>
+
+  <script is:inline>
+  (() => {
+    const UMAMI_BASE = "https://um1.kukie.cn";
+    const SHARE_ID = "t0FOdLxzFONWoagY";
+    let currentDays = 1;
+
+    function calcDateRange(days) {
+      const now = Date.now();
+      if (!days || days === "all") return { startAt: 0, endAt: now };
+      return { startAt: now - days * 86400000, endAt: now };
+    }
+
+    async function fetchUmami(path) {
+      if (!window.__umamiDataCache) window.__umamiDataCache = new Map();
+      const key = "analytics:" + path;
+      if (window.__umamiDataCache.has(key)) return window.__umamiDataCache.get(key);
+      const { websiteId, token } = await window.getUmamiShareData(UMAMI_BASE, SHARE_ID);
+      const r = await fetch(`${UMAMI_BASE}/api/websites/${websiteId}${path}`, {
+        headers: { "x-umami-share-token": token, "x-umami-share-context": "share" },
+      });
+      if (!r.ok) throw new Error(`Umami ${r.status}`);
+      const data = await r.json();
+      window.__umamiDataCache.set(key, data);
+      return data;
+    }
+
+    function fmt(n) {
+      if (n === 0 || n === "0") return "0";
+      return new Intl.NumberFormat("zh-CN").format(n);
+    }
+
+    function fmtTime(s) {
+      if (!s || s === 0) return "0秒";
+      if (s < 60) return `${Math.round(s)}秒`;
+      if (s < 3600) return `${Math.round(s / 60)}分钟`;
+      return `${Math.round(s / 3600)}小时`;
+    }
+
+    async function loadStats() {
+      const { startAt, endAt } = calcDateRange(currentDays);
+      try {
+        const [stats, pages] = await Promise.all([
+          fetchUmami(`/stats?startAt=${startAt}&endAt=${endAt}`),
+          fetchUmami(`/metrics?startAt=${startAt}&endAt=${endAt}&type=path&limit=10`),
+        ]);
+
+        const setText = (id, val) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = val;
+        };
+
+        setText("val-pageviews", fmt(stats.pageviews));
+        setText("val-visitors", fmt(stats.visitors));
+        setText("val-visits", fmt(stats.visits));
+        setText("val-bounce-rate", stats.pageviews > 0 ? `${Math.round(stats.bounces / stats.visits * 100)}%` : "0%");
+        setText("val-avg-time", stats.visits > 0 ? fmtTime(stats.totaltime / stats.visits) : "0秒");
+
+        renderPages(pages);
+      } catch (e) {
+        document.querySelectorAll(".stat-value").forEach(el => el.textContent = "Error");
+        document.querySelectorAll(".chart-empty, .metric-empty").forEach(el => el.textContent = "加载失败");
+      }
+    }
+
+    function renderPages(data) {
+      const container = document.getElementById("top-pages");
+      if (!container) return;
+      if (!data || !data.length) {
+        container.innerHTML = '<div class="metric-empty">暂无数据</div>';
+        return;
+      }
+      const total = data.reduce((s, m) => s + m.y, 0);
+      let html = `<div class="text-xs text-gray-400 dark:text-gray-500 mb-3">总浏览量排名，共 ${fmt(total)} 次</div><div class="flex flex-col gap-2.5">`;
+      data.forEach(m => {
+        const pct = (m.y / total * 100).toFixed(1);
+        const label = (m.x || "/").replace(/^\//, "") || "/";
+        html += `<div class="flex items-center gap-3">
+          <span class="text-sm text-[#171717] dark:text-white truncate flex-1 min-w-0">${label}</span>
+          <div class="w-24 h-1.5 rounded-sm bg-black/6 dark:bg-white/10 overflow-hidden flex-shrink-0">
+            <div class="h-full rounded-sm" style="width:${pct}%;background:linear-gradient(90deg,color-mix(in srgb,var(--primary) 50%,transparent),color-mix(in srgb,var(--primary) 30%,transparent))"></div>
+          </div>
+          <span class="text-sm font-medium text-[#171717] dark:text-white w-12 text-right">${fmt(m.y)}</span>
+          <span class="text-xs text-gray-400 dark:text-gray-500 w-11 text-right">${pct}%</span>
+        </div>`;
+      });
+      html += "</div>";
+      container.innerHTML = html;
+    }
+
+    function closeDropdown() {
+      const dd = document.getElementById("time-dropdown");
+      if (!dd) return;
+      dd.style.position = "";
+      dd.style.top = "";
+      dd.style.left = "";
+      dd.style.zIndex = "";
+      dd.classList.add("hidden");
+      const wrap = document.getElementById("time-wrap");
+      if (wrap && dd.parentElement !== wrap) wrap.appendChild(dd);
+    }
+
+    function toggleDropdown() {
+      const dd = document.getElementById("time-dropdown");
+      if (!dd) return;
+      if (!dd.classList.contains("hidden")) { closeDropdown(); return; }
+      const btn = document.getElementById("time-btn");
+      if (!btn) return;
+      const r = btn.getBoundingClientRect();
+      document.body.appendChild(dd);
+      dd.style.position = "fixed";
+      dd.style.top = (r.bottom + 4) + "px";
+      dd.style.zIndex = "9999";
+      dd.classList.remove("hidden");
+      dd.style.left = Math.max(8, r.right - dd.offsetWidth) + "px";
+    }
+
+    function initTimePicker() {
+      const btn = document.getElementById("time-btn");
+      if (!btn || btn.dataset.initialized) return;
+      btn.dataset.initialized = "true";
+      btn.addEventListener("click", (e) => { e.stopPropagation(); toggleDropdown(); });
+      document.querySelectorAll(".time-opt").forEach(b => {
+        b.addEventListener("click", () => {
+          const d = b.dataset.days;
+          switchTime(d === "全部" ? "all" : d === "24小时" ? 1 : parseInt(d));
+        });
+      });
+      document.addEventListener("click", closeDropdown);
+    }
+
+    function switchTime(days) {
+      currentDays = days;
+      const label = days === "all" ? "全部时间" : days === 1 ? "近 24 小时" : `近 ${days} 天`;
+      const period = document.getElementById("stats-period");
+      if (period) period.textContent = label;
+      const btn = document.getElementById("time-btn");
+      if (btn) btn.innerHTML = `${label} <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>`;
+      closeDropdown();
+      loadStats();
+    }
+
+    function initAnalytics() {
+      initTimePicker();
+      loadStats();
+    }
+
+    document.addEventListener("astro:page-load", initAnalytics);
+    if (document.readyState === "complete") {
+      initAnalytics();
+    } else {
+      window.addEventListener("load", initAnalytics, { once: true });
+    }
+  })();
+  </script>
 </MainGridLayout>
 
 <style>
