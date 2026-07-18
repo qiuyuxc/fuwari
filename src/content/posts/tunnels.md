@@ -35,7 +35,7 @@ lang: 'zh-cn'
 > 将 Cloudflare Tunnel 的优选链路配置从手工操作彻底自动化的开源工具。
 >
 
-::github{repo="qiuyuxc/Cloudflare-Tunnel-saas-web"}
+::github{repo="qiuyuxc/tunnel-manager"}
 
 > ⭐ 如果觉得有用，欢迎给它一个 Star！
 
@@ -164,7 +164,7 @@ func (c *CloudflareClient) CreateCustomHostname(zoneID, hostname, originServer s
 部署只需一行命令即可直接跑通：
 
 ```bash
-curl -sO https://raw.githubusercontent.com/qiuyuxc/Cloudflare-Tunnel-saas-web/main/install.sh && bash install.sh
+curl -sO https://raw.githubusercontent.com/qiuyuxc/tunnel-manager/main/install.sh && bash install.sh
 ```
 
 ## 最小化 API 权限配置
