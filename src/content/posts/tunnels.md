@@ -1,187 +1,306 @@
 ---
-title: 告别手动调 API：一个 Cloudflare Tunnel 可视化管理面板
+title: 告别手动调 API：我写了一个 Cloudflare Tunnel 可视化管理面板
 published: 2026-07-11
-description: '通过可视化面板管理 Cloudflare Tunnel，自动化域名绑定、Ingress 配置与 SaaS 绑定流程，告别繁琐的 API 手动调用。'
-custom_summary: Cloudflare Tunnel Manager 将繁琐的“Tunnel+SaaS+优选CNAME”手工配置转化为全自动化工作流。程序可自动处理路由重组、DNS下发与证书绑定。用户只需输入域名和端口，3分钟即可零失误搭建出完整的优选网络链路，大幅解放生产力。
-image: 'https://pic.kukie.cn/ri/h/589.webp'
+description: '通过可视化面板管理 Cloudflare Tunnel，自动完成域名绑定、Ingress 配置与 SaaS 接入。'
+custom_summary: 把 Cloudflare Tunnel、DNS、SaaS Custom Hostname 等原本需要手动完成的配置整合到一个 Web 面板中，一次填写参数即可完成整套配置流程。
+image: ''
 tags: [CDN, Cloudflare, Tunnel, SaaS]
 category: 'CDN'
 draft: false
 lang: 'zh-cn'
 ---
 
+## 前言
 
-#前言
+去年折腾 Cloudflare Tunnel 的时候，我自己照着网上的方案给网站搭了一套 Tunnel + SaaS Custom Hostname + 优选 CNAME 的方案。
 
-之前写过一篇《Cloudflare Tunnel 的优选实践》，介绍了如何通过 **Tunnel + SaaS + 优选 CNAME** 的组合方案，改善特定网络环境下的访问体验。这种方案特别适合**手里有低配 VPS、但服务器原生 IP 线路不佳或带宽有限**的个人站长——依托 Cloudflare Tunnel 解决公网穿透与隐藏源站的问题，再结合 SaaS 接入优选 CNAME 降低国内访问延迟。
+对于个人站点而言，这是我用过最省心的一套组合。
 
-但在实际长期使用中，这个方案暴露出了一个很明显的痛点：**底层逻辑虽然清晰，但机械重复的手动配置极其折磨人。**
+Tunnel 负责隐藏源站，无需开放公网端口；SaaS 配合优选 CNAME，可以把访问流量引导到更合适的线路上。对只有一台低配 VPS 的个人站长来说，它既省去了配置防火墙和反向代理的麻烦，又能获得不错的访问体验。
 
-每当我们想给一套服务绑定新的访问域名时，完整的操作流程往往需要经历多步折返跑：
+**真正麻烦的不是搭建，而是后续的维护。**
 
-1. 打开 Cloudflare Dashboard，定位到对应 Tunnel，修改 Public Hostname 路由规则；
-2. 切换到 DNS 面板，分别给主域名和辅助域名添加 CNAME 记录，还要小心确认“小橙云”代理状态的开关；
-3. 再进入 SSL/TLS 的 Custom Hostnames 页面，绑定回退源并申请证书；
-4. 只能坐在屏幕前，等待各节点配置下发和 DNS 验证生效。
+每上线一个新站点，我都要在 Cloudflare 控制台 里重复同一套流程：
 
-即便流程再熟练，纯手工配置完一个站点的全套优选链路也需要 **5 到 7 分钟**。一旦管理着多个 Tunnel 或频繁增减项目，长时间在控制台多个页面之间反复跳转，不仅枯燥，而且极易在某个层级漏掉配置，导致出现 522 或 404 错误。
+- 打开 Tunnel 页面，修改 Public Hostname；
+- 打开 DNS 页面，分别创建主域名和辅助域名的解析记录；
+- 切换到 SSL/TLS，为域名申请 Custom Hostname；
+- 设置 Fallback Origin；
+- 最后等待 Cloudflare 同步配置、签发证书。
 
-既然所有的步骤都是固定且高度标准化的，为什么不交由程序代劳？于是我动手开发了 **Cloudflare Tunnel Manager**。
+第一次配置的时候还挺有意思，但站点一多，这套流程就开始变成重复劳动。
 
-现在，绑定一个新的全套优选站点，只需要在控制台填入服务所在端口（例如 http://localhost:3000）、选择主域名与辅助域名，点击提交。人工耗时直接从几分钟缩减为 **3 分钟以内**（其中大部分时间是等待 Cloudflare 后端生效），全程无需再去控制台页面来回切换。
+我第一反应其实是去 GitHub 找现成的。找了一圈，可能是我没找到，也可能确实没人做。
+
+既然没有，那就自己写一个。
+
+其实一开始只是打算写给自己用，后来觉得整理一下，也许其他人也能用得上。
+
+于是就有了 **Cloudflare Tunnel Manager**。
 
 > **📦 Cloudflare Tunnel Manager**
 >
-> 将 Cloudflare Tunnel 的优选链路配置从手工操作彻底自动化的开源工具。
+> 一个用于管理 Cloudflare Tunnel 的可视化面板。
 >
+> 它将 Tunnel、DNS、SaaS Custom Hostname 等原本分散在不同页面的配置整合到一起，只需要填写几个参数，就能完成整套绑定流程。
 
 ::github{repo="qiuyuxc/tunnel-manager"}
 
-> ⭐ 如果觉得有用，欢迎给它一个 Star！
 
----
+## 它解决的不是 Tunnel，而是整套配置流程
 
-## 真正复杂的不是穿透，而是核心能力的编排
-
-很多人最初接触 Cloudflare Tunnel 时，认识大多停留在简单的单向穿透层面上：
+如果只是把本地服务暴露到公网，Cloudflare Tunnel 的链路其实非常清晰：
 
 ```mermaid
 graph LR
-    A[本地服务] --> B[cloudflared 客户端] --> C[Cloudflare 边缘节点] --> D[公网访客]
+    A[本地服务] --> B[cloudflared]
+    B --> C[Cloudflare Edge]
+    C --> D[访客]
 ```
 
-但在引入 SaaS 与优选方案后，为了让流量能够平滑、高速地走到源站，中间涉及的依赖关系演变为一个多层的级联结构。当用户发起一次访问请求时，流量实际通过了完整的五层网关：
+**真正让这套方案变得复杂的，是当你把 SaaS 和优选 CNAME 也纳入进来之后。**
+
+一个请求从用户发起，到最终抵达本地服务，实际上要经过下面这几层配置：
 
 ```mermaid
 graph TD
-    A[用户访问主域名<br/>blog.example.com] -->|优选 CNAME| B(Cloudflare SaaS Custom Hostname)
-    B -->|内部逻辑映射| C[辅助域名/回退源<br/>fallback.example.com]
-    C -->|CNAME 代理开启| D[Tunnel 节点<br/>xxxx.cfargotunnel.com]
-    D -->|Ingress 规则匹配| E[本地服务<br/>localhost:3000]
+    A[用户访问<br/>blog.example.com]
+    -->|优选 CNAME| B[Custom Hostname]
+
+    B --> C[Fallback Origin]
+
+    C --> D[Tunnel]
+
+    D --> E[Ingress]
+
+    E --> F[localhost:3000]
 ```
 
-如果此时先直接去添加 DNS 解析，外部流量进来了，但 Tunnel 本身根本不认识这个域名，访问就会立即崩溃。
+这些配置虽然最终组成了一条完整的访问链路，但却分散在 Cloudflare 控制台的不同页面，由不同的 API 分别负责。这意味着，每新增一个站点，你都需要在不同页面之间来回切换，按照正确的顺序完成这些配置，才能把整条链路连接起来。
 
-因此，这个管理工具核心解决的并不是“如何创建一个 Tunnel”，而是**理清所有配置的先后依赖顺序，把原本割裂的 Cloudflare API 组合成一套严丝合缝的工作流**。
+**Cloudflare Tunnel Manager 做的事情其实很简单，就是把这套分散的配置流程串联起来，并交给程序自动完成。**
 
-## 核心解法：自动化绑定工作流的 5 个步骤
 
-在项目后端的 `BindDomain` 核心业务逻辑中，只要接收到用户在 Web 面板发起的绑定请求，程序便会严格按照正确的数据流动顺序，自动执行以下 5 个步骤：
+## 现在绑定一个站点，只需要几步
 
-1. **并行查询 Zone ID**：通过 Cloudflare Zone API，自动解析并获取主域名与辅助域名各自所属的 Zone ID，为后续跨域操作准备上下文。
-2. **更新 Tunnel Ingress 路由表**：读取指定 Tunnel 当前的路由配置，在本地将主域名和辅助域名与目标服务（如 http://localhost:3000）绑定，再推送更新到云端。
-3. **下发辅助域名 DNS 记录**：在辅助域名所在 Zone 中，创建一条指向 `<tunnel-id>.cfargotunnel.com` 的 CNAME 记录，并将代理状态**强制开启**（Orange Cloud 橙色云朵），让其承载回源通道。
-4. **下发主域名 DNS 记录**：为主域名创建指向你自定义优选 CNAME 地址的解析记录，同时将代理状态**强制关闭**（Gray Cloud 灰色云朵），确保公网流量走优选网络直连。
-5. **构建 SaaS 关联与发证书**：调用 API 将辅助域名设定为当前 Zone 的 Fallback Origin（回退源），并创建 Custom Hostname 将主域名与该回退源关联，触发 Edge 自动为域名签发 SSL 证书。
+以前绑定一个站点，大概要花五六分钟。
 
-这一套固化流程彻底终结了手工操作时的顺序错乱问题，只要 API 均返回成功，这条优选访问链路便能做到零失误落地。
+现在整个流程被压缩成了几个输入框：
 
-## 硬核细节：API 编排中的两处关键实现
+- 选择 Tunnel
+- 输入主域名
+- 输入辅助域名
+- 输入服务地址
+- 点击绑定
 
-在通过代码调用 Cloudflare API 时，单纯的参数拼接没有难度，真正的技术痛点在于**如何安全地修改线上配置而不破坏原有服务**。在此过程中，有两处关键的代码逻辑值得分享。
+剩下的事情全部交给程序完成。真正需要等待的，只有 Cloudflare 自己同步配置和签发证书的那段时间。
 
-### 1. Tunnel Ingress 兜底规则的“插队”处理
+对于经常新增项目或者维护多个 Tunnel 的人来说，便捷性带来的体验还是很明显的。
 
-在编写更新 Tunnel 路由规则的代码时，新手最容易踩的坑就是**直接往数组最尾部追加新规则**。一旦这样做了，新绑定的域名访问时百分之百会返回 404。
 
-原因在于，Cloudflare Tunnel 的 Ingress 路由是**自上而下逐条匹配**的。系统在创建 Tunnel 时，一定会默认在 Ingress 列表的最末尾生成一条强制性的兜底规则（Catch-all Rule）：
+## 点击一次绑定，后台到底做了什么？
+
+面板里只有一个「绑定」按钮，但后台其实会依次完成下面几件事：
+
+1. **查询 Zone ID**：根据主域名和辅助域名，自动查找对应的 Zone ID，支持子域名到根域名的最长匹配；
+2. **更新 Tunnel Ingress**：将主域名和辅助域名加入路由，并确保 `http_status:404` 的兜底规则始终位于末尾；
+3. **Upsert DNS 记录**：对主域名和辅助域名执行先查后写。辅助域名创建 CNAME 指向 `{tunnelID}.cfargotunnel.com` 并开启 Cloudflare 代理；主域名创建 CNAME 指向优选地址（如 `cf.090227.xyz`），不开启代理；
+4. **设置 Fallback Origin**：在辅助域名所在 Zone 注册回退源；
+5. **创建 Custom Hostname**：在辅助域名所在 Zone 提交主域名作为 Custom Hostname，等待 Cloudflare 自动完成证书签发。
+
+所以绑定流程并不是简单地连续调几个接口，而是按照正确的顺序，一步一步完成。只有先设置好 Fallback Origin，Custom Hostname 的回源链路才能正确建立；而 DNS 记录的 Upsert 策略（先查询再更新或创建）则避免了重复提交导致的冲突。
+
+只要 API 返回成功，这条访问链路基本就已经配置完毕。相比手动配置，最大的好处不是节省那几分钟，而是**再也不用担心自己漏掉其中某一步，或者把顺序搞错**。
+
+
+## 实现时需要注意的几个细节
+
+整个项目的开发其实比预想中顺利不少。在这之前，我已经写过基于 Cloudflare API 的 Go CLI 和 Workers，对 Tunnel、DNS、SaaS 这些接口都比较熟悉。因此，这个 Web 面板更多是在将现有的逻辑拼接起来。
+
+真正需要注意的，反而是一些很容易被忽略的小细节。
+
+### Catch-all Rule 不能放错位置
+
+Cloudflare Tunnel 的 Ingress 是按照数组顺序匹配的。
+
+每个 Tunnel 都会有一条 Cloudflare 自动生成的兜底规则：
 
 ```json
 {
-  "service": "http_status:404"
+    "service": "http_status:404"
 }
 ```
 
-如果你无脑追加，新域名规则永远排在 `http_status:404` 后面，请求还未抵达你的服务就被拦截抛弃了。
+它始终位于整个 Ingress 的最后。
 
-在处理这个逻辑时，必须通过切片操作，精确把兜底规则剥离出来，将新规则“插队”到它的前面，最后再把兜底规则放回队尾：
+很多人第一次修改 Ingress 时，会下意识地把新规则追加到数组末尾。但如果直接追加到数组末尾，新规则就会排在 Catch-all Rule 后面，导致无法按预期匹配。
+
+因此，更新 Ingress 时必须先把最后一条兜底规则取出来，插入新的 Hostname 规则后，再把它放回数组末尾。
+
+项目里的处理方式如下：
 
 ```go
-// handlers/domain.go (64-77)
 newRules := []models.IngressRule{
-    {Hostname: req.MainDomain, Service: cfg.ServiceURL},
-    {Hostname: req.AuxDomain, Service: cfg.ServiceURL},
+    {
+        Hostname: req.MainDomain,
+        Service: cfg.ServiceURL,
+    },
+    {
+        Hostname: req.AuxDomain,
+        Service: cfg.ServiceURL,
+    },
 }
 
 ingress := tunnelCfg.Result.Config.Ingress
-// 1. 提取出当前数组末尾的兜底规则 (http_status:404)
-lastRule := ingress[len(ingress)-1]  
+lastRule := ingress[len(ingress)-1]
 
-// 2. 将新规则追加到除去兜底规则之外的切片后方
-ingress = append(ingress[:len(ingress)-1], newRules...) 
+ingress = append(
+    ingress[:len(ingress)-1],
+    newRules...,
+)
 
-// 3. 将兜底规则重新追加回切片的绝对最末尾
 ingress = append(ingress, lastRule)
 ```
 
-这段简单的切片重组，确保了每一次添加新站点，路由表的优先级顺序都是健康正确的，从根本上杜绝了配置污染。
+虽然只是几行代码，但它保证了每次新增路由时，都不会破坏已有的匹配顺序。否则，请求可能无法匹配到新增的 Hostname，最终无法正常访问对应服务。
 
-### 2. SaaS Custom Hostname 与回退源的分步注入
+### Fallback Origin 为什么要先于 Custom Hostname？
 
-SaaS 架构的核心在于**把“门面（主域名）”和“后勤（辅助域名）”完全解耦**。这要求在代码层面对它们做严格的分步操作。
+除了 Ingress，第一次接触 SaaS 时还容易忽略 **Fallback Origin** 与 **Custom Hostname** 之间的依赖关系。
 
-后端在绑定 Custom Hostname 时，并不是将请求一股脑塞进一个接口，而是拆分为明晰的数据映射结构：
+很多人会误以为，只要调用 Custom Hostname 接口把主域名提交给 Cloudflare，就算完成了。但实际上，Cloudflare 必须先知道这个域名最终应该回源到哪里，因此必须先把辅助域名注册为当前 Zone 的 Fallback Origin。
 
-```go
-// services/cloudflare.go (225-242)
-func (c *CloudflareClient) CreateCustomHostname(zoneID, hostname, originServer string) error {
-    payload := map[string]interface{}{
-        "hostname":             hostname,     // 外部公网访问的主域名
-        "custom_origin_server": originServer, // 底层承载回源的辅助域名
-        "ssl": map[string]interface{}{
-            "method": "http",
-            "type":   "dv",
-        },
-    }
-    // 发起 POST /zones/{zoneID}/custom_hostnames
-}
+项目内部严格按照这个顺序处理：
+
+```text
+Fallback Origin
+        │
+        ▼
+Custom Hostname
+        │
+        ▼
+等待证书签发
 ```
 
-这段逻辑执行能够成功的**核心前提**，是必须提前让 Cloudflare 确认你的辅助域名的合法身份。因此，在项目代码的 `SetFallbackOrigin` 方法中，会先发起一个 `PUT /zones/{zoneID}/custom_hostnames/fallback_origin` 请求，将辅助域名注册为生效的回退源。只有先在云端确立了后勤底座，后续针对门面主域名的证书申请和路由分配才能顺利执行。
+先调用 `PUT /zones/{zone_id}/custom_hostnames/fallback_origin` 设置回退源，随后再调用 `POST /zones/{zone_id}/custom_hostnames` 创建对外访问的 Custom Hostname。
 
-## 极简架构与工程化落地
+如果顺序颠倒，Cloudflare 往往无法按预期完成证书申请。所以绑定流程并不是简单地连续调几个接口，而是**按照 Cloudflare 的配置依赖关系，一步一步完成**。
 
-为了保证项目既轻量又易于在各种闲置 VPS 上分发，整个系统采用了前后端分离但整合构建的极简架构：
+## 比绑定域名更常用的，其实是在线管理 Tunnel 路由
 
+如果让我选整个项目最满意的功能，不是自动绑定，而是在线管理 Tunnel 路由。
+
+最开始写这个项目时，我只是想把绑定域名这件事自动化掉。
+
+真正开始使用以后，我才发现，自己最常用的反而不是绑定功能，而是路由管理。
+
+因为一个 Tunnel 往往会承载多个服务。比如：
+
+| Hostname | Service |
+| -------- | ------- |
+| blog.example.com | http://localhost:3000 |
+| status.example.com | http://localhost:3001 |
+| api.example.com | http://localhost:8080 |
+
+随着项目增多，经常需要修改端口、删除某个服务，新增一条路由进行测试，以前只能进入 Cloudflare 控制台的 Public Hostname（公共主机名）页面操作，现在可以直接在面板里完成。
+
+页面会读取当前 Tunnel 的 Ingress 配置，以列表形式展示当前 Tunnel 的所有路由，支持查看、新增、编辑和删除。
+
+唯一不允许手动修改的是那条 Cloudflare 自动生成的 Catch-all Rule——因为它始终应该留在最后，处理未匹配到任何规则的请求。
+
+这也是整个项目目前我自己最常使用的功能。很多时候只是改一个端口，或者临时起一个测试服务，不需要再打开 Cloudflare 控制台。
+
+
+## 除了 Web 面板，也支持 Telegram Bot
+
+除了浏览器，这个项目还集成了 Telegram Bot，主要是为了方便远程管理。
+
+比如服务器放在家里，或者人在外面时，不用登录面板，直接打开 Telegram 就能完成一些常用操作。
+
+目前支持：
+
+- 查看 Tunnel 状态
+- 查看当前配置
+- 设置优选 CNAME
+- 设置回退源
+- 域名绑定
+
+如果只是偶尔新增一个站点，通过 Bot 直接操作往往比打开浏览器更快。
+
+
+## 项目结构
+
+在技术选型上，我刻意避开了重型方案。
+
+更希望它能跑在各种低配置 VPS 上，所以整体保持简单：
+
+```text
+┌──────────────┐
+│ Vue 3 Frontend │
+└──────┬───────┘
+       │ HTTP API
+┌──────▼───────┐
+│ Go Backend   │
+└──────┬───────┘
+       │
+┌──────▼────────────────┐
+│ Cloudflare REST API   │
+└───────────────────────┘
 ```
-┌──────────────┐     ┌──────────────┐     ┌──────────────────┐
-│  Vue 3 前端   │────▶│  Go 后端 API  │────▶│ Cloudflare API   │
-│  Naive UI    │     │  chi router  │     │ Tunnels / DNS    │
-└──────────────┘     └──────────────┘     └──────────────────┘
-```
 
-- **前端**：采用 **Vue 3 + TypeScript + Naive UI + Pinia** 构建，界面直观，主要提供交互表单与实时状态日志。
-- **后端**：使用 **Go 搭配 chi 路由**，采用轻量级 JSON 文件存储（`data/config.json`），完全不依赖外部庞大的数据库引擎，内存占用极低。
-- **构建层**：在 Dockerfile 中设计了标准的 **多阶段构建（Multi-stage Build）**。利用 `node:20-alpine` 编译前端产物，`golang:1.22-alpine` 编译后端二进制文件，最终拼接到纯净的 `alpine:3.19` 镜像中。整个最终产物镜像极小，运行资源开销微乎其微。
+前端使用 Vue 3 + TypeScript + Naive UI + Pinia，负责页面展示和交互。
 
-### 针对国内 VPS 环境的部署优化
+后端使用 Go + chi Router，所有配置直接保存在 JSON 文件中，不依赖 MySQL 或 PostgreSQL。
 
-考虑到不少开发者使用这套工具的出发点，就是为了优化那些线路不佳的 VPS，我们在自动化部署脚本 `install.sh` 和 Docker 构建层面加入了许多针对性的国内环境适配优化：
+对于这个场景来说，这种方式已经足够，也降低了部署门槛。
 
-- **镜像源智能加速**：在拉取和执行构建时，如果是在国内服务器运行，脚本会通过超时测试自动探测 `ghcr.io` 的连通性。如果响应超过 3 秒，会自动平滑切换为南京大学镜像源 `ghcr.nju.edu.cn`，配置文件也会通过 `ghfast.top` 镜像代理加速拉取。
-- **零配置自启动与安全防护**：一键安装脚本通过交互式命令行引导用户填入 Cloudflare 凭据后，直接生成 `.env` 并启动容器。如果用户未手动设定 `ADMIN_PASSWORD`，系统将在初始化运行中**自动随机生成一个高强度的密码**并输出到日志中，防止面板暴露在公网时被人利用。
 
-部署只需一行命令即可直接跑通：
+## 针对国内服务器做了一些优化
+
+很多使用 Tunnel 的用户，本身就是因为服务器线路一般，或者公网环境不太方便。因此部署时，我也顺手做了一些针对国内环境的优化。
+
+### 镜像源自动切换
+
+安装脚本会先检测 `ghcr.io` 能否正常访问。如果超时，则自动切换到国内镜像，避免 Docker 拉取镜像速度过慢。
+
+### 自动生成管理员密码
+
+第一次启动时，如果没有指定管理员密码，程序会自动生成一个随机密码并输出到日志中，避免部署后直接使用默认密码的风险。
+
+### 一键部署
+
+复制以下命令即可一键安装：
 
 ```bash
 curl -sO https://raw.githubusercontent.com/qiuyuxc/tunnel-manager/main/install.sh && bash install.sh
 ```
 
-## 最小化 API 权限配置
+脚本会自动检查 Docker、创建配置、引导填写 Cloudflare Token、构建镜像并启动容器，整个过程基本不需要手动修改配置文件。
 
-在任何涉及 Token 管理的自动化工具中，安全性都必须被置于首位。遵循**最小权限原则（Least Privilege）**，你在 Cloudflare 申请 API Token 时，完全无需开通高风险的全局超级管理员权限，仅需为工具赋予以下四个模块的精准权限：
 
-| 授权范围          | 对应模块             | 权限层级 | 用途说明                                                                      |
-| ----------------- | -------------------- | -------- | ----------------------------------------------------------------------------- |
-| **Account** | Cloudflare Tunnel    | Edit     | 授权查询当前账号下的 Tunnel 列表，并能在线更新 Ingress 路由规则               |
-| **Zone**    | DNS                  | Edit     | 授权为主域名和辅助域名自动创建 CNAME 记录，并能够切换橙/灰云状态              |
-| **Zone**    | Zone                 | Read     | 仅需只读权限，用来根据用户填写的域名动态解析获取对应的 Zone ID                |
-| **Zone**    | SSL and Certificates | Edit     | 授权设定 SaaS 架构中的 Fallback Origin 回退源以及向主域名申请 Custom Hostname |
+## API Token 权限
 
-精准控制 Token 的作用范围，即便你在多台第三方低配 VPS 上分发和部署此工具，也不必担心主账号中其他不受管控的域名和资产面临安全风险。
+这个项目只需要几个最小权限的 Cloudflare API Token 即可运行：
 
-## 总结
+| 范围 | 权限 | 用途 |
+|------|------|------|
+| Tunnel | Edit | 修改 Ingress、查询 Tunnel |
+| DNS | Edit | 创建 DNS 记录 |
+| Zone | Read | 获取 Zone ID |
+| SSL and Certificates | Edit | 设置 Fallback Origin、创建 Custom Hostname |
 
-Cloudflare Tunnel 是一项极具实用价值的边缘网络技术。当我们将它同 SaaS Custom Hostname 以及优选 CNAME 组合在一起时，它能发挥出远超简单内网穿透的生产力，让低成本服务器也能拥有极佳的国内访问速度。然而，强悍架构的背后，往往意味着配置流程复杂度的陡升。
+不需要使用全局 API Key，也不需要给账号授予更多权限。如果部署在第三方服务器，这样会更安全一些。
 
-**Cloudflare Tunnel Manager** 本质上并未去创造任何前所未有的网络能力，它做的仅仅是用工程化的方式，将社区反复验证过的优选实践与手动操作固化为自动化流程。把原本要在多个后台页面间反复奔走、手动核对参数的体力劳动，转化为提交参数后程序对 API 的有序调度。让开发者从繁琐的机械操作中解脱出来，将宝贵的时间投入到产品和代码本身，这正是这个工具诞生的最大意义。
+
+## 写在最后
+
+说到底，这个面板并没有创造什么新的能力，只是把原本需要手动完成的操作，交给程序去调用 Cloudflare API 自动完成。
+
+现在新增一个站点，不需要再反复打开 Tunnel、DNS、SSL/TLS 几个页面来回切换。填写几个参数，点击一次按钮，剩下的事情交给程序完成。
+
+对于偶尔新增一个站点的人来说，可能只是节省了几分钟。但如果长期维护多个 Tunnel、多套服务，或者经常折腾新项目，这种重复操作很快就会变成一种负担。
+
+**至少以后再新增一个站点的时候，我不用再打开四五个 Cloudflare 页面，把同样的操作再重复一遍了。**
+
+如果你也经常使用 Cloudflare Tunnel，希望这个项目能帮你省下一点时间。如果觉得有用，欢迎到 GitHub 点个 Star，或者一起交流、提出新的想法。
+```

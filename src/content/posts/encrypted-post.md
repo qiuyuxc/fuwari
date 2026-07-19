@@ -4,7 +4,7 @@ published: 2024-01-15
 description: This is an article for testing the page encryption feature
 encrypted: true
 pinned: false
-image: "/assets/image/4.webp"
+image: ""
 password: "123456"
 alias: "encrypted-example"
 tags: ["Test", "Encryption"]
