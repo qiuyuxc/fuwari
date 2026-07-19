@@ -303,4 +303,3 @@ curl -sO https://raw.githubusercontent.com/qiuyuxc/tunnel-manager/main/install.s
 **至少以后再新增一个站点的时候，我不用再打开四五个 Cloudflare 页面，把同样的操作再重复一遍了。**
 
 如果你也经常使用 Cloudflare Tunnel，希望这个项目能帮你省下一点时间。如果觉得有用，欢迎到 GitHub 点个 Star，或者一起交流、提出新的想法。
-```
