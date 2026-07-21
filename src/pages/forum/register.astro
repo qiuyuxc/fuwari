@@ -1,0 +1,12 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import ForumHeader from "@components/forum/ForumHeader.svelte";
+import RegisterForm from "@components/forum/RegisterForm.svelte";
+---
+
+<MainGridLayout title="注册 - 论坛">
+  <div class="card-base p-6 md:p-8">
+    <ForumHeader client:only="svelte" />
+    <RegisterForm client:only="svelte" />
+  </div>
+</MainGridLayout>

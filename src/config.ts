@@ -100,9 +100,9 @@ export const navBarConfig: NavBarConfig = {
 			external: false,
 		},
 		{
-			name: "论坛", 
-			url: "https://bbs.kukie.cn", 
-			external: true, 
+			name: "论坛",
+			url: "/forum/",
+			external: false, 
 		},
 		{
 			name: "站点状态", 

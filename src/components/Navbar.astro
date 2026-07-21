@@ -35,7 +35,9 @@ let links: NavBarLink[] = navBarConfig.links.map(
 </a>
         <div class="hidden md:flex">
             {links.map((l) => {
-                return <a aria-label={l.name} href={l.external ? l.url : url(l.url)} target={l.external ? "_blank" : null}
+                const href = l.external ? l.url : url(l.url);
+                return <a aria-label={l.name} href={href} target={l.external ? "_blank" : null}
+                          data-no-swup={href.startsWith('/forum/') || undefined}
                           class="btn-plain scale-animation rounded-full h-9 px-3 text-sm font-medium active:scale-95"
                 >
                     <div class="flex items-center">

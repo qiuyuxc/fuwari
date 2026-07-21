@@ -1,0 +1,12 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import ForumHeader from "@components/forum/ForumHeader.svelte";
+import AdminPanel from "@components/forum/AdminPanel.svelte";
+---
+
+<MainGridLayout title="管理后台 - 论坛">
+  <div class="card-base p-6 md:p-8">
+    <ForumHeader client:only="svelte" />
+    <AdminPanel client:only="svelte" />
+  </div>
+</MainGridLayout>
