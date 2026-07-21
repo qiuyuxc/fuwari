@@ -88,7 +88,7 @@
     catch (e: any) { alert(e.message); }
   };
 
-  const loadSettings = async () => { settingsLoading = true; try { const s = await getAdminSettings(); settings = {}; for (const [k, v] of Object.entries(s)) { settings[k] = typeof v === "string" ? v : JSON.stringify(v); } } catch { /* */ } settingsLoading = false; };
+  const loadSettings = async () => { settingsLoading = true; try { const s = await getAdminSettings(); const result: Record<string, string> = {}; for (const [k, v] of Object.entries(s)) { result[k] = typeof v === "string" ? v : JSON.stringify(v); } settings = result; } catch { /* */ } settingsLoading = false; };
   const handleSaveSettings = async () => {
     settingsSaving = true; settingsSaved = false;
     try {
